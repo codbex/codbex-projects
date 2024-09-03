@@ -2,4 +2,5 @@
 Projects Management Module
 
 Schematic:
-![image](https://github.com/user-attachments/assets/488de999-81c0-409f-9319-dcb4b794a9b6)
+![image](https://github.com/user-attachments/assets/919c8281-87e5-4edc-bbfa-29b915c98896)
+
