@@ -163,8 +163,7 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
-                        "name": "STATUSTYPE_PROPERTY2"
+                        "name": "STATUSTYPE_NAME"
                     }
                 ]
             },

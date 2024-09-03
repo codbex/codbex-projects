@@ -1,9 +1,9 @@
 {
     "files": [
         {
-            "table": "CODBEX_PROJECTTYPE",
+            "table": "CODBEX_RESOURCETYPE",
             "schema": "PUBLIC",
-            "file": "/codbex-project-data/project-types.csv",
+            "file": "/codbex-project-data/resource-types.csv",
             "header": true,
             "useHeaderNames": true,
             "delimField": ",",
