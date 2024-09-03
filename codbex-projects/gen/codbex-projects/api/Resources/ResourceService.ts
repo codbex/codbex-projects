@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ResourceRepository, ResourceEntityOptions } from "../../dao/Project/ResourceRepository";
+import { ResourceRepository, ResourceEntityOptions } from "../../dao/Resources/ResourceRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Resource", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Resources-Resource", ["validate"]);
 
 @Controller
 class ResourceService {
@@ -19,17 +19,6 @@ class ResourceService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
-
-            if (${masterEntityId} !== undefined) {
-                options.$filter = {
-                    equals: {
-                        ${masterEntityId}: ${masterEntityId}
-                    }
-                };
-            }
-
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -41,7 +30,7 @@ class ResourceService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

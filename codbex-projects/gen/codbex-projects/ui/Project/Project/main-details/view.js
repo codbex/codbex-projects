@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Resource-filter",
-    label: "Resource Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/${masterEntity}/Resource/dialog-filter/index.html",
+    id: "Project-details",
+    label: "Project",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/main-details/index.html",
     perspectiveName: "Project",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Resource-details",
-    label: "Resource",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/${masterEntity}/Resource/dialog-window/index.html",
-    perspectiveName: "Project",
+    id: "Resource-filter",
+    label: "Resource Filter",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Resources/Resource/dialog-filter/index.html",
+    perspectiveName: "Resources",
 };
 
 if (typeof exports !== 'undefined') {

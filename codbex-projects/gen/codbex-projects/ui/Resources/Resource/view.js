@@ -7,9 +7,9 @@ const viewData = {
     id: "Resource",
     label: "Resource",
     factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/${masterEntity}/Resource/index.html",
-    perspectiveName: "Project",
+    region: "center",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Resources/Resource/index.html",
+    perspectiveName: "Resources",
 };
 
 if (typeof exports !== 'undefined') {

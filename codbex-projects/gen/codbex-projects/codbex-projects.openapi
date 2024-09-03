@@ -9,10 +9,10 @@ externalDocs:
 servers:
   - url: /services/ts
 tags:
-  - name: Project
+  - name: Resources
   - name: Project
 paths:
-  /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
+  /codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts:
     get:
       summary: List Resource
       parameters:
@@ -33,7 +33,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -64,7 +64,7 @@ paths:
     post:
       summary: Create Resource
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -96,7 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts/{id}:
     get:
       summary: Get Resource by Id
       parameters:
@@ -107,7 +107,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -145,7 +145,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -193,7 +193,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       responses:
         204:
           description: Successful Request
@@ -215,11 +215,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts/count:
     get:
       summary: Count the number of Resource
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -243,7 +243,7 @@ paths:
     post:
       summary: Count the number of Resource by ResourceFilterOptions
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -327,11 +327,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts/search:
     post:
       summary: Search Resource by ResourceFilterOptions
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -1087,12 +1087,12 @@ components:
           maxLength: 20
         StartingDate:
         TickPeriod:
-        Version:
-          type: number
-          format: double
         Resource:
           type: integer
           format: int32
+        Version:
+          type: number
+          format: double
         Notes:
           type: string
           minLength: 0
@@ -1140,14 +1140,6 @@ components:
                   oneOf:
                 TickPeriod:
                   oneOf:
-                Version:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Resource:
                   oneOf:
                     - type: integer
@@ -1156,6 +1148,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Version:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Notes:
                   oneOf:
                     - type: string
@@ -1204,14 +1204,6 @@ components:
                   oneOf:
                 TickPeriod:
                   oneOf:
-                Version:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Resource:
                   oneOf:
                     - type: integer
@@ -1220,6 +1212,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Version:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Notes:
                   oneOf:
                     - type: string
@@ -1245,8 +1245,8 @@ components:
                   maxLength: 20
                 StartingDate:
                 TickPeriod:
-                Version:
                 Resource:
+                Version:
                 Notes:
                   type: string
                   minLength: 0
@@ -1267,12 +1267,12 @@ components:
                   maxLength: 20
                 StartingDate:
                 TickPeriod:
-                Version:
-                  type: number
-                  format: double
                 Resource:
                   type: integer
                   format: int32
+                Version:
+                  type: number
+                  format: double
                 Notes:
                   type: string
                   minLength: 0
@@ -1293,12 +1293,12 @@ components:
                   maxLength: 20
                 StartingDate:
                 TickPeriod:
-                Version:
-                  type: number
-                  format: double
                 Resource:
                   type: integer
                   format: int32
+                Version:
+                  type: number
+                  format: double
                 Notes:
                   type: string
                   minLength: 0
@@ -1319,12 +1319,12 @@ components:
                   maxLength: 20
                 StartingDate:
                 TickPeriod:
-                Version:
-                  type: number
-                  format: double
                 Resource:
                   type: integer
                   format: int32
+                Version:
+                  type: number
+                  format: double
                 Notes:
                   type: string
                   minLength: 0
@@ -1345,24 +1345,24 @@ components:
                   maxLength: 20
                 StartingDate:
                 TickPeriod:
-                Version:
-                  type: number
-                  format: double
                 Resource:
                   type: integer
                   format: int32
+                Version:
+                  type: number
+                  format: double
                 Notes:
                   type: string
                   minLength: 0
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Asassignee", "StartingDate", "TickPeriod", "Version", "Resource", "Notes"]
+          example: ["Id", "Name", "Asassignee", "StartingDate", "TickPeriod", "Resource", "Version", "Notes"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Asassignee,StartingDate,TickPeriod,Version,Resource,Notes"
+            example: "Id,Name,Asassignee,StartingDate,TickPeriod,Resource,Version,Notes"
         $order:
           type: string
           enum: ["asc", "desc"]

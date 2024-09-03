@@ -72,17 +72,17 @@
                         "name": "PROJECT_TICKPERIOD"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PROJECT_RESOURCE"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
                         "name": "PROJECT_VERSION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PROJECT_RESOURCE"
                     },
                     {
                         "type": "VARCHAR",

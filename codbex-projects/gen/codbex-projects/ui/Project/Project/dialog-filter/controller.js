@@ -70,11 +70,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.TickPeriodTo) {
 				filter.$filter.lessThanOrEqual.TickPeriod = entity.TickPeriodTo;
 			}
-			if (entity.Version !== undefined) {
-				filter.$filter.equals.Version = entity.Version;
-			}
 			if (entity.Resource !== undefined) {
 				filter.$filter.equals.Resource = entity.Resource;
+			}
+			if (entity.Version !== undefined) {
+				filter.$filter.equals.Version = entity.Version;
 			}
 			if (entity.Notes) {
 				filter.$filter.contains.Notes = entity.Notes;
@@ -83,6 +83,7 @@ angular.module('page', ["ideUI", "ideView"])
 				entity: entity,
 				filter: filter
 			});
+			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 

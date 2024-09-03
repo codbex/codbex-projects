@@ -9,8 +9,8 @@ export interface ProjectEntity {
     Asassignee: string;
     StartingDate?: Date;
     TickPeriod?: Date;
-    Version?: number;
     Resource?: number;
+    Version?: number;
     Notes?: string;
 }
 
@@ -19,8 +19,8 @@ export interface ProjectCreateEntity {
     readonly Asassignee: string;
     readonly StartingDate?: Date;
     readonly TickPeriod?: Date;
-    readonly Version?: number;
     readonly Resource?: number;
+    readonly Version?: number;
     readonly Notes?: string;
 }
 
@@ -36,8 +36,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string | string[];
             StartingDate?: Date | Date[];
             TickPeriod?: Date | Date[];
-            Version?: number | number[];
             Resource?: number | number[];
+            Version?: number | number[];
             Notes?: string | string[];
         };
         notEquals?: {
@@ -46,8 +46,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string | string[];
             StartingDate?: Date | Date[];
             TickPeriod?: Date | Date[];
-            Version?: number | number[];
             Resource?: number | number[];
+            Version?: number | number[];
             Notes?: string | string[];
         };
         contains?: {
@@ -56,8 +56,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string;
             StartingDate?: Date;
             TickPeriod?: Date;
-            Version?: number;
             Resource?: number;
+            Version?: number;
             Notes?: string;
         };
         greaterThan?: {
@@ -66,8 +66,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string;
             StartingDate?: Date;
             TickPeriod?: Date;
-            Version?: number;
             Resource?: number;
+            Version?: number;
             Notes?: string;
         };
         greaterThanOrEqual?: {
@@ -76,8 +76,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string;
             StartingDate?: Date;
             TickPeriod?: Date;
-            Version?: number;
             Resource?: number;
+            Version?: number;
             Notes?: string;
         };
         lessThan?: {
@@ -86,8 +86,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string;
             StartingDate?: Date;
             TickPeriod?: Date;
-            Version?: number;
             Resource?: number;
+            Version?: number;
             Notes?: string;
         };
         lessThanOrEqual?: {
@@ -96,8 +96,8 @@ export interface ProjectEntityOptions {
             Asassignee?: string;
             StartingDate?: Date;
             TickPeriod?: Date;
-            Version?: number;
             Resource?: number;
+            Version?: number;
             Notes?: string;
         };
     },
@@ -158,14 +158,14 @@ export class ProjectRepository {
                 type: "TIME",
             },
             {
-                name: "Version",
-                column: "PROJECT_VERSION",
-                type: "DECIMAL",
-            },
-            {
                 name: "Resource",
                 column: "PROJECT_RESOURCE",
                 type: "INTEGER",
+            },
+            {
+                name: "Version",
+                column: "PROJECT_VERSION",
+                type: "DECIMAL",
             },
             {
                 name: "Notes",

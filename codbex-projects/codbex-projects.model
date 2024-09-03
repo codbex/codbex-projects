@@ -72,20 +72,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "resource",
                 "menuLabel": "Resource",
                 "name": "Resource",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
-                "perspectiveLabel": "Project",
-                "perspectiveName": "Project",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/setting.svg",
+                "perspectiveLabel": "Resources",
+                "perspectiveName": "Resources",
+                "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "title": "Resource",
                 "tooltip": "Resource",
-                "type": "DEPENDENT"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -148,6 +148,23 @@
                         "widgetType": "TIME"
                     },
                     {
+                        "dataName": "PROJECT_RESOURCE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "Resource",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Project_Resource",
+                        "relationshipEntityName": "Resource",
+                        "relationshipEntityPerspectiveName": "Resources",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataLength": "18",
                         "dataName": "PROJECT_VERSION",
                         "dataNullable": "true",
@@ -159,25 +176,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PROJECT_RESOURCE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "Resource",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "Project_Resource",
-                        "relationshipType": "COMPOSITION",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipEntityName": "Resource",
-                        "relationshipEntityPerspectiveName": "Project",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "200",
@@ -197,7 +195,7 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "project",
                 "menuLabel": "Project",
@@ -219,6 +217,13 @@
                 "label": "Project",
                 "icon": "/services/web/resources/unicons/pen.svg",
                 "order": "100",
+                "role": {}
+            },
+            {
+                "name": "Resources",
+                "label": "Resources",
+                "icon": "/services/web/resources/unicons/setting.svg",
+                "order": "200",
                 "role": {}
             }
         ],

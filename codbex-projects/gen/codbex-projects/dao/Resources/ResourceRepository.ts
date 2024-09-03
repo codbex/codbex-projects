@@ -226,7 +226,7 @@ export class ResourceRepository {
     }
 
     private async triggerEvent(data: ResourceEntityEvent | ResourceUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-Project-Resource", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-Resources-Resource", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -234,6 +234,6 @@ export class ResourceRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-projects-Project-Resource").send(JSON.stringify(data));
+        producer.topic("codbex-projects-Resources-Resource").send(JSON.stringify(data));
     }
 }
