@@ -19,10 +19,9 @@
                         "name": "RESOURCE_NAME"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "RESOURCE_TYPE"
+                        "name": "RESOURCE_RESOURCETYPE"
                     },
                     {
                         "type": "DECIMAL",
@@ -37,6 +36,11 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "RESOURCE_PRIZE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "RESOURCE_PROJECT"
                     }
                 ]
             },
@@ -67,14 +71,13 @@
                         "name": "PROJECT_STARTINGDATE"
                     },
                     {
+                        "type": "TIMESTAMP",
+                        "name": "PROJECT_ENDDATE"
+                    },
+                    {
                         "type": "TIME",
                         "nullable": true,
                         "name": "PROJECT_TICKPERIOD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PROJECT_RESOURCE"
                     },
                     {
                         "type": "DECIMAL",
@@ -93,13 +96,113 @@
                 ]
             },
             {
-                "name": "Project_Resource",
+                "name": "CODBEX_STATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STATUS_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "STATUS_STATUSTYPE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "STATUS_IMPLEMENTED"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "STATUS_PROBLEMS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "STATUS_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_RESOURCETYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "RESOURCETYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "RESOURCETYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_STATUSTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STATUSTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "STATUSTYPE_PROPERTY2"
+                    }
+                ]
+            },
+            {
+                "name": "Resource_ResourceType",
                 "type": "foreignKey",
-                "table": "CODBEX_PROJECT",
-                "constraintName": "Project_Resource",
-                "columns": "PROJECT_RESOURCE",
-                "referencedTable": "CODBEX_RESOURCE",
-                "referencedColumns": "RESOURCE_ID"
+                "table": "CODBEX_RESOURCE",
+                "constraintName": "Resource_ResourceType",
+                "columns": "RESOURCE_RESOURCETYPE",
+                "referencedTable": "CODBEX_RESOURCETYPE",
+                "referencedColumns": "RESOURCETYPE_ID"
+            },
+            {
+                "name": "Resource_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_RESOURCE",
+                "constraintName": "Resource_Project",
+                "columns": "RESOURCE_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Status_StatusType",
+                "type": "foreignKey",
+                "table": "CODBEX_STATUS",
+                "constraintName": "Status_StatusType",
+                "columns": "STATUS_STATUSTYPE",
+                "referencedTable": "CODBEX_STATUSTYPE",
+                "referencedColumns": "STATUSTYPE_ID"
+            },
+            {
+                "name": "Status_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_STATUS",
+                "constraintName": "Status_Project",
+                "columns": "STATUS_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
             }
         ]
     },

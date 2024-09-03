@@ -1,0 +1,6 @@
+STATUSTYPE_ID,STATUSTYPE_NAME
+1,Done
+2,InProgress
+3,DevelopingFeature
+4,Deprecated
+5,Research

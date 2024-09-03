@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -105,8 +105,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						if (e.StartingDate) {
 							e.StartingDate = new Date(e.StartingDate);
 						}
-						if (e.TickPeriod) {
-							e.TickPeriod = new Date(e.TickPeriod);
+						if (e.EndDate) {
+							e.EndDate = new Date(e.EndDate);
+						}
+						if (e.Milestones) {
+							e.Milestones = new Date(e.Milestones);
 						}
 					});
 
@@ -122,7 +125,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
@@ -130,17 +132,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedEntity = null;
 			$scope.action = "create";
 
-			messageHub.postMessage("createEntity", {
-				entity: {},
-				optionsResource: $scope.optionsResource,
-			});
+			messageHub.postMessage("createEntity");
 		};
 
 		$scope.updateEntity = function () {
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
@@ -177,31 +175,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
-				optionsResource: $scope.optionsResource,
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsResource = [];
-
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Resources/ResourceService.ts").then(function (response) {
-			$scope.optionsResource = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsResourceValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsResource.length; i++) {
-				if ($scope.optionsResource[i].value === optionKey) {
-					return $scope.optionsResource[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

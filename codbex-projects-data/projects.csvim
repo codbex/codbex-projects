@@ -1,0 +1,26 @@
+{
+    "files": [
+        {
+            "table": "CODBEX_PROJECTTYPE",
+            "schema": "PUBLIC",
+            "file": "/codbex-project-data/project-types.csv",
+            "header": true,
+            "useHeaderNames": true,
+            "delimField": ",",
+            "delimEnclosing": "\"",
+            "distinguishEmptyFromNull": true,
+            "version": "1.0"
+        },
+        {
+            "table": "CODBEX_STATUSTYPE",
+            "schema": "PUBLIC",
+            "file": "/codbex-project-data/status-types.csv",
+            "header": true,
+            "useHeaderNames": true,
+            "delimField": ",",
+            "delimEnclosing": "\"",
+            "distinguishEmptyFromNull": true,
+            "version": "1.0"
+        }
+    ]
+}

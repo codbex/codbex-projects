@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProjectRepository, ProjectEntityOptions } from "../../dao/Project/ProjectRepository";
+import { StatusRepository, StatusEntityOptions } from "../../dao/Project/StatusRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Project", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Status", ["validate"]);
 
 @Controller
-class ProjectService {
+class StatusService {
 
-    private readonly repository = new ProjectRepository();
+    private readonly repository = new StatusRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProjectEntityOptions = {
+            const options: StatusEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -30,7 +30,7 @@ class ProjectService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/StatusService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +73,7 @@ class ProjectService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Project not found");
+                HttpUtils.sendResponseNotFound("Status not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class ProjectService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Project not found");
+                HttpUtils.sendResponseNotFound("Status not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,29 +119,20 @@ class ProjectService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        if (entity.StatusType === null || entity.StatusType === undefined) {
+            throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 40) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
+        if (entity.Implemented === null || entity.Implemented === undefined) {
+            throw new ValidationError(`The 'Implemented' property is required, provide a valid value`);
         }
-        if (entity.Asassignee === null || entity.Asassignee === undefined) {
-            throw new ValidationError(`The 'Asassignee' property is required, provide a valid value`);
+        if (entity.Implemented?.length > 200) {
+            throw new ValidationError(`The 'Implemented' exceeds the maximum length of [200] characters`);
         }
-        if (entity.Asassignee?.length > 20) {
-            throw new ValidationError(`The 'Asassignee' exceeds the maximum length of [20] characters`);
+        if (entity.Problems?.length > 200) {
+            throw new ValidationError(`The 'Problems' exceeds the maximum length of [200] characters`);
         }
-        if (entity.StartingDate === null || entity.StartingDate === undefined) {
-            throw new ValidationError(`The 'StartingDate' property is required, provide a valid value`);
-        }
-        if (entity.EndDate === null || entity.EndDate === undefined) {
-            throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
-        }
-        if (entity.Milestones === null || entity.Milestones === undefined) {
-            throw new ValidationError(`The 'Milestones' property is required, provide a valid value`);
-        }
-        if (entity.Notes?.length > 200) {
-            throw new ValidationError(`The 'Notes' exceeds the maximum length of [200] characters`);
+        if (entity.Project === null || entity.Project === undefined) {
+            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

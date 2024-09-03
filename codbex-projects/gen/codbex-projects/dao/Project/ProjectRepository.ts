@@ -8,8 +8,8 @@ export interface ProjectEntity {
     Name: string;
     Asassignee: string;
     StartingDate?: Date;
-    TickPeriod?: Date;
-    Resource?: number;
+    EndDate: Date;
+    Milestones?: Date;
     Version?: number;
     Notes?: string;
 }
@@ -18,8 +18,8 @@ export interface ProjectCreateEntity {
     readonly Name: string;
     readonly Asassignee: string;
     readonly StartingDate?: Date;
-    readonly TickPeriod?: Date;
-    readonly Resource?: number;
+    readonly EndDate: Date;
+    readonly Milestones?: Date;
     readonly Version?: number;
     readonly Notes?: string;
 }
@@ -35,8 +35,8 @@ export interface ProjectEntityOptions {
             Name?: string | string[];
             Asassignee?: string | string[];
             StartingDate?: Date | Date[];
-            TickPeriod?: Date | Date[];
-            Resource?: number | number[];
+            EndDate?: Date | Date[];
+            Milestones?: Date | Date[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -45,8 +45,8 @@ export interface ProjectEntityOptions {
             Name?: string | string[];
             Asassignee?: string | string[];
             StartingDate?: Date | Date[];
-            TickPeriod?: Date | Date[];
-            Resource?: number | number[];
+            EndDate?: Date | Date[];
+            Milestones?: Date | Date[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -55,8 +55,8 @@ export interface ProjectEntityOptions {
             Name?: string;
             Asassignee?: string;
             StartingDate?: Date;
-            TickPeriod?: Date;
-            Resource?: number;
+            EndDate?: Date;
+            Milestones?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -65,8 +65,8 @@ export interface ProjectEntityOptions {
             Name?: string;
             Asassignee?: string;
             StartingDate?: Date;
-            TickPeriod?: Date;
-            Resource?: number;
+            EndDate?: Date;
+            Milestones?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -75,8 +75,8 @@ export interface ProjectEntityOptions {
             Name?: string;
             Asassignee?: string;
             StartingDate?: Date;
-            TickPeriod?: Date;
-            Resource?: number;
+            EndDate?: Date;
+            Milestones?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -85,8 +85,8 @@ export interface ProjectEntityOptions {
             Name?: string;
             Asassignee?: string;
             StartingDate?: Date;
-            TickPeriod?: Date;
-            Resource?: number;
+            EndDate?: Date;
+            Milestones?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -95,8 +95,8 @@ export interface ProjectEntityOptions {
             Name?: string;
             Asassignee?: string;
             StartingDate?: Date;
-            TickPeriod?: Date;
-            Resource?: number;
+            EndDate?: Date;
+            Milestones?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -153,14 +153,15 @@ export class ProjectRepository {
                 type: "TIMESTAMP",
             },
             {
-                name: "TickPeriod",
-                column: "PROJECT_TICKPERIOD",
-                type: "TIME",
+                name: "EndDate",
+                column: "PROJECT_ENDDATE",
+                type: "TIMESTAMP",
+                required: true
             },
             {
-                name: "Resource",
-                column: "PROJECT_RESOURCE",
-                type: "INTEGER",
+                name: "Milestones",
+                column: "PROJECT_TICKPERIOD",
+                type: "TIME",
             },
             {
                 name: "Version",

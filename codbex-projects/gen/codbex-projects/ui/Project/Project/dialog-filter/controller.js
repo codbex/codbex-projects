@@ -17,16 +17,21 @@ angular.module('page', ["ideUI", "ideView"])
 			if (params?.entity?.StartingDateTo) {
 				params.entity.StartingDateTo = new Date(params.entity.StartingDateTo);
 			}
-			if (params?.entity?.TickPeriodFrom) {
-				params.entity.TickPeriodFrom = new Date(params.entity.TickPeriodFrom);
+			if (params?.entity?.EndDateFrom) {
+				params.entity.EndDateFrom = new Date(params.entity.EndDateFrom);
 			}
-			if (params?.entity?.TickPeriodTo) {
-				params.entity.TickPeriodTo = new Date(params.entity.TickPeriodTo);
+			if (params?.entity?.EndDateTo) {
+				params.entity.EndDateTo = new Date(params.entity.EndDateTo);
+			}
+			if (params?.entity?.MilestonesFrom) {
+				params.entity.MilestonesFrom = new Date(params.entity.MilestonesFrom);
+			}
+			if (params?.entity?.MilestonesTo) {
+				params.entity.MilestonesTo = new Date(params.entity.MilestonesTo);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsResource = params.optionsResource;
 		}
 
 		$scope.filter = function () {
@@ -64,14 +69,17 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.StartingDateTo) {
 				filter.$filter.lessThanOrEqual.StartingDate = entity.StartingDateTo;
 			}
-			if (entity.TickPeriodFrom) {
-				filter.$filter.greaterThanOrEqual.TickPeriod = entity.TickPeriodFrom;
+			if (entity.EndDateFrom) {
+				filter.$filter.greaterThanOrEqual.EndDate = entity.EndDateFrom;
 			}
-			if (entity.TickPeriodTo) {
-				filter.$filter.lessThanOrEqual.TickPeriod = entity.TickPeriodTo;
+			if (entity.EndDateTo) {
+				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.Resource !== undefined) {
-				filter.$filter.equals.Resource = entity.Resource;
+			if (entity.MilestonesFrom) {
+				filter.$filter.greaterThanOrEqual.Milestones = entity.MilestonesFrom;
+			}
+			if (entity.MilestonesTo) {
+				filter.$filter.lessThanOrEqual.Milestones = entity.MilestonesTo;
 			}
 			if (entity.Version !== undefined) {
 				filter.$filter.equals.Version = entity.Version;

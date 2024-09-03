@@ -40,7 +40,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsResource = [];
 				$scope.action = 'select';
 			});
 		});
@@ -50,11 +49,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.StartingDate) {
 					msg.data.entity.StartingDate = new Date(msg.data.entity.StartingDate);
 				}
-				if (msg.data.entity.TickPeriod) {
-					msg.data.entity.TickPeriod = new Date(msg.data.entity.TickPeriod);
+				if (msg.data.entity.EndDate) {
+					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
+				}
+				if (msg.data.entity.Milestones) {
+					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'select';
 			});
 		});
@@ -62,7 +63,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'create';
 			});
 		});
@@ -72,11 +72,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.StartingDate) {
 					msg.data.entity.StartingDate = new Date(msg.data.entity.StartingDate);
 				}
-				if (msg.data.entity.TickPeriod) {
-					msg.data.entity.TickPeriod = new Date(msg.data.entity.TickPeriod);
+				if (msg.data.entity.EndDate) {
+					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
+				}
+				if (msg.data.entity.Milestones) {
+					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'update';
 			});
 		});
