@@ -1,0 +1,5 @@
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-projects-menu",
+    "description": "codbex-projects - Application Menu"
+}

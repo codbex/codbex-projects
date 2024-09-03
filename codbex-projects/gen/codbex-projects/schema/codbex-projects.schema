@@ -1,0 +1,107 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_RESOURCE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "RESOURCE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "RESOURCE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "RESOURCE_TYPE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "RESOURCE_QUANTITY"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "RESOURCE_PRIZE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PROJECT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PROJECT_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "PROJECT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "PROJECT_ASASSIGNEE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "PROJECT_STARTINGDATE"
+                    },
+                    {
+                        "type": "TIME",
+                        "nullable": true,
+                        "name": "PROJECT_TICKPERIOD"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PROJECT_VERSION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PROJECT_RESOURCE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "PROJECT_NOTES"
+                    }
+                ]
+            },
+            {
+                "name": "Project_Resource",
+                "type": "foreignKey",
+                "table": "CODBEX_PROJECT",
+                "constraintName": "Project_Resource",
+                "columns": "PROJECT_RESOURCE",
+                "referencedTable": "CODBEX_RESOURCE",
+                "referencedColumns": "RESOURCE_ID"
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}

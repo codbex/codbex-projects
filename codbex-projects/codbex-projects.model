@@ -1,0 +1,227 @@
+{
+    "model": {
+        "entities": [
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "RESOURCE_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "RESOURCE_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "RESOURCE_TYPE",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Type",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "18",
+                        "dataName": "RESOURCE_QUANTITY",
+                        "dataNullable": "false",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "isRequiredProperty": "true",
+                        "name": "Quantity",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataLength": "18",
+                        "dataName": "RESOURCE_PRIZE",
+                        "dataNullable": "false",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "isRequiredProperty": "true",
+                        "name": "Prize",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    }
+                ],
+                "caption": "Manage entity Resource",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}RESOURCE\"",
+                "dataName": "RESOURCE",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE_DETAILS",
+                "menuIndex": "100",
+                "menuKey": "resource",
+                "menuLabel": "Resource",
+                "name": "Resource",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
+                "perspectiveLabel": "Project",
+                "perspectiveName": "Project",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "Resource",
+                "tooltip": "Resource",
+                "type": "DEPENDENT"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "PROJECT_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "40",
+                        "dataName": "PROJECT_NAME",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "40",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "PROJECT_ASASSIGNEE",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Asassignee",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "PROJECT_STARTINGDATE",
+                        "dataNullable": "true",
+                        "dataType": "TIMESTAMP",
+                        "isRequiredProperty": "true",
+                        "name": "StartingDate",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATETIME-LOCAL"
+                    },
+                    {
+                        "dataName": "PROJECT_TICKPERIOD",
+                        "dataNullable": "true",
+                        "dataType": "TIME",
+                        "isRequiredProperty": "true",
+                        "name": "TickPeriod",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TIME"
+                    },
+                    {
+                        "dataLength": "18",
+                        "dataName": "PROJECT_VERSION",
+                        "dataNullable": "true",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "name": "Version",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PROJECT_RESOURCE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "Resource",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Project_Resource",
+                        "relationshipType": "COMPOSITION",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipEntityName": "Resource",
+                        "relationshipEntityPerspectiveName": "Project",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataLength": "200",
+                        "dataName": "PROJECT_NOTES",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Notes",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity Project",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PROJECT\"",
+                "dataName": "PROJECT",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "project",
+                "menuLabel": "Project",
+                "name": "Project",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
+                "perspectiveLabel": "Project",
+                "perspectiveName": "Project",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "Project",
+                "tooltip": "Project",
+                "type": "PRIMARY"
+            }
+        ],
+        "perspectives": [
+            {
+                "name": "Project",
+                "label": "Project",
+                "icon": "/services/web/resources/unicons/pen.svg",
+                "order": "100",
+                "role": {}
+            }
+        ],
+        "navigations": []
+    }
+}
