@@ -107,6 +107,12 @@
                         "name": "STATUS_ID"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "STATUS_NAME"
+                    },
+                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "STATUS_STATUSTYPE"

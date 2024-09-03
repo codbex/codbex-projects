@@ -5,6 +5,7 @@ import { dao as daoApi } from "sdk/db";
 
 export interface StatusEntity {
     readonly Id: number;
+    Name?: string;
     StatusType?: number;
     Implemented?: string;
     Problems?: string;
@@ -12,6 +13,7 @@ export interface StatusEntity {
 }
 
 export interface StatusCreateEntity {
+    readonly Name?: string;
     readonly StatusType?: number;
     readonly Implemented?: string;
     readonly Problems?: string;
@@ -26,6 +28,7 @@ export interface StatusEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            Name?: string | string[];
             StatusType?: number | number[];
             Implemented?: string | string[];
             Problems?: string | string[];
@@ -33,6 +36,7 @@ export interface StatusEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            Name?: string | string[];
             StatusType?: number | number[];
             Implemented?: string | string[];
             Problems?: string | string[];
@@ -40,6 +44,7 @@ export interface StatusEntityOptions {
         };
         contains?: {
             Id?: number;
+            Name?: string;
             StatusType?: number;
             Implemented?: string;
             Problems?: string;
@@ -47,6 +52,7 @@ export interface StatusEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            Name?: string;
             StatusType?: number;
             Implemented?: string;
             Problems?: string;
@@ -54,6 +60,7 @@ export interface StatusEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            Name?: string;
             StatusType?: number;
             Implemented?: string;
             Problems?: string;
@@ -61,6 +68,7 @@ export interface StatusEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            Name?: string;
             StatusType?: number;
             Implemented?: string;
             Problems?: string;
@@ -68,6 +76,7 @@ export interface StatusEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            Name?: string;
             StatusType?: number;
             Implemented?: string;
             Problems?: string;
@@ -107,6 +116,11 @@ export class StatusRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
+            },
+            {
+                name: "Name",
+                column: "STATUS_NAME",
+                type: "VARCHAR",
             },
             {
                 name: "StatusType",

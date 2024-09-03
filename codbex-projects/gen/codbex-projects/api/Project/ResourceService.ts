@@ -19,6 +19,17 @@ class ResourceService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let Project = parseInt(ctx.queryParameters.Project);
+            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
+
+            if (Project !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Project: Project
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);

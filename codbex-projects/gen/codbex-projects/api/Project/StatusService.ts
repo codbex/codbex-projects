@@ -19,6 +19,17 @@ class StatusService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let Project = parseInt(ctx.queryParameters.Project);
+            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
+
+            if (Project !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Project: Project
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -119,6 +130,9 @@ class StatusService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Name?.length > 20) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        }
         if (entity.StatusType === null || entity.StatusType === undefined) {
             throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
         }

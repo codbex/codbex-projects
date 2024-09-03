@@ -108,10 +108,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "ResourceType",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "Resource_ResourceType",
           "relationshipEntityName": "ResourceType",
           "relationshipEntityPerspectiveName": "entities",
@@ -123,7 +125,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "ResourceType",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -212,7 +214,7 @@
       "dataQuery": "",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "layoutType": "MANAGE",
+      "layoutType": "MANAGE_DETAILS",
       "menuIndex": "100",
       "menuKey": "resource",
       "menuLabel": "Resource",
@@ -232,9 +234,9 @@
         "Id"
       ],
       "primaryKeysString": "Id",
+      "hasDropdowns": true,
       "masterEntity": "Project",
-      "masterEntityId": "Project",
-      "hasDropdowns": true
+      "masterEntityId": "Project"
     },
     {
       "properties": [
@@ -640,6 +642,30 @@
           "inputRule": ""
         },
         {
+          "dataLength": "20",
+          "dataName": "STATUS_NAME",
+          "dataNullable": true,
+          "dataType": "VARCHAR",
+          "name": "Name",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "TEXTBOX",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isRequiredProperty": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Name",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
+          "inputRule": ""
+        },
+        {
           "dataName": "STATUS_STATUSTYPE",
           "dataNullable": true,
           "dataType": "INTEGER",
@@ -720,13 +746,15 @@
           "dataType": "INTEGER",
           "isRequiredProperty": true,
           "name": "Project",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "Status_Project",
+          "relationshipType": "COMPOSITION",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Version",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "Status_Project",
           "relationshipEntityName": "Project",
           "relationshipEntityPerspectiveName": "Project",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -748,7 +776,7 @@
       "dataQuery": "",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "layoutType": "MANAGE",
+      "layoutType": "MANAGE_DETAILS",
       "menuIndex": "100",
       "menuKey": "status",
       "menuLabel": "Status",
@@ -768,7 +796,9 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDropdowns": true
+      "hasDropdowns": true,
+      "masterEntity": "Project",
+      "masterEntityId": "Project"
     },
     {
       "properties": [

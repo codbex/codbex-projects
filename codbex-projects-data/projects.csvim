@@ -3,7 +3,7 @@
         {
             "table": "CODBEX_RESOURCETYPE",
             "schema": "PUBLIC",
-            "file": "/codbex-project-data/resource-types.csv",
+            "file": "/codbex-projects-data/resource-types.csv",
             "header": true,
             "useHeaderNames": true,
             "delimField": ",",
@@ -14,7 +14,7 @@
         {
             "table": "CODBEX_STATUSTYPE",
             "schema": "PUBLIC",
-            "file": "/codbex-project-data/status-types.csv",
+            "file": "/codbex-projects-data/status-types.csv",
             "header": true,
             "useHeaderNames": true,
             "delimField": ",",
