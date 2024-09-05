@@ -23,16 +23,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (params?.entity?.EndDateTo) {
 				params.entity.EndDateTo = new Date(params.entity.EndDateTo);
 			}
-			if (params?.entity?.MilestonePeriodFrom) {
-				params.entity.MilestonePeriodFrom = new Date(params.entity.MilestonePeriodFrom);
-			}
-			if (params?.entity?.MilestonePeriodTo) {
-				params.entity.MilestonePeriodTo = new Date(params.entity.MilestonePeriodTo);
-			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsEmployee = params.optionsEmployee;
+			$scope.optionsMilestonePeriod = params.optionsMilestonePeriod;
 		}
 
 		$scope.filter = function () {
@@ -79,11 +74,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.MilestonePeriodFrom) {
-				filter.$filter.greaterThanOrEqual.MilestonePeriod = entity.MilestonePeriodFrom;
-			}
-			if (entity.MilestonePeriodTo) {
-				filter.$filter.lessThanOrEqual.MilestonePeriod = entity.MilestonePeriodTo;
+			if (entity.MilestonePeriod !== undefined) {
+				filter.$filter.equals.MilestonePeriod = entity.MilestonePeriod;
 			}
 			if (entity.Version !== undefined) {
 				filter.$filter.equals.Version = entity.Version;

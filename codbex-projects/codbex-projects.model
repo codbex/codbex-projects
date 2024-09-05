@@ -188,15 +188,21 @@
                         "widgetType": "DATETIME-LOCAL"
                     },
                     {
-                        "dataName": "PROJECT_TICKPERIOD",
+                        "dataName": "PROJECT_MILESTONEPERIOD",
                         "dataNullable": "true",
-                        "dataType": "TIME",
+                        "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "MilestonePeriod",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "WEEK"
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Project_MilestonePeriod",
+                        "relationshipEntityName": "MilestonePeriod",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "18",
@@ -906,6 +912,76 @@
                 "title": "MilestoneReport",
                 "tooltip": "MilestoneReport",
                 "type": "PRIMARY"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "MILESTONEPERIOD_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "40",
+                        "dataName": "MILESTONEPERIOD_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "40",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "MILESTONEPERIOD_RANGE",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Range",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "MILESTONEPERIOD_COUNT",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Count",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    }
+                ],
+                "caption": "Manage entity MilestonePeriod",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}MILESTONEPERIOD\"",
+                "dataName": "MILESTONEPERIOD",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "milestoneperiod",
+                "menuLabel": "MilestonePeriod",
+                "name": "MilestonePeriod",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "MilestonePeriod",
+                "tooltip": "MilestonePeriod",
+                "type": "SETTING"
             }
         ],
         "perspectives": [

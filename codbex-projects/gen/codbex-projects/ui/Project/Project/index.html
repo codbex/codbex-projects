@@ -54,7 +54,7 @@
 								{{optionsEmployeeValue(next.Employee)}} |
 								{{next.StartingDate | date: "dd/MMM/yyyy HH:MM"}} |
 								{{next.EndDate | date: "dd/MMM/yyyy HH:MM"}} |
-								Week {{next.MilestonePeriod | date: "ww"}} |
+								{{optionsMilestonePeriodValue(next.MilestonePeriod)}} |
 								{{next.Version}} |
 								{{next.Notes}}
 							</fd-list-byline>

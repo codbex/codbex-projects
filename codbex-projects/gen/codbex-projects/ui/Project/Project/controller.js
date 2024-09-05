@@ -108,9 +108,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						if (e.EndDate) {
 							e.EndDate = new Date(e.EndDate);
 						}
-						if (e.MilestonePeriod) {
-							e.MilestonePeriod = new Date(e.MilestonePeriod);
-						}
 					});
 
 					$scope.data = $scope.data.concat(response.data);
@@ -126,6 +123,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
 			});
 		};
 
@@ -136,6 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsEmployee: $scope.optionsEmployee,
+				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
 			});
 		};
 
@@ -144,6 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
 			});
 		};
 
@@ -181,11 +181,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsEmployee = [];
+		$scope.optionsMilestonePeriod = [];
 
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
@@ -197,10 +199,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestonePeriodService.ts").then(function (response) {
+			$scope.optionsMilestonePeriod = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsEmployeeValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
 				if ($scope.optionsEmployee[i].value === optionKey) {
 					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsMilestonePeriodValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsMilestonePeriod.length; i++) {
+				if ($scope.optionsMilestonePeriod[i].value === optionKey) {
+					return $scope.optionsMilestonePeriod[i].text;
 				}
 			}
 			return null;

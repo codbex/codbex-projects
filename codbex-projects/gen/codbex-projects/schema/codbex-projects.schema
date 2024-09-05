@@ -81,9 +81,9 @@
                         "name": "PROJECT_ENDDATE"
                     },
                     {
-                        "type": "TIME",
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "PROJECT_TICKPERIOD"
+                        "name": "PROJECT_MILESTONEPERIOD"
                     },
                     {
                         "type": "DECIMAL",
@@ -317,6 +317,36 @@
                 ]
             },
             {
+                "name": "CODBEX_MILESTONEPERIOD",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "MILESTONEPERIOD_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "nullable": true,
+                        "name": "MILESTONEPERIOD_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MILESTONEPERIOD_RANGE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MILESTONEPERIOD_COUNT"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_ResourceType",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -342,6 +372,15 @@
                 "columns": "PROJECT_EMPLOYEE",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Project_MilestonePeriod",
+                "type": "foreignKey",
+                "table": "CODBEX_PROJECT",
+                "constraintName": "Project_MilestonePeriod",
+                "columns": "PROJECT_MILESTONEPERIOD",
+                "referencedTable": "CODBEX_MILESTONEPERIOD",
+                "referencedColumns": "MILESTONEPERIOD_ID"
             },
             {
                 "name": "Status_StatusType",

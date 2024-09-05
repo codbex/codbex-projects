@@ -41,6 +41,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsEmployee = [];
+				$scope.optionsMilestonePeriod = [];
 				$scope.action = 'select';
 			});
 		});
@@ -53,11 +54,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.EndDate) {
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
-				if (msg.data.entity.MilestonePeriod) {
-					msg.data.entity.MilestonePeriod = new Date(msg.data.entity.MilestonePeriod);
-				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
 				$scope.action = 'select';
 			});
 		});
@@ -66,6 +65,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
 				$scope.action = 'create';
 			});
 		});
@@ -78,11 +78,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.EndDate) {
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
-				if (msg.data.entity.MilestonePeriod) {
-					msg.data.entity.MilestonePeriod = new Date(msg.data.entity.MilestonePeriod);
-				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsEmployee = msg.data.optionsEmployee;
+				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
 				$scope.action = 'update';
 			});
 		});
