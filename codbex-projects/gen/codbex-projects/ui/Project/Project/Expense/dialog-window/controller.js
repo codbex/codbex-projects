@@ -30,6 +30,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProject = params.optionsProject;
 			$scope.optionsEmployee = params.optionsEmployee;
+			$scope.optionsExpenseCategory = params.optionsExpenseCategory;
 		}
 
 		$scope.create = function () {

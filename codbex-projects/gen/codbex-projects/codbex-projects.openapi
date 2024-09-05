@@ -7853,7 +7853,9 @@ components:
         - Name
         - Project
         - Employee
+        - ExpenseCategory
         - Amount
+        - Date
       properties:
         Id:
           type: integer
@@ -7868,6 +7870,9 @@ components:
         Employee:
           type: integer
           format: int32
+        ExpenseCategory:
+          type: integer
+          format: int32
         Description:
           type: string
           minLength: 0
@@ -7876,9 +7881,6 @@ components:
           type: number
           format: double
         Date:
-        ExpenseCategory:
-          type: integer
-          format: int32
     ExpenseFilterOptions:
       type: object
       properties:
@@ -7923,6 +7925,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                ExpenseCategory:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Description:
                   oneOf:
                     - type: string
@@ -7944,14 +7954,6 @@ components:
                         format: double
                 Date:
                   oneOf:
-                ExpenseCategory:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             notEquals:
               type: object
               properties:
@@ -7990,6 +7992,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                ExpenseCategory:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Description:
                   oneOf:
                     - type: string
@@ -8011,14 +8021,6 @@ components:
                         format: double
                 Date:
                   oneOf:
-                ExpenseCategory:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
             contains:
               type: object
               properties:
@@ -8029,13 +8031,13 @@ components:
                   maxLength: 20
                 Project:
                 Employee:
+                ExpenseCategory:
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 200
                 Amount:
                 Date:
-                ExpenseCategory:
             greaterThan:
               type: object
               properties:
@@ -8052,6 +8054,9 @@ components:
                 Employee:
                   type: integer
                   format: int32
+                ExpenseCategory:
+                  type: integer
+                  format: int32
                 Description:
                   type: string
                   minLength: 0
@@ -8060,9 +8065,6 @@ components:
                   type: number
                   format: double
                 Date:
-                ExpenseCategory:
-                  type: integer
-                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -8079,6 +8081,9 @@ components:
                 Employee:
                   type: integer
                   format: int32
+                ExpenseCategory:
+                  type: integer
+                  format: int32
                 Description:
                   type: string
                   minLength: 0
@@ -8087,9 +8092,6 @@ components:
                   type: number
                   format: double
                 Date:
-                ExpenseCategory:
-                  type: integer
-                  format: int32
             lessThan:
               type: object
               properties:
@@ -8106,6 +8108,9 @@ components:
                 Employee:
                   type: integer
                   format: int32
+                ExpenseCategory:
+                  type: integer
+                  format: int32
                 Description:
                   type: string
                   minLength: 0
@@ -8114,9 +8119,6 @@ components:
                   type: number
                   format: double
                 Date:
-                ExpenseCategory:
-                  type: integer
-                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -8133,6 +8135,9 @@ components:
                 Employee:
                   type: integer
                   format: int32
+                ExpenseCategory:
+                  type: integer
+                  format: int32
                 Description:
                   type: string
                   minLength: 0
@@ -8141,17 +8146,14 @@ components:
                   type: number
                   format: double
                 Date:
-                ExpenseCategory:
-                  type: integer
-                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Project", "Employee", "Description", "Amount", "Date", "ExpenseCategory"]
+          example: ["Id", "Name", "Project", "Employee", "ExpenseCategory", "Description", "Amount", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Project,Employee,Description,Amount,Date,ExpenseCategory"
+            example: "Id,Name,Project,Employee,ExpenseCategory,Description,Amount,Date"
         $order:
           type: string
           enum: ["asc", "desc"]

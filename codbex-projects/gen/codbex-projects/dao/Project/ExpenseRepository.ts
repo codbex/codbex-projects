@@ -9,20 +9,20 @@ export interface ExpenseEntity {
     Name: string;
     Project: number;
     Employee: number;
+    ExpenseCategory?: number;
     Description?: string;
     Amount: number;
     Date: Date;
-    ExpenseCategory?: number;
 }
 
 export interface ExpenseCreateEntity {
     readonly Name: string;
     readonly Project: number;
     readonly Employee: number;
+    readonly ExpenseCategory?: number;
     readonly Description?: string;
     readonly Amount: number;
     readonly Date: Date;
-    readonly ExpenseCategory?: number;
 }
 
 export interface ExpenseUpdateEntity extends ExpenseCreateEntity {
@@ -36,70 +36,70 @@ export interface ExpenseEntityOptions {
             Name?: string | string[];
             Project?: number | number[];
             Employee?: number | number[];
+            ExpenseCategory?: number | number[];
             Description?: string | string[];
             Amount?: number | number[];
             Date?: Date | Date[];
-            ExpenseCategory?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
             Employee?: number | number[];
+            ExpenseCategory?: number | number[];
             Description?: string | string[];
             Amount?: number | number[];
             Date?: Date | Date[];
-            ExpenseCategory?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Project?: number;
             Employee?: number;
+            ExpenseCategory?: number;
             Description?: string;
             Amount?: number;
             Date?: Date;
-            ExpenseCategory?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
             Employee?: number;
+            ExpenseCategory?: number;
             Description?: string;
             Amount?: number;
             Date?: Date;
-            ExpenseCategory?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
             Employee?: number;
+            ExpenseCategory?: number;
             Description?: string;
             Amount?: number;
             Date?: Date;
-            ExpenseCategory?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
             Employee?: number;
+            ExpenseCategory?: number;
             Description?: string;
             Amount?: number;
             Date?: Date;
-            ExpenseCategory?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
             Employee?: number;
+            ExpenseCategory?: number;
             Description?: string;
             Amount?: number;
             Date?: Date;
-            ExpenseCategory?: number;
         };
     },
     $select?: (keyof ExpenseEntity)[],
@@ -155,6 +155,11 @@ export class ExpenseRepository {
                 required: true
             },
             {
+                name: "ExpenseCategory",
+                column: "EXPENSE_EXPENSECATEGORY",
+                type: "INTEGER",
+            },
+            {
                 name: "Description",
                 column: "EXPENSE_DESCRIPTION",
                 type: "VARCHAR",
@@ -170,11 +175,6 @@ export class ExpenseRepository {
                 column: "EXPENSE_DATE",
                 type: "DATE",
                 required: true
-            },
-            {
-                name: "ExpenseCategory",
-                column: "EXPENSE_EXPENSECATEGORY",
-                type: "INTEGER",
             }
         ]
     };

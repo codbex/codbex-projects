@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Expense",
+    id: "Expense-details",
     label: "Expense",
-    factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/${masterEntity}/Expense/index.html",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Expense/dialog-window/index.html",
     perspectiveName: "Project",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
+    exports.getDialogWindow = function () {
         return viewData;
     }
 }

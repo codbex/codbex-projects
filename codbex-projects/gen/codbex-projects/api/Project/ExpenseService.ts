@@ -19,13 +19,13 @@ class ExpenseService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Project = parseInt(ctx.queryParameters.Project);
+            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
 
-            if (${masterEntityId} !== undefined) {
+            if (Project !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Project: Project
                     }
                 };
             }
@@ -142,11 +142,17 @@ class ExpenseService {
         if (entity.Employee === null || entity.Employee === undefined) {
             throw new ValidationError(`The 'Employee' property is required, provide a valid value`);
         }
+        if (entity.ExpenseCategory === null || entity.ExpenseCategory === undefined) {
+            throw new ValidationError(`The 'ExpenseCategory' property is required, provide a valid value`);
+        }
         if (entity.Description?.length > 200) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [200] characters`);
         }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
+        }
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

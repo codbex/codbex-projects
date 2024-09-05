@@ -424,6 +424,11 @@
                         "name": "EXPENSE_EMPLOYEE"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EXPENSE_EXPENSECATEGORY"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
@@ -439,11 +444,6 @@
                     {
                         "type": "DATE",
                         "name": "EXPENSE_DATE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "EXPENSE_EXPENSECATEGORY"
                     }
                 ]
             },

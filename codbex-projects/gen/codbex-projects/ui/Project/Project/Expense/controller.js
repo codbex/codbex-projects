@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-projects.Project.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-projects.Project.Project.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-projects.Project.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-projects.Project.Project.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Project = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,7 +95,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
+			filter.$filter.equals.Project = Project;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Expense", `Unable to count Expense: '${response.message}'`);
@@ -134,6 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsExpenseCategory: $scope.optionsExpenseCategory,
 			});
 		};
 
@@ -142,6 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsExpenseCategory: $scope.optionsExpenseCategory,
 			});
 		};
 
@@ -150,10 +152,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Expense-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsExpenseCategory: $scope.optionsExpenseCategory,
 			}, null, false);
 		};
 
@@ -161,10 +164,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Expense-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
+				optionsExpenseCategory: $scope.optionsExpenseCategory,
 			}, null, false);
 		};
 
@@ -200,6 +204,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsProject = [];
 		$scope.optionsEmployee = [];
+		$scope.optionsExpenseCategory = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -220,6 +225,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/ExpenseCategoryService.ts").then(function (response) {
+			$scope.optionsExpenseCategory = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {
@@ -232,6 +246,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
 				if ($scope.optionsEmployee[i].value === optionKey) {
 					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsExpenseCategoryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsExpenseCategory.length; i++) {
+				if ($scope.optionsExpenseCategory[i].value === optionKey) {
+					return $scope.optionsExpenseCategory[i].text;
 				}
 			}
 			return null;

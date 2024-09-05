@@ -22,6 +22,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProject = params.optionsProject;
 			$scope.optionsEmployee = params.optionsEmployee;
+			$scope.optionsExpenseCategory = params.optionsExpenseCategory;
 		}
 
 		$scope.filter = function () {
@@ -56,6 +57,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Employee !== undefined) {
 				filter.$filter.equals.Employee = entity.Employee;
 			}
+			if (entity.ExpenseCategory !== undefined) {
+				filter.$filter.equals.ExpenseCategory = entity.ExpenseCategory;
+			}
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
 			}
@@ -67,9 +71,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
-			}
-			if (entity.ExpenseCategory !== undefined) {
-				filter.$filter.equals.ExpenseCategory = entity.ExpenseCategory;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
