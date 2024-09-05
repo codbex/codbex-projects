@@ -6,18 +6,18 @@ import { dao as daoApi } from "sdk/db";
 export interface ResourceEntity {
     readonly Id: number;
     Name: string;
+    Project?: number;
     ResourceType: number;
     Quantity: number;
     Prize: number;
-    Project?: number;
 }
 
 export interface ResourceCreateEntity {
     readonly Name: string;
+    readonly Project?: number;
     readonly ResourceType: number;
     readonly Quantity: number;
     readonly Prize: number;
-    readonly Project?: number;
 }
 
 export interface ResourceUpdateEntity extends ResourceCreateEntity {
@@ -29,58 +29,58 @@ export interface ResourceEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ResourceType?: number | number[];
             Quantity?: number | number[];
             Prize?: number | number[];
-            Project?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ResourceType?: number | number[];
             Quantity?: number | number[];
             Prize?: number | number[];
-            Project?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ResourceType?: number;
             Quantity?: number;
             Prize?: number;
-            Project?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ResourceType?: number;
             Quantity?: number;
             Prize?: number;
-            Project?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ResourceType?: number;
             Quantity?: number;
             Prize?: number;
-            Project?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ResourceType?: number;
             Quantity?: number;
             Prize?: number;
-            Project?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ResourceType?: number;
             Quantity?: number;
             Prize?: number;
-            Project?: number;
         };
     },
     $select?: (keyof ResourceEntity)[],
@@ -124,6 +124,11 @@ export class ResourceRepository {
                 required: true
             },
             {
+                name: "Project",
+                column: "RESOURCE_PROJECT",
+                type: "INTEGER",
+            },
+            {
                 name: "ResourceType",
                 column: "RESOURCE_RESOURCETYPE",
                 type: "INTEGER",
@@ -140,11 +145,6 @@ export class ResourceRepository {
                 column: "RESOURCE_PRIZE",
                 type: "DECIMAL",
                 required: true
-            },
-            {
-                name: "Project",
-                column: "RESOURCE_PROJECT",
-                type: "INTEGER",
             }
         ]
     };

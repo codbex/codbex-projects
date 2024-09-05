@@ -125,14 +125,14 @@ class StatusService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
+        if (entity.Project === null || entity.Project === undefined) {
+            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        }
         if (entity.StatusType === null || entity.StatusType === undefined) {
             throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
         }
         if (entity.MilestoneReport === null || entity.MilestoneReport === undefined) {
             throw new ValidationError(`The 'MilestoneReport' property is required, provide a valid value`);
-        }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

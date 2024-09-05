@@ -125,16 +125,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Resource-details", {
 				action: "select",
 				entity: entity,
-				optionsResourceType: $scope.optionsResourceType,
 				optionsProject: $scope.optionsProject,
+				optionsResourceType: $scope.optionsResourceType,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Resource-filter", {
 				entity: $scope.filterEntity,
-				optionsResourceType: $scope.optionsResourceType,
 				optionsProject: $scope.optionsProject,
+				optionsResourceType: $scope.optionsResourceType,
 			});
 		};
 
@@ -145,8 +145,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsResourceType: $scope.optionsResourceType,
 				optionsProject: $scope.optionsProject,
+				optionsResourceType: $scope.optionsResourceType,
 			}, null, false);
 		};
 
@@ -156,8 +156,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsResourceType: $scope.optionsResourceType,
 				optionsProject: $scope.optionsProject,
+				optionsResourceType: $scope.optionsResourceType,
 			}, null, false);
 		};
 
@@ -191,18 +191,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsResourceType = [];
 		$scope.optionsProject = [];
+		$scope.optionsResourceType = [];
 
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts").then(function (response) {
-			$scope.optionsResourceType = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
 			$scope.optionsProject = response.data.map(e => {
@@ -213,18 +204,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsResourceTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsResourceType.length; i++) {
-				if ($scope.optionsResourceType[i].value === optionKey) {
-					return $scope.optionsResourceType[i].text;
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts").then(function (response) {
+			$scope.optionsResourceType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
 				}
-			}
-			return null;
-		};
+			});
+		});
+
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {
 					return $scope.optionsProject[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsResourceTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsResourceType.length; i++) {
+				if ($scope.optionsResourceType[i].value === optionKey) {
+					return $scope.optionsResourceType[i].text;
 				}
 			}
 			return null;

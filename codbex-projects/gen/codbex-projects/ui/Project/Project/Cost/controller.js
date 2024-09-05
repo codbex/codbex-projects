@@ -125,16 +125,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Cost-details", {
 				action: "select",
 				entity: entity,
-				optionsCostCategory: $scope.optionsCostCategory,
 				optionsProject: $scope.optionsProject,
+				optionsCostCategory: $scope.optionsCostCategory,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Cost-filter", {
 				entity: $scope.filterEntity,
-				optionsCostCategory: $scope.optionsCostCategory,
 				optionsProject: $scope.optionsProject,
+				optionsCostCategory: $scope.optionsCostCategory,
 			});
 		};
 
@@ -145,8 +145,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsCostCategory: $scope.optionsCostCategory,
 				optionsProject: $scope.optionsProject,
+				optionsCostCategory: $scope.optionsCostCategory,
 			}, null, false);
 		};
 
@@ -156,8 +156,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsCostCategory: $scope.optionsCostCategory,
 				optionsProject: $scope.optionsProject,
+				optionsCostCategory: $scope.optionsCostCategory,
 			}, null, false);
 		};
 
@@ -191,18 +191,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsCostCategory = [];
 		$scope.optionsProject = [];
+		$scope.optionsCostCategory = [];
 
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts").then(function (response) {
-			$scope.optionsCostCategory = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
 			$scope.optionsProject = response.data.map(e => {
@@ -213,18 +204,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsCostCategoryValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsCostCategory.length; i++) {
-				if ($scope.optionsCostCategory[i].value === optionKey) {
-					return $scope.optionsCostCategory[i].text;
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts").then(function (response) {
+			$scope.optionsCostCategory = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
 				}
-			}
-			return null;
-		};
+			});
+		});
+
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {
 					return $scope.optionsProject[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCostCategoryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCostCategory.length; i++) {
+				if ($scope.optionsCostCategory[i].value === optionKey) {
+					return $scope.optionsCostCategory[i].text;
 				}
 			}
 			return null;

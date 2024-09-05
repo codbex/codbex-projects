@@ -7,24 +7,24 @@ import { EntityUtils } from "../utils/EntityUtils";
 export interface ForecastEntity {
     readonly Id: number;
     Name: string;
+    Project: number;
     ForecastedCost: number;
     ForecastDate?: Date;
     Description?: string;
     EarnedValue?: number;
     CostPerformanceIndex: number;
     SchedulePerformanceIndex: number;
-    Project: number;
 }
 
 export interface ForecastCreateEntity {
     readonly Name: string;
+    readonly Project: number;
     readonly ForecastedCost: number;
     readonly ForecastDate?: Date;
     readonly Description?: string;
     readonly EarnedValue?: number;
     readonly CostPerformanceIndex: number;
     readonly SchedulePerformanceIndex: number;
-    readonly Project: number;
 }
 
 export interface ForecastUpdateEntity extends ForecastCreateEntity {
@@ -36,79 +36,79 @@ export interface ForecastEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ForecastedCost?: number | number[];
             ForecastDate?: Date | Date[];
             Description?: string | string[];
             EarnedValue?: number | number[];
             CostPerformanceIndex?: number | number[];
             SchedulePerformanceIndex?: number | number[];
-            Project?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ForecastedCost?: number | number[];
             ForecastDate?: Date | Date[];
             Description?: string | string[];
             EarnedValue?: number | number[];
             CostPerformanceIndex?: number | number[];
             SchedulePerformanceIndex?: number | number[];
-            Project?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ForecastedCost?: number;
             ForecastDate?: Date;
             Description?: string;
             EarnedValue?: number;
             CostPerformanceIndex?: number;
             SchedulePerformanceIndex?: number;
-            Project?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ForecastedCost?: number;
             ForecastDate?: Date;
             Description?: string;
             EarnedValue?: number;
             CostPerformanceIndex?: number;
             SchedulePerformanceIndex?: number;
-            Project?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ForecastedCost?: number;
             ForecastDate?: Date;
             Description?: string;
             EarnedValue?: number;
             CostPerformanceIndex?: number;
             SchedulePerformanceIndex?: number;
-            Project?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ForecastedCost?: number;
             ForecastDate?: Date;
             Description?: string;
             EarnedValue?: number;
             CostPerformanceIndex?: number;
             SchedulePerformanceIndex?: number;
-            Project?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ForecastedCost?: number;
             ForecastDate?: Date;
             Description?: string;
             EarnedValue?: number;
             CostPerformanceIndex?: number;
             SchedulePerformanceIndex?: number;
-            Project?: number;
         };
     },
     $select?: (keyof ForecastEntity)[],
@@ -152,6 +152,12 @@ export class ForecastRepository {
                 required: true
             },
             {
+                name: "Project",
+                column: "FORECAST_PROJECT",
+                type: "INTEGER",
+                required: true
+            },
+            {
                 name: "ForecastedCost",
                 column: "FORECAST_FORECASTEDCOST",
                 type: "DECIMAL",
@@ -182,12 +188,6 @@ export class ForecastRepository {
                 name: "SchedulePerformanceIndex",
                 column: "FORECAST_SCHEDULEPERFORMANCEINDEX",
                 type: "DECIMAL",
-                required: true
-            },
-            {
-                name: "Project",
-                column: "FORECAST_PROJECT",
-                type: "INTEGER",
                 required: true
             }
         ]

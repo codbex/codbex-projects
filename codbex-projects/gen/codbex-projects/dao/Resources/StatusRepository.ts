@@ -6,16 +6,16 @@ import { dao as daoApi } from "sdk/db";
 export interface StatusEntity {
     readonly Id: number;
     Name: string;
+    Project: number;
     StatusType: number;
     MilestoneReport: number;
-    Project: number;
 }
 
 export interface StatusCreateEntity {
     readonly Name: string;
+    readonly Project: number;
     readonly StatusType: number;
     readonly MilestoneReport: number;
-    readonly Project: number;
 }
 
 export interface StatusUpdateEntity extends StatusCreateEntity {
@@ -27,51 +27,51 @@ export interface StatusEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             StatusType?: number | number[];
             MilestoneReport?: number | number[];
-            Project?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             StatusType?: number | number[];
             MilestoneReport?: number | number[];
-            Project?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             StatusType?: number;
             MilestoneReport?: number;
-            Project?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             StatusType?: number;
             MilestoneReport?: number;
-            Project?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             StatusType?: number;
             MilestoneReport?: number;
-            Project?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             StatusType?: number;
             MilestoneReport?: number;
-            Project?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             StatusType?: number;
             MilestoneReport?: number;
-            Project?: number;
         };
     },
     $select?: (keyof StatusEntity)[],
@@ -115,6 +115,12 @@ export class StatusRepository {
                 required: true
             },
             {
+                name: "Project",
+                column: "STATUS_PROJECT",
+                type: "INTEGER",
+                required: true
+            },
+            {
                 name: "StatusType",
                 column: "STATUS_STATUSTYPE",
                 type: "INTEGER",
@@ -123,12 +129,6 @@ export class StatusRepository {
             {
                 name: "MilestoneReport",
                 column: "STATUS_MILESTONEREPORT",
-                type: "INTEGER",
-                required: true
-            },
-            {
-                name: "Project",
-                column: "STATUS_PROJECT",
                 type: "INTEGER",
                 required: true
             }

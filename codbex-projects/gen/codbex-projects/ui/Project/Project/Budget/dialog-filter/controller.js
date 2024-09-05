@@ -42,6 +42,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Project !== undefined) {
+				filter.$filter.equals.Project = entity.Project;
+			}
 			if (entity.InitialBudget !== undefined) {
 				filter.$filter.equals.InitialBudget = entity.InitialBudget;
 			}
@@ -53,9 +56,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.IsApproved !== undefined && entity.isIsApprovedIndeterminate === false) {
 				filter.$filter.equals.IsApproved = entity.IsApproved;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

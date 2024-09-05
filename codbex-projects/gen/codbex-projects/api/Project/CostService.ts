@@ -136,6 +136,9 @@ class CostService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
+        if (entity.Project === null || entity.Project === undefined) {
+            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        }
         if (entity.ActualCost === null || entity.ActualCost === undefined) {
             throw new ValidationError(`The 'ActualCost' property is required, provide a valid value`);
         }
@@ -144,9 +147,6 @@ class CostService {
         }
         if (entity.Description?.length > 200) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

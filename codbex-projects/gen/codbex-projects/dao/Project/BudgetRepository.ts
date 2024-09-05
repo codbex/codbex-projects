@@ -7,20 +7,20 @@ import { EntityUtils } from "../utils/EntityUtils";
 export interface BudgetEntity {
     readonly Id: number;
     Name: string;
+    Project?: number;
     InitialBudget: number;
     CostEstimation: number;
     Reserves?: number;
     IsApproved: boolean;
-    Project?: number;
 }
 
 export interface BudgetCreateEntity {
     readonly Name: string;
+    readonly Project?: number;
     readonly InitialBudget: number;
     readonly CostEstimation: number;
     readonly Reserves?: number;
     readonly IsApproved: boolean;
-    readonly Project?: number;
 }
 
 export interface BudgetUpdateEntity extends BudgetCreateEntity {
@@ -32,65 +32,65 @@ export interface BudgetEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
             Reserves?: number | number[];
             IsApproved?: boolean | boolean[];
-            Project?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
             Reserves?: number | number[];
             IsApproved?: boolean | boolean[];
-            Project?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
             Reserves?: number;
             IsApproved?: boolean;
-            Project?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
             Reserves?: number;
             IsApproved?: boolean;
-            Project?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
             Reserves?: number;
             IsApproved?: boolean;
-            Project?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
             Reserves?: number;
             IsApproved?: boolean;
-            Project?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
             Reserves?: number;
             IsApproved?: boolean;
-            Project?: number;
         };
     },
     $select?: (keyof BudgetEntity)[],
@@ -134,6 +134,11 @@ export class BudgetRepository {
                 required: true
             },
             {
+                name: "Project",
+                column: "BUDGET_PROJECT",
+                type: "INTEGER",
+            },
+            {
                 name: "InitialBudget",
                 column: "BUDGET_INITIALBUDGET",
                 type: "DECIMAL",
@@ -155,11 +160,6 @@ export class BudgetRepository {
                 column: "BUDGET_PROPERTY6",
                 type: "BOOLEAN",
                 required: true
-            },
-            {
-                name: "Project",
-                column: "BUDGET_PROJECT",
-                type: "INTEGER",
             }
         ]
     };

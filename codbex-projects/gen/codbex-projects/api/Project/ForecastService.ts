@@ -136,6 +136,9 @@ class ForecastService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
+        if (entity.Project === null || entity.Project === undefined) {
+            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        }
         if (entity.ForecastedCost === null || entity.ForecastedCost === undefined) {
             throw new ValidationError(`The 'ForecastedCost' property is required, provide a valid value`);
         }
@@ -150,9 +153,6 @@ class ForecastService {
         }
         if (entity.SchedulePerformanceIndex === null || entity.SchedulePerformanceIndex === undefined) {
             throw new ValidationError(`The 'SchedulePerformanceIndex' property is required, provide a valid value`);
-        }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

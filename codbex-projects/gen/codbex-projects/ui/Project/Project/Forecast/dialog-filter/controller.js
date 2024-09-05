@@ -49,6 +49,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Project !== undefined) {
+				filter.$filter.equals.Project = entity.Project;
+			}
 			if (entity.ForecastedCost !== undefined) {
 				filter.$filter.equals.ForecastedCost = entity.ForecastedCost;
 			}
@@ -69,9 +72,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.SchedulePerformanceIndex !== undefined) {
 				filter.$filter.equals.SchedulePerformanceIndex = entity.SchedulePerformanceIndex;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

@@ -107,18 +107,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Status-details", {
 				action: "select",
 				entity: entity,
+				optionsProject: $scope.optionsProject,
 				optionsStatusType: $scope.optionsStatusType,
 				optionsMilestoneReport: $scope.optionsMilestoneReport,
-				optionsProject: $scope.optionsProject,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Status-filter", {
 				entity: $scope.filterEntity,
+				optionsProject: $scope.optionsProject,
 				optionsStatusType: $scope.optionsStatusType,
 				optionsMilestoneReport: $scope.optionsMilestoneReport,
-				optionsProject: $scope.optionsProject,
 			});
 		};
 
@@ -127,9 +127,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Status-details", {
 				action: "create",
 				entity: {},
+				optionsProject: $scope.optionsProject,
 				optionsStatusType: $scope.optionsStatusType,
 				optionsMilestoneReport: $scope.optionsMilestoneReport,
-				optionsProject: $scope.optionsProject,
 			}, null, false);
 		};
 
@@ -137,9 +137,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Status-details", {
 				action: "update",
 				entity: entity,
+				optionsProject: $scope.optionsProject,
 				optionsStatusType: $scope.optionsStatusType,
 				optionsMilestoneReport: $scope.optionsMilestoneReport,
-				optionsProject: $scope.optionsProject,
 			}, null, false);
 		};
 
@@ -173,10 +173,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsProject = [];
 		$scope.optionsStatusType = [];
 		$scope.optionsMilestoneReport = [];
-		$scope.optionsProject = [];
 
+
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
+			$scope.optionsProject = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts").then(function (response) {
 			$scope.optionsStatusType = response.data.map(e => {
@@ -196,15 +205,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
-			$scope.optionsProject = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
+		$scope.optionsProjectValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProject.length; i++) {
+				if ($scope.optionsProject[i].value === optionKey) {
+					return $scope.optionsProject[i].text;
 				}
-			});
-		});
-
+			}
+			return null;
+		};
 		$scope.optionsStatusTypeValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsStatusType.length; i++) {
 				if ($scope.optionsStatusType[i].value === optionKey) {
@@ -217,14 +225,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsMilestoneReport.length; i++) {
 				if ($scope.optionsMilestoneReport[i].value === optionKey) {
 					return $scope.optionsMilestoneReport[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsProjectValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProject.length; i++) {
-				if ($scope.optionsProject[i].value === optionKey) {
-					return $scope.optionsProject[i].text;
 				}
 			}
 			return null;

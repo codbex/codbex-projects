@@ -19,6 +19,11 @@
                     },
                     {
                         "type": "INTEGER",
+                        "nullable": true,
+                        "name": "RESOURCE_PROJECT"
+                    },
+                    {
+                        "type": "INTEGER",
                         "name": "RESOURCE_RESOURCETYPE"
                     },
                     {
@@ -34,11 +39,6 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "RESOURCE_PRIZE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "RESOURCE_PROJECT"
                     }
                 ]
             },
@@ -117,15 +117,15 @@
                     },
                     {
                         "type": "INTEGER",
+                        "name": "STATUS_PROJECT"
+                    },
+                    {
+                        "type": "INTEGER",
                         "name": "STATUS_STATUSTYPE"
                     },
                     {
                         "type": "INTEGER",
                         "name": "STATUS_MILESTONEREPORT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "STATUS_PROJECT"
                     }
                 ]
             },
@@ -182,6 +182,11 @@
                         "name": "BUDGET_NAME"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "BUDGET_PROJECT"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
@@ -206,11 +211,6 @@
                     {
                         "type": "BOOLEAN",
                         "name": "BUDGET_PROPERTY6"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "BUDGET_PROJECT"
                     }
                 ]
             },
@@ -231,6 +231,10 @@
                         "name": "COST_NAME"
                     },
                     {
+                        "type": "INTEGER",
+                        "name": "COST_PROJECT"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
@@ -246,10 +250,6 @@
                         "length": 200,
                         "nullable": true,
                         "name": "COST_DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "COST_PROJECT"
                     }
                 ]
             },
@@ -354,6 +354,10 @@
                         "name": "FORECAST_NAME"
                     },
                     {
+                        "type": "INTEGER",
+                        "name": "FORECAST_PROJECT"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
@@ -392,21 +396,74 @@
                         "precision": "5",
                         "scale": "2",
                         "name": "FORECAST_SCHEDULEPERFORMANCEINDEX"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "FORECAST_PROJECT"
                     }
                 ]
             },
             {
-                "name": "Resource_ResourceType",
-                "type": "foreignKey",
-                "table": "CODBEX_RESOURCE",
-                "constraintName": "Resource_ResourceType",
-                "columns": "RESOURCE_RESOURCETYPE",
-                "referencedTable": "CODBEX_RESOURCETYPE",
-                "referencedColumns": "RESOURCETYPE_ID"
+                "name": "CODBEX_EXPENSE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EXPENSE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "EXPENSE_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EXPENSE_PROJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EXPENSE_EMPLOYEE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "EXPENSE_DESCRIPTION"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "EXPENSE_AMOUNT"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "EXPENSE_DATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "EXPENSE_EXPENSECATEGORY"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_EXPENSECATEGORY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EXPENSECATEGORY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "EXPENSECATEGORY_NAME"
+                    }
+                ]
             },
             {
                 "name": "Resource_Project",
@@ -416,6 +473,15 @@
                 "columns": "RESOURCE_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Resource_ResourceType",
+                "type": "foreignKey",
+                "table": "CODBEX_RESOURCE",
+                "constraintName": "Resource_ResourceType",
+                "columns": "RESOURCE_RESOURCETYPE",
+                "referencedTable": "CODBEX_RESOURCETYPE",
+                "referencedColumns": "RESOURCETYPE_ID"
             },
             {
                 "name": "Project_Employee",
@@ -436,6 +502,15 @@
                 "referencedColumns": "MILESTONEPERIOD_ID"
             },
             {
+                "name": "Status_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_STATUS",
+                "constraintName": "Status_Project",
+                "columns": "STATUS_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
                 "name": "Status_StatusType",
                 "type": "foreignKey",
                 "table": "CODBEX_STATUS",
@@ -454,20 +529,20 @@
                 "referencedColumns": "MILESTONEREPORT_ID"
             },
             {
-                "name": "Status_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_STATUS",
-                "constraintName": "Status_Project",
-                "columns": "STATUS_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
                 "name": "Budget_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_BUDGET",
                 "constraintName": "Budget_Project",
                 "columns": "BUDGET_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Cost_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_COST",
+                "constraintName": "Cost_Project",
+                "columns": "COST_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
             },
@@ -481,15 +556,6 @@
                 "referencedColumns": "COSTCATEGORY_ID"
             },
             {
-                "name": "Cost_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_COST",
-                "constraintName": "Cost_Project",
-                "columns": "COST_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
                 "name": "Forecast_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_FORECAST",
@@ -497,6 +563,33 @@
                 "columns": "FORECAST_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Expense_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_EXPENSE",
+                "constraintName": "Expense_Project",
+                "columns": "EXPENSE_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Expense_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_EXPENSE",
+                "constraintName": "Expense_Employee",
+                "columns": "EXPENSE_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Expense_ExpenseCategory",
+                "type": "foreignKey",
+                "table": "CODBEX_EXPENSE",
+                "constraintName": "Expense_ExpenseCategory",
+                "columns": "EXPENSE_EXPENSECATEGORY",
+                "referencedTable": "CODBEX_EXPENSECATEGORY",
+                "referencedColumns": "EXPENSECATEGORY_ID"
             }
         ]
     },

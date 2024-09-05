@@ -14,9 +14,9 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsProject = params.optionsProject;
 			$scope.optionsStatusType = params.optionsStatusType;
 			$scope.optionsMilestoneReport = params.optionsMilestoneReport;
-			$scope.optionsProject = params.optionsProject;
 		}
 
 		$scope.filter = function () {
@@ -45,14 +45,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Project !== undefined) {
+				filter.$filter.equals.Project = entity.Project;
+			}
 			if (entity.StatusType !== undefined) {
 				filter.$filter.equals.StatusType = entity.StatusType;
 			}
 			if (entity.MilestoneReport !== undefined) {
 				filter.$filter.equals.MilestoneReport = entity.MilestoneReport;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

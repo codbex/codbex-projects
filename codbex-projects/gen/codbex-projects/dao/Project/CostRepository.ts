@@ -6,18 +6,18 @@ import { dao as daoApi } from "sdk/db";
 export interface CostEntity {
     readonly Id: number;
     Name: string;
+    Project: number;
     ActualCost: number;
     CostCategory: number;
     Description?: string;
-    Project: number;
 }
 
 export interface CostCreateEntity {
     readonly Name: string;
+    readonly Project: number;
     readonly ActualCost: number;
     readonly CostCategory: number;
     readonly Description?: string;
-    readonly Project: number;
 }
 
 export interface CostUpdateEntity extends CostCreateEntity {
@@ -29,58 +29,58 @@ export interface CostEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ActualCost?: number | number[];
             CostCategory?: number | number[];
             Description?: string | string[];
-            Project?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Project?: number | number[];
             ActualCost?: number | number[];
             CostCategory?: number | number[];
             Description?: string | string[];
-            Project?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ActualCost?: number;
             CostCategory?: number;
             Description?: string;
-            Project?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ActualCost?: number;
             CostCategory?: number;
             Description?: string;
-            Project?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ActualCost?: number;
             CostCategory?: number;
             Description?: string;
-            Project?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ActualCost?: number;
             CostCategory?: number;
             Description?: string;
-            Project?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Project?: number;
             ActualCost?: number;
             CostCategory?: number;
             Description?: string;
-            Project?: number;
         };
     },
     $select?: (keyof CostEntity)[],
@@ -124,6 +124,12 @@ export class CostRepository {
                 required: true
             },
             {
+                name: "Project",
+                column: "COST_PROJECT",
+                type: "INTEGER",
+                required: true
+            },
+            {
                 name: "ActualCost",
                 column: "COST_ACTUALCOST",
                 type: "DECIMAL",
@@ -139,12 +145,6 @@ export class CostRepository {
                 name: "Description",
                 column: "COST_DESCRIPTION",
                 type: "VARCHAR",
-            },
-            {
-                name: "Project",
-                column: "COST_PROJECT",
-                type: "INTEGER",
-                required: true
             }
         ]
     };

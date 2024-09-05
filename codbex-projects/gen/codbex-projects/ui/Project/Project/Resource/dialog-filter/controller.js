@@ -14,8 +14,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsResourceType = params.optionsResourceType;
 			$scope.optionsProject = params.optionsProject;
+			$scope.optionsResourceType = params.optionsResourceType;
 		}
 
 		$scope.filter = function () {
@@ -44,6 +44,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Project !== undefined) {
+				filter.$filter.equals.Project = entity.Project;
+			}
 			if (entity.ResourceType !== undefined) {
 				filter.$filter.equals.ResourceType = entity.ResourceType;
 			}
@@ -52,9 +55,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Prize !== undefined) {
 				filter.$filter.equals.Prize = entity.Prize;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
