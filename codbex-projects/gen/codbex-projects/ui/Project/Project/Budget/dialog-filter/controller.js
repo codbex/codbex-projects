@@ -48,8 +48,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CostEstimation !== undefined) {
 				filter.$filter.equals.CostEstimation = entity.CostEstimation;
 			}
-			if (entity.Reserves) {
-				filter.$filter.contains.Reserves = entity.Reserves;
+			if (entity.Reserves !== undefined) {
+				filter.$filter.equals.Reserves = entity.Reserves;
 			}
 			if (entity.IsApproved !== undefined && entity.isIsApprovedIndeterminate === false) {
 				filter.$filter.equals.IsApproved = entity.IsApproved;

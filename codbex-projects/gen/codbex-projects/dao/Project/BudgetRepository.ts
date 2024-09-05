@@ -6,19 +6,19 @@ import { EntityUtils } from "../utils/EntityUtils";
 
 export interface BudgetEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     InitialBudget: number;
     CostEstimation: number;
-    Reserves?: string;
+    Reserves?: number;
     IsApproved: boolean;
     Project?: number;
 }
 
 export interface BudgetCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly InitialBudget: number;
     readonly CostEstimation: number;
-    readonly Reserves?: string;
+    readonly Reserves?: number;
     readonly IsApproved: boolean;
     readonly Project?: number;
 }
@@ -34,7 +34,7 @@ export interface BudgetEntityOptions {
             Name?: string | string[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
-            Reserves?: string | string[];
+            Reserves?: number | number[];
             IsApproved?: boolean | boolean[];
             Project?: number | number[];
         };
@@ -43,7 +43,7 @@ export interface BudgetEntityOptions {
             Name?: string | string[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
-            Reserves?: string | string[];
+            Reserves?: number | number[];
             IsApproved?: boolean | boolean[];
             Project?: number | number[];
         };
@@ -52,7 +52,7 @@ export interface BudgetEntityOptions {
             Name?: string;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: string;
+            Reserves?: number;
             IsApproved?: boolean;
             Project?: number;
         };
@@ -61,7 +61,7 @@ export interface BudgetEntityOptions {
             Name?: string;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: string;
+            Reserves?: number;
             IsApproved?: boolean;
             Project?: number;
         };
@@ -70,7 +70,7 @@ export interface BudgetEntityOptions {
             Name?: string;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: string;
+            Reserves?: number;
             IsApproved?: boolean;
             Project?: number;
         };
@@ -79,7 +79,7 @@ export interface BudgetEntityOptions {
             Name?: string;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: string;
+            Reserves?: number;
             IsApproved?: boolean;
             Project?: number;
         };
@@ -88,7 +88,7 @@ export interface BudgetEntityOptions {
             Name?: string;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: string;
+            Reserves?: number;
             IsApproved?: boolean;
             Project?: number;
         };
@@ -131,6 +131,7 @@ export class BudgetRepository {
                 name: "Name",
                 column: "BUDGET_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "InitialBudget",
@@ -147,7 +148,7 @@ export class BudgetRepository {
             {
                 name: "Reserves",
                 column: "BUDGET_RESERVES",
-                type: "VARCHAR",
+                type: "DECIMAL",
             },
             {
                 name: "IsApproved",

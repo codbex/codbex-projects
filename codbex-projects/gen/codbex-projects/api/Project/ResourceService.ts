@@ -130,8 +130,14 @@ class ResourceService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.ResourceType === null || entity.ResourceType === undefined) {
+            throw new ValidationError(`The 'ResourceType' property is required, provide a valid value`);
         }
         if (entity.Quantity === null || entity.Quantity === undefined) {
             throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);

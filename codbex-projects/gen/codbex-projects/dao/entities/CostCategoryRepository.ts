@@ -5,11 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface CostCategoryEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
 }
 
 export interface CostCategoryCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
 }
 
 export interface CostCategoryUpdateEntity extends CostCategoryCreateEntity {
@@ -85,6 +85,7 @@ export class CostCategoryRepository {
                 name: "Name",
                 column: "COSTCATEGORY_NAME",
                 type: "VARCHAR",
+                required: true
             }
         ]
     };

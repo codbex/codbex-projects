@@ -16,6 +16,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsStatusType = params.optionsStatusType;
 			$scope.optionsMilestoneReport = params.optionsMilestoneReport;
+			$scope.optionsProject = params.optionsProject;
 		}
 
 		$scope.filter = function () {

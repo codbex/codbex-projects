@@ -5,17 +5,17 @@ import { dao as daoApi } from "sdk/db";
 
 export interface StatusEntity {
     readonly Id: number;
-    Name?: string;
-    StatusType?: number;
-    MilestoneReport?: number;
-    Project?: number;
+    Name: string;
+    StatusType: number;
+    MilestoneReport: number;
+    Project: number;
 }
 
 export interface StatusCreateEntity {
-    readonly Name?: string;
-    readonly StatusType?: number;
-    readonly MilestoneReport?: number;
-    readonly Project?: number;
+    readonly Name: string;
+    readonly StatusType: number;
+    readonly MilestoneReport: number;
+    readonly Project: number;
 }
 
 export interface StatusUpdateEntity extends StatusCreateEntity {
@@ -112,21 +112,25 @@ export class StatusRepository {
                 name: "Name",
                 column: "STATUS_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "StatusType",
                 column: "STATUS_STATUSTYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "MilestoneReport",
                 column: "STATUS_MILESTONEREPORT",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Project",
                 column: "STATUS_PROJECT",
                 type: "INTEGER",
+                required: true
             }
         ]
     };

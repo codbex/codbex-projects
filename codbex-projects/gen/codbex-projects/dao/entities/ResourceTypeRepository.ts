@@ -5,11 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface ResourceTypeEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
 }
 
 export interface ResourceTypeCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
 }
 
 export interface ResourceTypeUpdateEntity extends ResourceTypeCreateEntity {
@@ -85,6 +85,7 @@ export class ResourceTypeRepository {
                 name: "Name",
                 column: "RESOURCETYPE_NAME",
                 type: "VARCHAR",
+                required: true
             }
         ]
     };

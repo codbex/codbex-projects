@@ -2274,7 +2274,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Reserves: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2297,7 +2296,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Reserves: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -2362,7 +2360,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Reserves: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2385,7 +2382,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Reserves: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -4057,6 +4053,8 @@ components:
     Resource:
       type: object
       required:
+        - Name
+        - ResourceType
         - Quantity
         - Prize
         - Project
@@ -4655,8 +4653,10 @@ components:
     Status:
       type: object
       required:
+        - Name
         - StatusType
         - MilestoneReport
+        - Project
       properties:
         Id:
           type: integer
@@ -4880,6 +4880,7 @@ components:
     ResourceType:
       type: object
       required:
+        - Name
       properties:
         Id:
           type: integer
@@ -5007,6 +5008,7 @@ components:
     StatusType:
       type: object
       required:
+        - Name
       properties:
         Id:
           type: integer
@@ -5134,6 +5136,7 @@ components:
     Budget:
       type: object
       required:
+        - Name
         - InitialBudget
         - CostEstimation
         - IsApproved
@@ -5152,9 +5155,8 @@ components:
           type: number
           format: double
         Reserves:
-          type: string
-          minLength: 0
-          maxLength: 20
+          type: number
+          format: double
         IsApproved:
           type: boolean
         Project:
@@ -5206,15 +5208,12 @@ components:
                         format: double
                 Reserves:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: number
+                      format: double
                     - type: array
                       items:
-                        type: string
+                        type: number
                         format: double
-                        minLength: 0
-                        maxLength: 20
                 IsApproved:
                   oneOf:
                     - type: boolean
@@ -5269,15 +5268,12 @@ components:
                         format: double
                 Reserves:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: number
+                      format: double
                     - type: array
                       items:
-                        type: string
+                        type: number
                         format: double
-                        minLength: 0
-                        maxLength: 20
                 IsApproved:
                   oneOf:
                     - type: boolean
@@ -5303,9 +5299,6 @@ components:
                 InitialBudget:
                 CostEstimation:
                 Reserves:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 IsApproved:
                 Project:
             greaterThan:
@@ -5325,9 +5318,8 @@ components:
                   type: number
                   format: double
                 Reserves:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: number
+                  format: double
                 IsApproved:
                 Project:
                   type: integer
@@ -5349,9 +5341,8 @@ components:
                   type: number
                   format: double
                 Reserves:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: number
+                  format: double
                 IsApproved:
                 Project:
                   type: integer
@@ -5373,9 +5364,8 @@ components:
                   type: number
                   format: double
                 Reserves:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: number
+                  format: double
                 IsApproved:
                 Project:
                   type: integer
@@ -5397,9 +5387,8 @@ components:
                   type: number
                   format: double
                 Reserves:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: number
+                  format: double
                 IsApproved:
                 Project:
                   type: integer
@@ -5425,6 +5414,7 @@ components:
     Cost:
       type: object
       required:
+        - Name
         - ActualCost
         - CostCategory
         - Project
@@ -5697,6 +5687,7 @@ components:
     CostCategory:
       type: object
       required:
+        - Name
       properties:
         Id:
           type: integer
@@ -5824,6 +5815,7 @@ components:
     MilestoneReport:
       type: object
       required:
+        - Name
         - Implemented
         - Problems
       properties:

@@ -15,12 +15,10 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "RESOURCE_NAME"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "RESOURCE_RESOURCETYPE"
                     },
                     {
@@ -115,22 +113,18 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "STATUS_NAME"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "STATUS_STATUSTYPE"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "STATUS_MILESTONEREPORT"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "STATUS_PROJECT"
                     }
                 ]
@@ -149,7 +143,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "RESOURCETYPE_NAME"
                     }
                 ]
@@ -186,7 +179,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "BUDGET_NAME"
                     },
                     {
@@ -204,8 +196,10 @@
                         "name": "BUDGET_COSTESTIMATION"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "BUDGET_RESERVES"
                     },
@@ -234,7 +228,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "COST_NAME"
                     },
                     {
@@ -274,7 +267,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "COSTCATEGORY_NAME"
                     }
                 ]
@@ -293,7 +285,6 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "nullable": true,
                         "name": "MILESTONEREPORT_NAME"
                     },
                     {

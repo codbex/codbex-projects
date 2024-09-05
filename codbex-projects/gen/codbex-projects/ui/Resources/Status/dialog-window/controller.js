@@ -26,6 +26,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsStatusType = params.optionsStatusType;
 			$scope.optionsMilestoneReport = params.optionsMilestoneReport;
+			$scope.optionsProject = params.optionsProject;
 		}
 
 		$scope.create = function () {

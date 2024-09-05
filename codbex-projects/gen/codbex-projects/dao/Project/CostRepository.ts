@@ -5,7 +5,7 @@ import { dao as daoApi } from "sdk/db";
 
 export interface CostEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     ActualCost: number;
     CostCategory: number;
     Description?: string;
@@ -13,7 +13,7 @@ export interface CostEntity {
 }
 
 export interface CostCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly ActualCost: number;
     readonly CostCategory: number;
     readonly Description?: string;
@@ -121,6 +121,7 @@ export class CostRepository {
                 name: "Name",
                 column: "COST_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "ActualCost",

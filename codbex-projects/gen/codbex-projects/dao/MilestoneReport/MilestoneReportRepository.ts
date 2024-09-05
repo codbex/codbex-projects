@@ -5,14 +5,14 @@ import { dao as daoApi } from "sdk/db";
 
 export interface MilestoneReportEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     Implemented?: string;
     Problems?: string;
     Notes?: string;
 }
 
 export interface MilestoneReportCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly Implemented?: string;
     readonly Problems?: string;
     readonly Notes?: string;
@@ -112,6 +112,7 @@ export class MilestoneReportRepository {
                 name: "Name",
                 column: "MILESTONEREPORT_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Implemented",
