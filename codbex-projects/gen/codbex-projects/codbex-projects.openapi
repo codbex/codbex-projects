@@ -11,12 +11,13 @@ servers:
 tags:
   - name: Project
   - name: Project
+  - name: Resources
+  - name: entities
+  - name: entities
+  - name: Project
   - name: Project
   - name: entities
-  - name: entities
-  - name: entities
-  - name: Project
-  - name: entities
+  - name: MilestoneReport
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -826,7 +827,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/StatusService.ts:
+  /codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts:
     get:
       summary: List Status
       parameters:
@@ -847,7 +848,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -878,7 +879,7 @@ paths:
     post:
       summary: Create Status
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -910,7 +911,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/StatusService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts/{id}:
     get:
       summary: Get Status by Id
       parameters:
@@ -921,7 +922,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -959,7 +960,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -1007,7 +1008,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Resources
       responses:
         204:
           description: Successful Request
@@ -1029,11 +1030,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/StatusService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts/count:
     get:
       summary: Count the number of Status
       tags:
-        - Project
+        - Resources
       responses:
         200:
           description: Successful Request
@@ -1057,7 +1058,7 @@ paths:
     post:
       summary: Count the number of Status by StatusFilterOptions
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -1072,8 +1073,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Implemented: "abcd"
-                      Problems: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1096,8 +1095,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Implemented: "abcd"
-                      Problems: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1143,11 +1140,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/StatusService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts/search:
     post:
       summary: Search Status by StatusFilterOptions
       tags:
-        - Project
+        - Resources
       requestBody:
         content:
           application/json:
@@ -1162,8 +1159,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Implemented: "abcd"
-                      Problems: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1186,8 +1181,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Implemented: "abcd"
-                      Problems: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2034,7 +2027,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts:
+  /codbex-projects/gen/codbex-projects/api/Project/BudgetService.ts:
     get:
       summary: List Budget
       parameters:
@@ -2055,7 +2048,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -2086,7 +2079,7 @@ paths:
     post:
       summary: Create Budget
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -2118,7 +2111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Project/BudgetService.ts/{id}:
     get:
       summary: Get Budget by Id
       parameters:
@@ -2129,7 +2122,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -2167,7 +2160,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -2215,7 +2208,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       responses:
         204:
           description: Successful Request
@@ -2237,11 +2230,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Project/BudgetService.ts/count:
     get:
       summary: Count the number of Budget
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -2265,7 +2258,7 @@ paths:
     post:
       summary: Count the number of Budget by BudgetFilterOptions
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -2349,11 +2342,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Project/BudgetService.ts/search:
     post:
       summary: Search Budget by BudgetFilterOptions
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -3242,6 +3235,418 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/MilestoneReport/MilestoneReportService.ts:
+    get:
+      summary: List MilestoneReport
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - MilestoneReport
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneReport'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create MilestoneReport
+      tags:
+        - MilestoneReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneReport'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MilestoneReport'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/MilestoneReport/MilestoneReportService.ts/{id}:
+    get:
+      summary: Get MilestoneReport by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - MilestoneReport
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneReport'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update MilestoneReport by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - MilestoneReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneReport'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MilestoneReport'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete MilestoneReport by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - MilestoneReport
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/MilestoneReport/MilestoneReportService.ts/count:
+    get:
+      summary: Count the number of MilestoneReport
+      tags:
+        - MilestoneReport
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of MilestoneReport by MilestoneReportFilterOptions
+      tags:
+        - MilestoneReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneReportFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Implemented: "abcd"
+                      Problems: "abcd"
+                      Notes: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Implemented: "abcd"
+                      Problems: "abcd"
+                      Notes: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/MilestoneReport/MilestoneReportService.ts/search:
+    post:
+      summary: Search MilestoneReport by MilestoneReportFilterOptions
+      tags:
+        - MilestoneReport
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneReportFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Implemented: "abcd"
+                      Problems: "abcd"
+                      Notes: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Implemented: "abcd"
+                      Problems: "abcd"
+                      Notes: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneReport'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Resource:
@@ -3509,7 +3914,7 @@ components:
         - Employee
         - StartingDate
         - EndDate
-        - Milestones
+        - MilestonePeriod
       properties:
         Id:
           type: integer
@@ -3527,7 +3932,7 @@ components:
           format: int32
         StartingDate:
         EndDate:
-        Milestones:
+        MilestonePeriod:
         Version:
           type: number
           format: double
@@ -3586,7 +3991,7 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
-                Milestones:
+                MilestonePeriod:
                   oneOf:
                 Version:
                   oneOf:
@@ -3652,7 +4057,7 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
-                Milestones:
+                MilestonePeriod:
                   oneOf:
                 Version:
                   oneOf:
@@ -3688,7 +4093,7 @@ components:
                 Employee:
                 StartingDate:
                 EndDate:
-                Milestones:
+                MilestonePeriod:
                 Version:
                 Notes:
                   type: string
@@ -3713,7 +4118,7 @@ components:
                   format: int32
                 StartingDate:
                 EndDate:
-                Milestones:
+                MilestonePeriod:
                 Version:
                   type: number
                   format: double
@@ -3740,7 +4145,7 @@ components:
                   format: int32
                 StartingDate:
                 EndDate:
-                Milestones:
+                MilestonePeriod:
                 Version:
                   type: number
                   format: double
@@ -3767,7 +4172,7 @@ components:
                   format: int32
                 StartingDate:
                 EndDate:
-                Milestones:
+                MilestonePeriod:
                 Version:
                   type: number
                   format: double
@@ -3794,7 +4199,7 @@ components:
                   format: int32
                 StartingDate:
                 EndDate:
-                Milestones:
+                MilestonePeriod:
                 Version:
                   type: number
                   format: double
@@ -3804,12 +4209,12 @@ components:
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Description", "Employee", "StartingDate", "EndDate", "Milestones", "Version", "Notes"]
+          example: ["Id", "Name", "Description", "Employee", "StartingDate", "EndDate", "MilestonePeriod", "Version", "Notes"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,Employee,StartingDate,EndDate,Milestones,Version,Notes"
+            example: "Id,Name,Description,Employee,StartingDate,EndDate,MilestonePeriod,Version,Notes"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3824,8 +4229,7 @@ components:
       type: object
       required:
         - StatusType
-        - Implemented
-        - Project
+        - MilestoneReport
       properties:
         Id:
           type: integer
@@ -3837,14 +4241,9 @@ components:
         StatusType:
           type: integer
           format: int32
-        Implemented:
-          type: string
-          minLength: 0
-          maxLength: 200
-        Problems:
-          type: string
-          minLength: 0
-          maxLength: 200
+        MilestoneReport:
+          type: integer
+          format: int32
         Project:
           type: integer
           format: int32
@@ -3884,28 +4283,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                Implemented:
+                MilestoneReport:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                Problems:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
+                        type: integer
+                        format: int32
                 Project:
                   oneOf:
                     - type: integer
@@ -3944,28 +4329,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                Implemented:
+                MilestoneReport:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                Problems:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
+                        type: integer
+                        format: int32
                 Project:
                   oneOf:
                     - type: integer
@@ -3983,14 +4354,7 @@ components:
                   minLength: 0
                   maxLength: 20
                 StatusType:
-                Implemented:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Problems:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                MilestoneReport:
                 Project:
             greaterThan:
               type: object
@@ -4005,14 +4369,9 @@ components:
                 StatusType:
                   type: integer
                   format: int32
-                Implemented:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Problems:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                MilestoneReport:
+                  type: integer
+                  format: int32
                 Project:
                   type: integer
                   format: int32
@@ -4029,14 +4388,9 @@ components:
                 StatusType:
                   type: integer
                   format: int32
-                Implemented:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Problems:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                MilestoneReport:
+                  type: integer
+                  format: int32
                 Project:
                   type: integer
                   format: int32
@@ -4053,14 +4407,9 @@ components:
                 StatusType:
                   type: integer
                   format: int32
-                Implemented:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Problems:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                MilestoneReport:
+                  type: integer
+                  format: int32
                 Project:
                   type: integer
                   format: int32
@@ -4077,25 +4426,20 @@ components:
                 StatusType:
                   type: integer
                   format: int32
-                Implemented:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Problems:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                MilestoneReport:
+                  type: integer
+                  format: int32
                 Project:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "StatusType", "Implemented", "Problems", "Project"]
+          example: ["Id", "Name", "StatusType", "MilestoneReport", "Project"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,StatusType,Implemented,Problems,Project"
+            example: "Id,Name,StatusType,MilestoneReport,Project"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -5040,6 +5384,273 @@ components:
         $sort:
           - type: string
             example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    MilestoneReport:
+      type: object
+      required:
+        - Implemented
+        - Problems
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Implemented:
+          type: string
+          minLength: 0
+          maxLength: 200
+        Problems:
+          type: string
+          minLength: 0
+          maxLength: 200
+        Notes:
+          type: string
+          minLength: 0
+          maxLength: 100
+    MilestoneReportFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Implemented:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Problems:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Notes:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Implemented:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Problems:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Notes:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Implemented:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Problems:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Implemented:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Problems:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Implemented:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Problems:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Implemented:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Problems:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Implemented:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Problems:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+        $select:
+          type: array
+          example: ["Id", "Name", "Implemented", "Problems", "Notes"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,Implemented,Problems,Notes"
         $order:
           type: string
           enum: ["asc", "desc"]

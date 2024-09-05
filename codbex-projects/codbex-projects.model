@@ -192,11 +192,11 @@
                         "dataNullable": "true",
                         "dataType": "TIME",
                         "isRequiredProperty": "true",
-                        "name": "Milestones",
+                        "name": "MilestonePeriod",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TIME"
+                        "widgetType": "WEEK"
                     },
                     {
                         "dataLength": "18",
@@ -287,43 +287,32 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "200",
-                        "dataName": "STATUS_IMPLEMENTED",
+                        "dataName": "STATUS_MILESTONEREPORT",
                         "dataNullable": "true",
-                        "dataType": "VARCHAR",
+                        "dataType": "INTEGER",
                         "isRequiredProperty": "true",
-                        "name": "Implemented",
+                        "name": "MilestoneReport",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
-                        "widgetLength": "200",
+                        "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "200",
-                        "dataName": "STATUS_PROBLEMS",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "Problems",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "200",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Status_MilestoneReport",
+                        "relationshipEntityName": "MilestoneReport",
+                        "relationshipEntityPerspectiveName": "MilestoneReport",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "STATUS_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
                         "name": "Project",
-                        "relationshipCardinality": "1_n",
-                        "relationshipName": "Status_Project",
-                        "relationshipType": "COMPOSITION",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Version",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "DROPDOWN",
+                        "widgetType": "TEXTBOX",
+                        "relationshipName": "Status_Project",
                         "relationshipEntityName": "Project",
                         "relationshipEntityPerspectiveName": "Project",
                         "relationshipEntityPerspectiveLabel": "Entities"
@@ -335,20 +324,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "status",
                 "menuLabel": "Status",
                 "name": "Status",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
-                "perspectiveLabel": "Project",
-                "perspectiveName": "Project",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/question.svg",
+                "perspectiveLabel": "Status",
+                "perspectiveName": "Resources",
+                "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "title": "Status",
                 "tooltip": "Status",
-                "type": "DEPENDENT"
+                "type": "PRIMARY"
             },
             {
                 "properties": [
@@ -666,20 +655,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "budget",
                 "menuLabel": "Budget",
                 "name": "Budget",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
+                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
+                "perspectiveLabel": "Project",
+                "perspectiveName": "Project",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "Budget",
                 "tooltip": "Budget",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -774,7 +763,7 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "cost",
                 "menuLabel": "Cost",
@@ -835,6 +824,88 @@
                 "title": "CostCategory",
                 "tooltip": "CostCategory",
                 "type": "SETTING"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "MILESTONEREPORT_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "name": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "20",
+                        "dataName": "MILESTONEREPORT_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "200",
+                        "dataName": "MILESTONEREPORT_IMPLEMENTED",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Implemented",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "200",
+                        "dataName": "MILESTONEREPORT_PROBLEMS",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Problems",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "100",
+                        "dataName": "MILESTONEREPORT_NOTES",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Notes",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "100",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity MilestoneReport",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}MILESTONEREPORT\"",
+                "dataName": "MILESTONEREPORT",
+                "dataQuery": "",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "milestonereport",
+                "menuLabel": "MilestoneReport",
+                "name": "MilestoneReport",
+                "navigationPath": "/Home",
+                "perspectiveIcon": "/services/web/resources/unicons/expand-alt.svg",
+                "perspectiveLabel": "MilestoneReport",
+                "perspectiveName": "MilestoneReport",
+                "perspectiveOrder": "300",
+                "perspectiveRole": "",
+                "title": "MilestoneReport",
+                "tooltip": "MilestoneReport",
+                "type": "PRIMARY"
             }
         ],
         "perspectives": [
@@ -847,9 +918,16 @@
             },
             {
                 "name": "Resources",
-                "label": "Resources",
-                "icon": "/services/web/resources/unicons/setting.svg",
+                "label": "Status",
+                "icon": "/services/web/resources/unicons/question.svg",
                 "order": "200",
+                "role": {}
+            },
+            {
+                "name": "MilestoneReport",
+                "label": "MilestoneReport",
+                "icon": "/services/web/resources/unicons/expand-alt.svg",
+                "order": "300",
                 "role": {}
             }
         ],

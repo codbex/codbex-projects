@@ -108,8 +108,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						if (e.EndDate) {
 							e.EndDate = new Date(e.EndDate);
 						}
-						if (e.Milestones) {
-							e.Milestones = new Date(e.Milestones);
+						if (e.MilestonePeriod) {
+							e.MilestonePeriod = new Date(e.MilestonePeriod);
 						}
 					});
 

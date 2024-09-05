@@ -23,11 +23,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (params?.entity?.EndDateTo) {
 				params.entity.EndDateTo = new Date(params.entity.EndDateTo);
 			}
-			if (params?.entity?.MilestonesFrom) {
-				params.entity.MilestonesFrom = new Date(params.entity.MilestonesFrom);
+			if (params?.entity?.MilestonePeriodFrom) {
+				params.entity.MilestonePeriodFrom = new Date(params.entity.MilestonePeriodFrom);
 			}
-			if (params?.entity?.MilestonesTo) {
-				params.entity.MilestonesTo = new Date(params.entity.MilestonesTo);
+			if (params?.entity?.MilestonePeriodTo) {
+				params.entity.MilestonePeriodTo = new Date(params.entity.MilestonePeriodTo);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
@@ -79,11 +79,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.MilestonesFrom) {
-				filter.$filter.greaterThanOrEqual.Milestones = entity.MilestonesFrom;
+			if (entity.MilestonePeriodFrom) {
+				filter.$filter.greaterThanOrEqual.MilestonePeriod = entity.MilestonePeriodFrom;
 			}
-			if (entity.MilestonesTo) {
-				filter.$filter.lessThanOrEqual.Milestones = entity.MilestonesTo;
+			if (entity.MilestonePeriodTo) {
+				filter.$filter.lessThanOrEqual.MilestonePeriod = entity.MilestonePeriodTo;
 			}
 			if (entity.Version !== undefined) {
 				filter.$filter.equals.Version = entity.Version;

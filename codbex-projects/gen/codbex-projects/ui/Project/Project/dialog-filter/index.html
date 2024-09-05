@@ -141,15 +141,15 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idMilestones" dg-colon="true">Milestones</fd-form-label>
+                        	<fd-form-label for="idMilestonePeriod" dg-colon="true">MilestonePeriod</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--2">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Milestones'].$valid }}">
-	                            <fd-input id="idMilestones"
-	                                name="Milestones"
-	                                state="{{ forms.details['Milestones'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Milestones"
-	                                type="time">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['MilestonePeriod'].$valid }}">
+	                            <fd-input id="idMilestonePeriod"
+	                                name="MilestonePeriod"
+	                                state="{{ forms.details['MilestonePeriod'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.MilestonePeriod"
+	                                type="week">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>

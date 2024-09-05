@@ -124,16 +124,9 @@
                         "name": "STATUS_STATUSTYPE"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 200,
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "STATUS_IMPLEMENTED"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "STATUS_PROBLEMS"
+                        "name": "STATUS_MILESTONEREPORT"
                     },
                     {
                         "type": "INTEGER",
@@ -287,6 +280,43 @@
                 ]
             },
             {
+                "name": "CODBEX_MILESTONEREPORT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_IMPLEMENTED"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_PROBLEMS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_NOTES"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_ResourceType",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -321,6 +351,15 @@
                 "columns": "STATUS_STATUSTYPE",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
+            },
+            {
+                "name": "Status_MilestoneReport",
+                "type": "foreignKey",
+                "table": "CODBEX_STATUS",
+                "constraintName": "Status_MilestoneReport",
+                "columns": "STATUS_MILESTONEREPORT",
+                "referencedTable": "CODBEX_MILESTONEREPORT",
+                "referencedColumns": "MILESTONEREPORT_ID"
             },
             {
                 "name": "Status_Project",

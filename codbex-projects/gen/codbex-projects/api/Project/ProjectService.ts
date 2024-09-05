@@ -137,8 +137,8 @@ class ProjectService {
         if (entity.EndDate === null || entity.EndDate === undefined) {
             throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
         }
-        if (entity.Milestones === null || entity.Milestones === undefined) {
-            throw new ValidationError(`The 'Milestones' property is required, provide a valid value`);
+        if (entity.MilestonePeriod === null || entity.MilestonePeriod === undefined) {
+            throw new ValidationError(`The 'MilestonePeriod' property is required, provide a valid value`);
         }
         if (entity.Notes?.length > 200) {
             throw new ValidationError(`The 'Notes' exceeds the maximum length of [200] characters`);

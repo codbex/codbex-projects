@@ -10,7 +10,7 @@ export interface ProjectEntity {
     Employee?: number;
     StartingDate?: Date;
     EndDate: Date;
-    Milestones?: Date;
+    MilestonePeriod?: Date;
     Version?: number;
     Notes?: string;
 }
@@ -21,7 +21,7 @@ export interface ProjectCreateEntity {
     readonly Employee?: number;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
-    readonly Milestones?: Date;
+    readonly MilestonePeriod?: Date;
     readonly Version?: number;
     readonly Notes?: string;
 }
@@ -39,7 +39,7 @@ export interface ProjectEntityOptions {
             Employee?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
-            Milestones?: Date | Date[];
+            MilestonePeriod?: Date | Date[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -50,7 +50,7 @@ export interface ProjectEntityOptions {
             Employee?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
-            Milestones?: Date | Date[];
+            MilestonePeriod?: Date | Date[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -61,7 +61,7 @@ export interface ProjectEntityOptions {
             Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            Milestones?: Date;
+            MilestonePeriod?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -72,7 +72,7 @@ export interface ProjectEntityOptions {
             Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            Milestones?: Date;
+            MilestonePeriod?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -83,7 +83,7 @@ export interface ProjectEntityOptions {
             Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            Milestones?: Date;
+            MilestonePeriod?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -94,7 +94,7 @@ export interface ProjectEntityOptions {
             Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            Milestones?: Date;
+            MilestonePeriod?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -105,7 +105,7 @@ export interface ProjectEntityOptions {
             Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            Milestones?: Date;
+            MilestonePeriod?: Date;
             Version?: number;
             Notes?: string;
         };
@@ -172,7 +172,7 @@ export class ProjectRepository {
                 required: true
             },
             {
-                name: "Milestones",
+                name: "MilestonePeriod",
                 column: "PROJECT_TICKPERIOD",
                 type: "TIME",
             },

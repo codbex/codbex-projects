@@ -53,8 +53,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.EndDate) {
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
-				if (msg.data.entity.Milestones) {
-					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
+				if (msg.data.entity.MilestonePeriod) {
+					msg.data.entity.MilestonePeriod = new Date(msg.data.entity.MilestonePeriod);
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsEmployee = msg.data.optionsEmployee;
@@ -78,8 +78,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data.entity.EndDate) {
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
-				if (msg.data.entity.Milestones) {
-					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
+				if (msg.data.entity.MilestonePeriod) {
+					msg.data.entity.MilestonePeriod = new Date(msg.data.entity.MilestonePeriod);
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsEmployee = msg.data.optionsEmployee;
