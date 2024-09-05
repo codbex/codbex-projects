@@ -338,6 +338,68 @@
                 ]
             },
             {
+                "name": "CODBEX_FORECAST",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "FORECAST_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "FORECAST_NAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "FORECAST_FORECASTEDCOST"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "FORECAST_FORECASTDATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "FORECAST_DESCRIPTION"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "FORECAST_EARNEDVALUE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 7,
+                        "precision": "5",
+                        "scale": "2",
+                        "name": "FORECAST_COSTPERFORMANCEINDEX"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 7,
+                        "precision": "5",
+                        "scale": "2",
+                        "name": "FORECAST_SCHEDULEPERFORMANCEINDEX"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "FORECAST_PROJECT"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_ResourceType",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -424,6 +486,15 @@
                 "table": "CODBEX_COST",
                 "constraintName": "Cost_Project",
                 "columns": "COST_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Forecast_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_FORECAST",
+                "constraintName": "Forecast_Project",
+                "columns": "FORECAST_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
             }
