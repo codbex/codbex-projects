@@ -62,8 +62,14 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
-                        "name": "PROJECT_ASASSIGNEE"
+                        "length": 200,
+                        "nullable": true,
+                        "name": "PROJECT_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PROJECT_EMPLOYEE"
                     },
                     {
                         "type": "TIMESTAMP",
@@ -174,6 +180,113 @@
                 ]
             },
             {
+                "name": "CODBEX_BUDGET",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "BUDGET_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "BUDGET_NAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "BUDGET_INITIALBUDGET"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "BUDGET_COSTESTIMATION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "BUDGET_RESERVES"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "name": "BUDGET_PROPERTY6"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "BUDGET_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_COST",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COST_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COST_NAME"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "COST_ACTUALCOST"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "COST_COSTCATEGORY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "COST_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "COST_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_COSTCATEGORY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COSTCATEGORY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COSTCATEGORY_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_ResourceType",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -192,6 +305,15 @@
                 "referencedColumns": "PROJECT_ID"
             },
             {
+                "name": "Project_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_PROJECT",
+                "constraintName": "Project_Employee",
+                "columns": "PROJECT_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
                 "name": "Status_StatusType",
                 "type": "foreignKey",
                 "table": "CODBEX_STATUS",
@@ -206,6 +328,33 @@
                 "table": "CODBEX_STATUS",
                 "constraintName": "Status_Project",
                 "columns": "STATUS_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Budget_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_BUDGET",
+                "constraintName": "Budget_Project",
+                "columns": "BUDGET_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Cost_CostCategory",
+                "type": "foreignKey",
+                "table": "CODBEX_COST",
+                "constraintName": "Cost_CostCategory",
+                "columns": "COST_COSTCATEGORY",
+                "referencedTable": "CODBEX_COSTCATEGORY",
+                "referencedColumns": "COSTCATEGORY_ID"
+            },
+            {
+                "name": "Cost_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_COST",
+                "constraintName": "Cost_Project",
+                "columns": "COST_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
             }

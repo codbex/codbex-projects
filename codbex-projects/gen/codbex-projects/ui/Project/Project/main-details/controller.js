@@ -40,6 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsEmployee = [];
 				$scope.action = 'select';
 			});
 		});
@@ -56,6 +57,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsEmployee = msg.data.optionsEmployee;
 				$scope.action = 'select';
 			});
 		});
@@ -63,6 +65,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsEmployee = msg.data.optionsEmployee;
 				$scope.action = 'create';
 			});
 		});
@@ -79,6 +82,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Milestones = new Date(msg.data.entity.Milestones);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsEmployee = msg.data.optionsEmployee;
 				$scope.action = 'update';
 			});
 		});

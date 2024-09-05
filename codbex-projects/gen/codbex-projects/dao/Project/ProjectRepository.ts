@@ -6,7 +6,8 @@ import { dao as daoApi } from "sdk/db";
 export interface ProjectEntity {
     readonly Id: number;
     Name: string;
-    Asassignee: string;
+    Description?: string;
+    Employee?: number;
     StartingDate?: Date;
     EndDate: Date;
     Milestones?: Date;
@@ -16,7 +17,8 @@ export interface ProjectEntity {
 
 export interface ProjectCreateEntity {
     readonly Name: string;
-    readonly Asassignee: string;
+    readonly Description?: string;
+    readonly Employee?: number;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
     readonly Milestones?: Date;
@@ -33,7 +35,8 @@ export interface ProjectEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Asassignee?: string | string[];
+            Description?: string | string[];
+            Employee?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             Milestones?: Date | Date[];
@@ -43,7 +46,8 @@ export interface ProjectEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
-            Asassignee?: string | string[];
+            Description?: string | string[];
+            Employee?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             Milestones?: Date | Date[];
@@ -53,7 +57,8 @@ export interface ProjectEntityOptions {
         contains?: {
             Id?: number;
             Name?: string;
-            Asassignee?: string;
+            Description?: string;
+            Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
             Milestones?: Date;
@@ -63,7 +68,8 @@ export interface ProjectEntityOptions {
         greaterThan?: {
             Id?: number;
             Name?: string;
-            Asassignee?: string;
+            Description?: string;
+            Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
             Milestones?: Date;
@@ -73,7 +79,8 @@ export interface ProjectEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Asassignee?: string;
+            Description?: string;
+            Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
             Milestones?: Date;
@@ -83,7 +90,8 @@ export interface ProjectEntityOptions {
         lessThan?: {
             Id?: number;
             Name?: string;
-            Asassignee?: string;
+            Description?: string;
+            Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
             Milestones?: Date;
@@ -93,7 +101,8 @@ export interface ProjectEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
-            Asassignee?: string;
+            Description?: string;
+            Employee?: number;
             StartingDate?: Date;
             EndDate?: Date;
             Milestones?: Date;
@@ -142,10 +151,14 @@ export class ProjectRepository {
                 required: true
             },
             {
-                name: "Asassignee",
-                column: "PROJECT_ASASSIGNEE",
+                name: "Description",
+                column: "PROJECT_DESCRIPTION",
                 type: "VARCHAR",
-                required: true
+            },
+            {
+                name: "Employee",
+                column: "PROJECT_EMPLOYEE",
+                type: "INTEGER",
             },
             {
                 name: "StartingDate",

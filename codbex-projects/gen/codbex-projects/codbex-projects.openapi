@@ -14,6 +14,9 @@ tags:
   - name: Project
   - name: entities
   - name: entities
+  - name: entities
+  - name: Project
+  - name: entities
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -661,7 +664,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Asassignee: "abcd"
+                      Description: "abcd"
                       Notes: "abcd"
                     greaterThan:
                       Id: 0
@@ -685,7 +688,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Asassignee: "abcd"
+                      Description: "abcd"
                       Notes: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -751,7 +754,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Asassignee: "abcd"
+                      Description: "abcd"
                       Notes: "abcd"
                     greaterThan:
                       Id: 0
@@ -775,7 +778,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Asassignee: "abcd"
+                      Description: "abcd"
                       Notes: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -2031,6 +2034,1214 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts:
+    get:
+      summary: List Budget
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Budget'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Budget
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/{id}:
+    get:
+      summary: Get Budget by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Budget'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Budget by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Budget by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/count:
+    get:
+      summary: Count the number of Budget
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Budget by BudgetFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Reserves: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Reserves: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/BudgetService.ts/search:
+    post:
+      summary: Search Budget by BudgetFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BudgetFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Reserves: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Reserves: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Budget'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/Project/CostService.ts:
+    get:
+      summary: List Cost
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Project
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Cost'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Cost
+      tags:
+        - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cost'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cost'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/Project/CostService.ts/{id}:
+    get:
+      summary: Get Cost by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Project
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Cost'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Cost by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cost'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cost'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Cost by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Project
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/Project/CostService.ts/count:
+    get:
+      summary: Count the number of Cost
+      tags:
+        - Project
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Cost by CostFilterOptions
+      tags:
+        - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Description: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/Project/CostService.ts/search:
+    post:
+      summary: Search Cost by CostFilterOptions
+      tags:
+        - Project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      Description: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Cost'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts:
+    get:
+      summary: List CostCategory
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CostCategory'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create CostCategory
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostCategory'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostCategory'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/{id}:
+    get:
+      summary: Get CostCategory by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CostCategory'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update CostCategory by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostCategory'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CostCategory'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete CostCategory by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/count:
+    get:
+      summary: Count the number of CostCategory
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of CostCategory by CostCategoryFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostCategoryFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/search:
+    post:
+      summary: Search CostCategory by CostCategoryFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CostCategoryFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CostCategory'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Resource:
@@ -2295,7 +3506,7 @@ components:
       type: object
       required:
         - Name
-        - Asassignee
+        - Employee
         - StartingDate
         - EndDate
         - Milestones
@@ -2307,10 +3518,13 @@ components:
           type: string
           minLength: 0
           maxLength: 40
-        Asassignee:
+        Description:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 200
+        Employee:
+          type: integer
+          format: int32
         StartingDate:
         EndDate:
         Milestones:
@@ -2349,17 +3563,25 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Asassignee:
+                Description:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 StartingDate:
                   oneOf:
                 EndDate:
@@ -2407,17 +3629,25 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Asassignee:
+                Description:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
+                Employee:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 StartingDate:
                   oneOf:
                 EndDate:
@@ -2451,10 +3681,11 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Asassignee:
+                Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
+                Employee:
                 StartingDate:
                 EndDate:
                 Milestones:
@@ -2473,10 +3704,13 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Asassignee:
+                Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
+                Employee:
+                  type: integer
+                  format: int32
                 StartingDate:
                 EndDate:
                 Milestones:
@@ -2497,10 +3731,13 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Asassignee:
+                Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
+                Employee:
+                  type: integer
+                  format: int32
                 StartingDate:
                 EndDate:
                 Milestones:
@@ -2521,10 +3758,13 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Asassignee:
+                Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
+                Employee:
+                  type: integer
+                  format: int32
                 StartingDate:
                 EndDate:
                 Milestones:
@@ -2545,10 +3785,13 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Asassignee:
+                Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
+                Employee:
+                  type: integer
+                  format: int32
                 StartingDate:
                 EndDate:
                 Milestones:
@@ -2561,12 +3804,12 @@ components:
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Asassignee", "StartingDate", "EndDate", "Milestones", "Version", "Notes"]
+          example: ["Id", "Name", "Description", "Employee", "StartingDate", "EndDate", "Milestones", "Version", "Notes"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Asassignee,StartingDate,EndDate,Milestones,Version,Notes"
+            example: "Id,Name,Description,Employee,StartingDate,EndDate,Milestones,Version,Notes"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3002,6 +4245,696 @@ components:
           minLength: 0
           maxLength: 20
     StatusTypeFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+        $select:
+          type: array
+          example: ["Id", "Name"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Budget:
+      type: object
+      required:
+        - InitialBudget
+        - CostEstimation
+        - IsApproved
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        InitialBudget:
+          type: number
+          format: double
+        CostEstimation:
+          type: number
+          format: double
+        Reserves:
+          type: string
+          minLength: 0
+          maxLength: 20
+        IsApproved:
+          type: boolean
+        Project:
+          type: integer
+          format: int32
+    BudgetFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                InitialBudget:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CostEstimation:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Reserves:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IsApproved:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                Project:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                InitialBudget:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CostEstimation:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Reserves:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IsApproved:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                Project:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                InitialBudget:
+                CostEstimation:
+                Reserves:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsApproved:
+                Project:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                InitialBudget:
+                  type: number
+                  format: double
+                CostEstimation:
+                  type: number
+                  format: double
+                Reserves:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsApproved:
+                Project:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                InitialBudget:
+                  type: number
+                  format: double
+                CostEstimation:
+                  type: number
+                  format: double
+                Reserves:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsApproved:
+                Project:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                InitialBudget:
+                  type: number
+                  format: double
+                CostEstimation:
+                  type: number
+                  format: double
+                Reserves:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsApproved:
+                Project:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                InitialBudget:
+                  type: number
+                  format: double
+                CostEstimation:
+                  type: number
+                  format: double
+                Reserves:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsApproved:
+                Project:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Name", "InitialBudget", "CostEstimation", "Reserves", "IsApproved", "Project"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,InitialBudget,CostEstimation,Reserves,IsApproved,Project"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Cost:
+      type: object
+      required:
+        - ActualCost
+        - CostCategory
+        - Project
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        ActualCost:
+          type: number
+          format: double
+        CostCategory:
+          type: integer
+          format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 200
+        Project:
+          type: integer
+          format: int32
+    CostFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                ActualCost:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CostCategory:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Project:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                ActualCost:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CostCategory:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                Project:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                ActualCost:
+                CostCategory:
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Project:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                ActualCost:
+                  type: number
+                  format: double
+                CostCategory:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Project:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                ActualCost:
+                  type: number
+                  format: double
+                CostCategory:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Project:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                ActualCost:
+                  type: number
+                  format: double
+                CostCategory:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Project:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                ActualCost:
+                  type: number
+                  format: double
+                CostCategory:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                Project:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Name", "ActualCost", "CostCategory", "Description", "Project"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,ActualCost,CostCategory,Description,Project"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    CostCategory:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+    CostCategoryFilterOptions:
       type: object
       properties:
         $filter:

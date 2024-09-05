@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -125,6 +125,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsEmployee: $scope.optionsEmployee,
 			});
 		};
 
@@ -132,13 +133,17 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedEntity = null;
 			$scope.action = "create";
 
-			messageHub.postMessage("createEntity");
+			messageHub.postMessage("createEntity", {
+				entity: {},
+				optionsEmployee: $scope.optionsEmployee,
+			});
 		};
 
 		$scope.updateEntity = function () {
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsEmployee: $scope.optionsEmployee,
 			});
 		};
 
@@ -175,7 +180,31 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
+				optionsEmployee: $scope.optionsEmployee,
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsEmployee = [];
+
+
+		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
+			$scope.optionsEmployee = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.FirstName
+				}
+			});
+		});
+
+		$scope.optionsEmployeeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
+				if ($scope.optionsEmployee[i].value === optionKey) {
+					return $scope.optionsEmployee[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);
