@@ -6,12 +6,14 @@
 const viewData = {
     id: "Deliverable-details",
     label: "Deliverable",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-window/index.html",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/main-details/index.html",
     perspectiveName: "Deliverable",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

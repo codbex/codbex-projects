@@ -1450,7 +1450,7 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "deliverable",
                 "menuLabel": "Deliverable",
