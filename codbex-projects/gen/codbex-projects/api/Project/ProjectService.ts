@@ -125,8 +125,8 @@ class ProjectService {
         if (entity.Name?.length > 40) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
         }
-        if (entity.Description?.length > 200) {
-            throw new ValidationError(`The 'Description' exceeds the maximum length of [200] characters`);
+        if (entity.Description?.length > 2000) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [2000] characters`);
         }
         if (entity.Employee === null || entity.Employee === undefined) {
             throw new ValidationError(`The 'Employee' property is required, provide a valid value`);

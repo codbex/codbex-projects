@@ -151,8 +151,8 @@ class ResourceService {
         if (entity.Quantity === null || entity.Quantity === undefined) {
             throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
         }
-        if (entity.Prize === null || entity.Prize === undefined) {
-            throw new ValidationError(`The 'Prize' property is required, provide a valid value`);
+        if (entity.Price === null || entity.Price === undefined) {
+            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

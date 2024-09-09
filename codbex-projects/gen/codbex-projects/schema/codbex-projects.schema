@@ -65,7 +65,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 2000,
                         "nullable": true,
                         "name": "PROJECT_DESCRIPTION"
                     },
@@ -364,68 +364,6 @@
                 ]
             },
             {
-                "name": "CODBEX_FORECAST",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "FORECAST_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "name": "FORECAST_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "FORECAST_PROJECT"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "name": "FORECAST_FORECASTEDCOST"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "FORECAST_FORECASTDATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "FORECAST_DESCRIPTION"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "FORECAST_EARNEDVALUE"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 7,
-                        "precision": "5",
-                        "scale": "2",
-                        "name": "FORECAST_COSTPERFORMANCEINDEX"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 7,
-                        "precision": "5",
-                        "scale": "2",
-                        "name": "FORECAST_SCHEDULEPERFORMANCEINDEX"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_EXPENSE",
                 "type": "TABLE",
                 "columns": [
@@ -582,59 +520,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "TASK_RESOURCE"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_VARIANCEANALYSIS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "VARIANCEANALYSIS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 40,
-                        "name": "VARIANCEANALYSIS_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "VARIANCEANALYSIS_PROJECT"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "name": "VARIANCEANALYSIS_PLANNEDCOST"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "name": "VARIANCEANALYSIS_ACTUALCOST"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "name": "VARIANCEANALYSIS_COSTVARIANCE"
-                    },
-                    {
-                        "type": "DATE",
-                        "name": "VARIANCEANALYSIS_ANALYSISDATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "name": "VARIANCEANALYSIS_REASON"
                     }
                 ]
             },
@@ -831,15 +716,6 @@
                 "referencedColumns": "DELIVERABLE_ID"
             },
             {
-                "name": "Forecast_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_FORECAST",
-                "constraintName": "Forecast_Project",
-                "columns": "FORECAST_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
                 "name": "Expense_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_EXPENSE",
@@ -919,15 +795,6 @@
                 "columns": "TASK_RESOURCE",
                 "referencedTable": "CODBEX_RESOURCE",
                 "referencedColumns": "RESOURCE_ID"
-            },
-            {
-                "name": "VarianceAnalysis_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_VARIANCEANALYSIS",
-                "constraintName": "VarianceAnalysis_Project",
-                "columns": "VARIANCEANALYSIS_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
             },
             {
                 "name": "TaskDependency_Task",

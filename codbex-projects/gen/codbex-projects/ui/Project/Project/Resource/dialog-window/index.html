@@ -97,16 +97,16 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPrize" dg-required="true" dg-colon="true">Prize</fd-form-label>
+                        	<fd-form-label for="idPrice" dg-required="true" dg-colon="true">Price</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
-	                        <fd-step-input dg-id="idPrize"
-								name="Prize"
-								state="{{ forms.details['Prize'].$valid ? '' : 'error' }}"
+	                        <fd-step-input dg-id="idPrice"
+								name="Price"
+								state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
 								dg-required="true"
-								ng-model="entity.Prize"
+								ng-model="entity.Price"
 								is-readonly="action === 'select'"
-								placeholder="Enter Prize"
+								placeholder="Enter Price"
 								>
 							</fd-step-input>
 	                    </div>

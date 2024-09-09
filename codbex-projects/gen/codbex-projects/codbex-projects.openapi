@@ -20,11 +20,9 @@ tags:
   - name: Deliverable
   - name: entities
   - name: Project
-  - name: Project
   - name: entities
   - name: Deliverable
   - name: Task
-  - name: Project
   - name: entities
   - name: TaskDependency
   - name: entities
@@ -4062,410 +4060,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ForecastService.ts:
-    get:
-      summary: List Forecast
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Forecast'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create Forecast
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Forecast'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Forecast'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ForecastService.ts/{id}:
-    get:
-      summary: Get Forecast by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Forecast'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update Forecast by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Forecast'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Forecast'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete Forecast by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ForecastService.ts/count:
-    get:
-      summary: Count the number of Forecast
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of Forecast by ForecastFilterOptions
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ForecastFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                      Description: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      Description: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/ForecastService.ts/search:
-    post:
-      summary: Search Forecast by ForecastFilterOptions
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ForecastFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                      Description: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      Description: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/Forecast'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
   /codbex-projects/gen/codbex-projects/api/Project/ExpenseService.ts:
     get:
       summary: List Expense
@@ -6066,410 +5660,6 @@ paths:
                 type: array
                 items:
                     $ref: '#/components/schemas/Task'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/VarianceAnalysisService.ts:
-    get:
-      summary: List VarianceAnalysis
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/VarianceAnalysis'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create VarianceAnalysis
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VarianceAnalysis'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VarianceAnalysis'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/VarianceAnalysisService.ts/{id}:
-    get:
-      summary: Get VarianceAnalysis by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/VarianceAnalysis'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update VarianceAnalysis by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VarianceAnalysis'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/VarianceAnalysis'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete VarianceAnalysis by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Project
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/VarianceAnalysisService.ts/count:
-    get:
-      summary: Count the number of VarianceAnalysis
-      tags:
-        - Project
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of VarianceAnalysis by VarianceAnalysisFilterOptions
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VarianceAnalysisFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                      Reason: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      Reason: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/VarianceAnalysisService.ts/search:
-    post:
-      summary: Search VarianceAnalysis by VarianceAnalysisFilterOptions
-      tags:
-        - Project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VarianceAnalysisFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                      Reason: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      Reason: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/VarianceAnalysis'
         403:
           description: Forbidden Error
           content:
@@ -8096,7 +7286,7 @@ components:
         - ResourceType
         - ResourceItem
         - Quantity
-        - Prize
+        - Price
       properties:
         Id:
           type: integer
@@ -8118,7 +7308,7 @@ components:
         Quantity:
           type: number
           format: double
-        Prize:
+        Price:
           type: number
           format: double
     ResourceFilterOptions:
@@ -8184,7 +7374,7 @@ components:
                       items:
                         type: number
                         format: double
-                Prize:
+                Price:
                   oneOf:
                     - type: number
                       format: double
@@ -8249,7 +7439,7 @@ components:
                       items:
                         type: number
                         format: double
-                Prize:
+                Price:
                   oneOf:
                     - type: number
                       format: double
@@ -8272,7 +7462,7 @@ components:
                   minLength: 0
                   maxLength: 200
                 Quantity:
-                Prize:
+                Price:
             greaterThan:
               type: object
               properties:
@@ -8296,7 +7486,7 @@ components:
                 Quantity:
                   type: number
                   format: double
-                Prize:
+                Price:
                   type: number
                   format: double
             greaterThanOrEqual:
@@ -8322,7 +7512,7 @@ components:
                 Quantity:
                   type: number
                   format: double
-                Prize:
+                Price:
                   type: number
                   format: double
             lessThan:
@@ -8348,7 +7538,7 @@ components:
                 Quantity:
                   type: number
                   format: double
-                Prize:
+                Price:
                   type: number
                   format: double
             lessThanOrEqual:
@@ -8374,17 +7564,17 @@ components:
                 Quantity:
                   type: number
                   format: double
-                Prize:
+                Price:
                   type: number
                   format: double
         $select:
           type: array
-          example: ["Id", "Name", "Project", "ResourceType", "ResourceItem", "Quantity", "Prize"]
+          example: ["Id", "Name", "Project", "ResourceType", "ResourceItem", "Quantity", "Price"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Project,ResourceType,ResourceItem,Quantity,Prize"
+            example: "Id,Name,Project,ResourceType,ResourceItem,Quantity,Price"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -8414,7 +7604,7 @@ components:
         Description:
           type: string
           minLength: 0
-          maxLength: 200
+          maxLength: 2000
         Employee:
           type: integer
           format: int32
@@ -8462,13 +7652,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 200
+                      maxLength: 2000
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 200
+                        maxLength: 2000
                 Employee:
                   oneOf:
                     - type: integer
@@ -8534,13 +7724,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 200
+                      maxLength: 2000
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 200
+                        maxLength: 2000
                 Employee:
                   oneOf:
                     - type: integer
@@ -8591,7 +7781,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 200
+                  maxLength: 2000
                 Employee:
                 StartingDate:
                 EndDate:
@@ -8614,7 +7804,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 200
+                  maxLength: 2000
                 Employee:
                   type: integer
                   format: int32
@@ -8643,7 +7833,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 200
+                  maxLength: 2000
                 Employee:
                   type: integer
                   format: int32
@@ -8672,7 +7862,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 200
+                  maxLength: 2000
                 Employee:
                   type: integer
                   format: int32
@@ -8701,7 +7891,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 200
+                  maxLength: 2000
                 Employee:
                   type: integer
                   format: int32
@@ -10467,355 +9657,6 @@ components:
         $limit:
           type: integer
           example: 10
-    Forecast:
-      type: object
-      required:
-        - Name
-        - Project
-        - ForecastedCost
-        - EarnedValue
-        - CostPerformanceIndex
-        - SchedulePerformanceIndex
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 20
-        Project:
-          type: integer
-          format: int32
-        ForecastedCost:
-          type: number
-          format: double
-        ForecastDate:
-        Description:
-          type: string
-          minLength: 0
-          maxLength: 200
-        EarnedValue:
-          type: number
-          format: double
-        CostPerformanceIndex:
-          type: number
-          format: double
-        SchedulePerformanceIndex:
-          type: number
-          format: double
-    ForecastFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Project:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                ForecastedCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                ForecastDate:
-                  oneOf:
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                EarnedValue:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                CostPerformanceIndex:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                SchedulePerformanceIndex:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                Project:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                ForecastedCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                ForecastDate:
-                  oneOf:
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                EarnedValue:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                CostPerformanceIndex:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                SchedulePerformanceIndex:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-            contains:
-              type: object
-              properties:
-                Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Project:
-                ForecastedCost:
-                ForecastDate:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                EarnedValue:
-                CostPerformanceIndex:
-                SchedulePerformanceIndex:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Project:
-                  type: integer
-                  format: int32
-                ForecastedCost:
-                  type: number
-                  format: double
-                ForecastDate:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                EarnedValue:
-                  type: number
-                  format: double
-                CostPerformanceIndex:
-                  type: number
-                  format: double
-                SchedulePerformanceIndex:
-                  type: number
-                  format: double
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Project:
-                  type: integer
-                  format: int32
-                ForecastedCost:
-                  type: number
-                  format: double
-                ForecastDate:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                EarnedValue:
-                  type: number
-                  format: double
-                CostPerformanceIndex:
-                  type: number
-                  format: double
-                SchedulePerformanceIndex:
-                  type: number
-                  format: double
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Project:
-                  type: integer
-                  format: int32
-                ForecastedCost:
-                  type: number
-                  format: double
-                ForecastDate:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                EarnedValue:
-                  type: number
-                  format: double
-                CostPerformanceIndex:
-                  type: number
-                  format: double
-                SchedulePerformanceIndex:
-                  type: number
-                  format: double
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                Project:
-                  type: integer
-                  format: int32
-                ForecastedCost:
-                  type: number
-                  format: double
-                ForecastDate:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                EarnedValue:
-                  type: number
-                  format: double
-                CostPerformanceIndex:
-                  type: number
-                  format: double
-                SchedulePerformanceIndex:
-                  type: number
-                  format: double
-        $select:
-          type: array
-          example: ["Id", "Name", "Project", "ForecastedCost", "ForecastDate", "Description", "EarnedValue", "CostPerformanceIndex", "SchedulePerformanceIndex"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Name,Project,ForecastedCost,ForecastDate,Description,EarnedValue,CostPerformanceIndex,SchedulePerformanceIndex"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
     Expense:
       type: object
       required:
@@ -11885,323 +10726,6 @@ components:
         $sort:
           - type: string
             example: "Id,Name,Description,Deliverable,Status,StartDate,EndDate,Resource"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    VarianceAnalysis:
-      type: object
-      required:
-        - Name
-        - PlannedCost
-        - ActualCost
-        - CostVariance
-        - AnalysisDate
-        - Reason
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 40
-        Project:
-          type: integer
-          format: int32
-        PlannedCost:
-          type: number
-          format: double
-        ActualCost:
-          type: number
-          format: double
-        CostVariance:
-          type: number
-          format: double
-        AnalysisDate:
-        Reason:
-          type: string
-          minLength: 0
-          maxLength: 200
-    VarianceAnalysisFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
-                Project:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                PlannedCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                ActualCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                CostVariance:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                AnalysisDate:
-                  oneOf:
-                Reason:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
-                Project:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                PlannedCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                ActualCost:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                CostVariance:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                AnalysisDate:
-                  oneOf:
-                Reason:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-            contains:
-              type: object
-              properties:
-                Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-                Project:
-                PlannedCost:
-                ActualCost:
-                CostVariance:
-                AnalysisDate:
-                Reason:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                PlannedCost:
-                  type: number
-                  format: double
-                ActualCost:
-                  type: number
-                  format: double
-                CostVariance:
-                  type: number
-                  format: double
-                AnalysisDate:
-                Reason:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                PlannedCost:
-                  type: number
-                  format: double
-                ActualCost:
-                  type: number
-                  format: double
-                CostVariance:
-                  type: number
-                  format: double
-                AnalysisDate:
-                Reason:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                PlannedCost:
-                  type: number
-                  format: double
-                ActualCost:
-                  type: number
-                  format: double
-                CostVariance:
-                  type: number
-                  format: double
-                AnalysisDate:
-                Reason:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                PlannedCost:
-                  type: number
-                  format: double
-                ActualCost:
-                  type: number
-                  format: double
-                CostVariance:
-                  type: number
-                  format: double
-                AnalysisDate:
-                Reason:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-        $select:
-          type: array
-          example: ["Id", "Name", "Project", "PlannedCost", "ActualCost", "CostVariance", "AnalysisDate", "Reason"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Name,Project,PlannedCost,ActualCost,CostVariance,AnalysisDate,Reason"
         $order:
           type: string
           enum: ["asc", "desc"]

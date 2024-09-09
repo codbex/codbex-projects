@@ -10,7 +10,7 @@ export interface ResourceEntity {
     ResourceType: number;
     ResourceItem: string;
     Quantity: number;
-    Prize: number;
+    Price: number;
 }
 
 export interface ResourceCreateEntity {
@@ -19,7 +19,7 @@ export interface ResourceCreateEntity {
     readonly ResourceType: number;
     readonly ResourceItem: string;
     readonly Quantity: number;
-    readonly Prize: number;
+    readonly Price: number;
 }
 
 export interface ResourceUpdateEntity extends ResourceCreateEntity {
@@ -35,7 +35,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number | number[];
             ResourceItem?: string | string[];
             Quantity?: number | number[];
-            Prize?: number | number[];
+            Price?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -44,7 +44,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number | number[];
             ResourceItem?: string | string[];
             Quantity?: number | number[];
-            Prize?: number | number[];
+            Price?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -53,7 +53,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number;
             ResourceItem?: string;
             Quantity?: number;
-            Prize?: number;
+            Price?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -62,7 +62,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number;
             ResourceItem?: string;
             Quantity?: number;
-            Prize?: number;
+            Price?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -71,7 +71,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number;
             ResourceItem?: string;
             Quantity?: number;
-            Prize?: number;
+            Price?: number;
         };
         lessThan?: {
             Id?: number;
@@ -80,7 +80,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number;
             ResourceItem?: string;
             Quantity?: number;
-            Prize?: number;
+            Price?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -89,7 +89,7 @@ export interface ResourceEntityOptions {
             ResourceType?: number;
             ResourceItem?: string;
             Quantity?: number;
-            Prize?: number;
+            Price?: number;
         };
     },
     $select?: (keyof ResourceEntity)[],
@@ -156,7 +156,7 @@ export class ResourceRepository {
                 required: true
             },
             {
-                name: "Prize",
+                name: "Price",
                 column: "RESOURCE_PRIZE",
                 type: "DECIMAL",
                 required: true
