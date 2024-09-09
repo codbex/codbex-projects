@@ -54,6 +54,28 @@
             "delimEnclosing": "\"",
             "distinguishEmptyFromNull": true,
             "version": "1.0"
+        },
+        {
+            "table": "CODBEX_APPROVALSTATUS",
+            "schema": "PUBLIC",
+            "file": "/codbex-projects-data/approval-status.csv",
+            "header": true,
+            "useHeaderNames": true,
+            "delimField": ",",
+            "delimEnclosing": "\"",
+            "distinguishEmptyFromNull": true,
+            "version": "1.0"
+        },
+        {
+            "table": "CODBEX_DEPENDENCYTYPE",
+            "schema": "PUBLIC",
+            "file": "/codbex-projects-data/task-dependency-type.csv",
+            "header": true,
+            "useHeaderNames": true,
+            "delimField": ",",
+            "delimEnclosing": "\"",
+            "distinguishEmptyFromNull": true,
+            "version": "1.0"
         }
     ]
 }
