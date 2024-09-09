@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Resources.Status';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Task.Task';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Task/TaskService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-projects-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Resources" && e.view === "Status" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Resources" && e.view === "Status" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Task" && e.view === "Task" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Task" && e.view === "Task" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Status", `Unable to count Status: '${response.message}'`);
+					messageHub.showAlertError("Task", `Unable to count Task: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,9 +89,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Status", `Unable to list/filter Status: '${response.message}'`);
+						messageHub.showAlertError("Task", `Unable to list/filter Task: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.StartDate) {
+							e.StartDate = new Date(e.StartDate);
+						}
+						if (e.EndDate) {
+							e.EndDate = new Date(e.EndDate);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});
@@ -104,50 +114,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Status-details", {
+			messageHub.showDialogWindow("Task-details", {
 				action: "select",
 				entity: entity,
-				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
-				optionsMilestoneReport: $scope.optionsMilestoneReport,
+				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Status-filter", {
+			messageHub.showDialogWindow("Task-filter", {
 				entity: $scope.filterEntity,
-				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
-				optionsMilestoneReport: $scope.optionsMilestoneReport,
+				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Status-details", {
+			messageHub.showDialogWindow("Task-details", {
 				action: "create",
 				entity: {},
-				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
-				optionsMilestoneReport: $scope.optionsMilestoneReport,
+				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Status-details", {
+			messageHub.showDialogWindow("Task-details", {
 				action: "update",
 				entity: entity,
-				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
-				optionsMilestoneReport: $scope.optionsMilestoneReport,
+				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Status?',
-				`Are you sure you want to delete Status? This action cannot be undone.`,
+				'Delete Task?',
+				`Are you sure you want to delete Task? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -162,7 +168,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Status", `Unable to delete Status: '${response.message}'`);
+							messageHub.showAlertError("Task", `Unable to delete Task: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -173,13 +179,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsProject = [];
-		$scope.optionsStatusType = [];
-		$scope.optionsMilestoneReport = [];
+		$scope.optionsDeliverable = [];
+		$scope.optionsStatus = [];
 
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
-			$scope.optionsProject = response.data.map(e => {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts").then(function (response) {
+			$scope.optionsDeliverable = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -187,8 +192,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts").then(function (response) {
-			$scope.optionsStatusType = response.data.map(e => {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Resources/StatusService.ts").then(function (response) {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -196,35 +201,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/MilestoneReportService.ts").then(function (response) {
-			$scope.optionsMilestoneReport = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsProjectValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProject.length; i++) {
-				if ($scope.optionsProject[i].value === optionKey) {
-					return $scope.optionsProject[i].text;
+		$scope.optionsDeliverableValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsDeliverable.length; i++) {
+				if ($scope.optionsDeliverable[i].value === optionKey) {
+					return $scope.optionsDeliverable[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsStatusTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatusType.length; i++) {
-				if ($scope.optionsStatusType[i].value === optionKey) {
-					return $scope.optionsStatusType[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsMilestoneReportValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsMilestoneReport.length; i++) {
-				if ($scope.optionsMilestoneReport[i].value === optionKey) {
-					return $scope.optionsMilestoneReport[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

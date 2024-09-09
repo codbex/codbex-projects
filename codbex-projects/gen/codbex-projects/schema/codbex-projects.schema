@@ -304,6 +304,11 @@
                         "length": 100,
                         "nullable": true,
                         "name": "MILESTONEREPORT_NOTES"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "MILESTONEREPORT_DELIVERABLE"
                     }
                 ]
             },
@@ -466,6 +471,96 @@
                 ]
             },
             {
+                "name": "CODBEX_DELIVERABLE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "DELIVERABLE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "DELIVERABLE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "DELIVERABLE_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "DELIVERABLE_PROJECT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "DELIVERABLE_COSTESTIMATION"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "DELIVERABLE_ACTUALCOST"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "DELIVERABLE_RESOURCE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_TASK",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "TASK_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "TASK_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "TASK_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TASK_DELIVERABLE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TASK_STATUS"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "TASK_STARTDATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "TASK_ENDDATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TASK_RESOURCE"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -556,6 +651,15 @@
                 "referencedColumns": "COSTCATEGORY_ID"
             },
             {
+                "name": "MilestoneReport_Deliverable",
+                "type": "foreignKey",
+                "table": "CODBEX_MILESTONEREPORT",
+                "constraintName": "MilestoneReport_Deliverable",
+                "columns": "MILESTONEREPORT_DELIVERABLE",
+                "referencedTable": "CODBEX_DELIVERABLE",
+                "referencedColumns": "DELIVERABLE_ID"
+            },
+            {
                 "name": "Forecast_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_FORECAST",
@@ -590,6 +694,51 @@
                 "columns": "EXPENSE_EXPENSECATEGORY",
                 "referencedTable": "CODBEX_EXPENSECATEGORY",
                 "referencedColumns": "EXPENSECATEGORY_ID"
+            },
+            {
+                "name": "Deliverable_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_DELIVERABLE",
+                "constraintName": "Deliverable_Project",
+                "columns": "DELIVERABLE_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Deliverable_Resource",
+                "type": "foreignKey",
+                "table": "CODBEX_DELIVERABLE",
+                "constraintName": "Deliverable_Resource",
+                "columns": "DELIVERABLE_RESOURCE",
+                "referencedTable": "CODBEX_RESOURCE",
+                "referencedColumns": "RESOURCE_ID"
+            },
+            {
+                "name": "Task_Deliverable",
+                "type": "foreignKey",
+                "table": "CODBEX_TASK",
+                "constraintName": "Task_Deliverable",
+                "columns": "TASK_DELIVERABLE",
+                "referencedTable": "CODBEX_DELIVERABLE",
+                "referencedColumns": "DELIVERABLE_ID"
+            },
+            {
+                "name": "Task_Status",
+                "type": "foreignKey",
+                "table": "CODBEX_TASK",
+                "constraintName": "Task_Status",
+                "columns": "TASK_STATUS",
+                "referencedTable": "CODBEX_STATUS",
+                "referencedColumns": "STATUS_ID"
+            },
+            {
+                "name": "Task_Resource",
+                "type": "foreignKey",
+                "table": "CODBEX_TASK",
+                "constraintName": "Task_Resource",
+                "columns": "TASK_RESOURCE",
+                "referencedTable": "CODBEX_RESOURCE",
+                "referencedColumns": "RESOURCE_ID"
             }
         ]
     },
