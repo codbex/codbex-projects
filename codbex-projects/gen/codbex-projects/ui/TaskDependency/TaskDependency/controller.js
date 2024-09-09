@@ -109,6 +109,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsPredecessorTask: $scope.optionsPredecessorTask,
 				optionsSuccessorTask: $scope.optionsSuccessorTask,
+				optionsDependencyType: $scope.optionsDependencyType,
 			});
 		};
 
@@ -117,6 +118,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsPredecessorTask: $scope.optionsPredecessorTask,
 				optionsSuccessorTask: $scope.optionsSuccessorTask,
+				optionsDependencyType: $scope.optionsDependencyType,
 			});
 		};
 
@@ -127,6 +129,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsPredecessorTask: $scope.optionsPredecessorTask,
 				optionsSuccessorTask: $scope.optionsSuccessorTask,
+				optionsDependencyType: $scope.optionsDependencyType,
 			}, null, false);
 		};
 
@@ -136,6 +139,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsPredecessorTask: $scope.optionsPredecessorTask,
 				optionsSuccessorTask: $scope.optionsSuccessorTask,
+				optionsDependencyType: $scope.optionsDependencyType,
 			}, null, false);
 		};
 
@@ -171,6 +175,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsPredecessorTask = [];
 		$scope.optionsSuccessorTask = [];
+		$scope.optionsDependencyType = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Task/TaskService.ts").then(function (response) {
@@ -191,6 +196,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts").then(function (response) {
+			$scope.optionsDependencyType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsPredecessorTaskValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsPredecessorTask.length; i++) {
 				if ($scope.optionsPredecessorTask[i].value === optionKey) {
@@ -203,6 +217,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsSuccessorTask.length; i++) {
 				if ($scope.optionsSuccessorTask[i].value === optionKey) {
 					return $scope.optionsSuccessorTask[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsDependencyTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsDependencyType.length; i++) {
+				if ($scope.optionsDependencyType[i].value === optionKey) {
+					return $scope.optionsDependencyType[i].text;
 				}
 			}
 			return null;

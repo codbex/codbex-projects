@@ -8,14 +8,14 @@ export interface TaskDependencyEntity {
     Name: string;
     PredecessorTask: number;
     SuccessorTask: number;
-    DependencyType?: number;
+    DependencyType: number;
 }
 
 export interface TaskDependencyCreateEntity {
     readonly Name: string;
     readonly PredecessorTask: number;
     readonly SuccessorTask: number;
-    readonly DependencyType?: number;
+    readonly DependencyType: number;
 }
 
 export interface TaskDependencyUpdateEntity extends TaskDependencyCreateEntity {
@@ -130,6 +130,7 @@ export class TaskDependencyRepository {
                 name: "DependencyType",
                 column: "TASKDEPENDENCY_DEPENDENCYTYPE",
                 type: "INTEGER",
+                required: true
             }
         ]
     };

@@ -131,6 +131,9 @@ class TaskDependencyService {
         if (entity.SuccessorTask === null || entity.SuccessorTask === undefined) {
             throw new ValidationError(`The 'SuccessorTask' property is required, provide a valid value`);
         }
+        if (entity.DependencyType === null || entity.DependencyType === undefined) {
+            throw new ValidationError(`The 'DependencyType' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

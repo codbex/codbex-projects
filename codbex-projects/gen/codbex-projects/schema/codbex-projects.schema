@@ -682,7 +682,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
                         "name": "TASKDEPENDENCY_DEPENDENCYTYPE"
                     }
                 ]

@@ -12346,6 +12346,7 @@ components:
         - Name
         - PredecessorTask
         - SuccessorTask
+        - DependencyType
       properties:
         Id:
           type: integer

@@ -16,6 +16,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsPredecessorTask = params.optionsPredecessorTask;
 			$scope.optionsSuccessorTask = params.optionsSuccessorTask;
+			$scope.optionsDependencyType = params.optionsDependencyType;
 		}
 
 		$scope.filter = function () {
