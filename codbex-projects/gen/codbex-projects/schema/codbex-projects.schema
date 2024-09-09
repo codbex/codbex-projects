@@ -27,6 +27,11 @@
                         "name": "RESOURCE_RESOURCETYPE"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "RESOURCE_RESOURCEITEM"
+                    },
+                    {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
@@ -264,6 +269,7 @@
                     },
                     {
                         "type": "BOOLEAN",
+                        "nullable": true,
                         "name": "COST_ISCOMMITTED"
                     }
                 ]

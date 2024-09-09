@@ -34,6 +34,7 @@
 					<tr fd-table-row>
 						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>ResourceType</th>
+						<th fd-table-header-cell>ResourceItem</th>
 						<th fd-table-header-cell>Quantity</th>
 						<th fd-table-header-cell>Prize</th>
 						<th fd-table-header-cell></th>
@@ -49,6 +50,7 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsResourceTypeValue(next.ResourceType)}}
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.ResourceItem}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Quantity}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Prize}}</td>
 						<td fd-table-cell fit-content="true">

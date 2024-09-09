@@ -64,6 +64,18 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "200",
+                        "dataName": "RESOURCE_RESOURCEITEM",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "ResourceItem",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataLength": "18",
                         "dataName": "RESOURCE_QUANTITY",
                         "dataNullable": "false",
@@ -342,10 +354,10 @@
                 "menuLabel": "Status",
                 "name": "Status",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "Resources",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/question.svg",
+                "perspectiveLabel": "Status",
+                "perspectiveName": "Status",
+                "perspectiveOrder": "600",
                 "perspectiveRole": "",
                 "title": "Status",
                 "tooltip": "Status",
@@ -801,9 +813,8 @@
                     },
                     {
                         "dataName": "COST_ISCOMMITTED",
-                        "dataNullable": "false",
+                        "dataNullable": "true",
                         "dataType": "BOOLEAN",
-                        "isRequiredProperty": "true",
                         "name": "IsCommitted",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
@@ -1587,7 +1598,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Task_Status",
                         "relationshipEntityName": "Status",
-                        "relationshipEntityPerspectiveName": "Resources",
+                        "relationshipEntityPerspectiveName": "Status",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -1912,10 +1923,10 @@
                 "menuLabel": "TaskDependency",
                 "name": "TaskDependency",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/notes.svg",
-                "perspectiveLabel": "Task",
-                "perspectiveName": "Task",
-                "perspectiveOrder": "400",
+                "perspectiveIcon": "/services/web/resources/unicons/comment.svg",
+                "perspectiveLabel": "TaskDependency",
+                "perspectiveName": "TaskDependency",
+                "perspectiveOrder": "450",
                 "perspectiveRole": "",
                 "title": "TaskDependency",
                 "tooltip": "TaskDependency",
@@ -2056,13 +2067,6 @@
                 "role": {}
             },
             {
-                "name": "Status",
-                "label": "Status",
-                "icon": "/services/web/resources/unicons/question.svg",
-                "order": "600",
-                "role": {}
-            },
-            {
                 "name": "Deliverable",
                 "label": "Deliverable",
                 "icon": "/services/web/resources/unicons/expand-alt.svg",
@@ -2088,6 +2092,13 @@
                 "label": "TaskDependency",
                 "icon": "/services/web/resources/unicons/comment.svg",
                 "order": "450",
+                "role": {}
+            },
+            {
+                "name": "Status",
+                "label": "Status",
+                "icon": "/services/web/resources/unicons/question.svg",
+                "order": "600",
                 "role": {}
             }
         ],

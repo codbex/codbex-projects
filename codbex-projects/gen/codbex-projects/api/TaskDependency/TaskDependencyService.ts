@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ResourceRepository, ResourceEntityOptions } from "../../dao/Project/ResourceRepository";
+import { TaskDependencyRepository, TaskDependencyEntityOptions } from "../../dao/TaskDependency/TaskDependencyRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Resource", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-TaskDependency-TaskDependency", ["validate"]);
 
 @Controller
-class ResourceService {
+class TaskDependencyService {
 
-    private readonly repository = new ResourceRepository();
+    private readonly repository = new TaskDependencyRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ResourceEntityOptions = {
+            const options: TaskDependencyEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let Project = parseInt(ctx.queryParameters.Project);
-            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
-
-            if (Project !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Project: Project
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class ResourceService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/TaskDependency/TaskDependencyService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class ResourceService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Resource not found");
+                HttpUtils.sendResponseNotFound("TaskDependency not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class ResourceService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Resource not found");
+                HttpUtils.sendResponseNotFound("TaskDependency not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -133,26 +122,14 @@ class ResourceService {
         if (entity.Name === null || entity.Name === undefined) {
             throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 20) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        if (entity.Name?.length > 30) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [30] characters`);
         }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        if (entity.PredecessorTask === null || entity.PredecessorTask === undefined) {
+            throw new ValidationError(`The 'PredecessorTask' property is required, provide a valid value`);
         }
-        if (entity.ResourceType === null || entity.ResourceType === undefined) {
-            throw new ValidationError(`The 'ResourceType' property is required, provide a valid value`);
-        }
-        if (entity.ResourceItem === null || entity.ResourceItem === undefined) {
-            throw new ValidationError(`The 'ResourceItem' property is required, provide a valid value`);
-        }
-        if (entity.ResourceItem?.length > 200) {
-            throw new ValidationError(`The 'ResourceItem' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Quantity === null || entity.Quantity === undefined) {
-            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
-        }
-        if (entity.Prize === null || entity.Prize === undefined) {
-            throw new ValidationError(`The 'Prize' property is required, provide a valid value`);
+        if (entity.SuccessorTask === null || entity.SuccessorTask === undefined) {
+            throw new ValidationError(`The 'SuccessorTask' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

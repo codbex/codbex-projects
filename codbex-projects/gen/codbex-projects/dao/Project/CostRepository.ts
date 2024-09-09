@@ -12,7 +12,7 @@ export interface CostEntity {
     CostCategory: number;
     Description?: string;
     CommitmentDate: Date;
-    IsCommitted: boolean;
+    IsCommitted?: boolean;
 }
 
 export interface CostCreateEntity {
@@ -22,7 +22,7 @@ export interface CostCreateEntity {
     readonly CostCategory: number;
     readonly Description?: string;
     readonly CommitmentDate: Date;
-    readonly IsCommitted: boolean;
+    readonly IsCommitted?: boolean;
 }
 
 export interface CostUpdateEntity extends CostCreateEntity {
@@ -175,7 +175,6 @@ export class CostRepository {
                 name: "IsCommitted",
                 column: "COST_ISCOMMITTED",
                 type: "BOOLEAN",
-                required: true
             }
         ]
     };

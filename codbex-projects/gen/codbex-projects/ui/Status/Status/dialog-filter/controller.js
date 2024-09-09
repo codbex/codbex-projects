@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.Resource';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Status.Status';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -15,7 +15,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProject = params.optionsProject;
-			$scope.optionsResourceType = params.optionsResourceType;
+			$scope.optionsStatusType = params.optionsStatusType;
+			$scope.optionsMilestoneReport = params.optionsMilestoneReport;
 		}
 
 		$scope.filter = function () {
@@ -47,17 +48,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Project !== undefined) {
 				filter.$filter.equals.Project = entity.Project;
 			}
-			if (entity.ResourceType !== undefined) {
-				filter.$filter.equals.ResourceType = entity.ResourceType;
+			if (entity.StatusType !== undefined) {
+				filter.$filter.equals.StatusType = entity.StatusType;
 			}
-			if (entity.ResourceItem) {
-				filter.$filter.contains.ResourceItem = entity.ResourceItem;
-			}
-			if (entity.Quantity !== undefined) {
-				filter.$filter.equals.Quantity = entity.Quantity;
-			}
-			if (entity.Prize !== undefined) {
-				filter.$filter.equals.Prize = entity.Prize;
+			if (entity.MilestoneReport !== undefined) {
+				filter.$filter.equals.MilestoneReport = entity.MilestoneReport;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -72,7 +67,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Resource-filter");
+			messageHub.closeDialogWindow("Status-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

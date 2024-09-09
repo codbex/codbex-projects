@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ResourceRepository, ResourceEntityOptions } from "../../dao/Project/ResourceRepository";
+import { StatusRepository, StatusEntityOptions } from "../../dao/Status/StatusRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Resource", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Status-Status", ["validate"]);
 
 @Controller
-class ResourceService {
+class StatusService {
 
-    private readonly repository = new ResourceRepository();
+    private readonly repository = new StatusRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ResourceEntityOptions = {
+            const options: StatusEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let Project = parseInt(ctx.queryParameters.Project);
-            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
-
-            if (Project !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Project: Project
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class ResourceService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Status/StatusService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class ResourceService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Resource not found");
+                HttpUtils.sendResponseNotFound("Status not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class ResourceService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Resource not found");
+                HttpUtils.sendResponseNotFound("Status not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -139,20 +128,11 @@ class ResourceService {
         if (entity.Project === null || entity.Project === undefined) {
             throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
-        if (entity.ResourceType === null || entity.ResourceType === undefined) {
-            throw new ValidationError(`The 'ResourceType' property is required, provide a valid value`);
+        if (entity.StatusType === null || entity.StatusType === undefined) {
+            throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
         }
-        if (entity.ResourceItem === null || entity.ResourceItem === undefined) {
-            throw new ValidationError(`The 'ResourceItem' property is required, provide a valid value`);
-        }
-        if (entity.ResourceItem?.length > 200) {
-            throw new ValidationError(`The 'ResourceItem' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Quantity === null || entity.Quantity === undefined) {
-            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
-        }
-        if (entity.Prize === null || entity.Prize === undefined) {
-            throw new ValidationError(`The 'Prize' property is required, provide a valid value`);
+        if (entity.MilestoneReport === null || entity.MilestoneReport === undefined) {
+            throw new ValidationError(`The 'MilestoneReport' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);
