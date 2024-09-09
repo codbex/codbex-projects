@@ -23,6 +23,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsProject = params.optionsProject;
 			$scope.optionsEmployee = params.optionsEmployee;
 			$scope.optionsExpenseCategory = params.optionsExpenseCategory;
+			$scope.optionsApprovalStatus = params.optionsApprovalStatus;
 		}
 
 		$scope.filter = function () {
@@ -71,6 +72,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
+			}
+			if (entity.ApprovalStatus !== undefined) {
+				filter.$filter.equals.ApprovalStatus = entity.ApprovalStatus;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

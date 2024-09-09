@@ -148,6 +148,12 @@ class CostService {
         if (entity.Description?.length > 200) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [200] characters`);
         }
+        if (entity.CommitmentDate === null || entity.CommitmentDate === undefined) {
+            throw new ValidationError(`The 'CommitmentDate' property is required, provide a valid value`);
+        }
+        if (entity.IsCommitted === null || entity.IsCommitted === undefined) {
+            throw new ValidationError(`The 'IsCommitted' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

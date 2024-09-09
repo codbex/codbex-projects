@@ -38,6 +38,7 @@
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Amount</th>
 						<th fd-table-header-cell>Date</th>
+						<th fd-table-header-cell>ApprovalStatus</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -58,6 +59,9 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Amount}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next.Date" ng-readonly="true"></fd-input>
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsApprovalStatusValue(next.ApprovalStatus)}}
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>

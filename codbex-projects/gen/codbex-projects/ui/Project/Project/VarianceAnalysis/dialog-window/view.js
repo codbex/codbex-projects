@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Task-details",
-    label: "Task",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Task/Task/dialog-window/index.html",
-    perspectiveName: "Task",
+    id: "VarianceAnalysis-details",
+    label: "VarianceAnalysis",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/VarianceAnalysis/dialog-window/index.html",
+    perspectiveName: "Project",
 };
 
 if (typeof exports !== 'undefined') {

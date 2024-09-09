@@ -51,8 +51,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CostEstimation !== undefined) {
 				filter.$filter.equals.CostEstimation = entity.CostEstimation;
 			}
-			if (entity.Reserves !== undefined) {
-				filter.$filter.equals.Reserves = entity.Reserves;
+			if (entity.ContingencyReserves !== undefined) {
+				filter.$filter.equals.ContingencyReserves = entity.ContingencyReserves;
+			}
+			if (entity.ManagementReserves !== undefined) {
+				filter.$filter.equals.ManagementReserves = entity.ManagementReserves;
 			}
 			if (entity.IsApproved !== undefined && entity.isIsApprovedIndeterminate === false) {
 				filter.$filter.equals.IsApproved = entity.IsApproved;

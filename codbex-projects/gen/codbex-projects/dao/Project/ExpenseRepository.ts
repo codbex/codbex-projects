@@ -13,6 +13,7 @@ export interface ExpenseEntity {
     Description?: string;
     Amount: number;
     Date: Date;
+    ApprovalStatus: number;
 }
 
 export interface ExpenseCreateEntity {
@@ -23,6 +24,7 @@ export interface ExpenseCreateEntity {
     readonly Description?: string;
     readonly Amount: number;
     readonly Date: Date;
+    readonly ApprovalStatus: number;
 }
 
 export interface ExpenseUpdateEntity extends ExpenseCreateEntity {
@@ -40,6 +42,7 @@ export interface ExpenseEntityOptions {
             Description?: string | string[];
             Amount?: number | number[];
             Date?: Date | Date[];
+            ApprovalStatus?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -50,6 +53,7 @@ export interface ExpenseEntityOptions {
             Description?: string | string[];
             Amount?: number | number[];
             Date?: Date | Date[];
+            ApprovalStatus?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -60,6 +64,7 @@ export interface ExpenseEntityOptions {
             Description?: string;
             Amount?: number;
             Date?: Date;
+            ApprovalStatus?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -70,6 +75,7 @@ export interface ExpenseEntityOptions {
             Description?: string;
             Amount?: number;
             Date?: Date;
+            ApprovalStatus?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -80,6 +86,7 @@ export interface ExpenseEntityOptions {
             Description?: string;
             Amount?: number;
             Date?: Date;
+            ApprovalStatus?: number;
         };
         lessThan?: {
             Id?: number;
@@ -90,6 +97,7 @@ export interface ExpenseEntityOptions {
             Description?: string;
             Amount?: number;
             Date?: Date;
+            ApprovalStatus?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -100,6 +108,7 @@ export interface ExpenseEntityOptions {
             Description?: string;
             Amount?: number;
             Date?: Date;
+            ApprovalStatus?: number;
         };
     },
     $select?: (keyof ExpenseEntity)[],
@@ -174,6 +183,12 @@ export class ExpenseRepository {
                 name: "Date",
                 column: "EXPENSE_DATE",
                 type: "DATE",
+                required: true
+            },
+            {
+                name: "ApprovalStatus",
+                column: "EXPENSE_APPROVALSTATUS",
+                type: "INTEGER",
                 required: true
             }
         ]

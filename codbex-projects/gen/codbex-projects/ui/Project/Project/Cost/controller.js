@@ -111,6 +111,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("Cost", `Unable to list/filter Cost: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.CommitmentDate) {
+							e.CommitmentDate = new Date(e.CommitmentDate);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});

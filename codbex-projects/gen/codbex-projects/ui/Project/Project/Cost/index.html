@@ -36,6 +36,8 @@
 						<th fd-table-header-cell>ActualCost</th>
 						<th fd-table-header-cell>CostCategory</th>
 						<th fd-table-header-cell>Description</th>
+						<th fd-table-header-cell>CommitmentDate</th>
+						<th fd-table-header-cell>IsCommitted</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -51,6 +53,13 @@
 							{{optionsCostCategoryValue(next.CostCategory)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Description}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next.CommitmentDate" ng-readonly="true"></fd-input>
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<fd-checkbox id="idIsCommitted" compact="false" ng-disabled="true" ng-model="next.IsCommitted"></fd-checkbox>
+							<fd-checkbox-label for="idIsCommitted" empty="true"></fd-checkbox-label>
+						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

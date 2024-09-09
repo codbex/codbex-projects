@@ -11,6 +11,12 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
+			if (params?.entity?.CommitmentDateFrom) {
+				params.entity.CommitmentDateFrom = new Date(params.entity.CommitmentDateFrom);
+			}
+			if (params?.entity?.CommitmentDateTo) {
+				params.entity.CommitmentDateTo = new Date(params.entity.CommitmentDateTo);
+			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
@@ -55,6 +61,15 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
+			}
+			if (entity.CommitmentDateFrom) {
+				filter.$filter.greaterThanOrEqual.CommitmentDate = entity.CommitmentDateFrom;
+			}
+			if (entity.CommitmentDateTo) {
+				filter.$filter.lessThanOrEqual.CommitmentDate = entity.CommitmentDateTo;
+			}
+			if (entity.IsCommitted !== undefined && entity.isIsCommittedIndeterminate === false) {
+				filter.$filter.equals.IsCommitted = entity.IsCommitted;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

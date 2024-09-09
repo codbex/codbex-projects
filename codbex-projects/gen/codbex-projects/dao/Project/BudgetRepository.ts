@@ -10,7 +10,8 @@ export interface BudgetEntity {
     Project?: number;
     InitialBudget: number;
     CostEstimation: number;
-    Reserves?: number;
+    ContingencyReserves: number;
+    ManagementReserves?: number;
     IsApproved: boolean;
 }
 
@@ -19,7 +20,8 @@ export interface BudgetCreateEntity {
     readonly Project?: number;
     readonly InitialBudget: number;
     readonly CostEstimation: number;
-    readonly Reserves?: number;
+    readonly ContingencyReserves: number;
+    readonly ManagementReserves?: number;
     readonly IsApproved: boolean;
 }
 
@@ -35,7 +37,8 @@ export interface BudgetEntityOptions {
             Project?: number | number[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
-            Reserves?: number | number[];
+            ContingencyReserves?: number | number[];
+            ManagementReserves?: number | number[];
             IsApproved?: boolean | boolean[];
         };
         notEquals?: {
@@ -44,7 +47,8 @@ export interface BudgetEntityOptions {
             Project?: number | number[];
             InitialBudget?: number | number[];
             CostEstimation?: number | number[];
-            Reserves?: number | number[];
+            ContingencyReserves?: number | number[];
+            ManagementReserves?: number | number[];
             IsApproved?: boolean | boolean[];
         };
         contains?: {
@@ -53,7 +57,8 @@ export interface BudgetEntityOptions {
             Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: number;
+            ContingencyReserves?: number;
+            ManagementReserves?: number;
             IsApproved?: boolean;
         };
         greaterThan?: {
@@ -62,7 +67,8 @@ export interface BudgetEntityOptions {
             Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: number;
+            ContingencyReserves?: number;
+            ManagementReserves?: number;
             IsApproved?: boolean;
         };
         greaterThanOrEqual?: {
@@ -71,7 +77,8 @@ export interface BudgetEntityOptions {
             Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: number;
+            ContingencyReserves?: number;
+            ManagementReserves?: number;
             IsApproved?: boolean;
         };
         lessThan?: {
@@ -80,7 +87,8 @@ export interface BudgetEntityOptions {
             Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: number;
+            ContingencyReserves?: number;
+            ManagementReserves?: number;
             IsApproved?: boolean;
         };
         lessThanOrEqual?: {
@@ -89,7 +97,8 @@ export interface BudgetEntityOptions {
             Project?: number;
             InitialBudget?: number;
             CostEstimation?: number;
-            Reserves?: number;
+            ContingencyReserves?: number;
+            ManagementReserves?: number;
             IsApproved?: boolean;
         };
     },
@@ -151,7 +160,13 @@ export class BudgetRepository {
                 required: true
             },
             {
-                name: "Reserves",
+                name: "ContingencyReserves",
+                column: "BUDGET_CONTINGENCYRESERVES",
+                type: "DECIMAL",
+                required: true
+            },
+            {
+                name: "ManagementReserves",
                 column: "BUDGET_RESERVES",
                 type: "DECIMAL",
             },

@@ -142,6 +142,9 @@ class BudgetService {
         if (entity.CostEstimation === null || entity.CostEstimation === undefined) {
             throw new ValidationError(`The 'CostEstimation' property is required, provide a valid value`);
         }
+        if (entity.ContingencyReserves === null || entity.ContingencyReserves === undefined) {
+            throw new ValidationError(`The 'ContingencyReserves' property is required, provide a valid value`);
+        }
         if (entity.IsApproved === null || entity.IsApproved === undefined) {
             throw new ValidationError(`The 'IsApproved' property is required, provide a valid value`);
         }

@@ -135,6 +135,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
+				optionsApprovalStatus: $scope.optionsApprovalStatus,
 			});
 		};
 
@@ -144,6 +145,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
+				optionsApprovalStatus: $scope.optionsApprovalStatus,
 			});
 		};
 
@@ -157,6 +159,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
+				optionsApprovalStatus: $scope.optionsApprovalStatus,
 			}, null, false);
 		};
 
@@ -169,6 +172,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
+				optionsApprovalStatus: $scope.optionsApprovalStatus,
 			}, null, false);
 		};
 
@@ -205,6 +209,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsProject = [];
 		$scope.optionsEmployee = [];
 		$scope.optionsExpenseCategory = [];
+		$scope.optionsApprovalStatus = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -234,6 +239,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/ApprovalStatusService.ts").then(function (response) {
+			$scope.optionsApprovalStatus = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {
@@ -254,6 +268,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsExpenseCategory.length; i++) {
 				if ($scope.optionsExpenseCategory[i].value === optionKey) {
 					return $scope.optionsExpenseCategory[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsApprovalStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsApprovalStatus.length; i++) {
+				if ($scope.optionsApprovalStatus[i].value === optionKey) {
+					return $scope.optionsApprovalStatus[i].text;
 				}
 			}
 			return null;

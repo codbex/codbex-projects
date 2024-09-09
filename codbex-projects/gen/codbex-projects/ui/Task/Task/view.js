@@ -7,7 +7,7 @@ const viewData = {
     id: "Task",
     label: "Task",
     factory: "frame",
-    region: "center",
+    region: "left",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Task/Task/index.html",
     perspectiveName: "Task",
 };

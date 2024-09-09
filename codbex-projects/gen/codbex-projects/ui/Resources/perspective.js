@@ -5,10 +5,10 @@
  */
 const perspectiveData = {
 	id: 'Resources',
-	name: 'Status',
+	name: 'Entities',
 	link: '/services/web/codbex-projects/gen/codbex-projects/ui/Resources/index.html',
-	order: 200,
-	icon: '/services/web/resources/unicons/question.svg',
+	order: 100,
+	icon: '/services/web/resources/unicons/copy.svg',
 };
 
 if (typeof exports !== 'undefined') {

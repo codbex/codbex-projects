@@ -205,6 +205,13 @@
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
+                        "name": "BUDGET_CONTINGENCYRESERVES"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "BUDGET_RESERVES"
                     },
@@ -250,6 +257,14 @@
                         "length": 200,
                         "nullable": true,
                         "name": "COST_DESCRIPTION"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "COST_COMMITMENTDATE"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "name": "COST_ISCOMMITTED"
                     }
                 ]
             },
@@ -449,6 +464,10 @@
                     {
                         "type": "DATE",
                         "name": "EXPENSE_DATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "EXPENSE_APPROVALSTATUS"
                     }
                 ]
             },
@@ -557,6 +576,153 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "TASK_RESOURCE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_VARIANCEANALYSIS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "VARIANCEANALYSIS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "VARIANCEANALYSIS_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "VARIANCEANALYSIS_PROJECT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "VARIANCEANALYSIS_PLANNEDCOST"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "VARIANCEANALYSIS_ACTUALCOST"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "VARIANCEANALYSIS_COSTVARIANCE"
+                    },
+                    {
+                        "type": "DATE",
+                        "name": "VARIANCEANALYSIS_ANALYSISDATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "VARIANCEANALYSIS_REASON"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_APPROVALSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "APPROVALSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "APPROVALSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_TASKDEPENDENCY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "TASKDEPENDENCY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "TASKDEPENDENCY_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TASKDEPENDENCY_PREDECESSORTASK"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TASKDEPENDENCY_SUCCESSORTASK"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TASKDEPENDENCY_DEPENDENCYTYPE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_DEPENDENCYTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "DEPENDENCYTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "DEPENDENCYTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_WORKPACKAGE_",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "WORKPACKAGE__ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "WORKPACKAGE__NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "WORKPACKAGE__DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "WORKPACKAGE__TASK"
                     }
                 ]
             },
@@ -696,6 +862,15 @@
                 "referencedColumns": "EXPENSECATEGORY_ID"
             },
             {
+                "name": "Expense_ApprovalStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_EXPENSE",
+                "constraintName": "Expense_ApprovalStatus",
+                "columns": "EXPENSE_APPROVALSTATUS",
+                "referencedTable": "CODBEX_APPROVALSTATUS",
+                "referencedColumns": "APPROVALSTATUS_ID"
+            },
+            {
                 "name": "Deliverable_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_DELIVERABLE",
@@ -739,6 +914,51 @@
                 "columns": "TASK_RESOURCE",
                 "referencedTable": "CODBEX_RESOURCE",
                 "referencedColumns": "RESOURCE_ID"
+            },
+            {
+                "name": "VarianceAnalysis_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_VARIANCEANALYSIS",
+                "constraintName": "VarianceAnalysis_Project",
+                "columns": "VARIANCEANALYSIS_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "TaskDependency_Task",
+                "type": "foreignKey",
+                "table": "CODBEX_TASKDEPENDENCY",
+                "constraintName": "TaskDependency_Task",
+                "columns": "TASKDEPENDENCY_PREDECESSORTASK",
+                "referencedTable": "CODBEX_TASK",
+                "referencedColumns": "TASK_ID"
+            },
+            {
+                "name": "TaskDependency_Task",
+                "type": "foreignKey",
+                "table": "CODBEX_TASKDEPENDENCY",
+                "constraintName": "TaskDependency_Task",
+                "columns": "TASKDEPENDENCY_SUCCESSORTASK",
+                "referencedTable": "CODBEX_TASK",
+                "referencedColumns": "TASK_ID"
+            },
+            {
+                "name": "TaskDependency_DependencyType",
+                "type": "foreignKey",
+                "table": "CODBEX_TASKDEPENDENCY",
+                "constraintName": "TaskDependency_DependencyType",
+                "columns": "TASKDEPENDENCY_DEPENDENCYTYPE",
+                "referencedTable": "CODBEX_DEPENDENCYTYPE",
+                "referencedColumns": "DEPENDENCYTYPE_ID"
+            },
+            {
+                "name": "WorkPackage_Task",
+                "type": "foreignKey",
+                "table": "CODBEX_WORKPACKAGE_",
+                "constraintName": "WorkPackage_Task",
+                "columns": "WORKPACKAGE__TASK",
+                "referencedTable": "CODBEX_TASK",
+                "referencedColumns": "TASK_ID"
             }
         ]
     },

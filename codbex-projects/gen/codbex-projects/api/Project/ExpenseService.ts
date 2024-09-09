@@ -154,6 +154,9 @@ class ExpenseService {
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
+        if (entity.ApprovalStatus === null || entity.ApprovalStatus === undefined) {
+            throw new ValidationError(`The 'ApprovalStatus' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

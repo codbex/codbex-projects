@@ -35,7 +35,8 @@
 						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>InitialBudget</th>
 						<th fd-table-header-cell>CostEstimation</th>
-						<th fd-table-header-cell>Reserves</th>
+						<th fd-table-header-cell>ContingencyReserves</th>
+						<th fd-table-header-cell>ManagementReserves</th>
 						<th fd-table-header-cell>IsApproved</th>
 						<th fd-table-header-cell></th>
 					</tr>
@@ -49,7 +50,8 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.InitialBudget}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.CostEstimation}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Reserves}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.ContingencyReserves}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.ManagementReserves}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-checkbox id="idIsApproved" compact="false" ng-disabled="true" ng-model="next.IsApproved"></fd-checkbox>
 							<fd-checkbox-label for="idIsApproved" empty="true"></fd-checkbox-label>
