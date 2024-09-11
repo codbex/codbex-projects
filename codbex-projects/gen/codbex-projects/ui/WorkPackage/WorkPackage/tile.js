@@ -7,7 +7,7 @@ exports.getTile = function () {
     return {
         group: "codbex-projects",
         name: "WorkPackage",
-        caption: "Manage entity WorkPackage_",
+        caption: "Manage entity WorkPackage",
         tooltip: "WorkPackage",
         type: "PRIMARY",
         report: "false",

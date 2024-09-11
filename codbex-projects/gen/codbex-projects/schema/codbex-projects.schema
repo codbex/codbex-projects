@@ -71,8 +71,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PROJECT_EMPLOYEE"
+                        "name": "PROJECT_AGILEMETHODOLOGYTYPE"
                     },
                     {
                         "type": "TIMESTAMP",
@@ -84,9 +83,19 @@
                         "name": "PROJECT_ENDDATE"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PROJECT_MILESTONEPERIOD"
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "name": "PROJECT_SPONSORNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 300,
+                        "name": "PROJECT_OPPORTUNITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_SCOPE"
                     },
                     {
                         "type": "DECIMAL",
@@ -101,36 +110,6 @@
                         "length": 200,
                         "nullable": true,
                         "name": "PROJECT_NOTES"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_STATUS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "STATUS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "name": "STATUS_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "STATUS_PROJECT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "STATUS_STATUSTYPE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "STATUS_MILESTONEREPORT"
                     }
                 ]
             },
@@ -293,47 +272,6 @@
                 ]
             },
             {
-                "name": "CODBEX_MILESTONEREPORT",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "MILESTONEREPORT_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "name": "MILESTONEREPORT_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "MILESTONEREPORT_IMPLEMENTED"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "MILESTONEREPORT_PROBLEMS"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "MILESTONEREPORT_NOTES"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "MILESTONEREPORT_DELIVERABLE"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_MILESTONEPERIOD",
                 "type": "TABLE",
                 "columns": [
@@ -351,15 +289,16 @@
                         "name": "MILESTONEPERIOD_NAME"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
+                        "type": "INTEGER",
+                        "name": "MILESTONEPERIOD_PROJECT"
+                    },
+                    {
+                        "type": "TIMESTAMP",
                         "name": "MILESTONEPERIOD_RANGE"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
-                        "name": "MILESTONEPERIOD_COUNT"
+                        "name": "MILESTONEPERIOD_STATUSTYPE"
                     }
                 ]
             },
@@ -505,10 +444,6 @@
                         "name": "TASK_DELIVERABLE"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "TASK_STATUS"
-                    },
-                    {
                         "type": "DATE",
                         "name": "TASK_STARTDATE"
                     },
@@ -590,7 +525,7 @@
                 ]
             },
             {
-                "name": "CODBEX_WORKPACKAGE_",
+                "name": "CODBEX_WORKPACKAGE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -617,6 +552,185 @@
                 ]
             },
             {
+                "name": "CODBEX_TEAMMEMBER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "TEAMMEMBER_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TEAMMEMBER_PROJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TEAMMEMBER_EMPLOYEE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TEAMMEMBER_MEMBERROLE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_STAKEHOLDERS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STAKEHOLDERS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "STAKEHOLDERS_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "STAKEHOLDERS_ROLE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "STAKEHOLDERS_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_MEMBERROLE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "MEMBERROLE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "MEMBERROLE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_GOAL",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "GOAL_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "GOAL_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "GOAL_DESCRIPTION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "GOAL_IMPORTANCE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "GOAL_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OBJECTIVE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OBJECTIVE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "OBJECTIVE_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "OBJECTIVE_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OBJECTIVE_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_CONSTRAIN",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CONSTRAIN_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "name": "CONSTRAIN_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "CONSTRAIN_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CONSTRAIN_PROJECT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_AGILEMETHODOLOGYTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "AGILEMETHODOLOGYTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "AGILEMETHODOLOGYTYPE_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "Resource_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_RESOURCE",
@@ -635,49 +749,13 @@
                 "referencedColumns": "RESOURCETYPE_ID"
             },
             {
-                "name": "Project_Employee",
+                "name": "Project_AgileMethodologyType",
                 "type": "foreignKey",
                 "table": "CODBEX_PROJECT",
-                "constraintName": "Project_Employee",
-                "columns": "PROJECT_EMPLOYEE",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
-                "name": "Project_MilestonePeriod",
-                "type": "foreignKey",
-                "table": "CODBEX_PROJECT",
-                "constraintName": "Project_MilestonePeriod",
-                "columns": "PROJECT_MILESTONEPERIOD",
-                "referencedTable": "CODBEX_MILESTONEPERIOD",
-                "referencedColumns": "MILESTONEPERIOD_ID"
-            },
-            {
-                "name": "Status_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_STATUS",
-                "constraintName": "Status_Project",
-                "columns": "STATUS_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
-                "name": "Status_StatusType",
-                "type": "foreignKey",
-                "table": "CODBEX_STATUS",
-                "constraintName": "Status_StatusType",
-                "columns": "STATUS_STATUSTYPE",
-                "referencedTable": "CODBEX_STATUSTYPE",
-                "referencedColumns": "STATUSTYPE_ID"
-            },
-            {
-                "name": "Status_MilestoneReport",
-                "type": "foreignKey",
-                "table": "CODBEX_STATUS",
-                "constraintName": "Status_MilestoneReport",
-                "columns": "STATUS_MILESTONEREPORT",
-                "referencedTable": "CODBEX_MILESTONEREPORT",
-                "referencedColumns": "MILESTONEREPORT_ID"
+                "constraintName": "Project_AgileMethodologyType",
+                "columns": "PROJECT_AGILEMETHODOLOGYTYPE",
+                "referencedTable": "CODBEX_AGILEMETHODOLOGYTYPE",
+                "referencedColumns": "AGILEMETHODOLOGYTYPE_ID"
             },
             {
                 "name": "Budget_Project",
@@ -707,13 +785,22 @@
                 "referencedColumns": "COSTCATEGORY_ID"
             },
             {
-                "name": "MilestoneReport_Deliverable",
+                "name": "Milestone_Project",
                 "type": "foreignKey",
-                "table": "CODBEX_MILESTONEREPORT",
-                "constraintName": "MilestoneReport_Deliverable",
-                "columns": "MILESTONEREPORT_DELIVERABLE",
-                "referencedTable": "CODBEX_DELIVERABLE",
-                "referencedColumns": "DELIVERABLE_ID"
+                "table": "CODBEX_MILESTONEPERIOD",
+                "constraintName": "Milestone_Project",
+                "columns": "MILESTONEPERIOD_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Milestone_StatusType",
+                "type": "foreignKey",
+                "table": "CODBEX_MILESTONEPERIOD",
+                "constraintName": "Milestone_StatusType",
+                "columns": "MILESTONEPERIOD_STATUSTYPE",
+                "referencedTable": "CODBEX_STATUSTYPE",
+                "referencedColumns": "STATUSTYPE_ID"
             },
             {
                 "name": "Expense_Project",
@@ -779,15 +866,6 @@
                 "referencedColumns": "DELIVERABLE_ID"
             },
             {
-                "name": "Task_Status",
-                "type": "foreignKey",
-                "table": "CODBEX_TASK",
-                "constraintName": "Task_Status",
-                "columns": "TASK_STATUS",
-                "referencedTable": "CODBEX_STATUS",
-                "referencedColumns": "STATUS_ID"
-            },
-            {
                 "name": "Task_Resource",
                 "type": "foreignKey",
                 "table": "CODBEX_TASK",
@@ -826,11 +904,74 @@
             {
                 "name": "WorkPackage_Task",
                 "type": "foreignKey",
-                "table": "CODBEX_WORKPACKAGE_",
+                "table": "CODBEX_WORKPACKAGE",
                 "constraintName": "WorkPackage_Task",
                 "columns": "WORKPACKAGE__TASK",
                 "referencedTable": "CODBEX_TASK",
                 "referencedColumns": "TASK_ID"
+            },
+            {
+                "name": "TeamMember_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_TEAMMEMBER",
+                "constraintName": "TeamMember_Project",
+                "columns": "TEAMMEMBER_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "TeamMember_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_TEAMMEMBER",
+                "constraintName": "TeamMember_Employee",
+                "columns": "TEAMMEMBER_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "TeamMember_MemberRole",
+                "type": "foreignKey",
+                "table": "CODBEX_TEAMMEMBER",
+                "constraintName": "TeamMember_MemberRole",
+                "columns": "TEAMMEMBER_MEMBERROLE",
+                "referencedTable": "CODBEX_MEMBERROLE",
+                "referencedColumns": "MEMBERROLE_ID"
+            },
+            {
+                "name": "StakeHolders_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_STAKEHOLDERS",
+                "constraintName": "StakeHolders_Project",
+                "columns": "STAKEHOLDERS_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Goal_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_GOAL",
+                "constraintName": "Goal_Project",
+                "columns": "GOAL_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Objective_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_OBJECTIVE",
+                "constraintName": "Objective_Project",
+                "columns": "OBJECTIVE_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "Constrain_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_CONSTRAIN",
+                "constraintName": "Constrain_Project",
+                "columns": "CONSTRAIN_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
             }
         ]
     },

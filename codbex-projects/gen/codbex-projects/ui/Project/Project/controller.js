@@ -122,8 +122,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsEmployee: $scope.optionsEmployee,
-				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
@@ -133,8 +132,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsEmployee: $scope.optionsEmployee,
-				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
@@ -142,8 +140,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsEmployee: $scope.optionsEmployee,
-				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
@@ -180,27 +177,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
-				optionsEmployee: $scope.optionsEmployee,
-				optionsMilestonePeriod: $scope.optionsMilestonePeriod,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsEmployee = [];
-		$scope.optionsMilestonePeriod = [];
+		$scope.optionsAgileMethodologyType = [];
 
 
-		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
-			$scope.optionsEmployee = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.FirstName
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestonePeriodService.ts").then(function (response) {
-			$scope.optionsMilestonePeriod = response.data.map(e => {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts").then(function (response) {
+			$scope.optionsAgileMethodologyType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -208,18 +194,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsEmployeeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsEmployee.length; i++) {
-				if ($scope.optionsEmployee[i].value === optionKey) {
-					return $scope.optionsEmployee[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsMilestonePeriodValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsMilestonePeriod.length; i++) {
-				if ($scope.optionsMilestonePeriod[i].value === optionKey) {
-					return $scope.optionsMilestonePeriod[i].text;
+		$scope.optionsAgileMethodologyTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsAgileMethodologyType.length; i++) {
+				if ($scope.optionsAgileMethodologyType[i].value === optionKey) {
+					return $scope.optionsAgileMethodologyType[i].text;
 				}
 			}
 			return null;

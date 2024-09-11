@@ -90,7 +90,7 @@ interface WorkPackageUpdateEntityEvent extends WorkPackageEntityEvent {
 export class WorkPackageRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_WORKPACKAGE_",
+        table: "CODBEX_WORKPACKAGE",
         properties: [
             {
                 name: "Id",
@@ -139,7 +139,7 @@ export class WorkPackageRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_WORKPACKAGE_",
+            table: "CODBEX_WORKPACKAGE",
             entity: entity,
             key: {
                 name: "Id",
@@ -155,7 +155,7 @@ export class WorkPackageRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_WORKPACKAGE_",
+            table: "CODBEX_WORKPACKAGE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -186,7 +186,7 @@ export class WorkPackageRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_WORKPACKAGE_",
+            table: "CODBEX_WORKPACKAGE",
             entity: entity,
             key: {
                 name: "Id",

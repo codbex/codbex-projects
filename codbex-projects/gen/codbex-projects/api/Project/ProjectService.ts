@@ -128,8 +128,8 @@ class ProjectService {
         if (entity.Description?.length > 2000) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [2000] characters`);
         }
-        if (entity.Employee === null || entity.Employee === undefined) {
-            throw new ValidationError(`The 'Employee' property is required, provide a valid value`);
+        if (entity.AgileMethodologyType === null || entity.AgileMethodologyType === undefined) {
+            throw new ValidationError(`The 'AgileMethodologyType' property is required, provide a valid value`);
         }
         if (entity.StartingDate === null || entity.StartingDate === undefined) {
             throw new ValidationError(`The 'StartingDate' property is required, provide a valid value`);
@@ -137,8 +137,20 @@ class ProjectService {
         if (entity.EndDate === null || entity.EndDate === undefined) {
             throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
         }
-        if (entity.MilestonePeriod === null || entity.MilestonePeriod === undefined) {
-            throw new ValidationError(`The 'MilestonePeriod' property is required, provide a valid value`);
+        if (entity.SponsorName === null || entity.SponsorName === undefined) {
+            throw new ValidationError(`The 'SponsorName' property is required, provide a valid value`);
+        }
+        if (entity.SponsorName?.length > 50) {
+            throw new ValidationError(`The 'SponsorName' exceeds the maximum length of [50] characters`);
+        }
+        if (entity.Opportunity?.length > 300) {
+            throw new ValidationError(`The 'Opportunity' exceeds the maximum length of [300] characters`);
+        }
+        if (entity.Scope === null || entity.Scope === undefined) {
+            throw new ValidationError(`The 'Scope' property is required, provide a valid value`);
+        }
+        if (entity.Scope?.length > 200) {
+            throw new ValidationError(`The 'Scope' exceeds the maximum length of [200] characters`);
         }
         if (entity.Notes?.length > 200) {
             throw new ValidationError(`The 'Notes' exceeds the maximum length of [200] characters`);

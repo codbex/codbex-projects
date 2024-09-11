@@ -26,8 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsEmployee = params.optionsEmployee;
-			$scope.optionsMilestonePeriod = params.optionsMilestonePeriod;
+			$scope.optionsAgileMethodologyType = params.optionsAgileMethodologyType;
 		}
 
 		$scope.filter = function () {
@@ -59,8 +58,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
 			}
-			if (entity.Employee !== undefined) {
-				filter.$filter.equals.Employee = entity.Employee;
+			if (entity.AgileMethodologyType !== undefined) {
+				filter.$filter.equals.AgileMethodologyType = entity.AgileMethodologyType;
 			}
 			if (entity.StartingDateFrom) {
 				filter.$filter.greaterThanOrEqual.StartingDate = entity.StartingDateFrom;
@@ -74,8 +73,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.MilestonePeriod !== undefined) {
-				filter.$filter.equals.MilestonePeriod = entity.MilestonePeriod;
+			if (entity.SponsorName) {
+				filter.$filter.contains.SponsorName = entity.SponsorName;
+			}
+			if (entity.Opportunity) {
+				filter.$filter.contains.Opportunity = entity.Opportunity;
+			}
+			if (entity.Scope) {
+				filter.$filter.contains.Scope = entity.Scope;
 			}
 			if (entity.Version !== undefined) {
 				filter.$filter.equals.Version = entity.Version;

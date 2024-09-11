@@ -1,5 +1,0 @@
-{
-    "module": "codbex-projects/gen/codbex-projects/ui/entities/MilestonePeriod/dialog-filter/view.js",
-    "extensionPoint": "codbex-projects-dialog-window",
-    "description": "codbex-projects - Application Dialog Window"
-}

@@ -134,9 +134,6 @@ class TaskService {
         if (entity.Deliverable === null || entity.Deliverable === undefined) {
             throw new ValidationError(`The 'Deliverable' property is required, provide a valid value`);
         }
-        if (entity.Status === null || entity.Status === undefined) {
-            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
-        }
         if (entity.StartDate === null || entity.StartDate === undefined) {
             throw new ValidationError(`The 'StartDate' property is required, provide a valid value`);
         }

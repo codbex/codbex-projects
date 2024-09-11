@@ -7,10 +7,12 @@ export interface ProjectEntity {
     readonly Id: number;
     Name: string;
     Description?: string;
-    Employee?: number;
+    AgileMethodologyType: number;
     StartingDate?: Date;
     EndDate: Date;
-    MilestonePeriod?: number;
+    SponsorName: string;
+    Opportunity: string;
+    Scope: string;
     Version?: number;
     Notes?: string;
 }
@@ -18,10 +20,12 @@ export interface ProjectEntity {
 export interface ProjectCreateEntity {
     readonly Name: string;
     readonly Description?: string;
-    readonly Employee?: number;
+    readonly AgileMethodologyType: number;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
-    readonly MilestonePeriod?: number;
+    readonly SponsorName: string;
+    readonly Opportunity: string;
+    readonly Scope: string;
     readonly Version?: number;
     readonly Notes?: string;
 }
@@ -36,10 +40,12 @@ export interface ProjectEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            Employee?: number | number[];
+            AgileMethodologyType?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
-            MilestonePeriod?: number | number[];
+            SponsorName?: string | string[];
+            Opportunity?: string | string[];
+            Scope?: string | string[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -47,10 +53,12 @@ export interface ProjectEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            Employee?: number | number[];
+            AgileMethodologyType?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
-            MilestonePeriod?: number | number[];
+            SponsorName?: string | string[];
+            Opportunity?: string | string[];
+            Scope?: string | string[];
             Version?: number | number[];
             Notes?: string | string[];
         };
@@ -58,10 +66,12 @@ export interface ProjectEntityOptions {
             Id?: number;
             Name?: string;
             Description?: string;
-            Employee?: number;
+            AgileMethodologyType?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            MilestonePeriod?: number;
+            SponsorName?: string;
+            Opportunity?: string;
+            Scope?: string;
             Version?: number;
             Notes?: string;
         };
@@ -69,10 +79,12 @@ export interface ProjectEntityOptions {
             Id?: number;
             Name?: string;
             Description?: string;
-            Employee?: number;
+            AgileMethodologyType?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            MilestonePeriod?: number;
+            SponsorName?: string;
+            Opportunity?: string;
+            Scope?: string;
             Version?: number;
             Notes?: string;
         };
@@ -80,10 +92,12 @@ export interface ProjectEntityOptions {
             Id?: number;
             Name?: string;
             Description?: string;
-            Employee?: number;
+            AgileMethodologyType?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            MilestonePeriod?: number;
+            SponsorName?: string;
+            Opportunity?: string;
+            Scope?: string;
             Version?: number;
             Notes?: string;
         };
@@ -91,10 +105,12 @@ export interface ProjectEntityOptions {
             Id?: number;
             Name?: string;
             Description?: string;
-            Employee?: number;
+            AgileMethodologyType?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            MilestonePeriod?: number;
+            SponsorName?: string;
+            Opportunity?: string;
+            Scope?: string;
             Version?: number;
             Notes?: string;
         };
@@ -102,10 +118,12 @@ export interface ProjectEntityOptions {
             Id?: number;
             Name?: string;
             Description?: string;
-            Employee?: number;
+            AgileMethodologyType?: number;
             StartingDate?: Date;
             EndDate?: Date;
-            MilestonePeriod?: number;
+            SponsorName?: string;
+            Opportunity?: string;
+            Scope?: string;
             Version?: number;
             Notes?: string;
         };
@@ -156,9 +174,10 @@ export class ProjectRepository {
                 type: "VARCHAR",
             },
             {
-                name: "Employee",
-                column: "PROJECT_EMPLOYEE",
+                name: "AgileMethodologyType",
+                column: "PROJECT_AGILEMETHODOLOGYTYPE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "StartingDate",
@@ -172,9 +191,22 @@ export class ProjectRepository {
                 required: true
             },
             {
-                name: "MilestonePeriod",
-                column: "PROJECT_MILESTONEPERIOD",
-                type: "INTEGER",
+                name: "SponsorName",
+                column: "PROJECT_SPONSORNAME",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "Opportunity",
+                column: "PROJECT_OPPORTUNITY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "Scope",
+                column: "PROJECT_SCOPE",
+                type: "VARCHAR",
+                required: true
             },
             {
                 name: "Version",

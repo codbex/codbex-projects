@@ -9,7 +9,6 @@ export interface TaskEntity {
     Name: string;
     Description: string;
     Deliverable: number;
-    Status: number;
     StartDate: Date;
     EndDate: Date;
     Resource?: number;
@@ -19,7 +18,6 @@ export interface TaskCreateEntity {
     readonly Name: string;
     readonly Description: string;
     readonly Deliverable: number;
-    readonly Status: number;
     readonly StartDate: Date;
     readonly EndDate: Date;
     readonly Resource?: number;
@@ -36,7 +34,6 @@ export interface TaskEntityOptions {
             Name?: string | string[];
             Description?: string | string[];
             Deliverable?: number | number[];
-            Status?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Resource?: number | number[];
@@ -46,7 +43,6 @@ export interface TaskEntityOptions {
             Name?: string | string[];
             Description?: string | string[];
             Deliverable?: number | number[];
-            Status?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
             Resource?: number | number[];
@@ -56,7 +52,6 @@ export interface TaskEntityOptions {
             Name?: string;
             Description?: string;
             Deliverable?: number;
-            Status?: number;
             StartDate?: Date;
             EndDate?: Date;
             Resource?: number;
@@ -66,7 +61,6 @@ export interface TaskEntityOptions {
             Name?: string;
             Description?: string;
             Deliverable?: number;
-            Status?: number;
             StartDate?: Date;
             EndDate?: Date;
             Resource?: number;
@@ -76,7 +70,6 @@ export interface TaskEntityOptions {
             Name?: string;
             Description?: string;
             Deliverable?: number;
-            Status?: number;
             StartDate?: Date;
             EndDate?: Date;
             Resource?: number;
@@ -86,7 +79,6 @@ export interface TaskEntityOptions {
             Name?: string;
             Description?: string;
             Deliverable?: number;
-            Status?: number;
             StartDate?: Date;
             EndDate?: Date;
             Resource?: number;
@@ -96,7 +88,6 @@ export interface TaskEntityOptions {
             Name?: string;
             Description?: string;
             Deliverable?: number;
-            Status?: number;
             StartDate?: Date;
             EndDate?: Date;
             Resource?: number;
@@ -151,12 +142,6 @@ export class TaskRepository {
             {
                 name: "Deliverable",
                 column: "TASK_DELIVERABLE",
-                type: "INTEGER",
-                required: true
-            },
-            {
-                name: "Status",
-                column: "TASK_STATUS",
                 type: "INTEGER",
                 required: true
             },

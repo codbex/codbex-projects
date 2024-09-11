@@ -40,8 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsEmployee = [];
-				$scope.optionsMilestonePeriod = [];
+				$scope.optionsAgileMethodologyType = [];
 				$scope.action = 'select';
 			});
 		});
@@ -55,8 +54,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsEmployee = msg.data.optionsEmployee;
-				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
+				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
 				$scope.action = 'select';
 			});
 		});
@@ -64,8 +62,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsEmployee = msg.data.optionsEmployee;
-				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
+				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
 				$scope.action = 'create';
 			});
 		});
@@ -79,8 +76,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsEmployee = msg.data.optionsEmployee;
-				$scope.optionsMilestonePeriod = msg.data.optionsMilestonePeriod;
+				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
 				$scope.action = 'update';
 			});
 		});

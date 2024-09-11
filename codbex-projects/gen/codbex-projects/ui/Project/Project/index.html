@@ -51,10 +51,12 @@
 							item-title="{{next.Name}}">
 							<fd-list-byline dg-align="left">
 								{{next.Description}} |
-								{{optionsEmployeeValue(next.Employee)}} |
+								{{optionsAgileMethodologyTypeValue(next.AgileMethodologyType)}} |
 								{{next.StartingDate | date: "dd/MMM/yyyy HH:MM"}} |
 								{{next.EndDate | date: "dd/MMM/yyyy HH:MM"}} |
-								{{optionsMilestonePeriodValue(next.MilestonePeriod)}} |
+								{{next.SponsorName}} |
+								{{next.Opportunity}} |
+								{{next.Scope}} |
 								{{next.Version}} |
 								{{next.Notes}}
 							</fd-list-byline>

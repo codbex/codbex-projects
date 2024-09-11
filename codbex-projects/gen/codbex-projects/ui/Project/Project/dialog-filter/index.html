@@ -64,15 +64,15 @@
 					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEmployee" dg-colon="true">Employee</fd-form-label>
+                        	<fd-form-label for="idAgileMethodologyType" dg-colon="true">AgileMethodologyType</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idEmployee"
-	                            name="Employee"
-	                            state="{{ forms.details['Employee'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Employee"
-	                            dropdown-items="optionsEmployee"
-	                            dg-placeholder="Search Employee ...">
+	                        <fd-combobox-input id="idAgileMethodologyType"
+	                            name="AgileMethodologyType"
+	                            state="{{ forms.details['AgileMethodologyType'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.AgileMethodologyType"
+	                            dropdown-items="optionsAgileMethodologyType"
+	                            dg-placeholder="Search AgileMethodologyType ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
@@ -138,18 +138,55 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idMilestonePeriod" dg-colon="true">MilestonePeriod</fd-form-label>
+                        	<fd-form-label for="idSponsorName" dg-colon="true">SponsorName</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idMilestonePeriod"
-	                            name="MilestonePeriod"
-	                            state="{{ forms.details['MilestonePeriod'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.MilestonePeriod"
-	                            dropdown-items="optionsMilestonePeriod"
-	                            dg-placeholder="Search MilestonePeriod ...">
-	                        </fd-combobox-input>
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SponsorName'].$valid }}">
+	                            <fd-input id="idSponsorName"
+	                                name="SponsorName"
+	                                state="{{ forms.details['SponsorName'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.SponsorName"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="50.0 || -1"
+	                                type="text"
+	                                placeholder="Enter SponsorName">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idOpportunity" dg-colon="true">Opportunity</fd-form-label>
+						</div>
+						<div class="fd-col fd-col-md--8">
+							<fd-textarea id="idOpportunity"
+								name="Opportunity"
+								state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}"
+								ng-model="entity.Opportunity"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="300.0 || -1"
+								placeholder="Enter Opportunity">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Opportunity'].$valid">Incorrect Input</fd-form-message>
+						</div>
+					</fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idScope" dg-colon="true">Scope</fd-form-label>
+						</div>
+						<div class="fd-col fd-col-md--8">
+							<fd-textarea id="idScope"
+								name="Scope"
+								state="{{ forms.details['Scope'].$valid ? '' : 'error' }}"
+								ng-model="entity.Scope"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="200.0 || -1"
+								placeholder="Enter Scope">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Scope'].$valid">Incorrect Input</fd-form-message>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idVersion" dg-colon="true">Version</fd-form-label>

@@ -27,7 +27,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsDeliverable = params.optionsDeliverable;
-			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.filter = function () {
@@ -61,9 +60,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Deliverable !== undefined) {
 				filter.$filter.equals.Deliverable = entity.Deliverable;
-			}
-			if (entity.Status !== undefined) {
-				filter.$filter.equals.Status = entity.Status;
 			}
 			if (entity.StartDateFrom) {
 				filter.$filter.greaterThanOrEqual.StartDate = entity.StartDateFrom;
