@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/e3f35df8-7d53-486a-aea7-d97dcd866bc4)![image](https://github.com/user-attachments/assets/e3f35df8-7d53-486a-aea7-d97dcd866bc4)# codbex-projects
 Projects Management Module
 
 Schematic:
