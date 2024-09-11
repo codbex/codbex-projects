@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.Milestone';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.StakeHolder';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -11,17 +11,11 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
-			if (params?.entity?.DueFrom) {
-				params.entity.DueFrom = new Date(params.entity.DueFrom);
-			}
-			if (params?.entity?.DueTo) {
-				params.entity.DueTo = new Date(params.entity.DueTo);
-			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsStakeHolderType = params.optionsStakeHolderType;
 			$scope.optionsProject = params.optionsProject;
-			$scope.optionsStatusType = params.optionsStatusType;
 		}
 
 		$scope.filter = function () {
@@ -50,20 +44,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.StakeHolderType !== undefined) {
+				filter.$filter.equals.StakeHolderType = entity.StakeHolderType;
+			}
 			if (entity.Project !== undefined) {
 				filter.$filter.equals.Project = entity.Project;
-			}
-			if (entity.Description) {
-				filter.$filter.contains.Description = entity.Description;
-			}
-			if (entity.DueFrom) {
-				filter.$filter.greaterThanOrEqual.Due = entity.DueFrom;
-			}
-			if (entity.DueTo) {
-				filter.$filter.lessThanOrEqual.Due = entity.DueTo;
-			}
-			if (entity.StatusType !== undefined) {
-				filter.$filter.equals.StatusType = entity.StatusType;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -78,7 +63,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Milestone-filter");
+			messageHub.closeDialogWindow("StakeHolder-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

@@ -7,6 +7,7 @@ export interface MilestoneEntity {
     readonly Id: number;
     Name?: string;
     Project: number;
+    Description: string;
     Due: Date;
     StatusType: number;
 }
@@ -14,6 +15,7 @@ export interface MilestoneEntity {
 export interface MilestoneCreateEntity {
     readonly Name?: string;
     readonly Project: number;
+    readonly Description: string;
     readonly Due: Date;
     readonly StatusType: number;
 }
@@ -28,6 +30,7 @@ export interface MilestoneEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
+            Description?: string | string[];
             Due?: Date | Date[];
             StatusType?: number | number[];
         };
@@ -35,6 +38,7 @@ export interface MilestoneEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
+            Description?: string | string[];
             Due?: Date | Date[];
             StatusType?: number | number[];
         };
@@ -42,6 +46,7 @@ export interface MilestoneEntityOptions {
             Id?: number;
             Name?: string;
             Project?: number;
+            Description?: string;
             Due?: Date;
             StatusType?: number;
         };
@@ -49,6 +54,7 @@ export interface MilestoneEntityOptions {
             Id?: number;
             Name?: string;
             Project?: number;
+            Description?: string;
             Due?: Date;
             StatusType?: number;
         };
@@ -56,6 +62,7 @@ export interface MilestoneEntityOptions {
             Id?: number;
             Name?: string;
             Project?: number;
+            Description?: string;
             Due?: Date;
             StatusType?: number;
         };
@@ -63,6 +70,7 @@ export interface MilestoneEntityOptions {
             Id?: number;
             Name?: string;
             Project?: number;
+            Description?: string;
             Due?: Date;
             StatusType?: number;
         };
@@ -70,6 +78,7 @@ export interface MilestoneEntityOptions {
             Id?: number;
             Name?: string;
             Project?: number;
+            Description?: string;
             Due?: Date;
             StatusType?: number;
         };
@@ -117,6 +126,12 @@ export class MilestoneRepository {
                 name: "Project",
                 column: "MILESTONEPERIOD_PROJECT",
                 type: "INTEGER",
+                required: true
+            },
+            {
+                name: "Description",
+                column: "MILESTONEPERIOD_DESCRIPTION",
+                type: "VARCHAR",
                 required: true
             },
             {

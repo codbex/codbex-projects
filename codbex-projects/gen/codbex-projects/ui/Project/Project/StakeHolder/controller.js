@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.StakeHolders';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.StakeHolder';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/StakeHoldersService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/StakeHolderService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-projects-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Project" && e.view === "StakeHolders" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Project" && e.view === "StakeHolders" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Project" && e.view === "StakeHolder" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Project" && e.view === "StakeHolder" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -98,7 +98,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			filter.$filter.equals.Project = Project;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("StakeHolders", `Unable to count StakeHolders: '${response.message}'`);
+					messageHub.showAlertError("StakeHolder", `Unable to count StakeHolder: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("StakeHolders", `Unable to list/filter StakeHolders: '${response.message}'`);
+						messageHub.showAlertError("StakeHolder", `Unable to list/filter StakeHolder: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -122,37 +122,41 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("StakeHolders-details", {
+			messageHub.showDialogWindow("StakeHolder-details", {
 				action: "select",
 				entity: entity,
+				optionsStakeHolderType: $scope.optionsStakeHolderType,
 				optionsProject: $scope.optionsProject,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("StakeHolders-filter", {
+			messageHub.showDialogWindow("StakeHolder-filter", {
 				entity: $scope.filterEntity,
+				optionsStakeHolderType: $scope.optionsStakeHolderType,
 				optionsProject: $scope.optionsProject,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("StakeHolders-details", {
+			messageHub.showDialogWindow("StakeHolder-details", {
 				action: "create",
 				entity: {},
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsStakeHolderType: $scope.optionsStakeHolderType,
 				optionsProject: $scope.optionsProject,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("StakeHolders-details", {
+			messageHub.showDialogWindow("StakeHolder-details", {
 				action: "update",
 				entity: entity,
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsStakeHolderType: $scope.optionsStakeHolderType,
 				optionsProject: $scope.optionsProject,
 			}, null, false);
 		};
@@ -160,8 +164,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete StakeHolders?',
-				`Are you sure you want to delete StakeHolders? This action cannot be undone.`,
+				'Delete StakeHolder?',
+				`Are you sure you want to delete StakeHolder? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -176,7 +180,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("StakeHolders", `Unable to delete StakeHolders: '${response.message}'`);
+							messageHub.showAlertError("StakeHolder", `Unable to delete StakeHolder: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -187,8 +191,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsStakeHolderType = [];
 		$scope.optionsProject = [];
 
+
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts").then(function (response) {
+			$scope.optionsStakeHolderType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
 			$scope.optionsProject = response.data.map(e => {
@@ -199,6 +213,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsStakeHolderTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStakeHolderType.length; i++) {
+				if ($scope.optionsStakeHolderType[i].value === optionKey) {
+					return $scope.optionsStakeHolderType[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {

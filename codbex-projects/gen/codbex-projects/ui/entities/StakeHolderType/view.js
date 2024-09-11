@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "StakeHolders",
-    label: "StakeHolders",
+    id: "StakeHolderType",
+    label: "StakeHolderType",
     factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolders/index.html",
-    perspectiveName: "Project",
+    region: "center",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/entities/StakeHolderType/index.html",
+    perspectiveName: "entities",
 };
 
 if (typeof exports !== 'undefined') {

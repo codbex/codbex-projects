@@ -139,6 +139,12 @@ class MilestoneService {
         if (entity.Project === null || entity.Project === undefined) {
             throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
+        if (entity.Description === null || entity.Description === undefined) {
+            throw new ValidationError(`The 'Description' property is required, provide a valid value`);
+        }
+        if (entity.Description?.length > 200) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [200] characters`);
+        }
         if (entity.Due === null || entity.Due === undefined) {
             throw new ValidationError(`The 'Due' property is required, provide a valid value`);
         }

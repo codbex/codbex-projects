@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.StakeHolders';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.entities.StakeHolderType';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,7 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProject = params.optionsProject;
 		}
 
 		$scope.filter = function () {
@@ -43,12 +42,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Role) {
-				filter.$filter.contains.Role = entity.Role;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
-			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
@@ -62,7 +55,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("StakeHolders-filter");
+			messageHub.closeDialogWindow("StakeHolderType-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

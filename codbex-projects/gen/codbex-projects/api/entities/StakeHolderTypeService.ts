@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { StakeHoldersRepository, StakeHoldersEntityOptions } from "../../dao/Project/StakeHoldersRepository";
+import { StakeHolderTypeRepository, StakeHolderTypeEntityOptions } from "../../dao/entities/StakeHolderTypeRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-StakeHolders", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-entities-StakeHolderType", ["validate"]);
 
 @Controller
-class StakeHoldersService {
+class StakeHolderTypeService {
 
-    private readonly repository = new StakeHoldersRepository();
+    private readonly repository = new StakeHolderTypeRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: StakeHoldersEntityOptions = {
+            const options: StakeHolderTypeEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let Project = parseInt(ctx.queryParameters.Project);
-            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
-
-            if (Project !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Project: Project
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class StakeHoldersService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/StakeHoldersService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class StakeHoldersService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("StakeHolders not found");
+                HttpUtils.sendResponseNotFound("StakeHolderType not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class StakeHoldersService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("StakeHolders not found");
+                HttpUtils.sendResponseNotFound("StakeHolderType not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -135,15 +124,6 @@ class StakeHoldersService {
         }
         if (entity.Name?.length > 30) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [30] characters`);
-        }
-        if (entity.Role === null || entity.Role === undefined) {
-            throw new ValidationError(`The 'Role' property is required, provide a valid value`);
-        }
-        if (entity.Role?.length > 30) {
-            throw new ValidationError(`The 'Role' exceeds the maximum length of [30] characters`);
-        }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

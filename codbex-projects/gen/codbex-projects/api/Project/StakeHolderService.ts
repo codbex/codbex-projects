@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProjectRepository, ProjectEntityOptions } from "../../dao/Project/ProjectRepository";
+import { StakeHolderRepository, StakeHolderEntityOptions } from "../../dao/Project/StakeHolderRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Project", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-StakeHolder", ["validate"]);
 
 @Controller
-class ProjectService {
+class StakeHolderService {
 
-    private readonly repository = new ProjectRepository();
+    private readonly repository = new StakeHolderRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProjectEntityOptions = {
+            const options: StakeHolderEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Project = parseInt(ctx.queryParameters.Project);
+            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
+
+            if (Project !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Project: Project
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class ProjectService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/StakeHolderService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class ProjectService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Project not found");
+                HttpUtils.sendResponseNotFound("StakeHolder not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class ProjectService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Project not found");
+                HttpUtils.sendResponseNotFound("StakeHolder not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -122,41 +133,14 @@ class ProjectService {
         if (entity.Name === null || entity.Name === undefined) {
             throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 40) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
+        if (entity.Name?.length > 30) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [30] characters`);
         }
-        if (entity.Description?.length > 2000) {
-            throw new ValidationError(`The 'Description' exceeds the maximum length of [2000] characters`);
+        if (entity.StakeHolderType === null || entity.StakeHolderType === undefined) {
+            throw new ValidationError(`The 'StakeHolderType' property is required, provide a valid value`);
         }
-        if (entity.AgileMethodologyType === null || entity.AgileMethodologyType === undefined) {
-            throw new ValidationError(`The 'AgileMethodologyType' property is required, provide a valid value`);
-        }
-        if (entity.StartingDate === null || entity.StartingDate === undefined) {
-            throw new ValidationError(`The 'StartingDate' property is required, provide a valid value`);
-        }
-        if (entity.EndDate === null || entity.EndDate === undefined) {
-            throw new ValidationError(`The 'EndDate' property is required, provide a valid value`);
-        }
-        if (entity.SponsorName === null || entity.SponsorName === undefined) {
-            throw new ValidationError(`The 'SponsorName' property is required, provide a valid value`);
-        }
-        if (entity.SponsorName?.length > 50) {
-            throw new ValidationError(`The 'SponsorName' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.Opportunity === null || entity.Opportunity === undefined) {
-            throw new ValidationError(`The 'Opportunity' property is required, provide a valid value`);
-        }
-        if (entity.Opportunity?.length > 300) {
-            throw new ValidationError(`The 'Opportunity' exceeds the maximum length of [300] characters`);
-        }
-        if (entity.Scope === null || entity.Scope === undefined) {
-            throw new ValidationError(`The 'Scope' property is required, provide a valid value`);
-        }
-        if (entity.Scope?.length > 200) {
-            throw new ValidationError(`The 'Scope' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Notes?.length > 200) {
-            throw new ValidationError(`The 'Notes' exceeds the maximum length of [200] characters`);
+        if (entity.Project === null || entity.Project === undefined) {
+            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

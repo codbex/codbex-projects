@@ -136,13 +136,13 @@
                     </fd-form-item>
 					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idOpportunity" dg-required="false" dg-colon="true">Opportunity</fd-form-label>
+							<fd-form-label for="idOpportunity" dg-required="true" dg-colon="true">Opportunity</fd-form-label>
 						</div>
 						<div class="fd-col  fd-col-md--8 ">
 							<fd-textarea id="idOpportunity"
 								name="Opportunity"
 								state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}"
-								ng-required="false"
+								ng-required="true"
 								ng-model="entity.Opportunity"
 	                            ng-readonly="action === 'select'"
 								ng-minlength="0.0 || 0"

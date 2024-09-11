@@ -293,6 +293,11 @@
                         "name": "MILESTONEPERIOD_PROJECT"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "MILESTONEPERIOD_DESCRIPTION"
+                    },
+                    {
                         "type": "TIMESTAMP",
                         "name": "MILESTONEPERIOD_RANGE"
                     },
@@ -577,33 +582,6 @@
                 ]
             },
             {
-                "name": "CODBEX_STAKEHOLDERS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "STAKEHOLDERS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "name": "STAKEHOLDERS_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "name": "STAKEHOLDERS_ROLE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "STAKEHOLDERS_PROJECT"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_MEMBERROLE",
                 "type": "TABLE",
                 "columns": [
@@ -727,6 +705,50 @@
                         "type": "VARCHAR",
                         "length": 30,
                         "name": "AGILEMETHODOLOGYTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_STAKEHOLDERTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STAKEHOLDERTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "STAKEHOLDERTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_STAKEHOLDER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "STAKEHOLDER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 30,
+                        "name": "STAKEHOLDER_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "STAKEHOLDER_STAKEHOLDERTYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "STAKEHOLDER_PROJECT"
                     }
                 ]
             },
@@ -938,15 +960,6 @@
                 "referencedColumns": "MEMBERROLE_ID"
             },
             {
-                "name": "StakeHolders_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_STAKEHOLDERS",
-                "constraintName": "StakeHolders_Project",
-                "columns": "STAKEHOLDERS_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
                 "name": "Goal_Project",
                 "type": "foreignKey",
                 "table": "CODBEX_GOAL",
@@ -970,6 +983,24 @@
                 "table": "CODBEX_CONSTRAIN",
                 "constraintName": "Constrain_Project",
                 "columns": "CONSTRAIN_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "StakeHolder_StakeHolderType",
+                "type": "foreignKey",
+                "table": "CODBEX_STAKEHOLDER",
+                "constraintName": "StakeHolder_StakeHolderType",
+                "columns": "STAKEHOLDER_STAKEHOLDERTYPE",
+                "referencedTable": "CODBEX_STAKEHOLDERTYPE",
+                "referencedColumns": "STAKEHOLDERTYPE_ID"
+            },
+            {
+                "name": "StakeHolder_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_STAKEHOLDER",
+                "constraintName": "StakeHolder_Project",
+                "columns": "STAKEHOLDER_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
                 "referencedColumns": "PROJECT_ID"
             }

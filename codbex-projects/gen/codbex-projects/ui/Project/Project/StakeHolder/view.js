@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "StakeHolders-filter",
-    label: "StakeHolders Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolders/dialog-filter/index.html",
+    id: "StakeHolder",
+    label: "StakeHolder",
+    factory: "frame",
+    region: "bottom",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolder/index.html",
     perspectiveName: "Project",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }
