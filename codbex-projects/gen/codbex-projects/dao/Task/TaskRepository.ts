@@ -11,7 +11,6 @@ export interface TaskEntity {
     Deliverable: number;
     StartDate: Date;
     EndDate: Date;
-    Resource?: number;
 }
 
 export interface TaskCreateEntity {
@@ -20,7 +19,6 @@ export interface TaskCreateEntity {
     readonly Deliverable: number;
     readonly StartDate: Date;
     readonly EndDate: Date;
-    readonly Resource?: number;
 }
 
 export interface TaskUpdateEntity extends TaskCreateEntity {
@@ -36,7 +34,6 @@ export interface TaskEntityOptions {
             Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            Resource?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -45,7 +42,6 @@ export interface TaskEntityOptions {
             Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            Resource?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -54,7 +50,6 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
-            Resource?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -63,7 +58,6 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
-            Resource?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -72,7 +66,6 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
-            Resource?: number;
         };
         lessThan?: {
             Id?: number;
@@ -81,7 +74,6 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
-            Resource?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -90,7 +82,6 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
-            Resource?: number;
         };
     },
     $select?: (keyof TaskEntity)[],
@@ -156,11 +147,6 @@ export class TaskRepository {
                 column: "TASK_ENDDATE",
                 type: "DATE",
                 required: true
-            },
-            {
-                name: "Resource",
-                column: "TASK_RESOURCE",
-                type: "INTEGER",
             }
         ]
     };

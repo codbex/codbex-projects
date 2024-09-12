@@ -73,9 +73,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.Resource !== undefined) {
-				filter.$filter.equals.Resource = entity.Resource;
-			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

@@ -41,7 +41,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = [];
-				$scope.optionsResource = [];
 				$scope.action = 'select';
 			});
 		});
@@ -50,7 +49,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'select';
 			});
 		});
@@ -59,7 +57,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'create';
 			});
 		});
@@ -68,7 +65,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsResource = msg.data.optionsResource;
 				$scope.action = 'update';
 			});
 		});

@@ -15,7 +15,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProject = params.optionsProject;
-			$scope.optionsResource = params.optionsResource;
 		}
 
 		$scope.filter = function () {
@@ -55,9 +54,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.ActualCost !== undefined) {
 				filter.$filter.equals.ActualCost = entity.ActualCost;
-			}
-			if (entity.Resource !== undefined) {
-				filter.$filter.equals.Resource = entity.Resource;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

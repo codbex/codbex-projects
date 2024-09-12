@@ -113,7 +113,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsProject: $scope.optionsProject,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
@@ -124,7 +123,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsProject: $scope.optionsProject,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
@@ -133,7 +131,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsProject: $scope.optionsProject,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
@@ -171,13 +168,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Deliverable-filter", {
 				entity: $scope.filterEntity,
 				optionsProject: $scope.optionsProject,
-				optionsResource: $scope.optionsResource,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsProject = [];
-		$scope.optionsResource = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -189,27 +184,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts").then(function (response) {
-			$scope.optionsResource = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
 		$scope.optionsProjectValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProject.length; i++) {
 				if ($scope.optionsProject[i].value === optionKey) {
 					return $scope.optionsProject[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsResourceValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsResource.length; i++) {
-				if ($scope.optionsResource[i].value === optionKey) {
-					return $scope.optionsResource[i].text;
 				}
 			}
 			return null;

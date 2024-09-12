@@ -10,7 +10,6 @@ export interface DeliverableEntity {
     Project: number;
     CostEstimation: number;
     ActualCost: number;
-    Resource?: number;
 }
 
 export interface DeliverableCreateEntity {
@@ -19,7 +18,6 @@ export interface DeliverableCreateEntity {
     readonly Project: number;
     readonly CostEstimation: number;
     readonly ActualCost: number;
-    readonly Resource?: number;
 }
 
 export interface DeliverableUpdateEntity extends DeliverableCreateEntity {
@@ -35,7 +33,6 @@ export interface DeliverableEntityOptions {
             Project?: number | number[];
             CostEstimation?: number | number[];
             ActualCost?: number | number[];
-            Resource?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -44,7 +41,6 @@ export interface DeliverableEntityOptions {
             Project?: number | number[];
             CostEstimation?: number | number[];
             ActualCost?: number | number[];
-            Resource?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -53,7 +49,6 @@ export interface DeliverableEntityOptions {
             Project?: number;
             CostEstimation?: number;
             ActualCost?: number;
-            Resource?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -62,7 +57,6 @@ export interface DeliverableEntityOptions {
             Project?: number;
             CostEstimation?: number;
             ActualCost?: number;
-            Resource?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -71,7 +65,6 @@ export interface DeliverableEntityOptions {
             Project?: number;
             CostEstimation?: number;
             ActualCost?: number;
-            Resource?: number;
         };
         lessThan?: {
             Id?: number;
@@ -80,7 +73,6 @@ export interface DeliverableEntityOptions {
             Project?: number;
             CostEstimation?: number;
             ActualCost?: number;
-            Resource?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -89,7 +81,6 @@ export interface DeliverableEntityOptions {
             Project?: number;
             CostEstimation?: number;
             ActualCost?: number;
-            Resource?: number;
         };
     },
     $select?: (keyof DeliverableEntity)[],
@@ -155,11 +146,6 @@ export class DeliverableRepository {
                 column: "DELIVERABLE_ACTUALCOST",
                 type: "DECIMAL",
                 required: true
-            },
-            {
-                name: "Resource",
-                column: "DELIVERABLE_RESOURCE",
-                type: "INTEGER",
             }
         ]
     };

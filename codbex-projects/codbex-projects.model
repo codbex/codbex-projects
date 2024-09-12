@@ -1204,22 +1204,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "DELIVERABLE_RESOURCE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Resource",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Deliverable_Resource",
-                        "relationshipEntityName": "Resource",
-                        "relationshipEntityPerspectiveName": "Project",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Deliverable",
@@ -1319,20 +1303,6 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DATE"
-                    },
-                    {
-                        "dataName": "TASK_RESOURCE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Resource",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipName": "Task_Resource",
-                        "relationshipEntityName": "Resource",
-                        "relationshipEntityPerspectiveName": "Project",
-                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Task",
