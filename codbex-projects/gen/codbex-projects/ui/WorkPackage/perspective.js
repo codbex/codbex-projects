@@ -8,7 +8,7 @@ const perspectiveData = {
 	name: 'WorkPackage',
 	link: '/services/web/codbex-projects/gen/codbex-projects/ui/WorkPackage/index.html',
 	order: 150,
-	icon: '/services/web/resources/unicons/confused.svg',
+	icon: '/services/web/resources/unicons/share-alt.svg',
 };
 
 if (typeof exports !== 'undefined') {

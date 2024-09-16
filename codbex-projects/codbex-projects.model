@@ -1204,6 +1204,23 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "DELIVERABLE_STATUSTYPE",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "StatusType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Deliverable_StatusType",
+                        "relationshipEntityName": "StatusType",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Deliverable",
@@ -1218,10 +1235,10 @@
                 "menuLabel": "Deliverable",
                 "name": "Deliverable",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/expand-alt.svg",
+                "perspectiveIcon": "/services/web/resources/unicons/parcel.svg",
                 "perspectiveLabel": "Deliverable",
                 "perspectiveName": "Deliverable",
-                "perspectiveOrder": "120",
+                "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "title": "Deliverable",
                 "tooltip": "Deliverable",
@@ -1303,6 +1320,23 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DATE"
+                    },
+                    {
+                        "dataName": "TASK_STATUSTYPE",
+                        "dataNullable": "false",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "StatusType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Task_StatusType",
+                        "relationshipEntityName": "StatusType",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Task",
@@ -1464,7 +1498,7 @@
                 "menuLabel": "TaskDependency",
                 "name": "TaskDependency",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/comment.svg",
+                "perspectiveIcon": "/services/web/resources/unicons/link-alt.svg",
                 "perspectiveLabel": "TaskDependency",
                 "perspectiveName": "TaskDependency",
                 "perspectiveOrder": "450",
@@ -1589,7 +1623,7 @@
                 "menuLabel": "WorkPackage",
                 "name": "WorkPackage",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/confused.svg",
+                "perspectiveIcon": "/services/web/resources/unicons/share-alt.svg",
                 "perspectiveLabel": "WorkPackage",
                 "perspectiveName": "WorkPackage",
                 "perspectiveOrder": "150",
@@ -2166,8 +2200,8 @@
             {
                 "name": "Deliverable",
                 "label": "Deliverable",
-                "icon": "/services/web/resources/unicons/expand-alt.svg",
-                "order": "120",
+                "icon": "/services/web/resources/unicons/parcel.svg",
+                "order": "200",
                 "role": {}
             },
             {
@@ -2180,14 +2214,14 @@
             {
                 "name": "WorkPackage",
                 "label": "WorkPackage",
-                "icon": "/services/web/resources/unicons/confused.svg",
+                "icon": "/services/web/resources/unicons/share-alt.svg",
                 "order": "150",
                 "role": {}
             },
             {
                 "name": "TaskDependency",
                 "label": "TaskDependency",
-                "icon": "/services/web/resources/unicons/comment.svg",
+                "icon": "/services/web/resources/unicons/link-alt.svg",
                 "order": "450",
                 "role": {}
             },

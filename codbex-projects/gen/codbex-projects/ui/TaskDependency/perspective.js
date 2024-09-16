@@ -8,7 +8,7 @@ const perspectiveData = {
 	name: 'TaskDependency',
 	link: '/services/web/codbex-projects/gen/codbex-projects/ui/TaskDependency/index.html',
 	order: 450,
-	icon: '/services/web/resources/unicons/comment.svg',
+	icon: '/services/web/resources/unicons/link-alt.svg',
 };
 
 if (typeof exports !== 'undefined') {

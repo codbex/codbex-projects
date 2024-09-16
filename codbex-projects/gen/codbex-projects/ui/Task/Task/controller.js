@@ -123,6 +123,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatusType: $scope.optionsStatusType,
 			});
 		};
 
@@ -133,6 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatusType: $scope.optionsStatusType,
 			});
 		};
 
@@ -141,6 +143,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatusType: $scope.optionsStatusType,
 			});
 		};
 
@@ -178,11 +181,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Task-filter", {
 				entity: $scope.filterEntity,
 				optionsDeliverable: $scope.optionsDeliverable,
+				optionsStatusType: $scope.optionsStatusType,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsDeliverable = [];
+		$scope.optionsStatusType = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts").then(function (response) {
@@ -194,10 +199,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts").then(function (response) {
+			$scope.optionsStatusType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsDeliverableValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsDeliverable.length; i++) {
 				if ($scope.optionsDeliverable[i].value === optionKey) {
 					return $scope.optionsDeliverable[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsStatusTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatusType.length; i++) {
+				if ($scope.optionsStatusType[i].value === optionKey) {
+					return $scope.optionsStatusType[i].text;
 				}
 			}
 			return null;

@@ -140,6 +140,9 @@ class DeliverableService {
         if (entity.ActualCost === null || entity.ActualCost === undefined) {
             throw new ValidationError(`The 'ActualCost' property is required, provide a valid value`);
         }
+        if (entity.StatusType === null || entity.StatusType === undefined) {
+            throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

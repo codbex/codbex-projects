@@ -415,6 +415,10 @@
                         "precision": "16",
                         "scale": "2",
                         "name": "DELIVERABLE_ACTUALCOST"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "DELIVERABLE_STATUSTYPE"
                     }
                 ]
             },
@@ -450,6 +454,10 @@
                     {
                         "type": "DATE",
                         "name": "TASK_ENDDATE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "TASK_STATUSTYPE"
                     }
                 ]
             },
@@ -860,6 +868,15 @@
                 "referencedColumns": "PROJECT_ID"
             },
             {
+                "name": "Deliverable_StatusType",
+                "type": "foreignKey",
+                "table": "CODBEX_DELIVERABLE",
+                "constraintName": "Deliverable_StatusType",
+                "columns": "DELIVERABLE_STATUSTYPE",
+                "referencedTable": "CODBEX_STATUSTYPE",
+                "referencedColumns": "STATUSTYPE_ID"
+            },
+            {
                 "name": "Task_Deliverable",
                 "type": "foreignKey",
                 "table": "CODBEX_TASK",
@@ -867,6 +884,15 @@
                 "columns": "TASK_DELIVERABLE",
                 "referencedTable": "CODBEX_DELIVERABLE",
                 "referencedColumns": "DELIVERABLE_ID"
+            },
+            {
+                "name": "Task_StatusType",
+                "type": "foreignKey",
+                "table": "CODBEX_TASK",
+                "constraintName": "Task_StatusType",
+                "columns": "TASK_STATUSTYPE",
+                "referencedTable": "CODBEX_STATUSTYPE",
+                "referencedColumns": "STATUSTYPE_ID"
             },
             {
                 "name": "TaskDependency_Task",

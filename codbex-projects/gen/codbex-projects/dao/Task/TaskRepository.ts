@@ -11,6 +11,7 @@ export interface TaskEntity {
     Deliverable: number;
     StartDate: Date;
     EndDate: Date;
+    StatusType: number;
 }
 
 export interface TaskCreateEntity {
@@ -19,6 +20,7 @@ export interface TaskCreateEntity {
     readonly Deliverable: number;
     readonly StartDate: Date;
     readonly EndDate: Date;
+    readonly StatusType: number;
 }
 
 export interface TaskUpdateEntity extends TaskCreateEntity {
@@ -34,6 +36,7 @@ export interface TaskEntityOptions {
             Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
+            StatusType?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -42,6 +45,7 @@ export interface TaskEntityOptions {
             Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
+            StatusType?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -50,6 +54,7 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
+            StatusType?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -58,6 +63,7 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
+            StatusType?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -66,6 +72,7 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
+            StatusType?: number;
         };
         lessThan?: {
             Id?: number;
@@ -74,6 +81,7 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
+            StatusType?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -82,6 +90,7 @@ export interface TaskEntityOptions {
             Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
+            StatusType?: number;
         };
     },
     $select?: (keyof TaskEntity)[],
@@ -146,6 +155,12 @@ export class TaskRepository {
                 name: "EndDate",
                 column: "TASK_ENDDATE",
                 type: "DATE",
+                required: true
+            },
+            {
+                name: "StatusType",
+                column: "TASK_STATUSTYPE",
+                type: "INTEGER",
                 required: true
             }
         ]

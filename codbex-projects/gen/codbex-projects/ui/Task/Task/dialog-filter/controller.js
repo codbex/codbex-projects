@@ -27,6 +27,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsDeliverable = params.optionsDeliverable;
+			$scope.optionsStatusType = params.optionsStatusType;
 		}
 
 		$scope.filter = function () {
@@ -72,6 +73,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
+			}
+			if (entity.StatusType !== undefined) {
+				filter.$filter.equals.StatusType = entity.StatusType;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
