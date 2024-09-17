@@ -764,98 +764,98 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "KANBAN_ID"
+                        "name": "AGILEMETHODOLOGYPROPERTY_ID"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 20,
-                        "name": "KANBAN_NAME"
+                        "name": "AGILEMETHODOLOGYPROPERTY_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "KANBAN_AGILEMETHODOLOGYTYPE"
+                        "name": "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "KANBAN_ITERATIONLENGTH"
+                        "name": "AGILEMETHODOLOGYPROPERTY_ITERATIONLENGTH"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_PLANNINGFREQUENCY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_PLANNINGFREQUENCY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_CUSTOMERINVOLVEMENTFREQUENCY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_CUSTOMERINVOLVEMENTFREQUENCY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_RELEASECADENCE"
+                        "name": "AGILEMETHODOLOGYPROPERTY_RELEASECADENCE"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_RETROSPECTIVEFREQUENCY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_RETROSPECTIVEFREQUENCY"
                     },
                     {
                         "type": "BOOLEAN",
                         "nullable": true,
-                        "name": "KANBAN_DAILYSTANDUP"
+                        "name": "AGILEMETHODOLOGYPROPERTY_DAILYSTANDUP"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_BACKLOGREFINEMENTFREQUENCY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_BACKLOGREFINEMENTFREQUENCY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_DEFECTMANAGEMENT"
+                        "name": "AGILEMETHODOLOGYPROPERTY_DEFECTMANAGEMENT"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "KANBAN_DEPLOYMENTFREQUENCY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_TESTINGINTEGRATION"
+                        "name": "AGILEMETHODOLOGYPROPERTY_TESTINGINTEGRATION"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "KANBAN_STAKEHOLDERREVIEW"
+                        "name": "AGILEMETHODOLOGYPROPERTY_STAKEHOLDERREVIEW"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "KANBAN_FEATURECOMPLETIONCRITERIA"
+                        "name": "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "KANBAN_DOCUMENTATIONUPDATES"
+                        "name": "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "KANBAN_SUSTAINABLEVELOCITY"
+                        "name": "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY"
                     }
                 ]
             },
@@ -893,7 +893,7 @@
                 "constraintName": "Project_AgileMethodologyProperty",
                 "columns": "PROJECT_AGILEMETHODOLOGYPROPERTY",
                 "referencedTable": "CODBEX_AGILEMETHODOLOGYPROPERTY",
-                "referencedColumns": "KANBAN_ID"
+                "referencedColumns": "AGILEMETHODOLOGYPROPERTY_ID"
             },
             {
                 "name": "Budget_Project",
@@ -1125,7 +1125,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_AGILEMETHODOLOGYPROPERTY",
                 "constraintName": "AgileMethodologyProperty_AgileMethodologyType",
-                "columns": "KANBAN_AGILEMETHODOLOGYTYPE",
+                "columns": "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE",
                 "referencedTable": "CODBEX_AGILEMETHODOLOGYTYPE",
                 "referencedColumns": "AGILEMETHODOLOGYTYPE_ID"
             }

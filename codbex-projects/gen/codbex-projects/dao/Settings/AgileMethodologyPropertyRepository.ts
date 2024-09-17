@@ -212,90 +212,90 @@ export class AgileMethodologyPropertyRepository {
         properties: [
             {
                 name: "Id",
-                column: "KANBAN_ID",
+                column: "AGILEMETHODOLOGYPROPERTY_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "KANBAN_NAME",
+                column: "AGILEMETHODOLOGYPROPERTY_NAME",
                 type: "VARCHAR",
                 required: true
             },
             {
                 name: "AgileMethodologyType",
-                column: "KANBAN_AGILEMETHODOLOGYTYPE",
+                column: "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE",
                 type: "INTEGER",
             },
             {
                 name: "IterationLength",
-                column: "KANBAN_ITERATIONLENGTH",
+                column: "AGILEMETHODOLOGYPROPERTY_ITERATIONLENGTH",
                 type: "INTEGER",
             },
             {
                 name: "PlanningFrequency",
-                column: "KANBAN_PLANNINGFREQUENCY",
+                column: "AGILEMETHODOLOGYPROPERTY_PLANNINGFREQUENCY",
                 type: "VARCHAR",
             },
             {
                 name: "CustomerInvolvementFrequency",
-                column: "KANBAN_CUSTOMERINVOLVEMENTFREQUENCY",
+                column: "AGILEMETHODOLOGYPROPERTY_CUSTOMERINVOLVEMENTFREQUENCY",
                 type: "VARCHAR",
             },
             {
                 name: "ReleaseCadence",
-                column: "KANBAN_RELEASECADENCE",
+                column: "AGILEMETHODOLOGYPROPERTY_RELEASECADENCE",
                 type: "VARCHAR",
             },
             {
                 name: "RetrospectiveFrequency",
-                column: "KANBAN_RETROSPECTIVEFREQUENCY",
+                column: "AGILEMETHODOLOGYPROPERTY_RETROSPECTIVEFREQUENCY",
                 type: "VARCHAR",
             },
             {
                 name: "DailyStandup",
-                column: "KANBAN_DAILYSTANDUP",
+                column: "AGILEMETHODOLOGYPROPERTY_DAILYSTANDUP",
                 type: "BOOLEAN",
             },
             {
                 name: "BacklogRefinementFrequency",
-                column: "KANBAN_BACKLOGREFINEMENTFREQUENCY",
+                column: "AGILEMETHODOLOGYPROPERTY_BACKLOGREFINEMENTFREQUENCY",
                 type: "VARCHAR",
             },
             {
                 name: "DefectManagement",
-                column: "KANBAN_DEFECTMANAGEMENT",
+                column: "AGILEMETHODOLOGYPROPERTY_DEFECTMANAGEMENT",
                 type: "VARCHAR",
             },
             {
                 name: "DeploymentFrequency",
-                column: "KANBAN_DEPLOYMENTFREQUENCY",
+                column: "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY",
                 type: "VARCHAR",
             },
             {
                 name: "TestingIntegration",
-                column: "KANBAN_TESTINGINTEGRATION",
+                column: "AGILEMETHODOLOGYPROPERTY_TESTINGINTEGRATION",
                 type: "VARCHAR",
             },
             {
                 name: "StakeholderReview",
-                column: "KANBAN_STAKEHOLDERREVIEW",
+                column: "AGILEMETHODOLOGYPROPERTY_STAKEHOLDERREVIEW",
                 type: "VARCHAR",
             },
             {
                 name: "FeatureCompletionCriteria",
-                column: "KANBAN_FEATURECOMPLETIONCRITERIA",
+                column: "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA",
                 type: "VARCHAR",
             },
             {
                 name: "DocumentationUpdates",
-                column: "KANBAN_DOCUMENTATIONUPDATES",
+                column: "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES",
                 type: "VARCHAR",
             },
             {
                 name: "SustainableVelocity",
-                column: "KANBAN_SUSTAINABLEVELOCITY",
+                column: "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY",
                 type: "INTEGER",
             }
         ]
@@ -329,7 +329,7 @@ export class AgileMethodologyPropertyRepository {
             entity: entity,
             key: {
                 name: "Id",
-                column: "KANBAN_ID",
+                column: "AGILEMETHODOLOGYPROPERTY_ID",
                 value: id
             }
         });
@@ -347,7 +347,7 @@ export class AgileMethodologyPropertyRepository {
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "KANBAN_ID",
+                column: "AGILEMETHODOLOGYPROPERTY_ID",
                 value: entity.Id
             }
         });
@@ -377,7 +377,7 @@ export class AgileMethodologyPropertyRepository {
             entity: entity,
             key: {
                 name: "Id",
-                column: "KANBAN_ID",
+                column: "AGILEMETHODOLOGYPROPERTY_ID",
                 value: id
             }
         });

@@ -4493,7 +4493,7 @@
       "properties": [
         {
           "dataAutoIncrement": true,
-          "dataName": "KANBAN_ID",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_ID",
           "dataNullable": true,
           "dataPrimaryKey": true,
           "dataType": "INTEGER",
@@ -4514,7 +4514,7 @@
         },
         {
           "dataLength": "20",
-          "dataName": "KANBAN_NAME",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_NAME",
           "dataNullable": false,
           "dataType": "VARCHAR",
           "isRequiredProperty": true,
@@ -4537,7 +4537,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "KANBAN_AGILEMETHODOLOGYTYPE",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "AgileMethodologyType",
@@ -4562,7 +4562,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "KANBAN_ITERATIONLENGTH",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_ITERATIONLENGTH",
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "IterationLength",
@@ -4584,7 +4584,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_PLANNINGFREQUENCY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_PLANNINGFREQUENCY",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "PlanningFrequency",
@@ -4608,7 +4608,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_CUSTOMERINVOLVEMENTFREQUENCY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_CUSTOMERINVOLVEMENTFREQUENCY",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "CustomerInvolvementFrequency",
@@ -4632,7 +4632,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_RELEASECADENCE",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_RELEASECADENCE",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "ReleaseCadence",
@@ -4656,7 +4656,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_RETROSPECTIVEFREQUENCY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_RETROSPECTIVEFREQUENCY",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "RetrospectiveFrequency",
@@ -4679,7 +4679,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "KANBAN_DAILYSTANDUP",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_DAILYSTANDUP",
           "dataNullable": true,
           "dataType": "BOOLEAN",
           "name": "DailyStandup",
@@ -4701,7 +4701,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_BACKLOGREFINEMENTFREQUENCY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_BACKLOGREFINEMENTFREQUENCY",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "BacklogRefinementFrequency",
@@ -4725,7 +4725,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_DEFECTMANAGEMENT",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_DEFECTMANAGEMENT",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "DefectManagement",
@@ -4749,7 +4749,7 @@
         },
         {
           "dataLength": "20",
-          "dataName": "KANBAN_DEPLOYMENTFREQUENCY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "DeploymentFrequency",
@@ -4773,7 +4773,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_TESTINGINTEGRATION",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_TESTINGINTEGRATION",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "TestingIntegration",
@@ -4797,7 +4797,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "KANBAN_STAKEHOLDERREVIEW",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_STAKEHOLDERREVIEW",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "StakeholderReview",
@@ -4821,7 +4821,7 @@
         },
         {
           "dataLength": "20",
-          "dataName": "KANBAN_FEATURECOMPLETIONCRITERIA",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "FeatureCompletionCriteria",
@@ -4845,7 +4845,7 @@
         },
         {
           "dataLength": "20",
-          "dataName": "KANBAN_DOCUMENTATIONUPDATES",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "DocumentationUpdates",
@@ -4868,7 +4868,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "KANBAN_SUSTAINABLEVELOCITY",
+          "dataName": "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY",
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "SustainableVelocity",
