@@ -143,8 +143,8 @@ class AgileMethodologyPropertyService {
         if (entity.DefectManagement?.length > 200) {
             throw new ValidationError(`The 'DefectManagement' exceeds the maximum length of [200] characters`);
         }
-        if (entity.DeploymentFrequency?.length > 20) {
-            throw new ValidationError(`The 'DeploymentFrequency' exceeds the maximum length of [20] characters`);
+        if (entity.DeploymentFrequency?.length > 200) {
+            throw new ValidationError(`The 'DeploymentFrequency' exceeds the maximum length of [200] characters`);
         }
         if (entity.TestingIntegration?.length > 200) {
             throw new ValidationError(`The 'TestingIntegration' exceeds the maximum length of [200] characters`);
@@ -152,11 +152,14 @@ class AgileMethodologyPropertyService {
         if (entity.StakeholderReview?.length > 200) {
             throw new ValidationError(`The 'StakeholderReview' exceeds the maximum length of [200] characters`);
         }
-        if (entity.FeatureCompletionCriteria?.length > 20) {
-            throw new ValidationError(`The 'FeatureCompletionCriteria' exceeds the maximum length of [20] characters`);
+        if (entity.FeatureCompletionCriteria?.length > 200) {
+            throw new ValidationError(`The 'FeatureCompletionCriteria' exceeds the maximum length of [200] characters`);
         }
-        if (entity.DocumentationUpdates?.length > 20) {
-            throw new ValidationError(`The 'DocumentationUpdates' exceeds the maximum length of [20] characters`);
+        if (entity.DocumentationUpdates?.length > 200) {
+            throw new ValidationError(`The 'DocumentationUpdates' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.SustainableVelocity?.length > 200) {
+            throw new ValidationError(`The 'SustainableVelocity' exceeds the maximum length of [200] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

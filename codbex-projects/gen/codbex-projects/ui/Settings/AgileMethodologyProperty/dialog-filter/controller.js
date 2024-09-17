@@ -85,8 +85,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.DocumentationUpdates) {
 				filter.$filter.contains.DocumentationUpdates = entity.DocumentationUpdates;
 			}
-			if (entity.SustainableVelocity !== undefined) {
-				filter.$filter.equals.SustainableVelocity = entity.SustainableVelocity;
+			if (entity.SustainableVelocity) {
+				filter.$filter.contains.SustainableVelocity = entity.SustainableVelocity;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

@@ -9940,6 +9940,7 @@ paths:
                       StakeholderReview: "abcd"
                       FeatureCompletionCriteria: "abcd"
                       DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -9973,6 +9974,7 @@ paths:
                       StakeholderReview: "abcd"
                       FeatureCompletionCriteria: "abcd"
                       DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -10048,6 +10050,7 @@ paths:
                       StakeholderReview: "abcd"
                       FeatureCompletionCriteria: "abcd"
                       DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -10081,6 +10084,7 @@ paths:
                       StakeholderReview: "abcd"
                       FeatureCompletionCriteria: "abcd"
                       DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -10441,7 +10445,6 @@ components:
       required:
         - Name
         - AgileMethodologyType
-        - AgileMethodologyProperty
         - StartingDate
         - EndDate
         - SponsorName
@@ -15378,7 +15381,7 @@ components:
         DeploymentFrequency:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 200
         TestingIntegration:
           type: string
           minLength: 0
@@ -15390,14 +15393,15 @@ components:
         FeatureCompletionCriteria:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 200
         DocumentationUpdates:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 200
         SustainableVelocity:
-          type: integer
-          format: int32
+          type: string
+          minLength: 0
+          maxLength: 200
     AgileMethodologyPropertyFilterOptions:
       type: object
       properties:
@@ -15518,13 +15522,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 TestingIntegration:
                   oneOf:
                     - type: string
@@ -15551,32 +15555,35 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 DocumentationUpdates:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 SustainableVelocity:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
             notEquals:
               type: object
               properties:
@@ -15691,13 +15698,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 TestingIntegration:
                   oneOf:
                     - type: string
@@ -15724,32 +15731,35 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 DocumentationUpdates:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 200
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 200
                 SustainableVelocity:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
             contains:
               type: object
               properties:
@@ -15788,7 +15798,7 @@ components:
                 DeploymentFrequency:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 TestingIntegration:
                   type: string
                   minLength: 0
@@ -15800,12 +15810,15 @@ components:
                 FeatureCompletionCriteria:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 DocumentationUpdates:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 SustainableVelocity:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
             greaterThan:
               type: object
               properties:
@@ -15850,7 +15863,7 @@ components:
                 DeploymentFrequency:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 TestingIntegration:
                   type: string
                   minLength: 0
@@ -15862,14 +15875,15 @@ components:
                 FeatureCompletionCriteria:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 DocumentationUpdates:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 SustainableVelocity:
-                  type: integer
-                  format: int32
+                  type: string
+                  minLength: 0
+                  maxLength: 200
             greaterThanOrEqual:
               type: object
               properties:
@@ -15914,7 +15928,7 @@ components:
                 DeploymentFrequency:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 TestingIntegration:
                   type: string
                   minLength: 0
@@ -15926,14 +15940,15 @@ components:
                 FeatureCompletionCriteria:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 DocumentationUpdates:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 SustainableVelocity:
-                  type: integer
-                  format: int32
+                  type: string
+                  minLength: 0
+                  maxLength: 200
             lessThan:
               type: object
               properties:
@@ -15978,7 +15993,7 @@ components:
                 DeploymentFrequency:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 TestingIntegration:
                   type: string
                   minLength: 0
@@ -15990,14 +16005,15 @@ components:
                 FeatureCompletionCriteria:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 DocumentationUpdates:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 SustainableVelocity:
-                  type: integer
-                  format: int32
+                  type: string
+                  minLength: 0
+                  maxLength: 200
             lessThanOrEqual:
               type: object
               properties:
@@ -16042,7 +16058,7 @@ components:
                 DeploymentFrequency:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 TestingIntegration:
                   type: string
                   minLength: 0
@@ -16054,14 +16070,15 @@ components:
                 FeatureCompletionCriteria:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 DocumentationUpdates:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 200
                 SustainableVelocity:
-                  type: integer
-                  format: int32
+                  type: string
+                  minLength: 0
+                  maxLength: 200
         $select:
           type: array
           example: ["Id", "Name", "AgileMethodologyType", "IterationLength", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]

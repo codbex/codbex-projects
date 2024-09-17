@@ -235,7 +235,7 @@
 	                                ng-model="entity.DeploymentFrequency"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+	                                ng-maxlength="200.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter DeploymentFrequency">
@@ -301,7 +301,7 @@
 	                                ng-model="entity.FeatureCompletionCriteria"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+	                                ng-maxlength="200.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter FeatureCompletionCriteria">
@@ -323,7 +323,7 @@
 	                                ng-model="entity.DocumentationUpdates"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+	                                ng-maxlength="200.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter DocumentationUpdates">
@@ -332,22 +332,25 @@
 	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSustainableVelocity" dg-required="false" dg-colon="true">SustainableVelocity</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-	                        <fd-step-input dg-id="idSustainableVelocity"
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idSustainableVelocity" dg-required="false" dg-colon="true">SustainableVelocity</fd-form-label>
+						</div>
+						<div class="fd-col  fd-col-md--8 ">
+							<fd-textarea id="idSustainableVelocity"
 								name="SustainableVelocity"
 								state="{{ forms.details['SustainableVelocity'].$valid ? '' : 'error' }}"
-								dg-required="false"
+								ng-required="false"
 								ng-model="entity.SustainableVelocity"
-								is-readonly="action === 'select'"
-								placeholder="Enter SustainableVelocity"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
+	                            ng-readonly="action === 'select'"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="200.0 || -1"
+								dg-input-rules="{ patterns: [''] }"
+								placeholder="Enter SustainableVelocity">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['SustainableVelocity'].$valid">The value doesn't match the required pattern ''</fd-form-message>
+						</div>
+					</fd-form-item>
                 </fd-form-group>
             </fd-fieldset>
         </fd-scrollbar>

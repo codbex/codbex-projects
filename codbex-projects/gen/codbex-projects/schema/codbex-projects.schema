@@ -824,7 +824,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 200,
                         "nullable": true,
                         "name": "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY"
                     },
@@ -842,18 +842,19 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 200,
                         "nullable": true,
                         "name": "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 200,
                         "nullable": true,
                         "name": "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES"
                     },
                     {
-                        "type": "INTEGER",
+                        "type": "VARCHAR",
+                        "length": 200,
                         "nullable": true,
                         "name": "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY"
                     }

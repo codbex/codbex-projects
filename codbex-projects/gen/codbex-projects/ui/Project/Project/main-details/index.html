@@ -78,13 +78,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAgileMethodologyProperty" dg-required="true" dg-colon="true">AgileMethodologyProperty</fd-form-label>
+                        	<fd-form-label for="idAgileMethodologyProperty" dg-required="false" dg-colon="true">AgileMethodologyProperty</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idAgileMethodologyProperty"
 	                            name="AgileMethodologyProperty"
 	                            state="{{ forms.details['AgileMethodologyProperty'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
+	                            ng-required="false"
 	                            ng-model="entity.AgileMethodologyProperty"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsAgileMethodologyProperty"

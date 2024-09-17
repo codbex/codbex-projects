@@ -21,7 +21,7 @@ export interface AgileMethodologyPropertyEntity {
     StakeholderReview?: string;
     FeatureCompletionCriteria?: string;
     DocumentationUpdates?: string;
-    SustainableVelocity?: number;
+    SustainableVelocity?: string;
 }
 
 export interface AgileMethodologyPropertyCreateEntity {
@@ -40,7 +40,7 @@ export interface AgileMethodologyPropertyCreateEntity {
     readonly StakeholderReview?: string;
     readonly FeatureCompletionCriteria?: string;
     readonly DocumentationUpdates?: string;
-    readonly SustainableVelocity?: number;
+    readonly SustainableVelocity?: string;
 }
 
 export interface AgileMethodologyPropertyUpdateEntity extends AgileMethodologyPropertyCreateEntity {
@@ -66,7 +66,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string | string[];
             FeatureCompletionCriteria?: string | string[];
             DocumentationUpdates?: string | string[];
-            SustainableVelocity?: number | number[];
+            SustainableVelocity?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -85,7 +85,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string | string[];
             FeatureCompletionCriteria?: string | string[];
             DocumentationUpdates?: string | string[];
-            SustainableVelocity?: number | number[];
+            SustainableVelocity?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -104,7 +104,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string;
             FeatureCompletionCriteria?: string;
             DocumentationUpdates?: string;
-            SustainableVelocity?: number;
+            SustainableVelocity?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -123,7 +123,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string;
             FeatureCompletionCriteria?: string;
             DocumentationUpdates?: string;
-            SustainableVelocity?: number;
+            SustainableVelocity?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -142,7 +142,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string;
             FeatureCompletionCriteria?: string;
             DocumentationUpdates?: string;
-            SustainableVelocity?: number;
+            SustainableVelocity?: string;
         };
         lessThan?: {
             Id?: number;
@@ -161,7 +161,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string;
             FeatureCompletionCriteria?: string;
             DocumentationUpdates?: string;
-            SustainableVelocity?: number;
+            SustainableVelocity?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -180,7 +180,7 @@ export interface AgileMethodologyPropertyEntityOptions {
             StakeholderReview?: string;
             FeatureCompletionCriteria?: string;
             DocumentationUpdates?: string;
-            SustainableVelocity?: number;
+            SustainableVelocity?: string;
         };
     },
     $select?: (keyof AgileMethodologyPropertyEntity)[],
@@ -296,7 +296,7 @@ export class AgileMethodologyPropertyRepository {
             {
                 name: "SustainableVelocity",
                 column: "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY",
-                type: "INTEGER",
+                type: "VARCHAR",
             }
         ]
     };

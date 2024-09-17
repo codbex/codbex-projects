@@ -183,7 +183,6 @@
                         "dataName": "PROJECT_AGILEMETHODOLOGYPROPERTY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
                         "name": "AgileMethodologyProperty",
                         "widgetDropDownDependsOn": "AgileMethodologyType",
                         "widgetDropDownKey": "Id",
@@ -2335,13 +2334,13 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "200",
                         "dataName": "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "name": "DeploymentFrequency",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "200",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
@@ -2368,36 +2367,37 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "200",
                         "dataName": "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "name": "FeatureCompletionCriteria",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "200",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "200",
                         "dataName": "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "name": "DocumentationUpdates",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "200",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "200",
                         "dataName": "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY",
                         "dataNullable": "true",
-                        "dataType": "INTEGER",
+                        "dataType": "VARCHAR",
                         "name": "SustainableVelocity",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "200",
                         "widgetSize": "",
-                        "widgetType": "NUMBER"
+                        "widgetType": "TEXTAREA"
                     }
                 ],
                 "caption": "Manage entity AgileMethodologyProperty",

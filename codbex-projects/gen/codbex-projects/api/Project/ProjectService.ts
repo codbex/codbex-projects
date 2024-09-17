@@ -131,9 +131,6 @@ class ProjectService {
         if (entity.AgileMethodologyType === null || entity.AgileMethodologyType === undefined) {
             throw new ValidationError(`The 'AgileMethodologyType' property is required, provide a valid value`);
         }
-        if (entity.AgileMethodologyProperty === null || entity.AgileMethodologyProperty === undefined) {
-            throw new ValidationError(`The 'AgileMethodologyProperty' property is required, provide a valid value`);
-        }
         if (entity.StartingDate === null || entity.StartingDate === undefined) {
             throw new ValidationError(`The 'StartingDate' property is required, provide a valid value`);
         }
