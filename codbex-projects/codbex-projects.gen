@@ -21,6 +21,7 @@
         "Milestone",
         "Expense",
         "TeamMember",
+        "Goal",
         "Objective",
         "Constrain",
         "StakeHolder",
@@ -174,16 +175,6 @@
       "label": "WorkPackage",
       "order": "150",
       "icon": "/services/web/resources/unicons/share-alt.svg",
-      "role": ""
-    },
-    "entities": {
-      "views": [
-        "Goal"
-      ],
-      "name": "entities",
-      "label": "entities",
-      "order": "100",
-      "icon": "/services/web/resources/unicons/copy.svg",
       "role": ""
     }
   },
@@ -3932,14 +3923,14 @@
       "menuLabel": "Goal",
       "name": "Goal",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveLabel": "Entities",
-      "perspectiveName": "entities",
+      "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
+      "perspectiveLabel": "Project",
+      "perspectiveName": "Project",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
       "title": "Goal",
       "tooltip": "Goal",
-      "type": "PRIMARY",
+      "type": "DEPENDENT",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
@@ -4541,10 +4532,12 @@
           "dataNullable": true,
           "dataType": "INTEGER",
           "name": "AgileMethodologyType",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "AgileMethodologyProperty_AgileMethodologyType",
           "relationshipEntityName": "AgileMethodologyType",
           "relationshipEntityPerspectiveName": "Settings",
@@ -4556,7 +4549,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "AgileMethodologyType",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -4914,7 +4907,8 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "hasDropdowns": true
     }
   ]
 }

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { GoalRepository, GoalEntityOptions } from "../../dao/entities/GoalRepository";
+import { GoalRepository, GoalEntityOptions } from "../../dao/Project/GoalRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-entities-Goal", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Goal", ["validate"]);
 
 @Controller
 class GoalService {
@@ -30,7 +30,7 @@ class GoalService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/entities/GoalService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/GoalService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

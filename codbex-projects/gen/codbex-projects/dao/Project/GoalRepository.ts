@@ -226,7 +226,7 @@ export class GoalRepository {
     }
 
     private async triggerEvent(data: GoalEntityEvent | GoalUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-entities-Goal", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-Project-Goal", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -234,6 +234,6 @@ export class GoalRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-projects-entities-Goal").send(JSON.stringify(data));
+        producer.topic("codbex-projects-Project-Goal").send(JSON.stringify(data));
     }
 }

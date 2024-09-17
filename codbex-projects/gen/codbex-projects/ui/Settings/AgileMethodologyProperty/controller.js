@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -107,12 +107,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("AgileMethodologyProperty-details", {
 				action: "select",
 				entity: entity,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("AgileMethodologyProperty-filter", {
 				entity: $scope.filterEntity,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			});
 		};
 
@@ -121,6 +123,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("AgileMethodologyProperty-details", {
 				action: "create",
 				entity: {},
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			}, null, false);
 		};
 
@@ -128,6 +131,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("AgileMethodologyProperty-details", {
 				action: "update",
 				entity: entity,
+				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
 			}, null, false);
 		};
 
@@ -159,5 +163,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsAgileMethodologyType = [];
+
+
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts").then(function (response) {
+			$scope.optionsAgileMethodologyType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsAgileMethodologyTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsAgileMethodologyType.length; i++) {
+				if ($scope.optionsAgileMethodologyType[i].value === optionKey) {
+					return $scope.optionsAgileMethodologyType[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

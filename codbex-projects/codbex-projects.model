@@ -1865,14 +1865,14 @@
                 "menuLabel": "Goal",
                 "name": "Goal",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
+                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
+                "perspectiveLabel": "Project",
+                "perspectiveName": "Project",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "Goal",
                 "tooltip": "Goal",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -2237,10 +2237,12 @@
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "name": "AgileMethodologyType",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
+                        "widgetType": "DROPDOWN",
                         "relationshipName": "AgileMethodologyProperty_AgileMethodologyType",
                         "relationshipEntityName": "AgileMethodologyType",
                         "relationshipEntityPerspectiveName": "Settings",

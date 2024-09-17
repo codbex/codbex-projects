@@ -27,7 +27,7 @@ tags:
   - name: WorkPackage
   - name: Project
   - name: Settings
-  - name: entities
+  - name: Project
   - name: Project
   - name: Project
   - name: Settings
@@ -7267,7 +7267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/GoalService.ts:
+  /codbex-projects/gen/codbex-projects/api/Project/GoalService.ts:
     get:
       summary: List Goal
       parameters:
@@ -7288,7 +7288,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -7319,7 +7319,7 @@ paths:
     post:
       summary: Create Goal
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -7351,7 +7351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/GoalService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Project/GoalService.ts/{id}:
     get:
       summary: Get Goal by Id
       parameters:
@@ -7362,7 +7362,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -7400,7 +7400,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -7448,7 +7448,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Project
       responses:
         204:
           description: Successful Request
@@ -7470,11 +7470,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/GoalService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Project/GoalService.ts/count:
     get:
       summary: Count the number of Goal
       tags:
-        - entities
+        - Project
       responses:
         200:
           description: Successful Request
@@ -7498,7 +7498,7 @@ paths:
     post:
       summary: Count the number of Goal by GoalFilterOptions
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
@@ -7584,11 +7584,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/GoalService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Project/GoalService.ts/search:
     post:
       summary: Search Goal by GoalFilterOptions
       tags:
-        - entities
+        - Project
       requestBody:
         content:
           application/json:
