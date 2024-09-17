@@ -11,27 +11,27 @@ servers:
 tags:
   - name: Project
   - name: Project
-  - name: entities
-  - name: entities
+  - name: Settings
+  - name: Settings
   - name: Project
   - name: Project
-  - name: entities
+  - name: Settings
   - name: Project
   - name: Project
-  - name: entities
+  - name: Settings
   - name: Deliverable
   - name: Task
-  - name: entities
+  - name: Settings
   - name: TaskDependency
-  - name: entities
+  - name: Settings
   - name: WorkPackage
   - name: Project
-  - name: entities
+  - name: Settings
   - name: entities
   - name: Project
   - name: Project
-  - name: entities
-  - name: entities
+  - name: Settings
+  - name: Settings
   - name: Project
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
@@ -858,7 +858,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/ResourceTypeService.ts:
     get:
       summary: List ResourceType
       parameters:
@@ -879,7 +879,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -910,7 +910,7 @@ paths:
     post:
       summary: Create ResourceType
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -942,7 +942,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/ResourceTypeService.ts/{id}:
     get:
       summary: Get ResourceType by Id
       parameters:
@@ -953,7 +953,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -991,7 +991,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1039,7 +1039,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -1061,11 +1061,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/ResourceTypeService.ts/count:
     get:
       summary: Count the number of ResourceType
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1089,7 +1089,7 @@ paths:
     post:
       summary: Count the number of ResourceType by ResourceTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1171,11 +1171,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/ResourceTypeService.ts/search:
     post:
       summary: Search ResourceType by ResourceTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1258,7 +1258,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts:
     get:
       summary: List StatusType
       parameters:
@@ -1279,7 +1279,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1310,7 +1310,7 @@ paths:
     post:
       summary: Create StatusType
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1342,7 +1342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts/{id}:
     get:
       summary: Get StatusType by Id
       parameters:
@@ -1353,7 +1353,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1391,7 +1391,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1439,7 +1439,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -1461,11 +1461,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts/count:
     get:
       summary: Count the number of StatusType
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -1489,7 +1489,7 @@ paths:
     post:
       summary: Count the number of StatusType by StatusTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -1571,11 +1571,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts/search:
     post:
       summary: Search StatusType by StatusTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2462,7 +2462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts:
     get:
       summary: List CostCategory
       parameters:
@@ -2483,7 +2483,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2514,7 +2514,7 @@ paths:
     post:
       summary: Create CostCategory
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2546,7 +2546,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts/{id}:
     get:
       summary: Get CostCategory by Id
       parameters:
@@ -2557,7 +2557,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2595,7 +2595,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2643,7 +2643,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -2665,11 +2665,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts/count:
     get:
       summary: Count the number of CostCategory
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2693,7 +2693,7 @@ paths:
     post:
       summary: Count the number of CostCategory by CostCategoryFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2775,11 +2775,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts/search:
     post:
       summary: Search CostCategory by CostCategoryFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3670,7 +3670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ExpenseCategoryService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/ExpenseCategoryService.ts:
     get:
       summary: List ExpenseCategory
       parameters:
@@ -3691,7 +3691,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3722,7 +3722,7 @@ paths:
     post:
       summary: Create ExpenseCategory
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3754,7 +3754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ExpenseCategoryService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/ExpenseCategoryService.ts/{id}:
     get:
       summary: Get ExpenseCategory by Id
       parameters:
@@ -3765,7 +3765,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3803,7 +3803,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3851,7 +3851,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -3873,11 +3873,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ExpenseCategoryService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/ExpenseCategoryService.ts/count:
     get:
       summary: Count the number of ExpenseCategory
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -3901,7 +3901,7 @@ paths:
     post:
       summary: Count the number of ExpenseCategory by ExpenseCategoryFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -3983,11 +3983,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ExpenseCategoryService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/ExpenseCategoryService.ts/search:
     post:
       summary: Search ExpenseCategory by ExpenseCategoryFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4878,7 +4878,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ApprovalStatusService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/ApprovalStatusService.ts:
     get:
       summary: List ApprovalStatus
       parameters:
@@ -4899,7 +4899,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -4930,7 +4930,7 @@ paths:
     post:
       summary: Create ApprovalStatus
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -4962,7 +4962,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ApprovalStatusService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/ApprovalStatusService.ts/{id}:
     get:
       summary: Get ApprovalStatus by Id
       parameters:
@@ -4973,7 +4973,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5011,7 +5011,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5059,7 +5059,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -5081,11 +5081,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ApprovalStatusService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/ApprovalStatusService.ts/count:
     get:
       summary: Count the number of ApprovalStatus
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5109,7 +5109,7 @@ paths:
     post:
       summary: Count the number of ApprovalStatus by ApprovalStatusFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5191,11 +5191,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/ApprovalStatusService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/ApprovalStatusService.ts/search:
     post:
       summary: Search ApprovalStatus by ApprovalStatusFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5678,7 +5678,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/DependencyTypeService.ts:
     get:
       summary: List DependencyType
       parameters:
@@ -5699,7 +5699,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5730,7 +5730,7 @@ paths:
     post:
       summary: Create DependencyType
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5762,7 +5762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/DependencyTypeService.ts/{id}:
     get:
       summary: Get DependencyType by Id
       parameters:
@@ -5773,7 +5773,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5811,7 +5811,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5859,7 +5859,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -5881,11 +5881,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/DependencyTypeService.ts/count:
     get:
       summary: Count the number of DependencyType
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -5909,7 +5909,7 @@ paths:
     post:
       summary: Count the number of DependencyType by DependencyTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -5991,11 +5991,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/DependencyTypeService.ts/search:
     post:
       summary: Search DependencyType by DependencyTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -6866,7 +6866,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MemberRoleService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/MemberRoleService.ts:
     get:
       summary: List MemberRole
       parameters:
@@ -6887,7 +6887,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -6918,7 +6918,7 @@ paths:
     post:
       summary: Create MemberRole
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -6950,7 +6950,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MemberRoleService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/MemberRoleService.ts/{id}:
     get:
       summary: Get MemberRole by Id
       parameters:
@@ -6961,7 +6961,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -6999,7 +6999,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -7047,7 +7047,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -7069,11 +7069,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MemberRoleService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/MemberRoleService.ts/count:
     get:
       summary: Count the number of MemberRole
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -7097,7 +7097,7 @@ paths:
     post:
       summary: Count the number of MemberRole by MemberRoleFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -7179,11 +7179,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MemberRoleService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/MemberRoleService.ts/search:
     post:
       summary: Search MemberRole by MemberRoleFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8482,7 +8482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts:
     get:
       summary: List AgileMethodologyType
       parameters:
@@ -8503,7 +8503,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8534,7 +8534,7 @@ paths:
     post:
       summary: Create AgileMethodologyType
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8566,7 +8566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/{id}:
     get:
       summary: Get AgileMethodologyType by Id
       parameters:
@@ -8577,7 +8577,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8615,7 +8615,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8663,7 +8663,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -8685,11 +8685,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/count:
     get:
       summary: Count the number of AgileMethodologyType
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8713,7 +8713,7 @@ paths:
     post:
       summary: Count the number of AgileMethodologyType by AgileMethodologyTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8795,11 +8795,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/search:
     post:
       summary: Search AgileMethodologyType by AgileMethodologyTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8882,7 +8882,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts:
     get:
       summary: List StakeHolderType
       parameters:
@@ -8903,7 +8903,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8934,7 +8934,7 @@ paths:
     post:
       summary: Create StakeHolderType
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8966,7 +8966,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts/{id}:
     get:
       summary: Get StakeHolderType by Id
       parameters:
@@ -8977,7 +8977,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -9015,7 +9015,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -9063,7 +9063,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -9085,11 +9085,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts/count:
     get:
       summary: Count the number of StakeHolderType
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -9113,7 +9113,7 @@ paths:
     post:
       summary: Count the number of StakeHolderType by StakeHolderTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -9195,11 +9195,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts/search:
     post:
       summary: Search StakeHolderType by StakeHolderTypeFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:

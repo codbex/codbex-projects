@@ -195,7 +195,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsProject = [];
 
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StakeHolderTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts").then(function (response) {
 			$scope.optionsStakeHolderType = response.data.map(e => {
 				return {
 					value: e.Id,

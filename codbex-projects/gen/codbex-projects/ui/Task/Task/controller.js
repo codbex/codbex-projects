@@ -199,7 +199,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/StatusTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
 			$scope.optionsStatusType = response.data.map(e => {
 				return {
 					value: e.Id,

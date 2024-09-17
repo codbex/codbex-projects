@@ -218,7 +218,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/MemberRoleService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/MemberRoleService.ts").then(function (response) {
 			$scope.optionsMemberRole = response.data.map(e => {
 				return {
 					value: e.Id,

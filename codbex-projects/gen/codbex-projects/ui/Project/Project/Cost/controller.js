@@ -211,7 +211,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/CostCategoryService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts").then(function (response) {
 			$scope.optionsCostCategory = response.data.map(e => {
 				return {
 					value: e.Id,

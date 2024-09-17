@@ -185,7 +185,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsAgileMethodologyType = [];
 
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/AgileMethodologyTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts").then(function (response) {
 			$scope.optionsAgileMethodologyType = response.data.map(e => {
 				return {
 					value: e.Id,

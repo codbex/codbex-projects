@@ -196,7 +196,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/DependencyTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/DependencyTypeService.ts").then(function (response) {
 			$scope.optionsDependencyType = response.data.map(e => {
 				return {
 					value: e.Id,

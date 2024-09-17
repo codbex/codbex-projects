@@ -204,7 +204,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/ResourceTypeService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/ResourceTypeService.ts").then(function (response) {
 			$scope.optionsResourceType = response.data.map(e => {
 				return {
 					value: e.Id,
