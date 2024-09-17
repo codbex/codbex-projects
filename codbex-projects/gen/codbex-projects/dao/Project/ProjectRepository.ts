@@ -8,6 +8,7 @@ export interface ProjectEntity {
     Name: string;
     Description?: string;
     AgileMethodologyType: number;
+    AgileMethodologyProperty?: number;
     StartingDate?: Date;
     EndDate: Date;
     SponsorName: string;
@@ -21,6 +22,7 @@ export interface ProjectCreateEntity {
     readonly Name: string;
     readonly Description?: string;
     readonly AgileMethodologyType: number;
+    readonly AgileMethodologyProperty?: number;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
     readonly SponsorName: string;
@@ -41,6 +43,7 @@ export interface ProjectEntityOptions {
             Name?: string | string[];
             Description?: string | string[];
             AgileMethodologyType?: number | number[];
+            AgileMethodologyProperty?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             SponsorName?: string | string[];
@@ -54,6 +57,7 @@ export interface ProjectEntityOptions {
             Name?: string | string[];
             Description?: string | string[];
             AgileMethodologyType?: number | number[];
+            AgileMethodologyProperty?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             SponsorName?: string | string[];
@@ -67,6 +71,7 @@ export interface ProjectEntityOptions {
             Name?: string;
             Description?: string;
             AgileMethodologyType?: number;
+            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -80,6 +85,7 @@ export interface ProjectEntityOptions {
             Name?: string;
             Description?: string;
             AgileMethodologyType?: number;
+            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -93,6 +99,7 @@ export interface ProjectEntityOptions {
             Name?: string;
             Description?: string;
             AgileMethodologyType?: number;
+            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -106,6 +113,7 @@ export interface ProjectEntityOptions {
             Name?: string;
             Description?: string;
             AgileMethodologyType?: number;
+            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -119,6 +127,7 @@ export interface ProjectEntityOptions {
             Name?: string;
             Description?: string;
             AgileMethodologyType?: number;
+            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -178,6 +187,11 @@ export class ProjectRepository {
                 column: "PROJECT_AGILEMETHODOLOGYTYPE",
                 type: "INTEGER",
                 required: true
+            },
+            {
+                name: "AgileMethodologyProperty",
+                column: "PROJECT_AGILEMETHODOLOGYPROPERTY",
+                type: "INTEGER",
             },
             {
                 name: "StartingDate",

@@ -109,6 +109,17 @@
             "delimEnclosing": "\"",
             "distinguishEmptyFromNull": true,
             "version": "1.0"
+        },
+        {
+            "table": "CODBEX_AGILEMETHODOLOGYPROPERTY",
+            "schema": "PUBLIC",
+            "file": "/codbex-projects-data/agile-methodology-properties.csv",
+            "header": true,
+            "useHeaderNames": true,
+            "delimField": ",",
+            "delimEnclosing": "\"",
+            "distinguishEmptyFromNull": true,
+            "version": "1.0"
         }
     ]
 }

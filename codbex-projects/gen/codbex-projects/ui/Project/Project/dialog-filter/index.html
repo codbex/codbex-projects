@@ -78,6 +78,20 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idAgileMethodologyProperty" dg-colon="true">AgileMethodologyProperty</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idAgileMethodologyProperty"
+	                            name="AgileMethodologyProperty"
+	                            state="{{ forms.details['AgileMethodologyProperty'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.AgileMethodologyProperty"
+	                            dropdown-items="optionsAgileMethodologyProperty"
+	                            dg-placeholder="Search AgileMethodologyProperty ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idStartingDateFrom" dg-colon="true">From StartingDate</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">

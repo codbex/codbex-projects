@@ -41,6 +41,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsAgileMethodologyType = [];
+				$scope.optionsAgileMethodologyProperty = [];
 				$scope.action = 'select';
 			});
 		});
@@ -55,6 +56,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
+				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
 				$scope.action = 'select';
 			});
 		});
@@ -63,6 +65,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
+				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
 				$scope.action = 'create';
 			});
 		});
@@ -77,8 +80,31 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
+				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
 				$scope.action = 'update';
 			});
+		});
+
+		$scope.$watch('entity.AgileMethodologyType', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts/search", {
+					$filter: {
+						equals: {
+							AgileMethodologyType: newValue
+						}
+					}
+				}).then(function (response) {
+					$scope.optionsAgileMethodologyProperty = response.data.map(e => {
+						return {
+							value: e.Id,
+							text: e.Name
+						}
+					});
+					if ($scope.action !== 'select' && newValue !== oldValue) {
+						$scope.entity.AgileMethodologyProperty = undefined;
+					}
+				});
+			}
 		});
 		//-----------------Events-------------------//
 

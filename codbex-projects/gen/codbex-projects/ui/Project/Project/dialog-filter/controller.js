@@ -27,6 +27,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsAgileMethodologyType = params.optionsAgileMethodologyType;
+			$scope.optionsAgileMethodologyProperty = params.optionsAgileMethodologyProperty;
 		}
 
 		$scope.filter = function () {
@@ -60,6 +61,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.AgileMethodologyType !== undefined) {
 				filter.$filter.equals.AgileMethodologyType = entity.AgileMethodologyType;
+			}
+			if (entity.AgileMethodologyProperty !== undefined) {
+				filter.$filter.equals.AgileMethodologyProperty = entity.AgileMethodologyProperty;
 			}
 			if (entity.StartingDateFrom) {
 				filter.$filter.greaterThanOrEqual.StartingDate = entity.StartingDateFrom;
