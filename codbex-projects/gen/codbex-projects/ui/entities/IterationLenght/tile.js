@@ -9,7 +9,7 @@ exports.getTile = function () {
         name: "IterationLenght",
         caption: "Manage entity IterationLenght",
         tooltip: "IterationLenght",
-        type: "PRIMARY",
+        type: "SETTING",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-projects/gen/codbex-projects/ui/entities/index.html",

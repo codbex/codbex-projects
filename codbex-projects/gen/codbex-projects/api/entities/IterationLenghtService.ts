@@ -125,6 +125,9 @@ class IterationLenghtService {
         if (entity.Period === null || entity.Period === undefined) {
             throw new ValidationError(`The 'Period' property is required, provide a valid value`);
         }
+        if (entity.Period?.length > 20) {
+            throw new ValidationError(`The 'Period' exceeds the maximum length of [20] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

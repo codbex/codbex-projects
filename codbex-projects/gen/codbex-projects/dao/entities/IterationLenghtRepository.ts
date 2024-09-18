@@ -6,12 +6,12 @@ import { dao as daoApi } from "sdk/db";
 export interface IterationLenghtEntity {
     readonly Id: number;
     AgileMethodology: number;
-    Period: number;
+    Period: string;
 }
 
 export interface IterationLenghtCreateEntity {
     readonly AgileMethodology: number;
-    readonly Period: number;
+    readonly Period: string;
 }
 
 export interface IterationLenghtUpdateEntity extends IterationLenghtCreateEntity {
@@ -23,37 +23,37 @@ export interface IterationLenghtEntityOptions {
         equals?: {
             Id?: number | number[];
             AgileMethodology?: number | number[];
-            Period?: number | number[];
+            Period?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             AgileMethodology?: number | number[];
-            Period?: number | number[];
+            Period?: string | string[];
         };
         contains?: {
             Id?: number;
             AgileMethodology?: number;
-            Period?: number;
+            Period?: string;
         };
         greaterThan?: {
             Id?: number;
             AgileMethodology?: number;
-            Period?: number;
+            Period?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             AgileMethodology?: number;
-            Period?: number;
+            Period?: string;
         };
         lessThan?: {
             Id?: number;
             AgileMethodology?: number;
-            Period?: number;
+            Period?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             AgileMethodology?: number;
-            Period?: number;
+            Period?: string;
         };
     },
     $select?: (keyof IterationLenghtEntity)[],
@@ -99,7 +99,7 @@ export class IterationLenghtRepository {
             {
                 name: "Period",
                 column: "ITERATIONLENGHT_PERIOD",
-                type: "INTEGER",
+                type: "VARCHAR",
                 required: true
             }
         ]

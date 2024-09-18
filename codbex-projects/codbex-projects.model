@@ -2169,15 +2169,16 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "20",
                         "dataName": "ITERATIONLENGHT_PERIOD",
                         "dataNullable": "false",
-                        "dataType": "INTEGER",
+                        "dataType": "VARCHAR",
                         "isRequiredProperty": "true",
                         "name": "Period",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "NUMBER"
+                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity IterationLenght",
@@ -2199,7 +2200,7 @@
                 "perspectiveRole": "",
                 "title": "IterationLenght",
                 "tooltip": "IterationLenght",
-                "type": "PRIMARY"
+                "type": "SETTING"
             }
         ],
         "perspectives": [

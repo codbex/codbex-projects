@@ -4680,15 +4680,16 @@
           "inputRule": ""
         },
         {
+          "dataLength": "20",
           "dataName": "ITERATIONLENGHT_PERIOD",
           "dataNullable": false,
-          "dataType": "INTEGER",
+          "dataType": "VARCHAR",
           "isRequiredProperty": true,
           "name": "Period",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "NUMBER",
+          "widgetType": "TEXTBOX",
           "dataNotNull": true,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -4696,8 +4697,10 @@
           "isCalculatedProperty": false,
           "widgetLabel": "Period",
           "widgetDropdownUrl": "",
-          "dataTypeJava": "int",
-          "dataTypeTypescript": "number",
+          "dataTypeJava": "string",
+          "dataTypeTypescript": "string",
+          "minLength": 0,
+          "maxLength": 20,
           "inputRule": ""
         }
       ],
@@ -4720,7 +4723,7 @@
       "perspectiveRole": "",
       "title": "IterationLenght",
       "tooltip": "IterationLenght",
-      "type": "PRIMARY",
+      "type": "SETTING",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [

@@ -760,7 +760,8 @@
                         "name": "ITERATIONLENGHT_AGILEMETHODOLOGY"
                     },
                     {
-                        "type": "INTEGER",
+                        "type": "VARCHAR",
+                        "length": 20,
                         "name": "ITERATIONLENGHT_PERIOD"
                     }
                 ]
