@@ -70,15 +70,6 @@
                         "name": "PROJECT_DESCRIPTION"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "PROJECT_AGILEMETHODOLOGYTYPE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PROJECT_AGILEMETHODOLOGYPROPERTY"
-                    },
-                    {
                         "type": "TIMESTAMP",
                         "nullable": true,
                         "name": "PROJECT_STARTINGDATE"
@@ -112,9 +103,82 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 2000,
                         "nullable": true,
                         "name": "PROJECT_NOTES"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "PROJECT_AGILEMETHODOLOGYTYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "PROJECT_ITERATIONLENGHT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_PLANNINGFREQUENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_CUSTOMERINVOLVEMENTFREQUENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_RELEASECADENCE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_RETROSPECTIVEFREQUENCY"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "nullable": true,
+                        "name": "PROJECT_DAILYSTANDUP"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_BACKLOGREFINEMENTFREQUENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_DEFECTMANAGEMENT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_DEPLOYMENTFREQUENCY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_TESTINGINTEGRATION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_STAKEHOLDERREVIEW"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_FEATURECOMPLETIONCRITERIA"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_DOCUMENTATIONUPDATES"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "name": "PROJECT_SUSTAINABLEVELOCITY"
                     }
                 ]
             },
@@ -619,7 +683,7 @@
                 ]
             },
             {
-                "name": "CODBEX_AGILEMETHODOLOGYTYPE",
+                "name": "CODBEX_AGILEMETHODOLOGY",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -627,12 +691,12 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "AGILEMETHODOLOGYTYPE_ID"
+                        "name": "AGILEMETHODOLOGY_ID"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 30,
-                        "name": "AGILEMETHODOLOGYTYPE_NAME"
+                        "name": "AGILEMETHODOLOGY_NAME"
                     }
                 ]
             },
@@ -681,7 +745,7 @@
                 ]
             },
             {
-                "name": "CODBEX_AGILEMETHODOLOGYPROPERTY",
+                "name": "CODBEX_ITERATIONLENGHT",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -689,99 +753,15 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "name": "AGILEMETHODOLOGYPROPERTY_NAME"
+                        "name": "ITERATIONLENGHT_ID"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE"
+                        "name": "ITERATIONLENGHT_AGILEMETHODOLOGY"
                     },
                     {
                         "type": "INTEGER",
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_ITERATIONLENGTH"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_PLANNINGFREQUENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_CUSTOMERINVOLVEMENTFREQUENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_RELEASECADENCE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_RETROSPECTIVEFREQUENCY"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_DAILYSTANDUP"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_BACKLOGREFINEMENTFREQUENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_DEFECTMANAGEMENT"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_DEPLOYMENTFREQUENCY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_TESTINGINTEGRATION"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_STAKEHOLDERREVIEW"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_FEATURECOMPLETIONCRITERIA"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_DOCUMENTATIONUPDATES"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "nullable": true,
-                        "name": "AGILEMETHODOLOGYPROPERTY_SUSTAINABLEVELOCITY"
+                        "name": "ITERATIONLENGHT_PERIOD"
                     }
                 ]
             },
@@ -804,22 +784,22 @@
                 "referencedColumns": "RESOURCETYPE_ID"
             },
             {
-                "name": "Project_AgileMethodologyType",
+                "name": "Project_AgileMethodology",
                 "type": "foreignKey",
                 "table": "CODBEX_PROJECT",
-                "constraintName": "Project_AgileMethodologyType",
+                "constraintName": "Project_AgileMethodology",
                 "columns": "PROJECT_AGILEMETHODOLOGYTYPE",
-                "referencedTable": "CODBEX_AGILEMETHODOLOGYTYPE",
-                "referencedColumns": "AGILEMETHODOLOGYTYPE_ID"
+                "referencedTable": "CODBEX_AGILEMETHODOLOGY",
+                "referencedColumns": "AGILEMETHODOLOGY_ID"
             },
             {
-                "name": "Project_AgileMethodologyProperty",
+                "name": "Project_IterationLenght",
                 "type": "foreignKey",
                 "table": "CODBEX_PROJECT",
-                "constraintName": "Project_AgileMethodologyProperty",
-                "columns": "PROJECT_AGILEMETHODOLOGYPROPERTY",
-                "referencedTable": "CODBEX_AGILEMETHODOLOGYPROPERTY",
-                "referencedColumns": "AGILEMETHODOLOGYPROPERTY_ID"
+                "constraintName": "Project_IterationLenght",
+                "columns": "PROJECT_ITERATIONLENGHT",
+                "referencedTable": "CODBEX_ITERATIONLENGHT",
+                "referencedColumns": "ITERATIONLENGHT_ID"
             },
             {
                 "name": "Budget_Project",
@@ -1011,13 +991,13 @@
                 "referencedColumns": "PROJECT_ID"
             },
             {
-                "name": "AgileMethodologyProperty_AgileMethodologyType",
+                "name": "IterationLenght_AgileMethodology",
                 "type": "foreignKey",
-                "table": "CODBEX_AGILEMETHODOLOGYPROPERTY",
-                "constraintName": "AgileMethodologyProperty_AgileMethodologyType",
-                "columns": "AGILEMETHODOLOGYPROPERTY_AGILEMETHODOLOGYTYPE",
-                "referencedTable": "CODBEX_AGILEMETHODOLOGYTYPE",
-                "referencedColumns": "AGILEMETHODOLOGYTYPE_ID"
+                "table": "CODBEX_ITERATIONLENGHT",
+                "constraintName": "IterationLenght_AgileMethodology",
+                "columns": "ITERATIONLENGHT_AGILEMETHODOLOGY",
+                "referencedTable": "CODBEX_AGILEMETHODOLOGY",
+                "referencedColumns": "AGILEMETHODOLOGY_ID"
             }
         ]
     },

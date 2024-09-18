@@ -30,7 +30,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: Project
-  - name: Settings
+  - name: entities
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -687,6 +687,18 @@ paths:
                       Opportunity: "abcd"
                       Scope: "abcd"
                       Notes: "abcd"
+                      PlanningFrequency: "abcd"
+                      CustomerInvolvementFrequency: "abcd"
+                      ReleaseCadence: "abcd"
+                      RetrospectiveFrequency: "abcd"
+                      BacklogRefinementFrequency: "abcd"
+                      DefectManagement: "abcd"
+                      DeploymentFrequency: "abcd"
+                      TestingIntegration: "abcd"
+                      StakeholderReview: "abcd"
+                      FeatureCompletionCriteria: "abcd"
+                      DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -714,6 +726,18 @@ paths:
                       Opportunity: "abcd"
                       Scope: "abcd"
                       Notes: "abcd"
+                      PlanningFrequency: "abcd"
+                      CustomerInvolvementFrequency: "abcd"
+                      ReleaseCadence: "abcd"
+                      RetrospectiveFrequency: "abcd"
+                      BacklogRefinementFrequency: "abcd"
+                      DefectManagement: "abcd"
+                      DeploymentFrequency: "abcd"
+                      TestingIntegration: "abcd"
+                      StakeholderReview: "abcd"
+                      FeatureCompletionCriteria: "abcd"
+                      DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -783,6 +807,18 @@ paths:
                       Opportunity: "abcd"
                       Scope: "abcd"
                       Notes: "abcd"
+                      PlanningFrequency: "abcd"
+                      CustomerInvolvementFrequency: "abcd"
+                      ReleaseCadence: "abcd"
+                      RetrospectiveFrequency: "abcd"
+                      BacklogRefinementFrequency: "abcd"
+                      DefectManagement: "abcd"
+                      DeploymentFrequency: "abcd"
+                      TestingIntegration: "abcd"
+                      StakeholderReview: "abcd"
+                      FeatureCompletionCriteria: "abcd"
+                      DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -810,6 +846,18 @@ paths:
                       Opportunity: "abcd"
                       Scope: "abcd"
                       Notes: "abcd"
+                      PlanningFrequency: "abcd"
+                      CustomerInvolvementFrequency: "abcd"
+                      ReleaseCadence: "abcd"
+                      RetrospectiveFrequency: "abcd"
+                      BacklogRefinementFrequency: "abcd"
+                      DefectManagement: "abcd"
+                      DeploymentFrequency: "abcd"
+                      TestingIntegration: "abcd"
+                      StakeholderReview: "abcd"
+                      FeatureCompletionCriteria: "abcd"
+                      DocumentationUpdates: "abcd"
+                      SustainableVelocity: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -7276,9 +7324,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts:
     get:
-      summary: List AgileMethodologyType
+      summary: List AgileMethodology
       parameters:
         - in: query
           name: $limit
@@ -7306,7 +7354,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyType'
+                    $ref: '#/components/schemas/AgileMethodology'
         400:
           description: Bad Request Error
           content:
@@ -7326,14 +7374,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create AgileMethodologyType
+      summary: Create AgileMethodology
       tags:
         - Settings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyType'
+              $ref: '#/components/schemas/AgileMethodology'
         required: true
       responses:
         201:
@@ -7341,7 +7389,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AgileMethodologyType'
+                $ref: '#/components/schemas/AgileMethodology'
         400:
           description: Bad Request Error
           content:
@@ -7360,9 +7408,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts/{id}:
     get:
-      summary: Get AgileMethodologyType by Id
+      summary: Get AgileMethodology by Id
       parameters:
         - in: path
           name: id
@@ -7380,7 +7428,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyType'
+                    $ref: '#/components/schemas/AgileMethodology'
         404:
           description: Entity Not Found
           content:
@@ -7400,7 +7448,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update AgileMethodologyType by Id
+      summary: Update AgileMethodology by Id
       parameters:
         - in: path
           name: id
@@ -7414,7 +7462,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyType'
+              $ref: '#/components/schemas/AgileMethodology'
         required: true
       responses:
         200:
@@ -7422,7 +7470,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AgileMethodologyType'
+                $ref: '#/components/schemas/AgileMethodology'
         400:
           description: Bad Request Error
           content:
@@ -7448,7 +7496,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete AgileMethodologyType by Id
+      summary: Delete AgileMethodology by Id
       parameters:
         - in: path
           name: id
@@ -7479,9 +7527,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts/count:
     get:
-      summary: Count the number of AgileMethodologyType
+      summary: Count the number of AgileMethodology
       tags:
         - Settings
       responses:
@@ -7505,14 +7553,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of AgileMethodologyType by AgileMethodologyTypeFilterOptions
+      summary: Count the number of AgileMethodology by AgileMethodologyFilterOptions
       tags:
         - Settings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyTypeFilterOptions'
+              $ref: '#/components/schemas/AgileMethodologyFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -7589,16 +7637,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts/search:
     post:
-      summary: Search AgileMethodologyType by AgileMethodologyTypeFilterOptions
+      summary: Search AgileMethodology by AgileMethodologyFilterOptions
       tags:
         - Settings
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyTypeFilterOptions'
+              $ref: '#/components/schemas/AgileMethodologyFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -7663,7 +7711,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyType'
+                    $ref: '#/components/schemas/AgileMethodology'
         403:
           description: Forbidden Error
           content:
@@ -8476,9 +8524,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts:
+  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts:
     get:
-      summary: List AgileMethodologyProperty
+      summary: List IterationLenght
       parameters:
         - in: query
           name: $limit
@@ -8497,7 +8545,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Settings
+        - entities
       responses:
         200:
           description: Successful Request
@@ -8506,7 +8554,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyProperty'
+                    $ref: '#/components/schemas/IterationLenght'
         400:
           description: Bad Request Error
           content:
@@ -8526,14 +8574,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create AgileMethodologyProperty
+      summary: Create IterationLenght
       tags:
-        - Settings
+        - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyProperty'
+              $ref: '#/components/schemas/IterationLenght'
         required: true
       responses:
         201:
@@ -8541,7 +8589,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AgileMethodologyProperty'
+                $ref: '#/components/schemas/IterationLenght'
         400:
           description: Bad Request Error
           content:
@@ -8560,9 +8608,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/{id}:
     get:
-      summary: Get AgileMethodologyProperty by Id
+      summary: Get IterationLenght by Id
       parameters:
         - in: path
           name: id
@@ -8571,7 +8619,7 @@ paths:
           schema:
             type: string
       tags:
-        - Settings
+        - entities
       responses:
         200:
           description: Successful Request
@@ -8580,7 +8628,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyProperty'
+                    $ref: '#/components/schemas/IterationLenght'
         404:
           description: Entity Not Found
           content:
@@ -8600,7 +8648,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update AgileMethodologyProperty by Id
+      summary: Update IterationLenght by Id
       parameters:
         - in: path
           name: id
@@ -8609,12 +8657,12 @@ paths:
           schema:
             type: string
       tags:
-        - Settings
+        - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyProperty'
+              $ref: '#/components/schemas/IterationLenght'
         required: true
       responses:
         200:
@@ -8622,7 +8670,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AgileMethodologyProperty'
+                $ref: '#/components/schemas/IterationLenght'
         400:
           description: Bad Request Error
           content:
@@ -8648,7 +8696,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete AgileMethodologyProperty by Id
+      summary: Delete IterationLenght by Id
       parameters:
         - in: path
           name: id
@@ -8657,7 +8705,7 @@ paths:
           schema:
             type: string
       tags:
-        - Settings
+        - entities
       responses:
         204:
           description: Successful Request
@@ -8679,11 +8727,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/count:
     get:
-      summary: Count the number of AgileMethodologyProperty
+      summary: Count the number of IterationLenght
       tags:
-        - Settings
+        - entities
       responses:
         200:
           description: Successful Request
@@ -8705,14 +8753,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of AgileMethodologyProperty by AgileMethodologyPropertyFilterOptions
+      summary: Count the number of IterationLenght by IterationLenghtFilterOptions
       tags:
-        - Settings
+        - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyPropertyFilterOptions'
+              $ref: '#/components/schemas/IterationLenghtFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -8720,20 +8768,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      Name: "abcd"
-                      PlanningFrequency: "abcd"
-                      CustomerInvolvementFrequency: "abcd"
-                      ReleaseCadence: "abcd"
-                      RetrospectiveFrequency: "abcd"
-                      BacklogRefinementFrequency: "abcd"
-                      DefectManagement: "abcd"
-                      DeploymentFrequency: "abcd"
-                      TestingIntegration: "abcd"
-                      StakeholderReview: "abcd"
-                      FeatureCompletionCriteria: "abcd"
-                      DocumentationUpdates: "abcd"
-                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -8750,24 +8784,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      PlanningFrequency: "abcd"
-                      CustomerInvolvementFrequency: "abcd"
-                      ReleaseCadence: "abcd"
-                      RetrospectiveFrequency: "abcd"
-                      BacklogRefinementFrequency: "abcd"
-                      DefectManagement: "abcd"
-                      DeploymentFrequency: "abcd"
-                      TestingIntegration: "abcd"
-                      StakeholderReview: "abcd"
-                      FeatureCompletionCriteria: "abcd"
-                      DocumentationUpdates: "abcd"
-                      SustainableVelocity: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -8813,16 +8829,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/search:
     post:
-      summary: Search AgileMethodologyProperty by AgileMethodologyPropertyFilterOptions
+      summary: Search IterationLenght by IterationLenghtFilterOptions
       tags:
-        - Settings
+        - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgileMethodologyPropertyFilterOptions'
+              $ref: '#/components/schemas/IterationLenghtFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -8830,20 +8846,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      Name: "abcd"
-                      PlanningFrequency: "abcd"
-                      CustomerInvolvementFrequency: "abcd"
-                      ReleaseCadence: "abcd"
-                      RetrospectiveFrequency: "abcd"
-                      BacklogRefinementFrequency: "abcd"
-                      DefectManagement: "abcd"
-                      DeploymentFrequency: "abcd"
-                      TestingIntegration: "abcd"
-                      StakeholderReview: "abcd"
-                      FeatureCompletionCriteria: "abcd"
-                      DocumentationUpdates: "abcd"
-                      SustainableVelocity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -8860,24 +8862,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-                      PlanningFrequency: "abcd"
-                      CustomerInvolvementFrequency: "abcd"
-                      ReleaseCadence: "abcd"
-                      RetrospectiveFrequency: "abcd"
-                      BacklogRefinementFrequency: "abcd"
-                      DefectManagement: "abcd"
-                      DeploymentFrequency: "abcd"
-                      TestingIntegration: "abcd"
-                      StakeholderReview: "abcd"
-                      FeatureCompletionCriteria: "abcd"
-                      DocumentationUpdates: "abcd"
-                      SustainableVelocity: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -8911,7 +8895,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/AgileMethodologyProperty'
+                    $ref: '#/components/schemas/IterationLenght'
         403:
           description: Forbidden Error
           content:
@@ -9237,12 +9221,26 @@ components:
       type: object
       required:
         - Name
-        - AgileMethodologyType
         - StartingDate
         - EndDate
         - SponsorName
         - Opportunity
         - Scope
+        - AgileMethodology
+        - IterationLenght
+        - PlanningFrequency
+        - CustomerInvolvementFrequency
+        - ReleaseCadence
+        - RetrospectiveFrequency
+        - DailyStandup
+        - BacklogRefinementFrequency
+        - DefectManagement
+        - DeploymentFrequency
+        - TestingIntegration
+        - StakeholderReview
+        - FeatureCompletionCriteria
+        - DocumentationUpdates
+        - SustainableVelocity
       properties:
         Id:
           type: integer
@@ -9255,12 +9253,6 @@ components:
           type: string
           minLength: 0
           maxLength: 2000
-        AgileMethodologyType:
-          type: integer
-          format: int32
-        AgileMethodologyProperty:
-          type: integer
-          format: int32
         StartingDate:
         EndDate:
         SponsorName:
@@ -9279,6 +9271,62 @@ components:
           type: number
           format: double
         Notes:
+          type: string
+          minLength: 0
+          maxLength: 2000
+        AgileMethodology:
+          type: integer
+          format: int32
+        IterationLenght:
+          type: integer
+          format: int32
+        PlanningFrequency:
+          type: string
+          minLength: 0
+          maxLength: 200
+        CustomerInvolvementFrequency:
+          type: string
+          minLength: 0
+          maxLength: 200
+        ReleaseCadence:
+          type: string
+          minLength: 0
+          maxLength: 200
+        RetrospectiveFrequency:
+          type: string
+          minLength: 0
+          maxLength: 200
+        DailyStandup:
+          type: boolean
+        BacklogRefinementFrequency:
+          type: string
+          minLength: 0
+          maxLength: 200
+        DefectManagement:
+          type: string
+          minLength: 0
+          maxLength: 200
+        DeploymentFrequency:
+          type: string
+          minLength: 0
+          maxLength: 200
+        TestingIntegration:
+          type: string
+          minLength: 0
+          maxLength: 200
+        StakeholderReview:
+          type: string
+          minLength: 0
+          maxLength: 200
+        FeatureCompletionCriteria:
+          type: string
+          minLength: 0
+          maxLength: 200
+        DocumentationUpdates:
+          type: string
+          minLength: 0
+          maxLength: 200
+        SustainableVelocity:
           type: string
           minLength: 0
           maxLength: 200
@@ -9321,22 +9369,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 2000
-                AgileMethodologyType:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                AgileMethodologyProperty:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 StartingDate:
                   oneOf:
                 EndDate:
@@ -9383,6 +9415,160 @@ components:
                         type: number
                         format: double
                 Notes:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 2000
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 2000
+                AgileMethodology:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                IterationLenght:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                PlanningFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                CustomerInvolvementFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                ReleaseCadence:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                RetrospectiveFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DailyStandup:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                BacklogRefinementFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DefectManagement:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DeploymentFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                TestingIntegration:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                StakeholderReview:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                FeatureCompletionCriteria:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DocumentationUpdates:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                SustainableVelocity:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -9426,22 +9612,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 2000
-                AgileMethodologyType:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                AgileMethodologyProperty:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 StartingDate:
                   oneOf:
                 EndDate:
@@ -9491,6 +9661,160 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
+                      maxLength: 2000
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 2000
+                AgileMethodology:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                IterationLenght:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                PlanningFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                CustomerInvolvementFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                ReleaseCadence:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                RetrospectiveFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DailyStandup:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                BacklogRefinementFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DefectManagement:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DeploymentFrequency:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                TestingIntegration:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                StakeholderReview:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                FeatureCompletionCriteria:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                DocumentationUpdates:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 200
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 200
+                SustainableVelocity:
+                  oneOf:
+                    - type: string
+                      minLength: 0
                       maxLength: 200
                     - type: array
                       items:
@@ -9510,8 +9834,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
-                AgileMethodologyType:
-                AgileMethodologyProperty:
                 StartingDate:
                 EndDate:
                 SponsorName:
@@ -9528,6 +9850,57 @@ components:
                   maxLength: 200
                 Version:
                 Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 2000
+                AgileMethodology:
+                IterationLenght:
+                PlanningFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                CustomerInvolvementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                ReleaseCadence:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                RetrospectiveFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DailyStandup:
+                BacklogRefinementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DefectManagement:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DeploymentFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                TestingIntegration:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                StakeholderReview:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                FeatureCompletionCriteria:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DocumentationUpdates:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                SustainableVelocity:
                   type: string
                   minLength: 0
                   maxLength: 200
@@ -9545,12 +9918,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
-                AgileMethodologyType:
-                  type: integer
-                  format: int32
-                AgileMethodologyProperty:
-                  type: integer
-                  format: int32
                 StartingDate:
                 EndDate:
                 SponsorName:
@@ -9569,6 +9936,61 @@ components:
                   type: number
                   format: double
                 Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 2000
+                AgileMethodology:
+                  type: integer
+                  format: int32
+                IterationLenght:
+                  type: integer
+                  format: int32
+                PlanningFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                CustomerInvolvementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                ReleaseCadence:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                RetrospectiveFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DailyStandup:
+                BacklogRefinementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DefectManagement:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DeploymentFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                TestingIntegration:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                StakeholderReview:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                FeatureCompletionCriteria:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DocumentationUpdates:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                SustainableVelocity:
                   type: string
                   minLength: 0
                   maxLength: 200
@@ -9586,12 +10008,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
-                AgileMethodologyType:
-                  type: integer
-                  format: int32
-                AgileMethodologyProperty:
-                  type: integer
-                  format: int32
                 StartingDate:
                 EndDate:
                 SponsorName:
@@ -9610,6 +10026,61 @@ components:
                   type: number
                   format: double
                 Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 2000
+                AgileMethodology:
+                  type: integer
+                  format: int32
+                IterationLenght:
+                  type: integer
+                  format: int32
+                PlanningFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                CustomerInvolvementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                ReleaseCadence:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                RetrospectiveFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DailyStandup:
+                BacklogRefinementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DefectManagement:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DeploymentFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                TestingIntegration:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                StakeholderReview:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                FeatureCompletionCriteria:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DocumentationUpdates:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                SustainableVelocity:
                   type: string
                   minLength: 0
                   maxLength: 200
@@ -9627,12 +10098,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
-                AgileMethodologyType:
-                  type: integer
-                  format: int32
-                AgileMethodologyProperty:
-                  type: integer
-                  format: int32
                 StartingDate:
                 EndDate:
                 SponsorName:
@@ -9651,6 +10116,61 @@ components:
                   type: number
                   format: double
                 Notes:
+                  type: string
+                  minLength: 0
+                  maxLength: 2000
+                AgileMethodology:
+                  type: integer
+                  format: int32
+                IterationLenght:
+                  type: integer
+                  format: int32
+                PlanningFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                CustomerInvolvementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                ReleaseCadence:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                RetrospectiveFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DailyStandup:
+                BacklogRefinementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DefectManagement:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DeploymentFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                TestingIntegration:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                StakeholderReview:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                FeatureCompletionCriteria:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DocumentationUpdates:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                SustainableVelocity:
                   type: string
                   minLength: 0
                   maxLength: 200
@@ -9668,12 +10188,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
-                AgileMethodologyType:
-                  type: integer
-                  format: int32
-                AgileMethodologyProperty:
-                  type: integer
-                  format: int32
                 StartingDate:
                 EndDate:
                 SponsorName:
@@ -9694,15 +10208,70 @@ components:
                 Notes:
                   type: string
                   minLength: 0
+                  maxLength: 2000
+                AgileMethodology:
+                  type: integer
+                  format: int32
+                IterationLenght:
+                  type: integer
+                  format: int32
+                PlanningFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                CustomerInvolvementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                ReleaseCadence:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                RetrospectiveFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DailyStandup:
+                BacklogRefinementFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DefectManagement:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DeploymentFrequency:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                TestingIntegration:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                StakeholderReview:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                FeatureCompletionCriteria:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                DocumentationUpdates:
+                  type: string
+                  minLength: 0
+                  maxLength: 200
+                SustainableVelocity:
+                  type: string
+                  minLength: 0
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Description", "AgileMethodologyType", "AgileMethodologyProperty", "StartingDate", "EndDate", "SponsorName", "Opportunity", "Scope", "Version", "Notes"]
+          example: ["Id", "Name", "Description", "StartingDate", "EndDate", "SponsorName", "Opportunity", "Scope", "Version", "Notes", "AgileMethodology", "IterationLenght", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,AgileMethodologyType,AgileMethodologyProperty,StartingDate,EndDate,SponsorName,Opportunity,Scope,Version,Notes"
+            example: "Id,Name,Description,StartingDate,EndDate,SponsorName,Opportunity,Scope,Version,Notes,AgileMethodology,IterationLenght,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -13114,7 +13683,7 @@ components:
         $limit:
           type: integer
           example: 10
-    AgileMethodologyType:
+    AgileMethodology:
       type: object
       required:
         - Name
@@ -13126,7 +13695,7 @@ components:
           type: string
           minLength: 0
           maxLength: 30
-    AgileMethodologyTypeFilterOptions:
+    AgileMethodologyFilterOptions:
       type: object
       properties:
         $filter:
@@ -13564,75 +14133,22 @@ components:
         $limit:
           type: integer
           example: 10
-    AgileMethodologyProperty:
+    IterationLenght:
       type: object
       required:
-        - Name
+        - AgileMethodology
+        - Period
       properties:
         Id:
           type: integer
           format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 20
-        AgileMethodologyType:
+        AgileMethodology:
           type: integer
           format: int32
-        IterationLength:
+        Period:
           type: integer
           format: int32
-        PlanningFrequency:
-          type: string
-          minLength: 0
-          maxLength: 200
-        CustomerInvolvementFrequency:
-          type: string
-          minLength: 0
-          maxLength: 200
-        ReleaseCadence:
-          type: string
-          minLength: 0
-          maxLength: 200
-        RetrospectiveFrequency:
-          type: string
-          minLength: 0
-          maxLength: 200
-        DailyStandup:
-          type: boolean
-        BacklogRefinementFrequency:
-          type: string
-          minLength: 0
-          maxLength: 200
-        DefectManagement:
-          type: string
-          minLength: 0
-          maxLength: 200
-        DeploymentFrequency:
-          type: string
-          minLength: 0
-          maxLength: 200
-        TestingIntegration:
-          type: string
-          minLength: 0
-          maxLength: 200
-        StakeholderReview:
-          type: string
-          minLength: 0
-          maxLength: 200
-        FeatureCompletionCriteria:
-          type: string
-          minLength: 0
-          maxLength: 200
-        DocumentationUpdates:
-          type: string
-          minLength: 0
-          maxLength: 200
-        SustainableVelocity:
-          type: string
-          minLength: 0
-          maxLength: 200
-    AgileMethodologyPropertyFilterOptions:
+    IterationLenghtFilterOptions:
       type: object
       properties:
         $filter:
@@ -13649,18 +14165,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   oneOf:
                     - type: integer
                       format: int32
@@ -13668,7 +14173,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                IterationLength:
+                Period:
                   oneOf:
                     - type: integer
                       format: int32
@@ -13676,144 +14181,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                PlanningFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                CustomerInvolvementFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                ReleaseCadence:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                RetrospectiveFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DailyStandup:
-                  oneOf:
-                    - type: boolean
-                    - type: array
-                      items:
-                        type: boolean
-                BacklogRefinementFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DefectManagement:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DeploymentFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                TestingIntegration:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                StakeholderReview:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                FeatureCompletionCriteria:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DocumentationUpdates:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                SustainableVelocity:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
             notEquals:
               type: object
               properties:
@@ -13825,18 +14192,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   oneOf:
                     - type: integer
                       format: int32
@@ -13844,7 +14200,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                IterationLength:
+                Period:
                   oneOf:
                     - type: integer
                       format: int32
@@ -13852,471 +14208,68 @@ components:
                       items:
                         type: integer
                         format: int32
-                PlanningFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                CustomerInvolvementFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                ReleaseCadence:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                RetrospectiveFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DailyStandup:
-                  oneOf:
-                    - type: boolean
-                    - type: array
-                      items:
-                        type: boolean
-                BacklogRefinementFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DefectManagement:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DeploymentFrequency:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                TestingIntegration:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                StakeholderReview:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                FeatureCompletionCriteria:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                DocumentationUpdates:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                SustainableVelocity:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
             contains:
               type: object
               properties:
                 Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                AgileMethodologyType:
-                IterationLength:
-                PlanningFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                CustomerInvolvementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                ReleaseCadence:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                RetrospectiveFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DailyStandup:
-                BacklogRefinementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DefectManagement:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DeploymentFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                TestingIntegration:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                StakeholderReview:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                FeatureCompletionCriteria:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DocumentationUpdates:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                SustainableVelocity:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
+                AgileMethodology:
+                Period:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   type: integer
                   format: int32
-                IterationLength:
+                Period:
                   type: integer
                   format: int32
-                PlanningFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                CustomerInvolvementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                ReleaseCadence:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                RetrospectiveFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DailyStandup:
-                BacklogRefinementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DefectManagement:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DeploymentFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                TestingIntegration:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                StakeholderReview:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                FeatureCompletionCriteria:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DocumentationUpdates:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                SustainableVelocity:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   type: integer
                   format: int32
-                IterationLength:
+                Period:
                   type: integer
                   format: int32
-                PlanningFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                CustomerInvolvementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                ReleaseCadence:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                RetrospectiveFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DailyStandup:
-                BacklogRefinementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DefectManagement:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DeploymentFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                TestingIntegration:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                StakeholderReview:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                FeatureCompletionCriteria:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DocumentationUpdates:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                SustainableVelocity:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   type: integer
                   format: int32
-                IterationLength:
+                Period:
                   type: integer
                   format: int32
-                PlanningFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                CustomerInvolvementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                ReleaseCadence:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                RetrospectiveFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DailyStandup:
-                BacklogRefinementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DefectManagement:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DeploymentFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                TestingIntegration:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                StakeholderReview:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                FeatureCompletionCriteria:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DocumentationUpdates:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                SustainableVelocity:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
-                AgileMethodologyType:
+                AgileMethodology:
                   type: integer
                   format: int32
-                IterationLength:
+                Period:
                   type: integer
                   format: int32
-                PlanningFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                CustomerInvolvementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                ReleaseCadence:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                RetrospectiveFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DailyStandup:
-                BacklogRefinementFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DefectManagement:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DeploymentFrequency:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                TestingIntegration:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                StakeholderReview:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                FeatureCompletionCriteria:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                DocumentationUpdates:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                SustainableVelocity:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "AgileMethodologyType", "IterationLength", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
+          example: ["Id", "AgileMethodology", "Period"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,AgileMethodologyType,IterationLength,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
+            example: "Id,AgileMethodology,Period"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -40,8 +40,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsAgileMethodologyType = [];
-				$scope.optionsAgileMethodologyProperty = [];
+				$scope.optionsAgileMethodology = [];
+				$scope.optionsIterationLenght = [];
 				$scope.action = 'select';
 			});
 		});
@@ -55,8 +55,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
-				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
+				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
+				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'select';
 			});
 		});
@@ -64,8 +64,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
-				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
+				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
+				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'create';
 			});
 		});
@@ -79,29 +79,29 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsAgileMethodologyType = msg.data.optionsAgileMethodologyType;
-				$scope.optionsAgileMethodologyProperty = msg.data.optionsAgileMethodologyProperty;
+				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
+				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'update';
 			});
 		});
 
-		$scope.$watch('entity.AgileMethodologyType', function (newValue, oldValue) {
+		$scope.$watch('entity.AgileMethodology', function (newValue, oldValue) {
 			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts/search", {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/search", {
 					$filter: {
 						equals: {
-							AgileMethodologyType: newValue
+							AgileMethodology: newValue
 						}
 					}
 				}).then(function (response) {
-					$scope.optionsAgileMethodologyProperty = response.data.map(e => {
+					$scope.optionsIterationLenght = response.data.map(e => {
 						return {
 							value: e.Id,
-							text: e.Name
+							text: e.Period
 						}
 					});
 					if ($scope.action !== 'select' && newValue !== oldValue) {
-						$scope.entity.AgileMethodologyProperty = undefined;
+						$scope.entity.IterationLenght = undefined;
 					}
 				});
 			}

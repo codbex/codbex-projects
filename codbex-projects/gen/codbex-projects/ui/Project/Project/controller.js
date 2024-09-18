@@ -122,8 +122,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
-				optionsAgileMethodologyProperty: $scope.optionsAgileMethodologyProperty,
+				optionsAgileMethodology: $scope.optionsAgileMethodology,
+				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
 		};
 
@@ -133,8 +133,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
-				optionsAgileMethodologyProperty: $scope.optionsAgileMethodologyProperty,
+				optionsAgileMethodology: $scope.optionsAgileMethodology,
+				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
 		};
 
@@ -142,8 +142,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
-				optionsAgileMethodologyProperty: $scope.optionsAgileMethodologyProperty,
+				optionsAgileMethodology: $scope.optionsAgileMethodology,
+				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
 		};
 
@@ -180,18 +180,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
-				optionsAgileMethodologyType: $scope.optionsAgileMethodologyType,
-				optionsAgileMethodologyProperty: $scope.optionsAgileMethodologyProperty,
+				optionsAgileMethodology: $scope.optionsAgileMethodology,
+				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsAgileMethodologyType = [];
-		$scope.optionsAgileMethodologyProperty = [];
+		$scope.optionsAgileMethodology = [];
+		$scope.optionsIterationLenght = [];
 
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyTypeService.ts").then(function (response) {
-			$scope.optionsAgileMethodologyType = response.data.map(e => {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts").then(function (response) {
+			$scope.optionsAgileMethodology = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -199,27 +199,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyPropertyService.ts").then(function (response) {
-			$scope.optionsAgileMethodologyProperty = response.data.map(e => {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts").then(function (response) {
+			$scope.optionsIterationLenght = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Name
+					text: e.Period
 				}
 			});
 		});
 
-		$scope.optionsAgileMethodologyTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsAgileMethodologyType.length; i++) {
-				if ($scope.optionsAgileMethodologyType[i].value === optionKey) {
-					return $scope.optionsAgileMethodologyType[i].text;
+		$scope.optionsAgileMethodologyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsAgileMethodology.length; i++) {
+				if ($scope.optionsAgileMethodology[i].value === optionKey) {
+					return $scope.optionsAgileMethodology[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsAgileMethodologyPropertyValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsAgileMethodologyProperty.length; i++) {
-				if ($scope.optionsAgileMethodologyProperty[i].value === optionKey) {
-					return $scope.optionsAgileMethodologyProperty[i].text;
+		$scope.optionsIterationLenghtValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsIterationLenght.length; i++) {
+				if ($scope.optionsIterationLenght[i].value === optionKey) {
+					return $scope.optionsIterationLenght[i].text;
 				}
 			}
 			return null;

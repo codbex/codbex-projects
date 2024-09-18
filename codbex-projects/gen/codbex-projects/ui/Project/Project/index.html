@@ -51,15 +51,28 @@
 							item-title="{{next.Name}}">
 							<fd-list-byline dg-align="left">
 								{{next.Description}} |
-								{{optionsAgileMethodologyTypeValue(next.AgileMethodologyType)}} |
-								{{optionsAgileMethodologyPropertyValue(next.AgileMethodologyProperty)}} |
 								{{next.StartingDate | date: "dd/MMM/yyyy HH:MM"}} |
 								{{next.EndDate | date: "dd/MMM/yyyy HH:MM"}} |
 								{{next.SponsorName}} |
 								{{next.Opportunity}} |
 								{{next.Scope}} |
 								{{next.Version}} |
-								{{next.Notes}}
+								{{next.Notes}} |
+								{{optionsAgileMethodologyValue(next.AgileMethodology)}} |
+								{{optionsIterationLenghtValue(next.IterationLenght)}} |
+								{{next.PlanningFrequency}} |
+								{{next.CustomerInvolvementFrequency}} |
+								{{next.ReleaseCadence}} |
+								{{next.RetrospectiveFrequency}} |
+								{{next.DailyStandup}} |
+								{{next.BacklogRefinementFrequency}} |
+								{{next.DefectManagement}} |
+								{{next.DeploymentFrequency}} |
+								{{next.TestingIntegration}} |
+								{{next.StakeholderReview}} |
+								{{next.FeatureCompletionCriteria}} |
+								{{next.DocumentationUpdates}} |
+								{{next.SustainableVelocity}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

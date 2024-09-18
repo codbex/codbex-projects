@@ -64,34 +64,6 @@
 					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAgileMethodologyType" dg-colon="true">AgileMethodologyType</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idAgileMethodologyType"
-	                            name="AgileMethodologyType"
-	                            state="{{ forms.details['AgileMethodologyType'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.AgileMethodologyType"
-	                            dropdown-items="optionsAgileMethodologyType"
-	                            dg-placeholder="Search AgileMethodologyType ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAgileMethodologyProperty" dg-colon="true">AgileMethodologyProperty</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idAgileMethodologyProperty"
-	                            name="AgileMethodologyProperty"
-	                            state="{{ forms.details['AgileMethodologyProperty'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.AgileMethodologyProperty"
-	                            dropdown-items="optionsAgileMethodologyProperty"
-	                            dg-placeholder="Search AgileMethodologyProperty ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idStartingDateFrom" dg-colon="true">From StartingDate</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">
@@ -215,20 +187,286 @@
 							</fd-step-input>
 	                    </div>
                     </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idNotes" dg-colon="true">Notes</fd-form-label>
+						</div>
+						<div class="fd-col fd-col-md--8">
+							<fd-textarea id="idNotes"
+								name="Notes"
+								state="{{ forms.details['Notes'].$valid ? '' : 'error' }}"
+								ng-model="entity.Notes"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="2000.0 || -1"
+								placeholder="Enter Notes">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Notes'].$valid">Incorrect Input</fd-form-message>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idNotes" dg-colon="true">Notes</fd-form-label>
+                        	<fd-form-label for="idAgileMethodology" dg-colon="true">AgileMethodology</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Notes'].$valid }}">
-	                            <fd-input id="idNotes"
-	                                name="Notes"
-	                                state="{{ forms.details['Notes'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Notes"
+	                        <fd-combobox-input id="idAgileMethodology"
+	                            name="AgileMethodology"
+	                            state="{{ forms.details['AgileMethodology'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.AgileMethodology"
+	                            dropdown-items="optionsAgileMethodology"
+	                            dg-placeholder="Search AgileMethodology ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idIterationLenght" dg-colon="true">IterationLenght</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idIterationLenght"
+	                            name="IterationLenght"
+	                            state="{{ forms.details['IterationLenght'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.IterationLenght"
+	                            dropdown-items="optionsIterationLenght"
+	                            dg-placeholder="Search IterationLenght ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idPlanningFrequency" dg-colon="true">PlanningFrequency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PlanningFrequency'].$valid }}">
+	                            <fd-input id="idPlanningFrequency"
+	                                name="PlanningFrequency"
+	                                state="{{ forms.details['PlanningFrequency'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.PlanningFrequency"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="200.0 || -1"
 	                                type="text"
-	                                placeholder="Enter Notes">
+	                                placeholder="Enter PlanningFrequency">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idCustomerInvolvementFrequency" dg-colon="true">CustomerInvolvementFrequency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['CustomerInvolvementFrequency'].$valid }}">
+	                            <fd-input id="idCustomerInvolvementFrequency"
+	                                name="CustomerInvolvementFrequency"
+	                                state="{{ forms.details['CustomerInvolvementFrequency'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.CustomerInvolvementFrequency"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter CustomerInvolvementFrequency">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idReleaseCadence" dg-colon="true">ReleaseCadence</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ReleaseCadence'].$valid }}">
+	                            <fd-input id="idReleaseCadence"
+	                                name="ReleaseCadence"
+	                                state="{{ forms.details['ReleaseCadence'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.ReleaseCadence"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter ReleaseCadence">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idRetrospectiveFrequency" dg-colon="true">RetrospectiveFrequency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['RetrospectiveFrequency'].$valid }}">
+	                            <fd-input id="idRetrospectiveFrequency"
+	                                name="RetrospectiveFrequency"
+	                                state="{{ forms.details['RetrospectiveFrequency'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.RetrospectiveFrequency"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter RetrospectiveFrequency">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2"></div>
+	                    <div class="fd-col fd-col-md--8">
+							<fd-checkbox id="idDailyStandup"
+	                            compact="false"
+								ng-init="entity.isDailyStandupIndeterminate=true"
+								ng-model="entity.DailyStandup"
+								dg-indeterminate="entity.isDailyStandupIndeterminate"
+								ng-click="entity.isDailyStandupIndeterminate=false">
+	                        </fd-checkbox>
+                        	<fd-checkbox-label for="idDailyStandup">DailyStandup</fd-checkbox-label>
+                        </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBacklogRefinementFrequency" dg-colon="true">BacklogRefinementFrequency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['BacklogRefinementFrequency'].$valid }}">
+	                            <fd-input id="idBacklogRefinementFrequency"
+	                                name="BacklogRefinementFrequency"
+	                                state="{{ forms.details['BacklogRefinementFrequency'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.BacklogRefinementFrequency"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter BacklogRefinementFrequency">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDefectManagement" dg-colon="true">DefectManagement</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DefectManagement'].$valid }}">
+	                            <fd-input id="idDefectManagement"
+	                                name="DefectManagement"
+	                                state="{{ forms.details['DefectManagement'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DefectManagement"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter DefectManagement">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDeploymentFrequency" dg-colon="true">DeploymentFrequency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DeploymentFrequency'].$valid }}">
+	                            <fd-input id="idDeploymentFrequency"
+	                                name="DeploymentFrequency"
+	                                state="{{ forms.details['DeploymentFrequency'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DeploymentFrequency"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter DeploymentFrequency">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idTestingIntegration" dg-colon="true">TestingIntegration</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['TestingIntegration'].$valid }}">
+	                            <fd-input id="idTestingIntegration"
+	                                name="TestingIntegration"
+	                                state="{{ forms.details['TestingIntegration'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.TestingIntegration"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter TestingIntegration">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idStakeholderReview" dg-colon="true">StakeholderReview</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['StakeholderReview'].$valid }}">
+	                            <fd-input id="idStakeholderReview"
+	                                name="StakeholderReview"
+	                                state="{{ forms.details['StakeholderReview'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.StakeholderReview"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter StakeholderReview">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idFeatureCompletionCriteria" dg-colon="true">FeatureCompletionCriteria</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['FeatureCompletionCriteria'].$valid }}">
+	                            <fd-input id="idFeatureCompletionCriteria"
+	                                name="FeatureCompletionCriteria"
+	                                state="{{ forms.details['FeatureCompletionCriteria'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.FeatureCompletionCriteria"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter FeatureCompletionCriteria">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDocumentationUpdates" dg-colon="true">DocumentationUpdates</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DocumentationUpdates'].$valid }}">
+	                            <fd-input id="idDocumentationUpdates"
+	                                name="DocumentationUpdates"
+	                                state="{{ forms.details['DocumentationUpdates'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DocumentationUpdates"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter DocumentationUpdates">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idSustainableVelocity" dg-colon="true">SustainableVelocity</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SustainableVelocity'].$valid }}">
+	                            <fd-input id="idSustainableVelocity"
+	                                name="SustainableVelocity"
+	                                state="{{ forms.details['SustainableVelocity'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.SustainableVelocity"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="200.0 || -1"
+	                                type="text"
+	                                placeholder="Enter SustainableVelocity">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>

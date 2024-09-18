@@ -2,13 +2,12 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface ProjectEntity {
     readonly Id: number;
     Name: string;
     Description?: string;
-    AgileMethodologyType: number;
-    AgileMethodologyProperty?: number;
     StartingDate?: Date;
     EndDate: Date;
     SponsorName: string;
@@ -16,13 +15,26 @@ export interface ProjectEntity {
     Scope: string;
     Version?: number;
     Notes?: string;
+    AgileMethodology: number;
+    IterationLenght: number;
+    PlanningFrequency: string;
+    CustomerInvolvementFrequency: string;
+    ReleaseCadence: string;
+    RetrospectiveFrequency: string;
+    DailyStandup?: boolean;
+    BacklogRefinementFrequency: string;
+    DefectManagement: string;
+    DeploymentFrequency: string;
+    TestingIntegration: string;
+    StakeholderReview: string;
+    FeatureCompletionCriteria: string;
+    DocumentationUpdates: string;
+    SustainableVelocity: string;
 }
 
 export interface ProjectCreateEntity {
     readonly Name: string;
     readonly Description?: string;
-    readonly AgileMethodologyType: number;
-    readonly AgileMethodologyProperty?: number;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
     readonly SponsorName: string;
@@ -30,6 +42,21 @@ export interface ProjectCreateEntity {
     readonly Scope: string;
     readonly Version?: number;
     readonly Notes?: string;
+    readonly AgileMethodology: number;
+    readonly IterationLenght: number;
+    readonly PlanningFrequency: string;
+    readonly CustomerInvolvementFrequency: string;
+    readonly ReleaseCadence: string;
+    readonly RetrospectiveFrequency: string;
+    readonly DailyStandup?: boolean;
+    readonly BacklogRefinementFrequency: string;
+    readonly DefectManagement: string;
+    readonly DeploymentFrequency: string;
+    readonly TestingIntegration: string;
+    readonly StakeholderReview: string;
+    readonly FeatureCompletionCriteria: string;
+    readonly DocumentationUpdates: string;
+    readonly SustainableVelocity: string;
 }
 
 export interface ProjectUpdateEntity extends ProjectCreateEntity {
@@ -42,8 +69,6 @@ export interface ProjectEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            AgileMethodologyType?: number | number[];
-            AgileMethodologyProperty?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             SponsorName?: string | string[];
@@ -51,13 +76,26 @@ export interface ProjectEntityOptions {
             Scope?: string | string[];
             Version?: number | number[];
             Notes?: string | string[];
+            AgileMethodology?: number | number[];
+            IterationLenght?: number | number[];
+            PlanningFrequency?: string | string[];
+            CustomerInvolvementFrequency?: string | string[];
+            ReleaseCadence?: string | string[];
+            RetrospectiveFrequency?: string | string[];
+            DailyStandup?: boolean | boolean[];
+            BacklogRefinementFrequency?: string | string[];
+            DefectManagement?: string | string[];
+            DeploymentFrequency?: string | string[];
+            TestingIntegration?: string | string[];
+            StakeholderReview?: string | string[];
+            FeatureCompletionCriteria?: string | string[];
+            DocumentationUpdates?: string | string[];
+            SustainableVelocity?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            AgileMethodologyType?: number | number[];
-            AgileMethodologyProperty?: number | number[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
             SponsorName?: string | string[];
@@ -65,13 +103,26 @@ export interface ProjectEntityOptions {
             Scope?: string | string[];
             Version?: number | number[];
             Notes?: string | string[];
+            AgileMethodology?: number | number[];
+            IterationLenght?: number | number[];
+            PlanningFrequency?: string | string[];
+            CustomerInvolvementFrequency?: string | string[];
+            ReleaseCadence?: string | string[];
+            RetrospectiveFrequency?: string | string[];
+            DailyStandup?: boolean | boolean[];
+            BacklogRefinementFrequency?: string | string[];
+            DefectManagement?: string | string[];
+            DeploymentFrequency?: string | string[];
+            TestingIntegration?: string | string[];
+            StakeholderReview?: string | string[];
+            FeatureCompletionCriteria?: string | string[];
+            DocumentationUpdates?: string | string[];
+            SustainableVelocity?: string | string[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            AgileMethodologyType?: number;
-            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -79,13 +130,26 @@ export interface ProjectEntityOptions {
             Scope?: string;
             Version?: number;
             Notes?: string;
+            AgileMethodology?: number;
+            IterationLenght?: number;
+            PlanningFrequency?: string;
+            CustomerInvolvementFrequency?: string;
+            ReleaseCadence?: string;
+            RetrospectiveFrequency?: string;
+            DailyStandup?: boolean;
+            BacklogRefinementFrequency?: string;
+            DefectManagement?: string;
+            DeploymentFrequency?: string;
+            TestingIntegration?: string;
+            StakeholderReview?: string;
+            FeatureCompletionCriteria?: string;
+            DocumentationUpdates?: string;
+            SustainableVelocity?: string;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            AgileMethodologyType?: number;
-            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -93,13 +157,26 @@ export interface ProjectEntityOptions {
             Scope?: string;
             Version?: number;
             Notes?: string;
+            AgileMethodology?: number;
+            IterationLenght?: number;
+            PlanningFrequency?: string;
+            CustomerInvolvementFrequency?: string;
+            ReleaseCadence?: string;
+            RetrospectiveFrequency?: string;
+            DailyStandup?: boolean;
+            BacklogRefinementFrequency?: string;
+            DefectManagement?: string;
+            DeploymentFrequency?: string;
+            TestingIntegration?: string;
+            StakeholderReview?: string;
+            FeatureCompletionCriteria?: string;
+            DocumentationUpdates?: string;
+            SustainableVelocity?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            AgileMethodologyType?: number;
-            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -107,13 +184,26 @@ export interface ProjectEntityOptions {
             Scope?: string;
             Version?: number;
             Notes?: string;
+            AgileMethodology?: number;
+            IterationLenght?: number;
+            PlanningFrequency?: string;
+            CustomerInvolvementFrequency?: string;
+            ReleaseCadence?: string;
+            RetrospectiveFrequency?: string;
+            DailyStandup?: boolean;
+            BacklogRefinementFrequency?: string;
+            DefectManagement?: string;
+            DeploymentFrequency?: string;
+            TestingIntegration?: string;
+            StakeholderReview?: string;
+            FeatureCompletionCriteria?: string;
+            DocumentationUpdates?: string;
+            SustainableVelocity?: string;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            AgileMethodologyType?: number;
-            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -121,13 +211,26 @@ export interface ProjectEntityOptions {
             Scope?: string;
             Version?: number;
             Notes?: string;
+            AgileMethodology?: number;
+            IterationLenght?: number;
+            PlanningFrequency?: string;
+            CustomerInvolvementFrequency?: string;
+            ReleaseCadence?: string;
+            RetrospectiveFrequency?: string;
+            DailyStandup?: boolean;
+            BacklogRefinementFrequency?: string;
+            DefectManagement?: string;
+            DeploymentFrequency?: string;
+            TestingIntegration?: string;
+            StakeholderReview?: string;
+            FeatureCompletionCriteria?: string;
+            DocumentationUpdates?: string;
+            SustainableVelocity?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            AgileMethodologyType?: number;
-            AgileMethodologyProperty?: number;
             StartingDate?: Date;
             EndDate?: Date;
             SponsorName?: string;
@@ -135,6 +238,21 @@ export interface ProjectEntityOptions {
             Scope?: string;
             Version?: number;
             Notes?: string;
+            AgileMethodology?: number;
+            IterationLenght?: number;
+            PlanningFrequency?: string;
+            CustomerInvolvementFrequency?: string;
+            ReleaseCadence?: string;
+            RetrospectiveFrequency?: string;
+            DailyStandup?: boolean;
+            BacklogRefinementFrequency?: string;
+            DefectManagement?: string;
+            DeploymentFrequency?: string;
+            TestingIntegration?: string;
+            StakeholderReview?: string;
+            FeatureCompletionCriteria?: string;
+            DocumentationUpdates?: string;
+            SustainableVelocity?: string;
         };
     },
     $select?: (keyof ProjectEntity)[],
@@ -183,17 +301,6 @@ export class ProjectRepository {
                 type: "VARCHAR",
             },
             {
-                name: "AgileMethodologyType",
-                column: "PROJECT_AGILEMETHODOLOGYTYPE",
-                type: "INTEGER",
-                required: true
-            },
-            {
-                name: "AgileMethodologyProperty",
-                column: "PROJECT_AGILEMETHODOLOGYPROPERTY",
-                type: "INTEGER",
-            },
-            {
                 name: "StartingDate",
                 column: "PROJECT_STARTINGDATE",
                 type: "TIMESTAMP",
@@ -231,6 +338,95 @@ export class ProjectRepository {
                 name: "Notes",
                 column: "PROJECT_NOTES",
                 type: "VARCHAR",
+            },
+            {
+                name: "AgileMethodology",
+                column: "PROJECT_AGILEMETHODOLOGYTYPE",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "IterationLenght",
+                column: "PROJECT_ITERATIONLENGHT",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "PlanningFrequency",
+                column: "PROJECT_PLANNINGFREQUENCY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "CustomerInvolvementFrequency",
+                column: "PROJECT_CUSTOMERINVOLVEMENTFREQUENCY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "ReleaseCadence",
+                column: "PROJECT_RELEASECADENCE",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "RetrospectiveFrequency",
+                column: "PROJECT_RETROSPECTIVEFREQUENCY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "DailyStandup",
+                column: "PROJECT_DAILYSTANDUP",
+                type: "BOOLEAN",
+            },
+            {
+                name: "BacklogRefinementFrequency",
+                column: "PROJECT_BACKLOGREFINEMENTFREQUENCY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "DefectManagement",
+                column: "PROJECT_DEFECTMANAGEMENT",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "DeploymentFrequency",
+                column: "PROJECT_DEPLOYMENTFREQUENCY",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "TestingIntegration",
+                column: "PROJECT_TESTINGINTEGRATION",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "StakeholderReview",
+                column: "PROJECT_STAKEHOLDERREVIEW",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "FeatureCompletionCriteria",
+                column: "PROJECT_FEATURECOMPLETIONCRITERIA",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "DocumentationUpdates",
+                column: "PROJECT_DOCUMENTATIONUPDATES",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "SustainableVelocity",
+                column: "PROJECT_SUSTAINABLEVELOCITY",
+                type: "VARCHAR",
+                required: true
             }
         ]
     };
@@ -242,15 +438,20 @@ export class ProjectRepository {
     }
 
     public findAll(options?: ProjectEntityOptions): ProjectEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: ProjectEntity) => {
+            EntityUtils.setBoolean(e, "DailyStandup");
+            return e;
+        });
     }
 
     public findById(id: number): ProjectEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setBoolean(entity, "DailyStandup");
         return entity ?? undefined;
     }
 
     public create(entity: ProjectCreateEntity): number {
+        EntityUtils.setBoolean(entity, "DailyStandup");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -266,6 +467,7 @@ export class ProjectRepository {
     }
 
     public update(entity: ProjectUpdateEntity): void {
+        EntityUtils.setBoolean(entity, "DailyStandup");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

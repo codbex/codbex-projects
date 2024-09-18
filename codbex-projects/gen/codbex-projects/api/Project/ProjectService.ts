@@ -128,9 +128,6 @@ class ProjectService {
         if (entity.Description?.length > 2000) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [2000] characters`);
         }
-        if (entity.AgileMethodologyType === null || entity.AgileMethodologyType === undefined) {
-            throw new ValidationError(`The 'AgileMethodologyType' property is required, provide a valid value`);
-        }
         if (entity.StartingDate === null || entity.StartingDate === undefined) {
             throw new ValidationError(`The 'StartingDate' property is required, provide a valid value`);
         }
@@ -155,8 +152,89 @@ class ProjectService {
         if (entity.Scope?.length > 200) {
             throw new ValidationError(`The 'Scope' exceeds the maximum length of [200] characters`);
         }
-        if (entity.Notes?.length > 200) {
-            throw new ValidationError(`The 'Notes' exceeds the maximum length of [200] characters`);
+        if (entity.Notes?.length > 2000) {
+            throw new ValidationError(`The 'Notes' exceeds the maximum length of [2000] characters`);
+        }
+        if (entity.AgileMethodology === null || entity.AgileMethodology === undefined) {
+            throw new ValidationError(`The 'AgileMethodology' property is required, provide a valid value`);
+        }
+        if (entity.IterationLenght === null || entity.IterationLenght === undefined) {
+            throw new ValidationError(`The 'IterationLenght' property is required, provide a valid value`);
+        }
+        if (entity.PlanningFrequency === null || entity.PlanningFrequency === undefined) {
+            throw new ValidationError(`The 'PlanningFrequency' property is required, provide a valid value`);
+        }
+        if (entity.PlanningFrequency?.length > 200) {
+            throw new ValidationError(`The 'PlanningFrequency' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.CustomerInvolvementFrequency === null || entity.CustomerInvolvementFrequency === undefined) {
+            throw new ValidationError(`The 'CustomerInvolvementFrequency' property is required, provide a valid value`);
+        }
+        if (entity.CustomerInvolvementFrequency?.length > 200) {
+            throw new ValidationError(`The 'CustomerInvolvementFrequency' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.ReleaseCadence === null || entity.ReleaseCadence === undefined) {
+            throw new ValidationError(`The 'ReleaseCadence' property is required, provide a valid value`);
+        }
+        if (entity.ReleaseCadence?.length > 200) {
+            throw new ValidationError(`The 'ReleaseCadence' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.RetrospectiveFrequency === null || entity.RetrospectiveFrequency === undefined) {
+            throw new ValidationError(`The 'RetrospectiveFrequency' property is required, provide a valid value`);
+        }
+        if (entity.RetrospectiveFrequency?.length > 200) {
+            throw new ValidationError(`The 'RetrospectiveFrequency' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.DailyStandup === null || entity.DailyStandup === undefined) {
+            throw new ValidationError(`The 'DailyStandup' property is required, provide a valid value`);
+        }
+        if (entity.BacklogRefinementFrequency === null || entity.BacklogRefinementFrequency === undefined) {
+            throw new ValidationError(`The 'BacklogRefinementFrequency' property is required, provide a valid value`);
+        }
+        if (entity.BacklogRefinementFrequency?.length > 200) {
+            throw new ValidationError(`The 'BacklogRefinementFrequency' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.DefectManagement === null || entity.DefectManagement === undefined) {
+            throw new ValidationError(`The 'DefectManagement' property is required, provide a valid value`);
+        }
+        if (entity.DefectManagement?.length > 200) {
+            throw new ValidationError(`The 'DefectManagement' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.DeploymentFrequency === null || entity.DeploymentFrequency === undefined) {
+            throw new ValidationError(`The 'DeploymentFrequency' property is required, provide a valid value`);
+        }
+        if (entity.DeploymentFrequency?.length > 200) {
+            throw new ValidationError(`The 'DeploymentFrequency' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.TestingIntegration === null || entity.TestingIntegration === undefined) {
+            throw new ValidationError(`The 'TestingIntegration' property is required, provide a valid value`);
+        }
+        if (entity.TestingIntegration?.length > 200) {
+            throw new ValidationError(`The 'TestingIntegration' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.StakeholderReview === null || entity.StakeholderReview === undefined) {
+            throw new ValidationError(`The 'StakeholderReview' property is required, provide a valid value`);
+        }
+        if (entity.StakeholderReview?.length > 200) {
+            throw new ValidationError(`The 'StakeholderReview' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.FeatureCompletionCriteria === null || entity.FeatureCompletionCriteria === undefined) {
+            throw new ValidationError(`The 'FeatureCompletionCriteria' property is required, provide a valid value`);
+        }
+        if (entity.FeatureCompletionCriteria?.length > 200) {
+            throw new ValidationError(`The 'FeatureCompletionCriteria' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.DocumentationUpdates === null || entity.DocumentationUpdates === undefined) {
+            throw new ValidationError(`The 'DocumentationUpdates' property is required, provide a valid value`);
+        }
+        if (entity.DocumentationUpdates?.length > 200) {
+            throw new ValidationError(`The 'DocumentationUpdates' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.SustainableVelocity === null || entity.SustainableVelocity === undefined) {
+            throw new ValidationError(`The 'SustainableVelocity' property is required, provide a valid value`);
+        }
+        if (entity.SustainableVelocity?.length > 200) {
+            throw new ValidationError(`The 'SustainableVelocity' exceeds the maximum length of [200] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
