@@ -590,7 +590,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PROJECT_AGILEMETHODOLOGYTYPE",
+          "dataName": "PROJECT_AGILEMETHODOLOGY",
           "dataNullable": false,
           "dataType": "INTEGER",
           "isRequiredProperty": true,
@@ -1195,7 +1195,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PROJECT_AGILEMETHODOLOGYTYPE",
+            "dataName": "PROJECT_AGILEMETHODOLOGY",
             "dataNullable": false,
             "dataType": "INTEGER",
             "isRequiredProperty": true,

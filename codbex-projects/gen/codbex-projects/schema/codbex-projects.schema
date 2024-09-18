@@ -109,7 +109,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "PROJECT_AGILEMETHODOLOGYTYPE"
+                        "name": "PROJECT_AGILEMETHODOLOGY"
                     },
                     {
                         "type": "INTEGER",
@@ -788,7 +788,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PROJECT",
                 "constraintName": "Project_AgileMethodology",
-                "columns": "PROJECT_AGILEMETHODOLOGYTYPE",
+                "columns": "PROJECT_AGILEMETHODOLOGY",
                 "referencedTable": "CODBEX_AGILEMETHODOLOGY",
                 "referencedColumns": "AGILEMETHODOLOGY_ID"
             },

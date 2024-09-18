@@ -245,7 +245,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataName": "PROJECT_AGILEMETHODOLOGYTYPE",
+                        "dataName": "PROJECT_AGILEMETHODOLOGY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",

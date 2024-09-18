@@ -341,7 +341,7 @@ export class ProjectRepository {
             },
             {
                 name: "AgileMethodology",
-                column: "PROJECT_AGILEMETHODOLOGYTYPE",
+                column: "PROJECT_AGILEMETHODOLOGY",
                 type: "INTEGER",
                 required: true
             },
