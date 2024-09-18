@@ -87,7 +87,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.$watch('entity.AgileMethodology', function (newValue, oldValue) {
 			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/search", {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/search", {
 					$filter: {
 						equals: {
 							AgileMethodology: newValue

@@ -199,7 +199,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts").then(function (response) {
 			$scope.optionsIterationLenght = response.data.map(e => {
 				return {
 					value: e.Id,

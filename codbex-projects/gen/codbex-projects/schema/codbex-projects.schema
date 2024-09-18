@@ -513,10 +513,6 @@
                         "name": "TASK_DESCRIPTION"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "TASK_DELIVERABLE"
-                    },
-                    {
                         "type": "DATE",
                         "name": "TASK_STARTDATE"
                     },
@@ -527,6 +523,11 @@
                     {
                         "type": "INTEGER",
                         "name": "TASK_STATUSTYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "TASK_DELIVERABLE"
                     }
                 ]
             },
@@ -902,15 +903,6 @@
                 "referencedColumns": "STATUSTYPE_ID"
             },
             {
-                "name": "Task_Deliverable",
-                "type": "foreignKey",
-                "table": "CODBEX_TASK",
-                "constraintName": "Task_Deliverable",
-                "columns": "TASK_DELIVERABLE",
-                "referencedTable": "CODBEX_DELIVERABLE",
-                "referencedColumns": "DELIVERABLE_ID"
-            },
-            {
                 "name": "Task_StatusType",
                 "type": "foreignKey",
                 "table": "CODBEX_TASK",
@@ -918,6 +910,15 @@
                 "columns": "TASK_STATUSTYPE",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
+            },
+            {
+                "name": "Task_Deliverable",
+                "type": "foreignKey",
+                "table": "CODBEX_TASK",
+                "constraintName": "Task_Deliverable",
+                "columns": "TASK_DELIVERABLE",
+                "referencedTable": "CODBEX_DELIVERABLE",
+                "referencedColumns": "DELIVERABLE_ID"
             },
             {
                 "name": "TeamMember_Project",

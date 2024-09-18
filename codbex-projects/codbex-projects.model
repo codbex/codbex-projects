@@ -1456,23 +1456,6 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "TASK_DELIVERABLE",
-                        "dataNullable": "false",
-                        "dataType": "INTEGER",
-                        "isRequiredProperty": "true",
-                        "name": "Deliverable",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Task_Deliverable",
-                        "relationshipEntityName": "Deliverable",
-                        "relationshipEntityPerspectiveName": "Deliverable",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataName": "TASK_STARTDATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -1510,6 +1493,22 @@
                         "relationshipEntityName": "StatusType",
                         "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "TASK_DELIVERABLE",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Deliverable",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Task_Deliverable",
+                        "relationshipType": "COMPOSITION",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX",
+                        "relationshipEntityName": "Deliverable",
+                        "relationshipEntityPerspectiveName": "Deliverable",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity Task",
@@ -1518,20 +1517,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_MASTER",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "task",
                 "menuLabel": "Task",
                 "name": "Task",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/notes.svg",
-                "perspectiveLabel": "Task",
-                "perspectiveName": "Task",
-                "perspectiveOrder": "400",
+                "perspectiveIcon": "/services/web/resources/unicons/parcel.svg",
+                "perspectiveLabel": "Deliverable",
+                "perspectiveName": "Deliverable",
+                "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "title": "Task",
                 "tooltip": "Task",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -2216,20 +2215,6 @@
                 "label": "Deliverable",
                 "icon": "/services/web/resources/unicons/parcel.svg",
                 "order": "200",
-                "role": {}
-            },
-            {
-                "name": "Task",
-                "label": "Task",
-                "icon": "/services/web/resources/unicons/notes.svg",
-                "order": "400",
-                "role": {}
-            },
-            {
-                "name": "Milestone",
-                "label": "Milestone",
-                "icon": "/services/web/resources/unicons/question.svg",
-                "order": "300",
                 "role": {}
             },
             {

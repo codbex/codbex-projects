@@ -20,7 +20,7 @@ tags:
   - name: Project
   - name: Settings
   - name: Deliverable
-  - name: Task
+  - name: Deliverable
   - name: Settings
   - name: Project
   - name: Settings
@@ -30,7 +30,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: Project
-  - name: entities
+  - name: Settings
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -4520,7 +4520,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Task/TaskService.ts:
+  /codbex-projects/gen/codbex-projects/api/Deliverable/TaskService.ts:
     get:
       summary: List Task
       parameters:
@@ -4541,7 +4541,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Task
+        - Deliverable
       responses:
         200:
           description: Successful Request
@@ -4572,7 +4572,7 @@ paths:
     post:
       summary: Create Task
       tags:
-        - Task
+        - Deliverable
       requestBody:
         content:
           application/json:
@@ -4604,7 +4604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Task/TaskService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Deliverable/TaskService.ts/{id}:
     get:
       summary: Get Task by Id
       parameters:
@@ -4615,7 +4615,7 @@ paths:
           schema:
             type: string
       tags:
-        - Task
+        - Deliverable
       responses:
         200:
           description: Successful Request
@@ -4653,7 +4653,7 @@ paths:
           schema:
             type: string
       tags:
-        - Task
+        - Deliverable
       requestBody:
         content:
           application/json:
@@ -4701,7 +4701,7 @@ paths:
           schema:
             type: string
       tags:
-        - Task
+        - Deliverable
       responses:
         204:
           description: Successful Request
@@ -4723,11 +4723,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Task/TaskService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Deliverable/TaskService.ts/count:
     get:
       summary: Count the number of Task
       tags:
-        - Task
+        - Deliverable
       responses:
         200:
           description: Successful Request
@@ -4751,7 +4751,7 @@ paths:
     post:
       summary: Count the number of Task by TaskFilterOptions
       tags:
-        - Task
+        - Deliverable
       requestBody:
         content:
           application/json:
@@ -4835,11 +4835,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Task/TaskService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Deliverable/TaskService.ts/search:
     post:
       summary: Search Task by TaskFilterOptions
       tags:
-        - Task
+        - Deliverable
       requestBody:
         content:
           application/json:
@@ -8524,7 +8524,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts:
+  /codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts:
     get:
       summary: List IterationLenght
       parameters:
@@ -8545,7 +8545,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8576,7 +8576,7 @@ paths:
     post:
       summary: Create IterationLenght
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8608,7 +8608,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/{id}:
     get:
       summary: Get IterationLenght by Id
       parameters:
@@ -8619,7 +8619,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8657,7 +8657,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8705,7 +8705,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -8727,11 +8727,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/count:
     get:
       summary: Count the number of IterationLenght
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -8755,7 +8755,7 @@ paths:
     post:
       summary: Count the number of IterationLenght by IterationLenghtFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -8837,11 +8837,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/IterationLenghtService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/search:
     post:
       summary: Search IterationLenght by IterationLenghtFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -12338,7 +12338,6 @@ components:
       required:
         - Name
         - Description
-        - Deliverable
         - StartDate
         - EndDate
         - StatusType
@@ -12354,12 +12353,12 @@ components:
           type: string
           minLength: 0
           maxLength: 200
-        Deliverable:
-          type: integer
-          format: int32
         StartDate:
         EndDate:
         StatusType:
+          type: integer
+          format: int32
+        Deliverable:
           type: integer
           format: int32
     TaskFilterOptions:
@@ -12401,7 +12400,11 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
-                Deliverable:
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
+                StatusType:
                   oneOf:
                     - type: integer
                       format: int32
@@ -12409,11 +12412,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                StartDate:
-                  oneOf:
-                EndDate:
-                  oneOf:
-                StatusType:
+                Deliverable:
                   oneOf:
                     - type: integer
                       format: int32
@@ -12454,7 +12453,11 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
-                Deliverable:
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
+                StatusType:
                   oneOf:
                     - type: integer
                       format: int32
@@ -12462,11 +12465,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                StartDate:
-                  oneOf:
-                EndDate:
-                  oneOf:
-                StatusType:
+                Deliverable:
                   oneOf:
                     - type: integer
                       format: int32
@@ -12486,10 +12485,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
-                Deliverable:
                 StartDate:
                 EndDate:
                 StatusType:
+                Deliverable:
             greaterThan:
               type: object
               properties:
@@ -12504,12 +12503,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
-                Deliverable:
-                  type: integer
-                  format: int32
                 StartDate:
                 EndDate:
                 StatusType:
+                  type: integer
+                  format: int32
+                Deliverable:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -12526,12 +12525,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
-                Deliverable:
-                  type: integer
-                  format: int32
                 StartDate:
                 EndDate:
                 StatusType:
+                  type: integer
+                  format: int32
+                Deliverable:
                   type: integer
                   format: int32
             lessThan:
@@ -12548,12 +12547,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
-                Deliverable:
-                  type: integer
-                  format: int32
                 StartDate:
                 EndDate:
                 StatusType:
+                  type: integer
+                  format: int32
+                Deliverable:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -12570,22 +12569,22 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
-                Deliverable:
-                  type: integer
-                  format: int32
                 StartDate:
                 EndDate:
                 StatusType:
                   type: integer
                   format: int32
+                Deliverable:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Description", "Deliverable", "StartDate", "EndDate", "StatusType"]
+          example: ["Id", "Name", "Description", "StartDate", "EndDate", "StatusType", "Deliverable"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,Deliverable,StartDate,EndDate,StatusType"
+            example: "Id,Name,Description,StartDate,EndDate,StatusType,Deliverable"
         $order:
           type: string
           enum: ["asc", "desc"]
