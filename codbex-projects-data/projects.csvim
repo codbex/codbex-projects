@@ -78,7 +78,7 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_AGILEMETHODOLOGYTYPE",
+      "table": "CODBEX_AGILEMETHODOLOGY",
       "schema": "PUBLIC",
       "file": "/codbex-projects-data/agile-methodology-types.csv",
       "header": true,
@@ -100,9 +100,9 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_AGILEMETHODOLOGYPROPERTY",
+      "table": "CODBEX_ITERATIONLENGHT",
       "schema": "PUBLIC",
-      "file": "/codbex-projects-data/agile-methodology-properties.csv",
+      "file": "/codbex-projects-data/iteration-lenght.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
