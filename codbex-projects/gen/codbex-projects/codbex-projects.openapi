@@ -14152,19 +14152,19 @@ components:
     IterationLenght:
       type: object
       required:
-        - AgileMethodology
         - Period
+        - AgileMethodology
       properties:
         Id:
-          type: integer
-          format: int32
-        AgileMethodology:
           type: integer
           format: int32
         Period:
           type: string
           minLength: 0
           maxLength: 20
+        AgileMethodology:
+          type: integer
+          format: int32
     IterationLenghtFilterOptions:
       type: object
       properties:
@@ -14182,14 +14182,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                AgileMethodology:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Period:
                   oneOf:
                     - type: string
@@ -14201,6 +14193,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                AgileMethodology:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -14212,14 +14212,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                AgileMethodology:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Period:
                   oneOf:
                     - type: string
@@ -14231,75 +14223,83 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
+                AgileMethodology:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
                 Id:
-                AgileMethodology:
                 Period:
                   type: string
                   minLength: 0
                   maxLength: 20
+                AgileMethodology:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                AgileMethodology:
-                  type: integer
-                  format: int32
                 Period:
                   type: string
                   minLength: 0
                   maxLength: 20
+                AgileMethodology:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                AgileMethodology:
-                  type: integer
-                  format: int32
                 Period:
                   type: string
                   minLength: 0
                   maxLength: 20
+                AgileMethodology:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                AgileMethodology:
-                  type: integer
-                  format: int32
                 Period:
                   type: string
                   minLength: 0
                   maxLength: 20
+                AgileMethodology:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                AgileMethodology:
-                  type: integer
-                  format: int32
                 Period:
                   type: string
                   minLength: 0
                   maxLength: 20
+                AgileMethodology:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "AgileMethodology", "Period"]
+          example: ["Id", "Period", "AgileMethodology"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,AgileMethodology,Period"
+            example: "Id,Period,AgileMethodology"
         $order:
           type: string
           enum: ["asc", "desc"]

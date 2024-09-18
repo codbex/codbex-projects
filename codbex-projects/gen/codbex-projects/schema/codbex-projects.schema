@@ -756,13 +756,13 @@
                         "name": "ITERATIONLENGHT_ID"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "ITERATIONLENGHT_AGILEMETHODOLOGY"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 20,
                         "name": "ITERATIONLENGHT_PERIOD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "name": "ITERATIONLENGHT_AGILEMETHODOLOGY"
                     }
                 ]
             },

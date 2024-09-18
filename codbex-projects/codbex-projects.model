@@ -2152,6 +2152,18 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "20",
+                        "dataName": "ITERATIONLENGHT_PERIOD",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
+                        "name": "Period",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataName": "ITERATIONLENGHT_AGILEMETHODOLOGY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -2167,18 +2179,6 @@
                         "relationshipEntityName": "AgileMethodology",
                         "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataLength": "20",
-                        "dataName": "ITERATIONLENGHT_PERIOD",
-                        "dataNullable": "false",
-                        "dataType": "VARCHAR",
-                        "isRequiredProperty": "true",
-                        "name": "Period",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
                     }
                 ],
                 "caption": "Manage entity IterationLenght",

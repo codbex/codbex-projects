@@ -119,14 +119,14 @@ class IterationLenghtService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.AgileMethodology === null || entity.AgileMethodology === undefined) {
-            throw new ValidationError(`The 'AgileMethodology' property is required, provide a valid value`);
-        }
         if (entity.Period === null || entity.Period === undefined) {
             throw new ValidationError(`The 'Period' property is required, provide a valid value`);
         }
         if (entity.Period?.length > 20) {
             throw new ValidationError(`The 'Period' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.AgileMethodology === null || entity.AgileMethodology === undefined) {
+            throw new ValidationError(`The 'AgileMethodology' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

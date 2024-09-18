@@ -5,13 +5,13 @@ import { dao as daoApi } from "sdk/db";
 
 export interface IterationLenghtEntity {
     readonly Id: number;
-    AgileMethodology: number;
     Period: string;
+    AgileMethodology: number;
 }
 
 export interface IterationLenghtCreateEntity {
-    readonly AgileMethodology: number;
     readonly Period: string;
+    readonly AgileMethodology: number;
 }
 
 export interface IterationLenghtUpdateEntity extends IterationLenghtCreateEntity {
@@ -22,38 +22,38 @@ export interface IterationLenghtEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            AgileMethodology?: number | number[];
             Period?: string | string[];
+            AgileMethodology?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            AgileMethodology?: number | number[];
             Period?: string | string[];
+            AgileMethodology?: number | number[];
         };
         contains?: {
             Id?: number;
-            AgileMethodology?: number;
             Period?: string;
+            AgileMethodology?: number;
         };
         greaterThan?: {
             Id?: number;
-            AgileMethodology?: number;
             Period?: string;
+            AgileMethodology?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            AgileMethodology?: number;
             Period?: string;
+            AgileMethodology?: number;
         };
         lessThan?: {
             Id?: number;
-            AgileMethodology?: number;
             Period?: string;
+            AgileMethodology?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            AgileMethodology?: number;
             Period?: string;
+            AgileMethodology?: number;
         };
     },
     $select?: (keyof IterationLenghtEntity)[],
@@ -91,15 +91,15 @@ export class IterationLenghtRepository {
                 autoIncrement: true,
             },
             {
-                name: "AgileMethodology",
-                column: "ITERATIONLENGHT_AGILEMETHODOLOGY",
-                type: "INTEGER",
-                required: true
-            },
-            {
                 name: "Period",
                 column: "ITERATIONLENGHT_PERIOD",
                 type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "AgileMethodology",
+                column: "ITERATIONLENGHT_AGILEMETHODOLOGY",
+                type: "INTEGER",
                 required: true
             }
         ]

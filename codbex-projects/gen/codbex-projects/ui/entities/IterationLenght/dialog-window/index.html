@@ -29,22 +29,6 @@
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAgileMethodology" dg-required="true" dg-colon="true">AgileMethodology</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idAgileMethodology"
-	                            name="AgileMethodology"
-	                            state="{{ forms.details['AgileMethodology'].$valid ? '' : 'error' }}"
-	                            ng-required="true"
-	                            ng-model="entity.AgileMethodology"
-	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsAgileMethodology"
-	                            dg-placeholder="Search AgileMethodology ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idPeriod" dg-required="true" dg-colon="true">Period</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
@@ -63,6 +47,22 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idAgileMethodology" dg-required="true" dg-colon="true">AgileMethodology</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-combobox-input id="idAgileMethodology"
+	                            name="AgileMethodology"
+	                            state="{{ forms.details['AgileMethodology'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.AgileMethodology"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsAgileMethodology"
+	                            dg-placeholder="Search AgileMethodology ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>

@@ -40,11 +40,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.AgileMethodology !== undefined) {
-				filter.$filter.equals.AgileMethodology = entity.AgileMethodology;
-			}
 			if (entity.Period) {
 				filter.$filter.contains.Period = entity.Period;
+			}
+			if (entity.AgileMethodology !== undefined) {
+				filter.$filter.equals.AgileMethodology = entity.AgileMethodology;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
