@@ -485,81 +485,6 @@
                 ]
             },
             {
-                "name": "CODBEX_TASKDEPENDENCY",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "TASKDEPENDENCY_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "name": "TASKDEPENDENCY_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "TASKDEPENDENCY_PREDECESSORTASK"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "TASKDEPENDENCY_SUCCESSORTASK"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "TASKDEPENDENCY_DEPENDENCYTYPE"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_DEPENDENCYTYPE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "DEPENDENCYTYPE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 30,
-                        "name": "DEPENDENCYTYPE_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_WORKPACKAGE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "WORKPACKAGE__ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 40,
-                        "name": "WORKPACKAGE__NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "name": "WORKPACKAGE__DESCRIPTION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "name": "WORKPACKAGE__TASK"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_TEAMMEMBER",
                 "type": "TABLE",
                 "columns": [
@@ -1012,42 +937,6 @@
                 "columns": "TASK_STATUSTYPE",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
-            },
-            {
-                "name": "TaskDependency_Task",
-                "type": "foreignKey",
-                "table": "CODBEX_TASKDEPENDENCY",
-                "constraintName": "TaskDependency_Task",
-                "columns": "TASKDEPENDENCY_PREDECESSORTASK",
-                "referencedTable": "CODBEX_TASK",
-                "referencedColumns": "TASK_ID"
-            },
-            {
-                "name": "TaskDependency_Task",
-                "type": "foreignKey",
-                "table": "CODBEX_TASKDEPENDENCY",
-                "constraintName": "TaskDependency_Task",
-                "columns": "TASKDEPENDENCY_SUCCESSORTASK",
-                "referencedTable": "CODBEX_TASK",
-                "referencedColumns": "TASK_ID"
-            },
-            {
-                "name": "TaskDependency_DependencyType",
-                "type": "foreignKey",
-                "table": "CODBEX_TASKDEPENDENCY",
-                "constraintName": "TaskDependency_DependencyType",
-                "columns": "TASKDEPENDENCY_DEPENDENCYTYPE",
-                "referencedTable": "CODBEX_DEPENDENCYTYPE",
-                "referencedColumns": "DEPENDENCYTYPE_ID"
-            },
-            {
-                "name": "WorkPackage_Task",
-                "type": "foreignKey",
-                "table": "CODBEX_WORKPACKAGE",
-                "constraintName": "WorkPackage_Task",
-                "columns": "WORKPACKAGE__TASK",
-                "referencedTable": "CODBEX_TASK",
-                "referencedColumns": "TASK_ID"
             },
             {
                 "name": "TeamMember_Project",

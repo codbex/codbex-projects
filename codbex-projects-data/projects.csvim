@@ -67,17 +67,6 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_DEPENDENCYTYPE",
-      "schema": "PUBLIC",
-      "file": "/codbex-projects-data/task-dependency-type.csv",
-      "header": true,
-      "useHeaderNames": true,
-      "delimField": ",",
-      "delimEnclosing": "\"",
-      "distinguishEmptyFromNull": true,
-      "version": "1.0"
-    },
-    {
       "table": "CODBEX_MEMBERROLE",
       "schema": "PUBLIC",
       "file": "/codbex-projects-data/member-role-types.csv",
