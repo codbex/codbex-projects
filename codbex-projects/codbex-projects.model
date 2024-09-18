@@ -276,7 +276,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Project_IterationLenght",
                         "relationshipEntityName": "IterationLenght",
-                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -2193,10 +2193,10 @@
                 "menuLabel": "IterationLenght",
                 "name": "IterationLenght",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
+                "perspectiveLabel": "Settings",
+                "perspectiveName": "Settings",
+                "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "title": "IterationLenght",
                 "tooltip": "IterationLenght",
