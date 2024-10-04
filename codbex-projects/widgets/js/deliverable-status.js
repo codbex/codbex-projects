@@ -9,51 +9,51 @@ angular.module('deliverable-status', ['ideUI', 'ideView'])
         const projectServiceUrl = "/services/ts/codbex-projects/widgets/api/ProjectService.ts/projectData";
         $http.get(projectServiceUrl)
             .then(function (response) {
-                $scope.ProjectData = response.data;
-            });
+                const projectData = response.data;
+                console.log(projectData);
+                angular.element($document[0]).ready(async function () {
+                    if (projectData) {
+                        // Doughnut Chart Data
+                        const doughnutData = {
+                            labels: ['Done', 'In Progress'],
+                            datasets: [{
+                                data: [projectData.TasksProgressDone, projectData.TasksProgressDone + 3],
+                                backgroundColor: ['#36a2eb', '#ff6384']
+                            }]
+                        };
 
+                        // Doughnut Chart Configuration
+                        const doughnutOptions = {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            legend: {
+                                position: 'bottom'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Deliverable Status'
+                            },
+                            animation: {
+                                animateScale: true,
+                                animateRotate: true
+                            }
+                        };
 
-        angular.element($document[0]).ready(async function () {
-            if (ProjectData) {
-                // Doughnut Chart Data
-                const doughnutData = {
-                    labels: ['Done', 'In Progress'],
-                    datasets: [{
-                        data: [ProjectData.TasksProgressDone, ProjectData.TasksProgressDone + 3],
-                        backgroundColor: ['#36a2eb', '#ff6384']
-                    }]
-                };
+                        // Initialize Doughnut Chart
+                        const doughnutChartCtx = $document[0].getElementById('doughnutChart').getContext('2d');
+                        const doughnutChart = new Chart(doughnutChartCtx, {
+                            type: 'doughnut',
+                            data: doughnutData,
+                            options: doughnutOptions
+                        });
 
-                // Doughnut Chart Configuration
-                const doughnutOptions = {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: {
-                        position: 'bottom'
-                    },
-                    title: {
-                        display: true,
-                        text: 'Deliverable Status'
-                    },
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true
+                        // Update state to indicate loading is complete
+                        $scope.$apply(function () {
+                            $scope.state.isBusy = false;
+                        });
                     }
-                };
-
-                // Initialize Doughnut Chart
-                const doughnutChartCtx = $document[0].getElementById('doughnutChart').getContext('2d');
-                const doughnutChart = new Chart(doughnutChartCtx, {
-                    type: 'doughnut',
-                    data: doughnutData,
-                    options: doughnutOptions
                 });
 
-                // Update state to indicate loading is complete
-                $scope.$apply(function () {
-                    $scope.state.isBusy = false;
-                });
-            }
-        });
 
+            });
     }]);
