@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-projects/widgets/services/deliverable-status.js",
+    "description": "Deliverable Status"
+}
