@@ -10,15 +10,14 @@ angular.module('deliverable-status', ['ideUI', 'ideView'])
         $http.get(projectServiceUrl)
             .then(function (response) {
                 const projectData = response.data;
-                console.log(projectData);
                 angular.element($document[0]).ready(async function () {
                     if (projectData) {
                         // Doughnut Chart Data
                         const doughnutData = {
-                            labels: ['Done', 'In Progress'],
+                            labels: ['Done', 'In Progress', 'DevelopingFeature', 'Deprecated', 'Research'],
                             datasets: [{
-                                data: [projectData.TasksProgressDone, projectData.TasksProgressDone + 3],
-                                backgroundColor: ['#36a2eb', '#ff6384']
+                                data: [projectData.TasksProgressDone, projectData.TasksProgressInProgress, projectData.TasksProgressDevelopingFeature, projectData.TasksDeprecated, projectData.TasksResearch],
+                                backgroundColor: ['#36a2eb', '#ff6384', '#3643eb', '#40e2eb', '#bb6384']
                             }]
                         };
 

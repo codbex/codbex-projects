@@ -14,4 +14,4 @@ if (typeof exports !== 'undefined') {
     exports.getWidget = getWidget;
 }
 
-export { getWidget }
+// export { getWidget }

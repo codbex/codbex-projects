@@ -27,11 +27,50 @@ class OrderService {
             }
         });
 
-        const tasksTodayLenght: number = !tasksProgressDone || tasksProgressDone.length === 0 ? 0 : tasksProgressDone.length;
+        let tasksProgressInProgress = this.taskDao.findAll({
+            $filter: {
+                equals: {
+                    StatusType: 2
+                }
+            }
+        });
 
+        let tasksProgressDevelopingFeature = this.taskDao.findAll({
+            $filter: {
+                equals: {
+                    StatusType: 3
+                }
+            }
+        });
+
+        let tasksProgressDeprecated = this.taskDao.findAll({
+            $filter: {
+                equals: {
+                    StatusType: 4
+                }
+            }
+        });
+
+        let tasksProgressResearch = this.taskDao.findAll({
+            $filter: {
+                equals: {
+                    StatusType: 5
+                }
+            }
+        });
+
+        const tasksDoneLenght: number = !tasksProgressDone || tasksProgressDone.length === 0 ? 0 : tasksProgressDone.length;
+        const tasksInProgress: number = !tasksProgressInProgress || tasksProgressInProgress.length === 0 ? 0 : tasksProgressInProgress.length;
+        const tasksDevelopingFeature: number = !tasksProgressDevelopingFeature || tasksProgressDevelopingFeature.length === 0 ? 0 : tasksProgressDevelopingFeature.length;
+        const tasksDeprecated: number = !tasksProgressDeprecated || tasksProgressDeprecated.length === 0 ? 0 : tasksProgressDeprecated.length;
+        const tasksResearch: number = !tasksProgressResearch || tasksProgressResearch.length === 0 ? 0 : tasksProgressResearch.length;
 
         return {
-            "TasksProgressDone": tasksTodayLenght
+            "TasksProgressDone": tasksDoneLenght,
+            "TasksProgressInProgress": tasksInProgress,
+            "TasksProgressDevelopingFeature": tasksDevelopingFeature,
+            "TasksDeprecated": tasksDeprecated,
+            "TasksResearch": tasksResearch
         };
     }
 
