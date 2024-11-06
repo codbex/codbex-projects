@@ -136,8 +136,8 @@ class BudgetService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
-        if (entity.InitialBudget === null || entity.InitialBudget === undefined) {
-            throw new ValidationError(`The 'InitialBudget' property is required, provide a valid value`);
+        if (entity.Amount === null || entity.Amount === undefined) {
+            throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
         if (entity.CostEstimation === null || entity.CostEstimation === undefined) {
             throw new ValidationError(`The 'CostEstimation' property is required, provide a valid value`);
@@ -145,8 +145,8 @@ class BudgetService {
         if (entity.ContingencyReserves === null || entity.ContingencyReserves === undefined) {
             throw new ValidationError(`The 'ContingencyReserves' property is required, provide a valid value`);
         }
-        if (entity.IsApproved === null || entity.IsApproved === undefined) {
-            throw new ValidationError(`The 'IsApproved' property is required, provide a valid value`);
+        if (entity.Approval === null || entity.Approval === undefined) {
+            throw new ValidationError(`The 'Approval' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

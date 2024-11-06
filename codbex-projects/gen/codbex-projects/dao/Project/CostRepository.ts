@@ -12,7 +12,7 @@ export interface CostEntity {
     CostCategory: number;
     Description?: string;
     CommitmentDate: Date;
-    IsCommitted?: boolean;
+    Approval?: boolean;
 }
 
 export interface CostCreateEntity {
@@ -22,7 +22,7 @@ export interface CostCreateEntity {
     readonly CostCategory: number;
     readonly Description?: string;
     readonly CommitmentDate: Date;
-    readonly IsCommitted?: boolean;
+    readonly Approval?: boolean;
 }
 
 export interface CostUpdateEntity extends CostCreateEntity {
@@ -39,7 +39,7 @@ export interface CostEntityOptions {
             CostCategory?: number | number[];
             Description?: string | string[];
             CommitmentDate?: Date | Date[];
-            IsCommitted?: boolean | boolean[];
+            Approval?: boolean | boolean[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -49,7 +49,7 @@ export interface CostEntityOptions {
             CostCategory?: number | number[];
             Description?: string | string[];
             CommitmentDate?: Date | Date[];
-            IsCommitted?: boolean | boolean[];
+            Approval?: boolean | boolean[];
         };
         contains?: {
             Id?: number;
@@ -59,7 +59,7 @@ export interface CostEntityOptions {
             CostCategory?: number;
             Description?: string;
             CommitmentDate?: Date;
-            IsCommitted?: boolean;
+            Approval?: boolean;
         };
         greaterThan?: {
             Id?: number;
@@ -69,7 +69,7 @@ export interface CostEntityOptions {
             CostCategory?: number;
             Description?: string;
             CommitmentDate?: Date;
-            IsCommitted?: boolean;
+            Approval?: boolean;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -79,7 +79,7 @@ export interface CostEntityOptions {
             CostCategory?: number;
             Description?: string;
             CommitmentDate?: Date;
-            IsCommitted?: boolean;
+            Approval?: boolean;
         };
         lessThan?: {
             Id?: number;
@@ -89,7 +89,7 @@ export interface CostEntityOptions {
             CostCategory?: number;
             Description?: string;
             CommitmentDate?: Date;
-            IsCommitted?: boolean;
+            Approval?: boolean;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -99,7 +99,7 @@ export interface CostEntityOptions {
             CostCategory?: number;
             Description?: string;
             CommitmentDate?: Date;
-            IsCommitted?: boolean;
+            Approval?: boolean;
         };
     },
     $select?: (keyof CostEntity)[],
@@ -172,8 +172,8 @@ export class CostRepository {
                 required: true
             },
             {
-                name: "IsCommitted",
-                column: "COST_ISCOMMITTED",
+                name: "Approval",
+                column: "COST_APPROVAL",
                 type: "BOOLEAN",
             }
         ]
@@ -188,7 +188,7 @@ export class CostRepository {
     public findAll(options?: CostEntityOptions): CostEntity[] {
         return this.dao.list(options).map((e: CostEntity) => {
             EntityUtils.setDate(e, "CommitmentDate");
-            EntityUtils.setBoolean(e, "IsCommitted");
+            EntityUtils.setBoolean(e, "Approval");
             return e;
         });
     }
@@ -196,13 +196,13 @@ export class CostRepository {
     public findById(id: number): CostEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "CommitmentDate");
-        EntityUtils.setBoolean(entity, "IsCommitted");
+        EntityUtils.setBoolean(entity, "Approval");
         return entity ?? undefined;
     }
 
     public create(entity: CostCreateEntity): number {
         EntityUtils.setLocalDate(entity, "CommitmentDate");
-        EntityUtils.setBoolean(entity, "IsCommitted");
+        EntityUtils.setBoolean(entity, "Approval");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -219,7 +219,7 @@ export class CostRepository {
 
     public update(entity: CostUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "CommitmentDate");
-        EntityUtils.setBoolean(entity, "IsCommitted");
+        EntityUtils.setBoolean(entity, "Approval");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

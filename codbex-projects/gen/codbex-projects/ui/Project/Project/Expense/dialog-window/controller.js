@@ -31,7 +31,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsProject = params.optionsProject;
 			$scope.optionsEmployee = params.optionsEmployee;
 			$scope.optionsExpenseCategory = params.optionsExpenseCategory;
-			$scope.optionsApprovalStatus = params.optionsApprovalStatus;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.create = function () {

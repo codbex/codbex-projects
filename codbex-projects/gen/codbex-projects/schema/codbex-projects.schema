@@ -244,7 +244,7 @@
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
-                        "name": "BUDGET_INITIALBUDGET"
+                        "name": "BUDGET_AMOUNT"
                     },
                     {
                         "type": "DECIMAL",
@@ -270,7 +270,7 @@
                     },
                     {
                         "type": "BOOLEAN",
-                        "name": "BUDGET_PROPERTY6"
+                        "name": "BUDGET_APPROVAL"
                     }
                 ]
             },
@@ -318,7 +318,7 @@
                     {
                         "type": "BOOLEAN",
                         "nullable": true,
-                        "name": "COST_ISCOMMITTED"
+                        "name": "COST_APPROVAL"
                     }
                 ]
             },
@@ -372,7 +372,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "MILESTONEPERIOD_STATUSTYPE"
+                        "name": "MILESTONEPERIOD_STATUS"
                     }
                 ]
             },
@@ -424,7 +424,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "EXPENSE_APPROVALSTATUS"
+                        "name": "EXPENSE_STATUS"
                     }
                 ]
             },
@@ -487,7 +487,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "DELIVERABLE_STATUSTYPE"
+                        "name": "DELIVERABLE_STATUS"
                     }
                 ]
             },
@@ -522,7 +522,7 @@
                     },
                     {
                         "type": "INTEGER",
-                        "name": "TASK_STATUSTYPE"
+                        "name": "TASK_STATUS"
                     },
                     {
                         "type": "INTEGER",
@@ -844,7 +844,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_MILESTONEPERIOD",
                 "constraintName": "Milestone_StatusType",
-                "columns": "MILESTONEPERIOD_STATUSTYPE",
+                "columns": "MILESTONEPERIOD_STATUS",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
             },
@@ -880,7 +880,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_EXPENSE",
                 "constraintName": "Expense_ApprovalStatus",
-                "columns": "EXPENSE_APPROVALSTATUS",
+                "columns": "EXPENSE_STATUS",
                 "referencedTable": "CODBEX_APPROVALSTATUS",
                 "referencedColumns": "APPROVALSTATUS_ID"
             },
@@ -898,7 +898,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_DELIVERABLE",
                 "constraintName": "Deliverable_StatusType",
-                "columns": "DELIVERABLE_STATUSTYPE",
+                "columns": "DELIVERABLE_STATUS",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
             },
@@ -907,7 +907,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_TASK",
                 "constraintName": "Task_StatusType",
-                "columns": "TASK_STATUSTYPE",
+                "columns": "TASK_STATUS",
                 "referencedTable": "CODBEX_STATUSTYPE",
                 "referencedColumns": "STATUSTYPE_ID"
             },

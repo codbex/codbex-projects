@@ -135,7 +135,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
-				optionsApprovalStatus: $scope.optionsApprovalStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -145,7 +145,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
-				optionsApprovalStatus: $scope.optionsApprovalStatus,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -159,7 +159,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
-				optionsApprovalStatus: $scope.optionsApprovalStatus,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -172,7 +172,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsProject: $scope.optionsProject,
 				optionsEmployee: $scope.optionsEmployee,
 				optionsExpenseCategory: $scope.optionsExpenseCategory,
-				optionsApprovalStatus: $scope.optionsApprovalStatus,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -209,7 +209,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsProject = [];
 		$scope.optionsEmployee = [];
 		$scope.optionsExpenseCategory = [];
-		$scope.optionsApprovalStatus = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -240,7 +240,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/ApprovalStatusService.ts").then(function (response) {
-			$scope.optionsApprovalStatus = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -272,10 +272,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsApprovalStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsApprovalStatus.length; i++) {
-				if ($scope.optionsApprovalStatus[i].value === optionKey) {
-					return $scope.optionsApprovalStatus[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

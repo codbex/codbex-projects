@@ -113,7 +113,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -124,7 +124,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -133,7 +133,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -171,13 +171,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Deliverable-filter", {
 				entity: $scope.filterEntity,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsProject = [];
-		$scope.optionsStatusType = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -190,7 +190,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
-			$scope.optionsStatusType = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -206,10 +206,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsStatusTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatusType.length; i++) {
-				if ($scope.optionsStatusType[i].value === optionKey) {
-					return $scope.optionsStatusType[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

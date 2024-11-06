@@ -41,7 +41,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = [];
-				$scope.optionsStatusType = [];
+				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
 		});
@@ -50,7 +50,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatusType = msg.data.optionsStatusType;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'select';
 			});
 		});
@@ -59,7 +59,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatusType = msg.data.optionsStatusType;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'create';
 			});
 		});
@@ -68,7 +68,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatusType = msg.data.optionsStatusType;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'update';
 			});
 		});

@@ -10,7 +10,7 @@ export interface TaskEntity {
     Description: string;
     StartDate: Date;
     EndDate: Date;
-    StatusType: number;
+    Status: number;
     Deliverable?: number;
 }
 
@@ -19,7 +19,7 @@ export interface TaskCreateEntity {
     readonly Description: string;
     readonly StartDate: Date;
     readonly EndDate: Date;
-    readonly StatusType: number;
+    readonly Status: number;
     readonly Deliverable?: number;
 }
 
@@ -35,7 +35,7 @@ export interface TaskEntityOptions {
             Description?: string | string[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            StatusType?: number | number[];
+            Status?: number | number[];
             Deliverable?: number | number[];
         };
         notEquals?: {
@@ -44,7 +44,7 @@ export interface TaskEntityOptions {
             Description?: string | string[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
-            StatusType?: number | number[];
+            Status?: number | number[];
             Deliverable?: number | number[];
         };
         contains?: {
@@ -53,7 +53,7 @@ export interface TaskEntityOptions {
             Description?: string;
             StartDate?: Date;
             EndDate?: Date;
-            StatusType?: number;
+            Status?: number;
             Deliverable?: number;
         };
         greaterThan?: {
@@ -62,7 +62,7 @@ export interface TaskEntityOptions {
             Description?: string;
             StartDate?: Date;
             EndDate?: Date;
-            StatusType?: number;
+            Status?: number;
             Deliverable?: number;
         };
         greaterThanOrEqual?: {
@@ -71,7 +71,7 @@ export interface TaskEntityOptions {
             Description?: string;
             StartDate?: Date;
             EndDate?: Date;
-            StatusType?: number;
+            Status?: number;
             Deliverable?: number;
         };
         lessThan?: {
@@ -80,7 +80,7 @@ export interface TaskEntityOptions {
             Description?: string;
             StartDate?: Date;
             EndDate?: Date;
-            StatusType?: number;
+            Status?: number;
             Deliverable?: number;
         };
         lessThanOrEqual?: {
@@ -89,7 +89,7 @@ export interface TaskEntityOptions {
             Description?: string;
             StartDate?: Date;
             EndDate?: Date;
-            StatusType?: number;
+            Status?: number;
             Deliverable?: number;
         };
     },
@@ -152,8 +152,8 @@ export class TaskRepository {
                 required: true
             },
             {
-                name: "StatusType",
-                column: "TASK_STATUSTYPE",
+                name: "Status",
+                column: "TASK_STATUS",
                 type: "INTEGER",
                 required: true
             },

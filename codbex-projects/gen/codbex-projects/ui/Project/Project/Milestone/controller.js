@@ -133,7 +133,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -141,7 +141,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Milestone-filter", {
 				entity: $scope.filterEntity,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -153,7 +153,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -164,7 +164,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Project",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsProject: $scope.optionsProject,
-				optionsStatusType: $scope.optionsStatusType,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -199,7 +199,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsProject = [];
-		$scope.optionsStatusType = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
@@ -212,7 +212,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
-			$scope.optionsStatusType = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -228,10 +228,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsStatusTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatusType.length; i++) {
-				if ($scope.optionsStatusType[i].value === optionKey) {
-					return $scope.optionsStatusType[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;

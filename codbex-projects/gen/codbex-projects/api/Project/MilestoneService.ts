@@ -148,8 +148,8 @@ class MilestoneService {
         if (entity.Due === null || entity.Due === undefined) {
             throw new ValidationError(`The 'Due' property is required, provide a valid value`);
         }
-        if (entity.StatusType === null || entity.StatusType === undefined) {
-            throw new ValidationError(`The 'StatusType' property is required, provide a valid value`);
+        if (entity.Status === null || entity.Status === undefined) {
+            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

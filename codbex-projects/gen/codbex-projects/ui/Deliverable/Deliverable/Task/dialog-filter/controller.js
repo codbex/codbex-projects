@@ -26,7 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsStatusType = params.optionsStatusType;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.filter = function () {
@@ -70,8 +70,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 			}
-			if (entity.StatusType !== undefined) {
-				filter.$filter.equals.StatusType = entity.StatusType;
+			if (entity.Status !== undefined) {
+				filter.$filter.equals.Status = entity.Status;
 			}
 			if (entity.Deliverable !== undefined) {
 				filter.$filter.equals.Deliverable = entity.Deliverable;

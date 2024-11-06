@@ -37,7 +37,7 @@
 						<th fd-table-header-cell>CostCategory</th>
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>CommitmentDate</th>
-						<th fd-table-header-cell>IsCommitted</th>
+						<th fd-table-header-cell>Approval</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -57,8 +57,8 @@
 							<fd-input type="date" ng-model="next.CommitmentDate" ng-readonly="true"></fd-input>
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<fd-checkbox id="idIsCommitted" compact="false" ng-disabled="true" ng-model="next.IsCommitted"></fd-checkbox>
-							<fd-checkbox-label for="idIsCommitted" empty="true"></fd-checkbox-label>
+							<fd-checkbox id="idApproval" compact="false" ng-disabled="true" ng-model="next.Approval"></fd-checkbox>
+							<fd-checkbox-label for="idApproval" empty="true"></fd-checkbox-label>
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>

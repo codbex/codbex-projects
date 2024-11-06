@@ -8,21 +8,21 @@ export interface BudgetEntity {
     readonly Id: number;
     Name: string;
     Project?: number;
-    InitialBudget: number;
+    Amount: number;
     CostEstimation: number;
     ContingencyReserves: number;
     ManagementReserves?: number;
-    IsApproved: boolean;
+    Approval: boolean;
 }
 
 export interface BudgetCreateEntity {
     readonly Name: string;
     readonly Project?: number;
-    readonly InitialBudget: number;
+    readonly Amount: number;
     readonly CostEstimation: number;
     readonly ContingencyReserves: number;
     readonly ManagementReserves?: number;
-    readonly IsApproved: boolean;
+    readonly Approval: boolean;
 }
 
 export interface BudgetUpdateEntity extends BudgetCreateEntity {
@@ -35,71 +35,71 @@ export interface BudgetEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
-            InitialBudget?: number | number[];
+            Amount?: number | number[];
             CostEstimation?: number | number[];
             ContingencyReserves?: number | number[];
             ManagementReserves?: number | number[];
-            IsApproved?: boolean | boolean[];
+            Approval?: boolean | boolean[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
-            InitialBudget?: number | number[];
+            Amount?: number | number[];
             CostEstimation?: number | number[];
             ContingencyReserves?: number | number[];
             ManagementReserves?: number | number[];
-            IsApproved?: boolean | boolean[];
+            Approval?: boolean | boolean[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            InitialBudget?: number;
+            Amount?: number;
             CostEstimation?: number;
             ContingencyReserves?: number;
             ManagementReserves?: number;
-            IsApproved?: boolean;
+            Approval?: boolean;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            InitialBudget?: number;
+            Amount?: number;
             CostEstimation?: number;
             ContingencyReserves?: number;
             ManagementReserves?: number;
-            IsApproved?: boolean;
+            Approval?: boolean;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            InitialBudget?: number;
+            Amount?: number;
             CostEstimation?: number;
             ContingencyReserves?: number;
             ManagementReserves?: number;
-            IsApproved?: boolean;
+            Approval?: boolean;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            InitialBudget?: number;
+            Amount?: number;
             CostEstimation?: number;
             ContingencyReserves?: number;
             ManagementReserves?: number;
-            IsApproved?: boolean;
+            Approval?: boolean;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            InitialBudget?: number;
+            Amount?: number;
             CostEstimation?: number;
             ContingencyReserves?: number;
             ManagementReserves?: number;
-            IsApproved?: boolean;
+            Approval?: boolean;
         };
     },
     $select?: (keyof BudgetEntity)[],
@@ -148,8 +148,8 @@ export class BudgetRepository {
                 type: "INTEGER",
             },
             {
-                name: "InitialBudget",
-                column: "BUDGET_INITIALBUDGET",
+                name: "Amount",
+                column: "BUDGET_AMOUNT",
                 type: "DECIMAL",
                 required: true
             },
@@ -171,8 +171,8 @@ export class BudgetRepository {
                 type: "DECIMAL",
             },
             {
-                name: "IsApproved",
-                column: "BUDGET_PROPERTY6",
+                name: "Approval",
+                column: "BUDGET_APPROVAL",
                 type: "BOOLEAN",
                 required: true
             }
@@ -187,19 +187,19 @@ export class BudgetRepository {
 
     public findAll(options?: BudgetEntityOptions): BudgetEntity[] {
         return this.dao.list(options).map((e: BudgetEntity) => {
-            EntityUtils.setBoolean(e, "IsApproved");
+            EntityUtils.setBoolean(e, "Approval");
             return e;
         });
     }
 
     public findById(id: number): BudgetEntity | undefined {
         const entity = this.dao.find(id);
-        EntityUtils.setBoolean(entity, "IsApproved");
+        EntityUtils.setBoolean(entity, "Approval");
         return entity ?? undefined;
     }
 
     public create(entity: BudgetCreateEntity): number {
-        EntityUtils.setBoolean(entity, "IsApproved");
+        EntityUtils.setBoolean(entity, "Approval");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -215,7 +215,7 @@ export class BudgetRepository {
     }
 
     public update(entity: BudgetUpdateEntity): void {
-        EntityUtils.setBoolean(entity, "IsApproved");
+        EntityUtils.setBoolean(entity, "Approval");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

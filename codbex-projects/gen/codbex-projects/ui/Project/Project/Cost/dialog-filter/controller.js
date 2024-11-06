@@ -68,8 +68,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CommitmentDateTo) {
 				filter.$filter.lessThanOrEqual.CommitmentDate = entity.CommitmentDateTo;
 			}
-			if (entity.IsCommitted !== undefined && entity.isIsCommittedIndeterminate === false) {
-				filter.$filter.equals.IsCommitted = entity.IsCommitted;
+			if (entity.Approval !== undefined && entity.isApprovalIndeterminate === false) {
+				filter.$filter.equals.Approval = entity.Approval;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
