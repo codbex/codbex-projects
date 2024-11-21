@@ -79,6 +79,11 @@
                         "name": "PROJECT_ENDDATE"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PROJECT_STATUS"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 50,
                         "name": "PROJECT_SPONSORNAME"
@@ -784,6 +789,15 @@
                 "columns": "RESOURCE_RESOURCETYPE",
                 "referencedTable": "CODBEX_RESOURCETYPE",
                 "referencedColumns": "RESOURCETYPE_ID"
+            },
+            {
+                "name": "Project_StatusType",
+                "type": "foreignKey",
+                "table": "CODBEX_PROJECT",
+                "constraintName": "Project_StatusType",
+                "columns": "PROJECT_STATUS",
+                "referencedTable": "CODBEX_STATUSTYPE",
+                "referencedColumns": "STATUSTYPE_ID"
             },
             {
                 "name": "Project_AgileMethodology",

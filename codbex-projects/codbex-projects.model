@@ -210,6 +210,24 @@
                         "widgetType": "DATETIME-LOCAL"
                     },
                     {
+                        "dataName": "PROJECT_STATUS",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Status",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Project_StatusType",
+                        "relationshipEntityName": "StatusType",
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataLength": "50",
                         "dataName": "PROJECT_SPONSORNAME",
                         "dataNullable": "false",

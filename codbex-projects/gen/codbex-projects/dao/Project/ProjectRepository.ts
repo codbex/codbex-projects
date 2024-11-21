@@ -10,6 +10,7 @@ export interface ProjectEntity {
     Description?: string;
     StartingDate?: Date;
     EndDate: Date;
+    Status?: number;
     SponsorName: string;
     Opportunity: string;
     Scope: string;
@@ -37,6 +38,7 @@ export interface ProjectCreateEntity {
     readonly Description?: string;
     readonly StartingDate?: Date;
     readonly EndDate: Date;
+    readonly Status?: number;
     readonly SponsorName: string;
     readonly Opportunity: string;
     readonly Scope: string;
@@ -71,6 +73,7 @@ export interface ProjectEntityOptions {
             Description?: string | string[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
+            Status?: number | number[];
             SponsorName?: string | string[];
             Opportunity?: string | string[];
             Scope?: string | string[];
@@ -98,6 +101,7 @@ export interface ProjectEntityOptions {
             Description?: string | string[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
+            Status?: number | number[];
             SponsorName?: string | string[];
             Opportunity?: string | string[];
             Scope?: string | string[];
@@ -125,6 +129,7 @@ export interface ProjectEntityOptions {
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
+            Status?: number;
             SponsorName?: string;
             Opportunity?: string;
             Scope?: string;
@@ -152,6 +157,7 @@ export interface ProjectEntityOptions {
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
+            Status?: number;
             SponsorName?: string;
             Opportunity?: string;
             Scope?: string;
@@ -179,6 +185,7 @@ export interface ProjectEntityOptions {
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
+            Status?: number;
             SponsorName?: string;
             Opportunity?: string;
             Scope?: string;
@@ -206,6 +213,7 @@ export interface ProjectEntityOptions {
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
+            Status?: number;
             SponsorName?: string;
             Opportunity?: string;
             Scope?: string;
@@ -233,6 +241,7 @@ export interface ProjectEntityOptions {
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
+            Status?: number;
             SponsorName?: string;
             Opportunity?: string;
             Scope?: string;
@@ -310,6 +319,11 @@ export class ProjectRepository {
                 column: "PROJECT_ENDDATE",
                 type: "TIMESTAMP",
                 required: true
+            },
+            {
+                name: "Status",
+                column: "PROJECT_STATUS",
+                type: "INTEGER",
             },
             {
                 name: "SponsorName",

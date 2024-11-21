@@ -9271,6 +9271,9 @@ components:
           maxLength: 2000
         StartingDate:
         EndDate:
+        Status:
+          type: integer
+          format: int32
         SponsorName:
           type: string
           minLength: 0
@@ -9389,6 +9392,14 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 SponsorName:
                   oneOf:
                     - type: string
@@ -9632,6 +9643,14 @@ components:
                   oneOf:
                 EndDate:
                   oneOf:
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 SponsorName:
                   oneOf:
                     - type: string
@@ -9852,6 +9871,7 @@ components:
                   maxLength: 2000
                 StartingDate:
                 EndDate:
+                Status:
                 SponsorName:
                   type: string
                   minLength: 0
@@ -9936,6 +9956,9 @@ components:
                   maxLength: 2000
                 StartingDate:
                 EndDate:
+                Status:
+                  type: integer
+                  format: int32
                 SponsorName:
                   type: string
                   minLength: 0
@@ -10026,6 +10049,9 @@ components:
                   maxLength: 2000
                 StartingDate:
                 EndDate:
+                Status:
+                  type: integer
+                  format: int32
                 SponsorName:
                   type: string
                   minLength: 0
@@ -10116,6 +10142,9 @@ components:
                   maxLength: 2000
                 StartingDate:
                 EndDate:
+                Status:
+                  type: integer
+                  format: int32
                 SponsorName:
                   type: string
                   minLength: 0
@@ -10206,6 +10235,9 @@ components:
                   maxLength: 2000
                 StartingDate:
                 EndDate:
+                Status:
+                  type: integer
+                  format: int32
                 SponsorName:
                   type: string
                   minLength: 0
@@ -10282,12 +10314,12 @@ components:
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Description", "StartingDate", "EndDate", "SponsorName", "Opportunity", "Scope", "Version", "Notes", "AgileMethodology", "IterationLenght", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
+          example: ["Id", "Name", "Description", "StartingDate", "EndDate", "Status", "SponsorName", "Opportunity", "Scope", "Version", "Notes", "AgileMethodology", "IterationLenght", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,StartingDate,EndDate,SponsorName,Opportunity,Scope,Version,Notes,AgileMethodology,IterationLenght,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
+            example: "Id,Name,Description,StartingDate,EndDate,Status,SponsorName,Opportunity,Scope,Version,Notes,AgileMethodology,IterationLenght,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
         $order:
           type: string
           enum: ["asc", "desc"]

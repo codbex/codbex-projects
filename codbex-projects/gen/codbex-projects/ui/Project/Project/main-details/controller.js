@@ -40,6 +40,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsStatus = [];
 				$scope.optionsAgileMethodology = [];
 				$scope.optionsIterationLenght = [];
 				$scope.action = 'select';
@@ -55,6 +56,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
 				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'select';
@@ -64,6 +66,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
 				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'create';
@@ -79,6 +82,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsAgileMethodology = msg.data.optionsAgileMethodology;
 				$scope.optionsIterationLenght = msg.data.optionsIterationLenght;
 				$scope.action = 'update';

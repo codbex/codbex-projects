@@ -26,6 +26,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsAgileMethodology = params.optionsAgileMethodology;
 			$scope.optionsIterationLenght = params.optionsIterationLenght;
 		}
@@ -70,6 +71,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.EndDateTo) {
 				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
+			}
+			if (entity.Status !== undefined) {
+				filter.$filter.equals.Status = entity.Status;
 			}
 			if (entity.SponsorName) {
 				filter.$filter.contains.SponsorName = entity.SponsorName;

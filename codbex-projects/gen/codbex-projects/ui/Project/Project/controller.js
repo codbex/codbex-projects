@@ -122,6 +122,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsStatus: $scope.optionsStatus,
 				optionsAgileMethodology: $scope.optionsAgileMethodology,
 				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
@@ -133,6 +134,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsStatus: $scope.optionsStatus,
 				optionsAgileMethodology: $scope.optionsAgileMethodology,
 				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
@@ -142,6 +144,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsStatus: $scope.optionsStatus,
 				optionsAgileMethodology: $scope.optionsAgileMethodology,
 				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
@@ -180,15 +183,26 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Project-filter", {
 				entity: $scope.filterEntity,
+				optionsStatus: $scope.optionsStatus,
 				optionsAgileMethodology: $scope.optionsAgileMethodology,
 				optionsIterationLenght: $scope.optionsIterationLenght,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsStatus = [];
 		$scope.optionsAgileMethodology = [];
 		$scope.optionsIterationLenght = [];
 
+
+		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
+			$scope.optionsStatus = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts").then(function (response) {
 			$scope.optionsAgileMethodology = response.data.map(e => {
@@ -208,6 +222,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsAgileMethodologyValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsAgileMethodology.length; i++) {
 				if ($scope.optionsAgileMethodology[i].value === optionKey) {
