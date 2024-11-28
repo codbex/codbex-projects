@@ -65,6 +65,12 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PROJECT_NUMBER"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 2000,
                         "nullable": true,
                         "name": "PROJECT_DESCRIPTION"

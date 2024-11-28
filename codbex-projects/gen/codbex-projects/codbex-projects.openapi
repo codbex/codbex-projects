@@ -682,6 +682,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Number: "abcd"
                       Description: "abcd"
                       SponsorName: "abcd"
                       Opportunity: "abcd"
@@ -721,6 +722,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Number: "abcd"
                       Description: "abcd"
                       SponsorName: "abcd"
                       Opportunity: "abcd"
@@ -802,6 +804,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Number: "abcd"
                       Description: "abcd"
                       SponsorName: "abcd"
                       Opportunity: "abcd"
@@ -841,6 +844,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Number: "abcd"
                       Description: "abcd"
                       SponsorName: "abcd"
                       Opportunity: "abcd"
@@ -9265,6 +9269,11 @@ components:
           type: string
           minLength: 0
           maxLength: 40
+        Number:
+          type: string
+          minLength: 0
+          maxLength: 20
+          readOnly: true
         Description:
           type: string
           minLength: 0
@@ -9377,6 +9386,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
+                Number:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Description:
                   oneOf:
                     - type: string
@@ -9628,6 +9648,17 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
+                Number:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
                 Description:
                   oneOf:
                     - type: string
@@ -9865,6 +9896,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
+                Number:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Description:
                   type: string
                   minLength: 0
@@ -9950,6 +9985,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
+                Number:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Description:
                   type: string
                   minLength: 0
@@ -10043,6 +10082,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
+                Number:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Description:
                   type: string
                   minLength: 0
@@ -10136,6 +10179,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
+                Number:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Description:
                   type: string
                   minLength: 0
@@ -10229,6 +10276,10 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
+                Number:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
                 Description:
                   type: string
                   minLength: 0
@@ -10314,12 +10365,12 @@ components:
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Name", "Description", "StartingDate", "EndDate", "Status", "SponsorName", "Opportunity", "Scope", "Version", "Notes", "AgileMethodology", "IterationLenght", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
+          example: ["Id", "Name", "Number", "Description", "StartingDate", "EndDate", "Status", "SponsorName", "Opportunity", "Scope", "Version", "Notes", "AgileMethodology", "IterationLenght", "PlanningFrequency", "CustomerInvolvementFrequency", "ReleaseCadence", "RetrospectiveFrequency", "DailyStandup", "BacklogRefinementFrequency", "DefectManagement", "DeploymentFrequency", "TestingIntegration", "StakeholderReview", "FeatureCompletionCriteria", "DocumentationUpdates", "SustainableVelocity"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,StartingDate,EndDate,Status,SponsorName,Opportunity,Scope,Version,Notes,AgileMethodology,IterationLenght,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
+            example: "Id,Name,Number,Description,StartingDate,EndDate,Status,SponsorName,Opportunity,Scope,Version,Notes,AgileMethodology,IterationLenght,PlanningFrequency,CustomerInvolvementFrequency,ReleaseCadence,RetrospectiveFrequency,DailyStandup,BacklogRefinementFrequency,DefectManagement,DeploymentFrequency,TestingIntegration,StakeholderReview,FeatureCompletionCriteria,DocumentationUpdates,SustainableVelocity"
         $order:
           type: string
           enum: ["asc", "desc"]

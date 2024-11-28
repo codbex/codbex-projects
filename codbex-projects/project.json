@@ -6,6 +6,12 @@
             "type": "git",
             "url": "https://github.com/codbex/codbex-employees.git",
             "branch": "main"
+        },
+        {
+            "guid": "codbex-number-generator",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-number-generator.git",
+            "branch": "main"
         }
     ],
     "actions": [

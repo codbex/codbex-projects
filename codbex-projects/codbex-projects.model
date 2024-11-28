@@ -171,6 +171,21 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(31)",
+                        "dataLength": "20",
+                        "dataName": "PROJECT_NUMBER",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isCalculatedProperty": "true",
+                        "name": "Number",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataLength": "2000",
                         "dataName": "PROJECT_DESCRIPTION",
                         "dataNullable": "true",

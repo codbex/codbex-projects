@@ -7,6 +7,7 @@ import { EntityUtils } from "../utils/EntityUtils";
 export interface ProjectEntity {
     readonly Id: number;
     Name: string;
+    Number?: string;
     Description?: string;
     StartingDate?: Date;
     EndDate: Date;
@@ -70,6 +71,7 @@ export interface ProjectEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Number?: string | string[];
             Description?: string | string[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
@@ -98,6 +100,7 @@ export interface ProjectEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Number?: string | string[];
             Description?: string | string[];
             StartingDate?: Date | Date[];
             EndDate?: Date | Date[];
@@ -126,6 +129,7 @@ export interface ProjectEntityOptions {
         contains?: {
             Id?: number;
             Name?: string;
+            Number?: string;
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
@@ -154,6 +158,7 @@ export interface ProjectEntityOptions {
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Number?: string;
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
@@ -182,6 +187,7 @@ export interface ProjectEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Number?: string;
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
@@ -210,6 +216,7 @@ export interface ProjectEntityOptions {
         lessThan?: {
             Id?: number;
             Name?: string;
+            Number?: string;
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
@@ -238,6 +245,7 @@ export interface ProjectEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Number?: string;
             Description?: string;
             StartingDate?: Date;
             EndDate?: Date;
@@ -303,6 +311,11 @@ export class ProjectRepository {
                 column: "PROJECT_NAME",
                 type: "VARCHAR",
                 required: true
+            },
+            {
+                name: "Number",
+                column: "PROJECT_NUMBER",
+                type: "VARCHAR",
             },
             {
                 name: "Description",
@@ -466,6 +479,8 @@ export class ProjectRepository {
 
     public create(entity: ProjectCreateEntity): number {
         EntityUtils.setBoolean(entity, "DailyStandup");
+        // @ts-ignore
+        (entity as ProjectEntity).Number = new NumberGeneratorService().generate(31);
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
