@@ -1045,6 +1045,7 @@
       "description": "Manage entity Project",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
+      "importsCode": "import { NumberGeneratorService } from \"/codbex-number-generator/service/generator\";",
       "layoutType": "MANAGE_MASTER",
       "menuIndex": "100",
       "menuKey": "project",
