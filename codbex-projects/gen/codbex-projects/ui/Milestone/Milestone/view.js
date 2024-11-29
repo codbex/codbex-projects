@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Milestone-details",
+    id: "Milestone",
     label: "Milestone",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Milestone/dialog-window/index.html",
-    perspectiveName: "Project",
+    factory: "frame",
+    region: "left",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/index.html",
+    perspectiveName: "Milestone",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

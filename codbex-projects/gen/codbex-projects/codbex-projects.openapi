@@ -16,7 +16,7 @@ tags:
   - name: Project
   - name: Project
   - name: Settings
-  - name: Project
+  - name: Milestone
   - name: Project
   - name: Settings
   - name: Deliverable
@@ -2912,7 +2912,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/MilestoneService.ts:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts:
     get:
       summary: List Milestone
       parameters:
@@ -2933,7 +2933,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Project
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -2964,7 +2964,7 @@ paths:
     post:
       summary: Create Milestone
       tags:
-        - Project
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -2996,7 +2996,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/MilestoneService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts/{id}:
     get:
       summary: Get Milestone by Id
       parameters:
@@ -3007,7 +3007,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -3045,7 +3045,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -3093,7 +3093,7 @@ paths:
           schema:
             type: string
       tags:
-        - Project
+        - Milestone
       responses:
         204:
           description: Successful Request
@@ -3115,11 +3115,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/MilestoneService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts/count:
     get:
       summary: Count the number of Milestone
       tags:
-        - Project
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -3143,7 +3143,7 @@ paths:
     post:
       summary: Count the number of Milestone by MilestoneFilterOptions
       tags:
-        - Project
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -3227,11 +3227,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/Project/MilestoneService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts/search:
     post:
       summary: Search Milestone by MilestoneFilterOptions
       tags:
-        - Project
+        - Milestone
       requestBody:
         content:
           application/json:

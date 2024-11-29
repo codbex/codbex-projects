@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { MilestoneRepository, MilestoneEntityOptions } from "../../dao/Project/MilestoneRepository";
+import { MilestoneRepository, MilestoneEntityOptions } from "../../dao/Milestone/MilestoneRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Project-Milestone", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Milestone-Milestone", ["validate"]);
 
 @Controller
 class MilestoneService {
@@ -19,17 +19,6 @@ class MilestoneService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let Project = parseInt(ctx.queryParameters.Project);
-            Project = isNaN(Project) ? ctx.queryParameters.Project : Project;
-
-            if (Project !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Project: Project
-                    }
-                };
-            }
-
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -41,7 +30,7 @@ class MilestoneService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Project/MilestoneService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

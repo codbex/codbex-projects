@@ -1185,9 +1185,9 @@
                         "description": "",
                         "isRequiredProperty": "true",
                         "name": "Project",
-                        "relationshipCardinality": "1_n",
+                        "relationshipCardinality": "n_1",
                         "relationshipName": "Milestone_Project",
-                        "relationshipType": "COMPOSITION",
+                        "relationshipType": "AGGREGATION",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
@@ -1253,20 +1253,20 @@
                 "description": "Manage entity Milestone",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "milestoneperiod",
                 "menuLabel": "MilestonePeriod",
                 "name": "Milestone",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
-                "perspectiveLabel": "Project",
-                "perspectiveName": "Project",
-                "perspectiveOrder": "100",
+                "perspectiveIcon": "/services/web/resources/unicons/arrow-break.svg",
+                "perspectiveLabel": "Milestone",
+                "perspectiveName": "Milestone",
+                "perspectiveOrder": "400",
                 "perspectiveRole": "",
                 "title": "MilestonePeriod",
                 "tooltip": "MilestonePeriod",
-                "type": "DEPENDENT"
+                "type": "PRIMARY"
             },
             {
                 "properties": [
@@ -2527,6 +2527,13 @@
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/wrench.svg",
                 "order": "999",
+                "role": {}
+            },
+            {
+                "name": "Milestone",
+                "label": "Milestone",
+                "icon": "/services/web/resources/unicons/arrow-break.svg",
+                "order": "400",
                 "role": {}
             }
         ],

@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Milestone",
+    id: "Milestone-details",
     label: "Milestone",
     factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Milestone/index.html",
-    perspectiveName: "Project",
+    region: "center",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/main-details/index.html",
+    perspectiveName: "Milestone",
 };
 
 if (typeof exports !== 'undefined') {

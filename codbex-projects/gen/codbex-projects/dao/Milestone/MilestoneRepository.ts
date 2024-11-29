@@ -242,7 +242,7 @@ export class MilestoneRepository {
     }
 
     private async triggerEvent(data: MilestoneEntityEvent | MilestoneUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-Project-Milestone", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-projects-Milestone-Milestone", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -250,6 +250,6 @@ export class MilestoneRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-projects-Project-Milestone").send(JSON.stringify(data));
+        producer.topic("codbex-projects-Milestone-Milestone").send(JSON.stringify(data));
     }
 }
