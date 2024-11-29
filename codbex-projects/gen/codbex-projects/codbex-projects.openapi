@@ -31,6 +31,7 @@ tags:
   - name: Settings
   - name: Project
   - name: Settings
+  - name: entities
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -3158,7 +3159,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3181,7 +3181,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -3246,7 +3245,6 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3269,7 +3267,6 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
-                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -8928,6 +8925,406 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts:
+    get:
+      summary: List MilestoneDeliverable
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneDeliverable'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create MilestoneDeliverable
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneDeliverable'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MilestoneDeliverable'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/{id}:
+    get:
+      summary: Get MilestoneDeliverable by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneDeliverable'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update MilestoneDeliverable by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneDeliverable'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MilestoneDeliverable'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete MilestoneDeliverable by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/count:
+    get:
+      summary: Count the number of MilestoneDeliverable
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of MilestoneDeliverable by MilestoneDeliverableFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneDeliverableFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Description: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/search:
+    post:
+      summary: Search MilestoneDeliverable by MilestoneDeliverableFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MilestoneDeliverableFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Description: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/MilestoneDeliverable'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Resource:
@@ -11384,9 +11781,6 @@ components:
       required:
         - Name
         - Project
-        - Description
-        - Due
-        - Status
       properties:
         Id:
           type: integer
@@ -11398,12 +11792,7 @@ components:
         Project:
           type: integer
           format: int32
-        Description:
-          type: string
-          minLength: 0
-          maxLength: 200
-        Due:
-        Status:
+        Deliverable:
           type: integer
           format: int32
     MilestoneFilterOptions:
@@ -11442,20 +11831,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                Due:
-                  oneOf:
-                Status:
+                Deliverable:
                   oneOf:
                     - type: integer
                       format: int32
@@ -11493,20 +11869,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Description:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 200
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 200
-                Due:
-                  oneOf:
-                Status:
+                Deliverable:
                   oneOf:
                     - type: integer
                       format: int32
@@ -11523,12 +11886,7 @@ components:
                   minLength: 0
                   maxLength: 40
                 Project:
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Due:
-                Status:
+                Deliverable:
             greaterThan:
               type: object
               properties:
@@ -11542,12 +11900,7 @@ components:
                 Project:
                   type: integer
                   format: int32
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Due:
-                Status:
+                Deliverable:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -11563,12 +11916,7 @@ components:
                 Project:
                   type: integer
                   format: int32
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Due:
-                Status:
+                Deliverable:
                   type: integer
                   format: int32
             lessThan:
@@ -11584,12 +11932,7 @@ components:
                 Project:
                   type: integer
                   format: int32
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Due:
-                Status:
+                Deliverable:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -11605,22 +11948,17 @@ components:
                 Project:
                   type: integer
                   format: int32
-                Description:
-                  type: string
-                  minLength: 0
-                  maxLength: 200
-                Due:
-                Status:
+                Deliverable:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Project", "Description", "Due", "Status"]
+          example: ["Id", "Name", "Project", "Deliverable"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Project,Description,Due,Status"
+            example: "Id,Name,Project,Deliverable"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -14382,6 +14720,185 @@ components:
         $sort:
           - type: string
             example: "Id,Period,AgileMethodology"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    MilestoneDeliverable:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Milestone:
+          type: integer
+          format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 100
+        StartDate:
+        EndDate:
+    MilestoneDeliverableFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Milestone:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Milestone:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
+            contains:
+              type: object
+              properties:
+                Id:
+                Milestone:
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                StartDate:
+                EndDate:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Milestone:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                StartDate:
+                EndDate:
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Milestone:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                StartDate:
+                EndDate:
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Milestone:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                StartDate:
+                EndDate:
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Milestone:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                StartDate:
+                EndDate:
+        $select:
+          type: array
+          example: ["Id", "Milestone", "Description", "StartDate", "EndDate"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Milestone,Description,StartDate,EndDate"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -41,19 +41,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = [];
-				$scope.optionsStatus = [];
+				$scope.optionsDeliverable = [];
 				$scope.action = 'select';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
-				if (msg.data.entity.Due) {
-					msg.data.entity.Due = new Date(msg.data.entity.Due);
-				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'select';
 			});
 		});
@@ -62,21 +59,40 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'create';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
-				if (msg.data.entity.Due) {
-					msg.data.entity.Due = new Date(msg.data.entity.Due);
-				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'update';
 			});
+		});
+
+		$scope.$watch('entity.Project', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts/search", {
+					$filter: {
+						equals: {
+							Project: newValue
+						}
+					}
+				}).then(function (response) {
+					$scope.optionsDeliverable = response.data.map(e => {
+						return {
+							value: e.Id,
+							text: e.Name
+						}
+					});
+					if ($scope.action !== 'select' && newValue !== oldValue) {
+						$scope.entity.Deliverable = undefined;
+					}
+				});
+			}
 		});
 		//-----------------Events-------------------//
 

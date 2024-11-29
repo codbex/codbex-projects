@@ -7,17 +7,13 @@ export interface MilestoneEntity {
     readonly Id: number;
     Name?: string;
     Project: number;
-    Description: string;
-    Due: Date;
-    Status: number;
+    Deliverable?: number;
 }
 
 export interface MilestoneCreateEntity {
     readonly Name?: string;
     readonly Project: number;
-    readonly Description: string;
-    readonly Due: Date;
-    readonly Status: number;
+    readonly Deliverable?: number;
 }
 
 export interface MilestoneUpdateEntity extends MilestoneCreateEntity {
@@ -30,57 +26,43 @@ export interface MilestoneEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
-            Description?: string | string[];
-            Due?: Date | Date[];
-            Status?: number | number[];
+            Deliverable?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Project?: number | number[];
-            Description?: string | string[];
-            Due?: Date | Date[];
-            Status?: number | number[];
+            Deliverable?: number | number[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            Description?: string;
-            Due?: Date;
-            Status?: number;
+            Deliverable?: number;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            Description?: string;
-            Due?: Date;
-            Status?: number;
+            Deliverable?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            Description?: string;
-            Due?: Date;
-            Status?: number;
+            Deliverable?: number;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            Description?: string;
-            Due?: Date;
-            Status?: number;
+            Deliverable?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Project?: number;
-            Description?: string;
-            Due?: Date;
-            Status?: number;
+            Deliverable?: number;
         };
     },
     $select?: (keyof MilestoneEntity)[],
@@ -129,22 +111,9 @@ export class MilestoneRepository {
                 required: true
             },
             {
-                name: "Description",
-                column: "MILESTONEPERIOD_DESCRIPTION",
-                type: "VARCHAR",
-                required: true
-            },
-            {
-                name: "Due",
-                column: "MILESTONEPERIOD_RANGE",
-                type: "TIMESTAMP",
-                required: true
-            },
-            {
-                name: "Status",
-                column: "MILESTONEPERIOD_STATUS",
+                name: "Deliverable",
+                column: "MILESTONEPERIOD_DELIVERABLE",
                 type: "INTEGER",
-                required: true
             }
         ]
     };

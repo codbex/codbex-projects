@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { MilestoneRepository, MilestoneEntityOptions } from "../../dao/Milestone/MilestoneRepository";
+import { MilestoneDeliverableRepository, MilestoneDeliverableEntityOptions } from "../../dao/entities/MilestoneDeliverableRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-Milestone-Milestone", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-entities-MilestoneDeliverable", ["validate"]);
 
 @Controller
-class MilestoneService {
+class MilestoneDeliverableService {
 
-    private readonly repository = new MilestoneRepository();
+    private readonly repository = new MilestoneDeliverableRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: MilestoneEntityOptions = {
+            const options: MilestoneDeliverableEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Milestone = parseInt(ctx.queryParameters.Milestone);
+            Milestone = isNaN(Milestone) ? ctx.queryParameters.Milestone : Milestone;
+
+            if (Milestone !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Milestone: Milestone
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class MilestoneService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class MilestoneService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Milestone not found");
+                HttpUtils.sendResponseNotFound("MilestoneDeliverable not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class MilestoneService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Milestone not found");
+                HttpUtils.sendResponseNotFound("MilestoneDeliverable not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,14 +130,8 @@ class MilestoneService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 40) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
-        }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        if (entity.Description?.length > 100) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [100] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
