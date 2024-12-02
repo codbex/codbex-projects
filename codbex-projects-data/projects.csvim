@@ -34,17 +34,6 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_MILESTONEPERIOD",
-      "schema": "PUBLIC",
-      "file": "/codbex-projects-data/milestone-period.csv",
-      "header": true,
-      "useHeaderNames": true,
-      "delimField": ",",
-      "delimEnclosing": "\"",
-      "distinguishEmptyFromNull": true,
-      "version": "1.0"
-    },
-    {
       "table": "CODBEX_EXPENSECATEGORY",
       "schema": "PUBLIC",
       "file": "/codbex-projects-data/expense-category.csv",
