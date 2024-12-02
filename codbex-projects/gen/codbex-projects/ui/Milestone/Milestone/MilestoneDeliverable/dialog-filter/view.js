@@ -6,8 +6,8 @@
 const viewData = {
     id: "MilestoneDeliverable-filter",
     label: "MilestoneDeliverable Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/entities/Milestone/MilestoneDeliverable/dialog-filter/index.html",
-    perspectiveName: "entities",
+    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/MilestoneDeliverable/dialog-filter/index.html",
+    perspectiveName: "Milestone",
 };
 
 if (typeof exports !== 'undefined') {

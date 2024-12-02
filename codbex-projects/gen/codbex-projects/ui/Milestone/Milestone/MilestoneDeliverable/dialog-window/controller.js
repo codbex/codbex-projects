@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.entities.MilestoneDeliverable';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Milestone.MilestoneDeliverable';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 

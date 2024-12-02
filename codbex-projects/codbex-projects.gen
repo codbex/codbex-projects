@@ -81,6 +81,7 @@
     "Milestone": {
       "views": [
         "Milestone",
+        "MilestoneDeliverable",
         "Milestone-details",
         "Milestone-details",
         "Milestone-details",
@@ -135,16 +136,6 @@
       "label": "Deliverable",
       "order": "200",
       "icon": "/services/web/resources/unicons/parcel.svg",
-      "role": ""
-    },
-    "entities": {
-      "views": [
-        "MilestoneDeliverable"
-      ],
-      "name": "entities",
-      "label": "entities",
-      "order": "100",
-      "icon": "/services/web/resources/unicons/copy.svg",
       "role": ""
     }
   },
@@ -5208,10 +5199,10 @@
       "menuLabel": "MilestoneDeliverable",
       "name": "MilestoneDeliverable",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveLabel": "Entities",
-      "perspectiveName": "entities",
-      "perspectiveOrder": "100",
+      "perspectiveIcon": "/services/web/resources/unicons/arrow-break.svg",
+      "perspectiveLabel": "Milestone",
+      "perspectiveName": "Milestone",
+      "perspectiveOrder": "400",
       "perspectiveRole": "",
       "title": "MilestoneDeliverable",
       "tooltip": "MilestoneDeliverable",

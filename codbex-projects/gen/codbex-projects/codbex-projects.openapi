@@ -31,7 +31,7 @@ tags:
   - name: Settings
   - name: Project
   - name: Settings
-  - name: entities
+  - name: Milestone
 paths:
   /codbex-projects/gen/codbex-projects/api/Project/ResourceService.ts:
     get:
@@ -8925,7 +8925,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts:
     get:
       summary: List MilestoneDeliverable
       parameters:
@@ -8946,7 +8946,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -8977,7 +8977,7 @@ paths:
     post:
       summary: Create MilestoneDeliverable
       tags:
-        - entities
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -9009,7 +9009,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/{id}:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts/{id}:
     get:
       summary: Get MilestoneDeliverable by Id
       parameters:
@@ -9020,7 +9020,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -9058,7 +9058,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -9106,7 +9106,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Milestone
       responses:
         204:
           description: Successful Request
@@ -9128,11 +9128,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/count:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts/count:
     get:
       summary: Count the number of MilestoneDeliverable
       tags:
-        - entities
+        - Milestone
       responses:
         200:
           description: Successful Request
@@ -9156,7 +9156,7 @@ paths:
     post:
       summary: Count the number of MilestoneDeliverable by MilestoneDeliverableFilterOptions
       tags:
-        - entities
+        - Milestone
       requestBody:
         content:
           application/json:
@@ -9238,11 +9238,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/search:
+  /codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts/search:
     post:
       summary: Search MilestoneDeliverable by MilestoneDeliverableFilterOptions
       tags:
-        - entities
+        - Milestone
       requestBody:
         content:
           application/json:

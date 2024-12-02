@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.entities.MilestoneDeliverable';
+		messageHubProvider.eventIdPrefix = 'codbex-projects.Milestone.MilestoneDeliverable';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-projects-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "MilestoneDeliverable" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "MilestoneDeliverable" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Milestone" && e.view === "MilestoneDeliverable" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Milestone" && e.view === "MilestoneDeliverable" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-projects.entities.Milestone.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-projects.Milestone.Milestone.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-projects.entities.Milestone.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-projects.Milestone.Milestone.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { MilestoneDeliverableRepository, MilestoneDeliverableEntityOptions } from "../../dao/entities/MilestoneDeliverableRepository";
+import { MilestoneDeliverableRepository, MilestoneDeliverableEntityOptions } from "../../dao/Milestone/MilestoneDeliverableRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-projects-entities-MilestoneDeliverable", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-projects-Milestone-MilestoneDeliverable", ["validate"]);
 
 @Controller
 class MilestoneDeliverableService {
@@ -41,7 +41,7 @@ class MilestoneDeliverableService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/entities/MilestoneDeliverableService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneDeliverableService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

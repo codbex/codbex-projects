@@ -1,5 +1,5 @@
 {
-    "module": "codbex-projects/gen/codbex-projects/ui/entities/Milestone/MilestoneDeliverable/view.js",
+    "module": "codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/MilestoneDeliverable/view.js",
     "extensionPoint": "codbex-projects-view",
     "description": "codbex-projects - Application View - Details"
 }
