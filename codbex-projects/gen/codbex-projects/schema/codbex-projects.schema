@@ -352,7 +352,7 @@
                 ]
             },
             {
-                "name": "CODBEX_MILESTONEPERIOD",
+                "name": "CODBEX_MILESTONE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -879,7 +879,7 @@
             {
                 "name": "Milestone_Project",
                 "type": "foreignKey",
-                "table": "CODBEX_MILESTONEPERIOD",
+                "table": "CODBEX_MILESTONE",
                 "constraintName": "Milestone_Project",
                 "columns": "MILESTONEPERIOD_PROJECT",
                 "referencedTable": "CODBEX_PROJECT",
@@ -888,7 +888,7 @@
             {
                 "name": "Milestone_Deliverable",
                 "type": "foreignKey",
-                "table": "CODBEX_MILESTONEPERIOD",
+                "table": "CODBEX_MILESTONE",
                 "constraintName": "Milestone_Deliverable",
                 "columns": "MILESTONEPERIOD_DELIVERABLE",
                 "referencedTable": "CODBEX_DELIVERABLE",
@@ -1053,7 +1053,7 @@
                 "table": "CODBEX_MILESTONEDELIVERABLE",
                 "constraintName": "MilestoneDeliverable_Milestone",
                 "columns": "MILESTONEDELIVERABLE_MILESTONE",
-                "referencedTable": "CODBEX_MILESTONEPERIOD",
+                "referencedTable": "CODBEX_MILESTONE",
                 "referencedColumns": "MILESTONEPERIOD_ID"
             }
         ]

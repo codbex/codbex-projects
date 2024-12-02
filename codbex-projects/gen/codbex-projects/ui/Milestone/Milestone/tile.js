@@ -7,8 +7,8 @@ exports.getTile = function () {
     return {
         group: "codbex-projects",
         name: "Milestone",
-        caption: "Manage entity MilestonePeriod",
-        tooltip: "MilestonePeriod",
+        caption: "Manage entity Milestone",
+        tooltip: "Milestone",
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",

@@ -90,7 +90,7 @@ interface MilestoneUpdateEntityEvent extends MilestoneEntityEvent {
 export class MilestoneRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_MILESTONEPERIOD",
+        table: "CODBEX_MILESTONE",
         properties: [
             {
                 name: "Id",
@@ -137,7 +137,7 @@ export class MilestoneRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_MILESTONEPERIOD",
+            table: "CODBEX_MILESTONE",
             entity: entity,
             key: {
                 name: "Id",
@@ -153,7 +153,7 @@ export class MilestoneRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_MILESTONEPERIOD",
+            table: "CODBEX_MILESTONE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -184,7 +184,7 @@ export class MilestoneRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_MILESTONEPERIOD",
+            table: "CODBEX_MILESTONE",
             entity: entity,
             key: {
                 name: "Id",
@@ -199,7 +199,7 @@ export class MilestoneRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_MILESTONEPERIOD"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_MILESTONE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

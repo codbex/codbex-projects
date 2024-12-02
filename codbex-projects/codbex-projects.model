@@ -1219,17 +1219,17 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
-                "caption": "Manage entity MilestonePeriod",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}MILESTONEPERIOD\"",
-                "dataName": "MILESTONEPERIOD",
+                "caption": "Manage entity Milestone",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}MILESTONE\"",
+                "dataName": "MILESTONE",
                 "dataQuery": "",
                 "description": "Manage entity Milestone",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
-                "menuKey": "milestoneperiod",
-                "menuLabel": "MilestonePeriod",
+                "menuKey": "milestone",
+                "menuLabel": "Milestone",
                 "name": "Milestone",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/arrow-break.svg",
@@ -1237,8 +1237,8 @@
                 "perspectiveName": "Milestone",
                 "perspectiveOrder": "400",
                 "perspectiveRole": "",
-                "title": "MilestonePeriod",
-                "tooltip": "MilestonePeriod",
+                "title": "Milestone",
+                "tooltip": "Milestone",
                 "type": "PRIMARY"
             },
             {
