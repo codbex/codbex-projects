@@ -1,0 +1,103 @@
+{
+  "files": [
+    {
+      "table": "CODBEX_RESOURCETYPE",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/resource-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_STATUSTYPE",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/status-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_COSTCATEGORY",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/cost-categories.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_EXPENSECATEGORY",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/expense-category.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_APPROVALSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/approval-status.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_MEMBERROLE",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/member-role-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_AGILEMETHODOLOGY",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/agile-methodology-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_STAKEHOLDERTYPE",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/stake-holder-type.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_ITERATIONLENGHT",
+      "schema": "PUBLIC",
+      "file": "/codbex-project/data/iteration-lenght.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    }
+  ]
+}
