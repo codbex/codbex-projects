@@ -1,4 +1,4 @@
-name: Build - Module 
+name: Build - Module
 
 on:
   push:
@@ -9,5 +9,5 @@ jobs:
   main:
     uses: codbex/codbex-infra/.github/workflows/module-build.yaml@main
     with:
-      packages-build: codbex-projects/codbex-projects
+      packages-build: codbex-projects
     secrets: inherit

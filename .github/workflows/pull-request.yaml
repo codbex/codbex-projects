@@ -9,5 +9,5 @@ jobs:
   main:
     uses: codbex/codbex-infra/.github/workflows/module-pull-request.yaml@main
     with:
-      packages-build: codbex-projects/codbex-projects
+      packages-build: codbex-projects
     secrets: inherit

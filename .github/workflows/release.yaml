@@ -14,21 +14,21 @@ jobs:
   main:
     uses: codbex/codbex-infra/.github/workflows/module-release.yaml@main
     with:
-      packages: codbex-projects/codbex-projects
-      packages-build: codbex-projects/codbex-projects
+      packages: codbex-projects
+      packages-build: codbex-projects
       release-version: ${{ inputs.release-version }}
       release-content: |
         ## codbex-projects - ${{ inputs.release-version }}
-
+  
         Projects Management Module
-
+  
         ## Installation
-
+  
         ```
         npm install @codbex/codbex-projects@${{ inputs.release-version }}
         ```
-
+  
         ## Access points:
-
+  
         - [/services/web/codbex-projects/gen/](http://localhost:80/services/web/codbex-projects/gen/) - Admin Panel
     secrets: inherit
