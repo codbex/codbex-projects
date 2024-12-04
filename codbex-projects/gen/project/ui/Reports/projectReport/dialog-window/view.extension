@@ -1,0 +1,5 @@
+{
+    "module": "codbex-projects/gen/project/ui/Reports/projectReport/dialog-window/view.js",
+    "extensionPoint": "codbex-projects-dialog-window",
+    "description": "codbex-projects - Application Dialog Window"
+}

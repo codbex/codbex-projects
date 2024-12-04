@@ -1,0 +1,123 @@
+{
+    "name": "projectReport",
+    "alias": "codbexProject",
+    "table": "CODBEX_PROJECT",
+    "columns": [
+        {
+            "table": "codbexProject",
+            "alias": "Project",
+            "name": "PROJECT_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": true
+        },
+        {
+            "table": "codbexStatusType",
+            "alias": "Status",
+            "name": "STATUSTYPE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": true
+        },
+        {
+            "table": "codbexBudget",
+            "alias": "TotalBudget",
+            "name": "SUM(BUDGET_AMOUNT)",
+            "type": "DECIMAL",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexBudget",
+            "alias": "TotalContingencyReserves",
+            "name": "SUM(BUDGET_CONTINGENCYRESERVES)",
+            "type": "DECIMAL",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexExpense",
+            "alias": "TotalExpense",
+            "name": "SUM(EXPENSE_AMOUNT)",
+            "type": "DECIMAL",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": null,
+            "alias": "RemainingBudgetWithoutReserves",
+            "name": "(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0))",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": null,
+            "alias": "RemainingBudgetWithReserves",
+            "name": "(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0))",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT codbexProject.PROJECT_NAME as \"Project\", codbexStatusType.STATUSTYPE_NAME as \"Status\", SUM(codbexBudget.SUM(BUDGET_AMOUNT)) as \"TotalBudget\", SUM(codbexBudget.SUM(BUDGET_CONTINGENCYRESERVES)) as \"TotalContingencyReserves\", SUM(codbexExpense.SUM(EXPENSE_AMOUNT)) as \"TotalExpense\", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithoutReserves\", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithReserves\"\nFROM CODBEX_PROJECT as codbexProject\n  LEFT JOIN undefined B ON undefined\n  LEFT JOIN undefined E ON undefined\n  LEFT JOIN undefined codbexStatusType ON undefined\nWHERE codbexProject.PROJECT_NAME LIKE :PROJECT_NAME\nGROUP BY codbexProject.PROJECT_NAME, codbexStatusType.STATUSTYPE_NAME\nORDER BY codbexProject.PROJECT_NAME ASC",
+    "joins": [
+        {
+            "type": "LEFT",
+            "table": "CODBEX_BUDGET",
+            "alias": "B",
+            "on": {
+                "left": "B.BUDGET_PROJECT",
+                "operation": "=",
+                "right": "codbexProject.PROJECT_ID"
+            }
+        },
+        {
+            "type": "LEFT",
+            "table": "CODBEX_EXPENSE",
+            "alias": "E",
+            "on": {
+                "left": "E.EXPENSE_PROJECT",
+                "operation": "=",
+                "right": "codbexProject.PROJECT_ID"
+            }
+        },
+        {
+            "type": "LEFT",
+            "table": "CODBEX_STATUSTYPE",
+            "alias": "codbexStatusType",
+            "on": {
+                "left": "codbexProject.PROJECT_STATUS",
+                "operation": "=",
+                "right": "codbexStatusType.STATUSTYPE_ID"
+            }
+        }
+    ],
+    "conditions": [
+        {
+            "left": "codbexProject.PROJECT_NAME",
+            "operation": "LIKE",
+            "right": ":PROJECT_NAME"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "PROJECT_NAME",
+            "type": "VARCHAR",
+            "initial": "%"
+        }
+    ],
+    "orderings": [
+        {
+            "column": "codbexProject.PROJECT_NAME",
+            "direction": "ASC"
+        }
+    ]
+}

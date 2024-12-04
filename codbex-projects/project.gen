@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Project Report",
+  "projectName": "codbex-projects",
+  "workspaceName": "workspace",
+  "filePath": "project.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "fileName": "project",
+  "genFolderName": "project",
+  "extensionPoint": "codbex-projects",
+  "name": "projectReport",
+  "perspectiveName": "projectReport"
+}
