@@ -1,22 +1,3 @@
- {
-            "guid": "codbex-employees",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-employees.git",
-            "branch": "main"
-        },
-        {
-            "guid": "codbex-number-generator",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-number-generator.git",
-            "branch": "main"
-        },
-        {
-            "guid": "codbex-navigation-groups",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-navigation-groups",
-            "branch": "main"
-        }
-
 {
     "name": "@codbex/codbex-projects",
     "version": "0.0.1",
