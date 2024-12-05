@@ -1,0 +1,5 @@
+{
+    "module": "codbex-projects/gen/expense/ui/Reports/expenseReport/view.js",
+    "extensionPoint": "codbex-projects-view",
+    "description": "codbex-projects - Application View"
+}

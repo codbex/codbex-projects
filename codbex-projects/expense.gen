@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Expense Report",
+  "projectName": "codbex-projects",
+  "workspaceName": "workspace",
+  "filePath": "expense.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "fileName": "expense",
+  "genFolderName": "expense",
+  "extensionPoint": "codbex-projects",
+  "name": "expenseReport",
+  "perspectiveName": "expenseReport"
+}

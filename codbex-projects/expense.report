@@ -1,0 +1,127 @@
+{
+    "name": "expenseReport",
+    "alias": "codbexExpense",
+    "table": "CODBEX_EXPENSE",
+    "columns": [
+        {
+            "table": "codbexProject",
+            "alias": "Project",
+            "name": "PROJECT_ID",
+            "type": "INTEGER",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexExpensecategory",
+            "alias": "Category",
+            "name": "EXPENSECATEGORY_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexExpense",
+            "alias": "Expense",
+            "name": "EXPENSE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexExpense",
+            "alias": "Amount",
+            "name": "EXPENSE_AMOUNT",
+            "type": "DECIMAL",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexEmployee",
+            "alias": "Employee",
+            "name": "EMPLOYEE_FIRSTNAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexExpense",
+            "alias": "Date",
+            "name": "EXPENSE_DATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "codbexApprovalstatus",
+            "alias": "Status",
+            "name": "APPROVALSTATUS_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT codbexProject.PROJECT_ID as \"Project\", codbexExpensecategory.EXPENSECATEGORY_NAME as \"Category\", codbexExpense.EXPENSE_NAME as \"Expense\", codbexExpense.EXPENSE_AMOUNT as \"Amount\", codbexEmployee.EMPLOYEE_FIRSTNAME as \"Employee\", codbexExpense.EXPENSE_DATE as \"Date\", codbexApprovalstatus.APPROVALSTATUS_NAME as \"Status\"\nFROM CODBEX_EXPENSE as codbexExpense\n  INNER JOIN CODBEX_APPROVALSTATUS codbexApprovalstatus ON codbexExpense.EXPENSE_STATUS=codbexApprovalstatus.APPROVALSTATUS_ID\n  INNER JOIN CODBEX_EMPLOYEE codbexEmployee ON codbexExpense.EXPENSE_EMPLOYEE=codbexEmployee.EMPLOYEE_ID\n  INNER JOIN CODBEX_PROJECT codbexProject ON codbexExpense.EXPENSE_PROJECT=codbexProject.PROJECT_ID\n  INNER JOIN CODBEX_EXPENSECATEGORY codbexExpensecategory ON codbexExpense.EXPENSE_EXPENSECATEGORY=codbexExpensecategory.EXPENSECATEGORY_ID\nWHERE codbexExpense.EXPENSE_DATE > :DATE AND codbexApprovalstatus.APPROVALSTATUS_NAME = :STATUS\nORDER BY EXPENSE_AMOUNT DESC",
+    "joins": [
+        {
+            "alias": "codbexApprovalstatus",
+            "name": "CODBEX_APPROVALSTATUS",
+            "type": "INNER",
+            "condition": "codbexExpense.EXPENSE_STATUS=codbexApprovalstatus.APPROVALSTATUS_ID"
+        },
+        {
+            "alias": "codbexEmployee",
+            "name": "CODBEX_EMPLOYEE",
+            "type": "INNER",
+            "condition": "codbexExpense.EXPENSE_EMPLOYEE=codbexEmployee.EMPLOYEE_ID"
+        },
+        {
+            "alias": "codbexProject",
+            "name": "CODBEX_PROJECT",
+            "type": "INNER",
+            "condition": "codbexExpense.EXPENSE_PROJECT=codbexProject.PROJECT_ID"
+        },
+        {
+            "alias": "codbexExpensecategory",
+            "name": "CODBEX_EXPENSECATEGORY",
+            "type": "INNER",
+            "condition": "codbexExpense.EXPENSE_EXPENSECATEGORY=codbexExpensecategory.EXPENSECATEGORY_ID"
+        }
+    ],
+    "conditions": [
+        {
+            "left": "codbexExpense.EXPENSE_DATE",
+            "operation": ">",
+            "right": ":DATE"
+        },
+        {
+            "left": "codbexApprovalstatus.APPROVALSTATUS_NAME",
+            "operation": "=",
+            "right": ":STATUS"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "DATE",
+            "type": "DATE",
+            "initial": "2024-01-01"
+        },
+        {
+            "name": "STATUS",
+            "type": "VARCHAR",
+            "initial": "Pending"
+        }
+    ],
+    "orderings": [
+        {
+            "column": "EXPENSE_AMOUNT",
+            "direction": "DESC"
+        }
+    ]
+}
