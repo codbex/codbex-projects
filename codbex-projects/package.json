@@ -2,7 +2,7 @@
     "name": "@codbex/codbex-projects",
     "version": "0.0.1",
     "repository": {
-        "url": "https://github.com/codbex/codbex-assets.git",
+        "url": "https://github.com/codbex/codbex-projects.git",
         "type": "git"
     },
     "publishConfig": {
