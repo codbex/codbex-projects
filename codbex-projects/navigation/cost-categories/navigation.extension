@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "cost-categories-navigations",
+    "module": "codbex-projects/navigations/cost-categories/service.js",
+    "description": "Cost Categories Navigation"
+}
