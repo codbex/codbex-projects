@@ -1,5 +1,0 @@
-{
-    "module": "codbex-projects/gen/expense/ui/Reports/expenseReport/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-projects - Application Tile"
-}

@@ -1,5 +1,5 @@
 {
-    "name": "projectReport",
+    "name": "ProjectReport",
     "alias": "codbexProject",
     "table": "CODBEX_PROJECT",
     "columns": [

@@ -1,5 +1,0 @@
-{
-    "module": "codbex-projects/gen/expense/ui/Reports/perspective-navigation.js",
-    "extensionPoint": "dashboard-navigations",
-    "description": "Expense Report - Navigation"
-}

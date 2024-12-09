@@ -1,5 +1,5 @@
 {
-    "name": "expenseReport",
+    "name": "ExpenseReport",
     "alias": "codbexExpense",
     "table": "CODBEX_EXPENSE",
     "columns": [
@@ -67,7 +67,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT codbexProject.PROJECT_ID as \"Project\", codbexExpensecategory.EXPENSECATEGORY_NAME as \"Category\", codbexExpense.EXPENSE_NAME as \"Expense\", codbexExpense.EXPENSE_AMOUNT as \"Amount\", codbexEmployee.EMPLOYEE_FIRSTNAME as \"Employee\", codbexExpense.EXPENSE_DATE as \"Date\", codbexApprovalstatus.APPROVALSTATUS_NAME as \"Status\"\nFROM CODBEX_EXPENSE as codbexExpense\n  INNER JOIN CODBEX_APPROVALSTATUS codbexApprovalstatus ON codbexExpense.EXPENSE_STATUS=codbexApprovalstatus.APPROVALSTATUS_ID\n  INNER JOIN CODBEX_EMPLOYEE codbexEmployee ON codbexExpense.EXPENSE_EMPLOYEE=codbexEmployee.EMPLOYEE_ID\n  INNER JOIN CODBEX_PROJECT codbexProject ON codbexExpense.EXPENSE_PROJECT=codbexProject.PROJECT_ID\n  INNER JOIN CODBEX_EXPENSECATEGORY codbexExpensecategory ON codbexExpense.EXPENSE_EXPENSECATEGORY=codbexExpensecategory.EXPENSECATEGORY_ID\nWHERE codbexExpense.EXPENSE_DATE > :DATE AND codbexApprovalstatus.APPROVALSTATUS_NAME = :STATUS\nORDER BY EXPENSE_AMOUNT DESC",
+    "query": "SELECT codbexProject.PROJECT_ID as \"Project\", codbexExpensecategory.EXPENSECATEGORY_NAME as \"Category\", codbexExpense.EXPENSE_NAME as \"Expense\", codbexExpense.EXPENSE_AMOUNT as \"Amount\", codbexEmployee.EMPLOYEE_FIRSTNAME as \"Employee\", codbexExpense.EXPENSE_DATE as \"Date\", codbexApprovalstatus.APPROVALSTATUS_NAME as \"Status\"\nFROM CODBEX_EXPENSE as codbexExpense\n  INNER JOIN CODBEX_APPROVALSTATUS codbexApprovalstatus ON codbexExpense.EXPENSE_STATUS=codbexApprovalstatus.APPROVALSTATUS_ID\n  LEFT JOIN CODBEX_EMPLOYEE codbexEmployee ON codbexExpense.EXPENSE_EMPLOYEE=codbexEmployee.EMPLOYEE_ID\n  INNER JOIN CODBEX_PROJECT codbexProject ON codbexExpense.EXPENSE_PROJECT=codbexProject.PROJECT_ID\n  INNER JOIN CODBEX_EXPENSECATEGORY codbexExpensecategory ON codbexExpense.EXPENSE_EXPENSECATEGORY=codbexExpensecategory.EXPENSECATEGORY_ID\nWHERE codbexExpense.EXPENSE_DATE > :DATE AND codbexApprovalstatus.APPROVALSTATUS_NAME = :STATUS\nORDER BY EXPENSE_AMOUNT DESC",
     "joins": [
         {
             "alias": "codbexApprovalstatus",
@@ -78,7 +78,7 @@
         {
             "alias": "codbexEmployee",
             "name": "CODBEX_EMPLOYEE",
-            "type": "INNER",
+            "type": "LEFT",
             "condition": "codbexExpense.EXPENSE_EMPLOYEE=codbexEmployee.EMPLOYEE_ID"
         },
         {

@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "codbex-projects-custom-action",
-    "module": "codbex-projects/gen/project/ui/Reports/projectReport/dialog-print/print.js",
-    "description": "Print projectReport Report"
-}
