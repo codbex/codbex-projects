@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "approval-status-navigations",
+    "module": "codbex-projects/navigations/approval-status/service.js",
+    "description": "Approval status Navigation"
+}
