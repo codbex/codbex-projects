@@ -61,6 +61,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceProject = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
+		$scope.serviceCostCategory = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/CostCategoryService.ts";
+
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';

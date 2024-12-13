@@ -72,6 +72,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.action = 'update';
 			});
 		});
+
+		$scope.serviceProject = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts";
+
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

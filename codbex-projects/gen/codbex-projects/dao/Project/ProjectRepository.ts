@@ -482,7 +482,7 @@ export class ProjectRepository {
     public create(entity: ProjectCreateEntity): number {
         EntityUtils.setBoolean(entity, "DailyStandup");
         // @ts-ignore
-        (entity as ProjectEntity).Number = new NumberGeneratorService().generate(31);
+        (entity as ProjectEntity).Number = new NumberGeneratorService().generate(29);
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
