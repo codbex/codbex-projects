@@ -413,7 +413,7 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(31)",
+          "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(29)",
           "dataLength": "20",
           "dataName": "PROJECT_NUMBER",
           "dataNullable": true,
@@ -709,7 +709,6 @@
           "isRequiredProperty": true,
           "name": "IterationLenght",
           "tooltip": "",
-          "widgetDropDownDependsOn": "AgileMethodology",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Period",
           "widgetIsMajor": true,
@@ -1124,7 +1123,7 @@
         },
         "properties": [
           {
-            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(31)",
+            "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(29)",
             "dataLength": "20",
             "dataName": "PROJECT_NUMBER",
             "dataNullable": true,
@@ -1420,7 +1419,6 @@
             "isRequiredProperty": true,
             "name": "IterationLenght",
             "tooltip": "",
-            "widgetDropDownDependsOn": "AgileMethodology",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Period",
             "widgetIsMajor": true,
@@ -2813,7 +2811,6 @@
           "description": "",
           "name": "Deliverable",
           "tooltip": "",
-          "widgetDropDownDependsOn": "Project",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
@@ -2930,7 +2927,6 @@
             "description": "",
             "name": "Deliverable",
             "tooltip": "",
-            "widgetDropDownDependsOn": "Project",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
             "widgetIsMajor": true,

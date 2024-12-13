@@ -56,6 +56,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceAgileMethodology = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts";
+
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
