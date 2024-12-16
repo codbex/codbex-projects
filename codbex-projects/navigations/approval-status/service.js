@@ -1,7 +1,7 @@
 const navigationData = {
     id: 'approval-status-navigation',
     label: "Approval Status",
-    group: "metadata",
+    group: "reference data",
     order: 2000,
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Settings/ApprovalStatus/index.html?embedded"
 };
