@@ -3159,6 +3159,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3181,6 +3182,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -3245,6 +3247,7 @@ paths:
                       Id: 33
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3267,6 +3270,7 @@ paths:
                   $filter:
                     contains:
                       Name: "abcd"
+                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -11780,7 +11784,6 @@ components:
       type: object
       required:
         - Name
-        - Project
       properties:
         Id:
           type: integer
@@ -11789,12 +11792,12 @@ components:
           type: string
           minLength: 0
           maxLength: 40
-        Project:
-          type: integer
-          format: int32
-        Deliverable:
-          type: integer
-          format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 1000
+        StartDate:
+        EndDate:
     MilestoneFilterOptions:
       type: object
       properties:
@@ -11823,22 +11826,21 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Project:
+                Description:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 1000
                     - type: array
                       items:
-                        type: integer
-                        format: int32
-                Deliverable:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 1000
+                StartDate:
                   oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
+                EndDate:
+                  oneOf:
             notEquals:
               type: object
               properties:
@@ -11861,22 +11863,21 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Project:
+                Description:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 1000
                     - type: array
                       items:
-                        type: integer
-                        format: int32
-                Deliverable:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 1000
+                StartDate:
                   oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
+                EndDate:
+                  oneOf:
             contains:
               type: object
               properties:
@@ -11885,8 +11886,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Project:
-                Deliverable:
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                StartDate:
+                EndDate:
             greaterThan:
               type: object
               properties:
@@ -11897,12 +11902,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                Deliverable:
-                  type: integer
-                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                StartDate:
+                EndDate:
             greaterThanOrEqual:
               type: object
               properties:
@@ -11913,12 +11918,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                Deliverable:
-                  type: integer
-                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                StartDate:
+                EndDate:
             lessThan:
               type: object
               properties:
@@ -11929,12 +11934,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                Deliverable:
-                  type: integer
-                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                StartDate:
+                EndDate:
             lessThanOrEqual:
               type: object
               properties:
@@ -11945,20 +11950,20 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Project:
-                  type: integer
-                  format: int32
-                Deliverable:
-                  type: integer
-                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                StartDate:
+                EndDate:
         $select:
           type: array
-          example: ["Id", "Name", "Project", "Deliverable"]
+          example: ["Id", "Name", "Description", "StartDate", "EndDate"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Project,Deliverable"
+            example: "Id,Name,Description,StartDate,EndDate"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -14744,8 +14749,12 @@ components:
           type: string
           minLength: 0
           maxLength: 100
-        StartDate:
-        EndDate:
+        Project:
+          type: integer
+          format: int32
+        Deliverable:
+          type: integer
+          format: int32
     MilestoneDeliverableFilterOptions:
       type: object
       properties:
@@ -14782,10 +14791,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
-                StartDate:
+                Project:
                   oneOf:
-                EndDate:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Deliverable:
                   oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -14816,10 +14837,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 100
-                StartDate:
+                Project:
                   oneOf:
-                EndDate:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Deliverable:
                   oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -14829,8 +14862,8 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                StartDate:
-                EndDate:
+                Project:
+                Deliverable:
             greaterThan:
               type: object
               properties:
@@ -14844,8 +14877,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                StartDate:
-                EndDate:
+                Project:
+                  type: integer
+                  format: int32
+                Deliverable:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -14859,8 +14896,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                StartDate:
-                EndDate:
+                Project:
+                  type: integer
+                  format: int32
+                Deliverable:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -14874,8 +14915,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                StartDate:
-                EndDate:
+                Project:
+                  type: integer
+                  format: int32
+                Deliverable:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -14889,16 +14934,20 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 100
-                StartDate:
-                EndDate:
+                Project:
+                  type: integer
+                  format: int32
+                Deliverable:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Milestone", "Description", "StartDate", "EndDate"]
+          example: ["Id", "Milestone", "Description", "Project", "Deliverable"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Milestone,Description,StartDate,EndDate"
+            example: "Id,Milestone,Description,Project,Deliverable"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -57,9 +57,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceStakeHolderType = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StakeHolderTypeService.ts";
-		$scope.serviceProject = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
-
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';

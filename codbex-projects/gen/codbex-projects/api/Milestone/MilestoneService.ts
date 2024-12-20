@@ -125,8 +125,8 @@ class MilestoneService {
         if (entity.Name?.length > 40) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
         }
-        if (entity.Project === null || entity.Project === undefined) {
-            throw new ValidationError(`The 'Project' property is required, provide a valid value`);
+        if (entity.Description?.length > 1000) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [1000] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

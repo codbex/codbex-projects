@@ -55,7 +55,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';

@@ -63,8 +63,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceStatus = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts";
-
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';

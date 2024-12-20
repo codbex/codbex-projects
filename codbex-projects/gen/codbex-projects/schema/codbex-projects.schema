@@ -369,13 +369,20 @@
                         "name": "MILESTONEPERIOD_NAME"
                     },
                     {
-                        "type": "INTEGER",
-                        "name": "MILESTONEPERIOD_PROJECT"
+                        "type": "VARCHAR",
+                        "length": 1000,
+                        "nullable": true,
+                        "name": "MILESTONE_DESCRIPTION"
                     },
                     {
-                        "type": "INTEGER",
+                        "type": "DATE",
                         "nullable": true,
-                        "name": "MILESTONEPERIOD_DELIVERABLE"
+                        "name": "MILESTONE_STARTDATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "MILESTONE_ENDDATE"
                     }
                 ]
             },
@@ -793,14 +800,14 @@
                         "name": "MILESTONEDELIVERABLE_DESCRIPTION"
                     },
                     {
-                        "type": "DATE",
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "MILESTONEDELIVERABLE_STARTDATE"
+                        "name": "MILESTONEDELIVERABLE_PROJECT"
                     },
                     {
-                        "type": "DATE",
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "MILESTONEDELIVERABLE_ENDDATE"
+                        "name": "MILESTONEDELIVERABLE_DELIVERABLE"
                     }
                 ]
             },
@@ -875,24 +882,6 @@
                 "columns": "COST_COSTCATEGORY",
                 "referencedTable": "CODBEX_COSTCATEGORY",
                 "referencedColumns": "COSTCATEGORY_ID"
-            },
-            {
-                "name": "Milestone_Project",
-                "type": "foreignKey",
-                "table": "CODBEX_MILESTONE",
-                "constraintName": "Milestone_Project",
-                "columns": "MILESTONEPERIOD_PROJECT",
-                "referencedTable": "CODBEX_PROJECT",
-                "referencedColumns": "PROJECT_ID"
-            },
-            {
-                "name": "Milestone_Deliverable",
-                "type": "foreignKey",
-                "table": "CODBEX_MILESTONE",
-                "constraintName": "Milestone_Deliverable",
-                "columns": "MILESTONEPERIOD_DELIVERABLE",
-                "referencedTable": "CODBEX_DELIVERABLE",
-                "referencedColumns": "DELIVERABLE_ID"
             },
             {
                 "name": "Expense_Project",
@@ -1055,6 +1044,24 @@
                 "columns": "MILESTONEDELIVERABLE_MILESTONE",
                 "referencedTable": "CODBEX_MILESTONE",
                 "referencedColumns": "MILESTONEPERIOD_ID"
+            },
+            {
+                "name": "MilestoneDeliverable_Project",
+                "type": "foreignKey",
+                "table": "CODBEX_MILESTONEDELIVERABLE",
+                "constraintName": "MilestoneDeliverable_Project",
+                "columns": "MILESTONEDELIVERABLE_PROJECT",
+                "referencedTable": "CODBEX_PROJECT",
+                "referencedColumns": "PROJECT_ID"
+            },
+            {
+                "name": "MilestoneDeliverable_Deliverable",
+                "type": "foreignKey",
+                "table": "CODBEX_MILESTONEDELIVERABLE",
+                "constraintName": "MilestoneDeliverable_Deliverable",
+                "columns": "MILESTONEDELIVERABLE_DELIVERABLE",
+                "referencedTable": "CODBEX_DELIVERABLE",
+                "referencedColumns": "DELIVERABLE_ID"
             }
         ]
     },

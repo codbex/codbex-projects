@@ -40,17 +40,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsProject = [];
-				$scope.optionsDeliverable = [];
 				$scope.action = 'select';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
+				if (msg.data.entity.StartDate) {
+					msg.data.entity.StartDate = new Date(msg.data.entity.StartDate);
+				}
+				if (msg.data.entity.EndDate) {
+					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
+				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'select';
 			});
 		});
@@ -58,24 +60,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'create';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
+				if (msg.data.entity.StartDate) {
+					msg.data.entity.StartDate = new Date(msg.data.entity.StartDate);
+				}
+				if (msg.data.entity.EndDate) {
+					msg.data.entity.EndDate = new Date(msg.data.entity.EndDate);
+				}
 				$scope.entity = msg.data.entity;
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsDeliverable = msg.data.optionsDeliverable;
 				$scope.action = 'update';
 			});
 		});
-
-		$scope.serviceProject = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
-		$scope.serviceDeliverable = "/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts";
-
 		//-----------------Events-------------------//
 
 		$scope.create = function () {

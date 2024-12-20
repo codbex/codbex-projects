@@ -21,16 +21,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
 			$scope.action = params.action;
-
-			if (params.entity.StartDate) {
-				params.entity.StartDate = new Date(params.entity.StartDate);
-			}
-			if (params.entity.EndDate) {
-				params.entity.EndDate = new Date(params.entity.EndDate);
-			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsProject = params.optionsProject;
+			$scope.optionsDeliverable = params.optionsDeliverable;
 		}
 
 		$scope.create = function () {
@@ -62,6 +57,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.$watch('entity.Project', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts/search", {
+					$filter: {
+						equals: {
+							Project: newValue
+						}
+					}
+				}).then(function (response) {
+					$scope.optionsDeliverable = response.data.map(e => {
+						return {
+							value: e.Id,
+							text: e.Name
+						}
+					});
+					if ($scope.action !== 'select' && newValue !== oldValue) {
+						$scope.entity.Deliverable = undefined;
+					}
+				});
+			}
+		});
 
 		$scope.cancel = function () {
 			$scope.entity = {};

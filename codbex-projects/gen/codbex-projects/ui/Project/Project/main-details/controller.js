@@ -89,10 +89,27 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.serviceStatus = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts";
-		$scope.serviceAgileMethodology = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts";
-		$scope.serviceIterationLenght = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts";
-
+		$scope.$watch('entity.AgileMethodology', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/search", {
+					$filter: {
+						equals: {
+							AgileMethodology: newValue
+						}
+					}
+				}).then(function (response) {
+					$scope.optionsIterationLenght = response.data.map(e => {
+						return {
+							value: e.Id,
+							text: e.Period
+						}
+					});
+					if ($scope.action !== 'select' && newValue !== oldValue) {
+						$scope.entity.IterationLenght = undefined;
+					}
+				});
+			}
+		});
 		//-----------------Events-------------------//
 
 		$scope.create = function () {
