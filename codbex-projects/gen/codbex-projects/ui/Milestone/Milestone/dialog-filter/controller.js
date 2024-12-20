@@ -11,17 +11,11 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
-			if (params?.entity?.StartDateFrom) {
-				params.entity.StartDateFrom = new Date(params.entity.StartDateFrom);
+			if (params?.entity?.DateFrom) {
+				params.entity.DateFrom = new Date(params.entity.DateFrom);
 			}
-			if (params?.entity?.StartDateTo) {
-				params.entity.StartDateTo = new Date(params.entity.StartDateTo);
-			}
-			if (params?.entity?.EndDateFrom) {
-				params.entity.EndDateFrom = new Date(params.entity.EndDateFrom);
-			}
-			if (params?.entity?.EndDateTo) {
-				params.entity.EndDateTo = new Date(params.entity.EndDateTo);
+			if (params?.entity?.DateTo) {
+				params.entity.DateTo = new Date(params.entity.DateTo);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
@@ -57,17 +51,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
 			}
-			if (entity.StartDateFrom) {
-				filter.$filter.greaterThanOrEqual.StartDate = entity.StartDateFrom;
+			if (entity.DateFrom) {
+				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
 			}
-			if (entity.StartDateTo) {
-				filter.$filter.lessThanOrEqual.StartDate = entity.StartDateTo;
-			}
-			if (entity.EndDateFrom) {
-				filter.$filter.greaterThanOrEqual.EndDate = entity.EndDateFrom;
-			}
-			if (entity.EndDateTo) {
-				filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
+			if (entity.DateTo) {
+				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

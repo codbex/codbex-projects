@@ -2,6 +2,7 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface MilestoneDeliverableEntity {
     readonly Id: number;
@@ -9,6 +10,8 @@ export interface MilestoneDeliverableEntity {
     Description?: string;
     Project?: number;
     Deliverable?: number;
+    StartDate?: Date;
+    EndDate?: Date;
 }
 
 export interface MilestoneDeliverableCreateEntity {
@@ -16,6 +19,8 @@ export interface MilestoneDeliverableCreateEntity {
     readonly Description?: string;
     readonly Project?: number;
     readonly Deliverable?: number;
+    readonly StartDate?: Date;
+    readonly EndDate?: Date;
 }
 
 export interface MilestoneDeliverableUpdateEntity extends MilestoneDeliverableCreateEntity {
@@ -30,6 +35,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string | string[];
             Project?: number | number[];
             Deliverable?: number | number[];
+            StartDate?: Date | Date[];
+            EndDate?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -37,6 +44,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string | string[];
             Project?: number | number[];
             Deliverable?: number | number[];
+            StartDate?: Date | Date[];
+            EndDate?: Date | Date[];
         };
         contains?: {
             Id?: number;
@@ -44,6 +53,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string;
             Project?: number;
             Deliverable?: number;
+            StartDate?: Date;
+            EndDate?: Date;
         };
         greaterThan?: {
             Id?: number;
@@ -51,6 +62,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string;
             Project?: number;
             Deliverable?: number;
+            StartDate?: Date;
+            EndDate?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -58,6 +71,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string;
             Project?: number;
             Deliverable?: number;
+            StartDate?: Date;
+            EndDate?: Date;
         };
         lessThan?: {
             Id?: number;
@@ -65,6 +80,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string;
             Project?: number;
             Deliverable?: number;
+            StartDate?: Date;
+            EndDate?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -72,6 +89,8 @@ export interface MilestoneDeliverableEntityOptions {
             Description?: string;
             Project?: number;
             Deliverable?: number;
+            StartDate?: Date;
+            EndDate?: Date;
         };
     },
     $select?: (keyof MilestoneDeliverableEntity)[],
@@ -127,6 +146,16 @@ export class MilestoneDeliverableRepository {
                 name: "Deliverable",
                 column: "MILESTONEDELIVERABLE_DELIVERABLE",
                 type: "INTEGER",
+            },
+            {
+                name: "StartDate",
+                column: "MILESTONEDELIVERABLE_STARTDATE",
+                type: "DATE",
+            },
+            {
+                name: "EndDate",
+                column: "MILESTONEDELIVERABLE_ENDDATE",
+                type: "DATE",
             }
         ]
     };
@@ -138,15 +167,23 @@ export class MilestoneDeliverableRepository {
     }
 
     public findAll(options?: MilestoneDeliverableEntityOptions): MilestoneDeliverableEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: MilestoneDeliverableEntity) => {
+            EntityUtils.setDate(e, "StartDate");
+            EntityUtils.setDate(e, "EndDate");
+            return e;
+        });
     }
 
     public findById(id: number): MilestoneDeliverableEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "StartDate");
+        EntityUtils.setDate(entity, "EndDate");
         return entity ?? undefined;
     }
 
     public create(entity: MilestoneDeliverableCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "StartDate");
+        EntityUtils.setLocalDate(entity, "EndDate");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -162,6 +199,8 @@ export class MilestoneDeliverableRepository {
     }
 
     public update(entity: MilestoneDeliverableUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "StartDate");
+        // EntityUtils.setLocalDate(entity, "EndDate");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

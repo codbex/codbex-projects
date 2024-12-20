@@ -102,11 +102,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					}
 
 					response.data.forEach(e => {
-						if (e.StartDate) {
-							e.StartDate = new Date(e.StartDate);
-						}
-						if (e.EndDate) {
-							e.EndDate = new Date(e.EndDate);
+						if (e.Date) {
+							e.Date = new Date(e.Date);
 						}
 					});
 

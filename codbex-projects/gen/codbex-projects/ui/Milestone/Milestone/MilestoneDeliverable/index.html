@@ -35,6 +35,8 @@
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Project</th>
 						<th fd-table-header-cell>Deliverable</th>
+						<th fd-table-header-cell>StartDate</th>
+						<th fd-table-header-cell>EndDate</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -50,6 +52,12 @@
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsDeliverableValue(next.Deliverable)}}
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next.StartDate" ng-readonly="true"></fd-input>
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next.EndDate" ng-readonly="true"></fd-input>
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>

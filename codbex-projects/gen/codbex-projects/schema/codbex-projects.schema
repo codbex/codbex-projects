@@ -377,12 +377,7 @@
                     {
                         "type": "DATE",
                         "nullable": true,
-                        "name": "MILESTONE_STARTDATE"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "MILESTONE_ENDDATE"
+                        "name": "MILESTONE_DATE"
                     }
                 ]
             },
@@ -808,6 +803,16 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "MILESTONEDELIVERABLE_DELIVERABLE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "MILESTONEDELIVERABLE_STARTDATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "MILESTONEDELIVERABLE_ENDDATE"
                     }
                 ]
             },

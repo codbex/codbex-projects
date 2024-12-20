@@ -8,15 +8,13 @@ export interface MilestoneEntity {
     readonly Id: number;
     Name?: string;
     Description?: string;
-    StartDate?: Date;
-    EndDate?: Date;
+    Date?: Date;
 }
 
 export interface MilestoneCreateEntity {
     readonly Name?: string;
     readonly Description?: string;
-    readonly StartDate?: Date;
-    readonly EndDate?: Date;
+    readonly Date?: Date;
 }
 
 export interface MilestoneUpdateEntity extends MilestoneCreateEntity {
@@ -29,50 +27,43 @@ export interface MilestoneEntityOptions {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            StartDate?: Date | Date[];
-            EndDate?: Date | Date[];
+            Date?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
             Description?: string | string[];
-            StartDate?: Date | Date[];
-            EndDate?: Date | Date[];
+            Date?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            StartDate?: Date;
-            EndDate?: Date;
+            Date?: Date;
         };
         greaterThan?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            StartDate?: Date;
-            EndDate?: Date;
+            Date?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            StartDate?: Date;
-            EndDate?: Date;
+            Date?: Date;
         };
         lessThan?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            StartDate?: Date;
-            EndDate?: Date;
+            Date?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
             Description?: string;
-            StartDate?: Date;
-            EndDate?: Date;
+            Date?: Date;
         };
     },
     $select?: (keyof MilestoneEntity)[],
@@ -120,13 +111,8 @@ export class MilestoneRepository {
                 type: "VARCHAR",
             },
             {
-                name: "StartDate",
-                column: "MILESTONE_STARTDATE",
-                type: "DATE",
-            },
-            {
-                name: "EndDate",
-                column: "MILESTONE_ENDDATE",
+                name: "Date",
+                column: "MILESTONE_DATE",
                 type: "DATE",
             }
         ]
@@ -140,22 +126,19 @@ export class MilestoneRepository {
 
     public findAll(options?: MilestoneEntityOptions): MilestoneEntity[] {
         return this.dao.list(options).map((e: MilestoneEntity) => {
-            EntityUtils.setDate(e, "StartDate");
-            EntityUtils.setDate(e, "EndDate");
+            EntityUtils.setDate(e, "Date");
             return e;
         });
     }
 
     public findById(id: number): MilestoneEntity | undefined {
         const entity = this.dao.find(id);
-        EntityUtils.setDate(entity, "StartDate");
-        EntityUtils.setDate(entity, "EndDate");
+        EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
     }
 
     public create(entity: MilestoneCreateEntity): number {
-        EntityUtils.setLocalDate(entity, "StartDate");
-        EntityUtils.setLocalDate(entity, "EndDate");
+        EntityUtils.setLocalDate(entity, "Date");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -171,8 +154,7 @@ export class MilestoneRepository {
     }
 
     public update(entity: MilestoneUpdateEntity): void {
-        // EntityUtils.setLocalDate(entity, "StartDate");
-        // EntityUtils.setLocalDate(entity, "EndDate");
+        // EntityUtils.setLocalDate(entity, "Date");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

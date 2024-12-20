@@ -21,6 +21,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
 			$scope.action = params.action;
+
+			if (params.entity.StartDate) {
+				params.entity.StartDate = new Date(params.entity.StartDate);
+			}
+			if (params.entity.EndDate) {
+				params.entity.EndDate = new Date(params.entity.EndDate);
+			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;

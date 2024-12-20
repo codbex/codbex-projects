@@ -1192,23 +1192,11 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataName": "MILESTONE_STARTDATE",
+                        "dataName": "MILESTONE_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
-                        "name": "StartDate",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DATE"
-                    },
-                    {
-                        "dataName": "MILESTONE_ENDDATE",
-                        "dataNullable": "true",
-                        "dataType": "DATE",
-                        "description": "",
-                        "name": "EndDate",
+                        "name": "Date",
                         "tooltip": "",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
@@ -2559,6 +2547,30 @@
                         "relationshipEntityName": "Deliverable",
                         "relationshipEntityPerspectiveName": "Deliverable",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "MILESTONEDELIVERABLE_STARTDATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "description": "",
+                        "name": "StartDate",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATE"
+                    },
+                    {
+                        "dataName": "MILESTONEDELIVERABLE_ENDDATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "description": "",
+                        "name": "EndDate",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATE"
                     }
                 ],
                 "caption": "Manage entity MilestoneDeliverable",

@@ -11796,8 +11796,7 @@ components:
           type: string
           minLength: 0
           maxLength: 1000
-        StartDate:
-        EndDate:
+        Date:
     MilestoneFilterOptions:
       type: object
       properties:
@@ -11837,9 +11836,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
-                StartDate:
-                  oneOf:
-                EndDate:
+                Date:
                   oneOf:
             notEquals:
               type: object
@@ -11874,9 +11871,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
-                StartDate:
-                  oneOf:
-                EndDate:
+                Date:
                   oneOf:
             contains:
               type: object
@@ -11890,8 +11885,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                StartDate:
-                EndDate:
+                Date:
             greaterThan:
               type: object
               properties:
@@ -11906,8 +11900,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                StartDate:
-                EndDate:
+                Date:
             greaterThanOrEqual:
               type: object
               properties:
@@ -11922,8 +11915,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                StartDate:
-                EndDate:
+                Date:
             lessThan:
               type: object
               properties:
@@ -11938,8 +11930,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                StartDate:
-                EndDate:
+                Date:
             lessThanOrEqual:
               type: object
               properties:
@@ -11954,16 +11945,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                StartDate:
-                EndDate:
+                Date:
         $select:
           type: array
-          example: ["Id", "Name", "Description", "StartDate", "EndDate"]
+          example: ["Id", "Name", "Description", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Description,StartDate,EndDate"
+            example: "Id,Name,Description,Date"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -14755,6 +14745,8 @@ components:
         Deliverable:
           type: integer
           format: int32
+        StartDate:
+        EndDate:
     MilestoneDeliverableFilterOptions:
       type: object
       properties:
@@ -14807,6 +14799,10 @@ components:
                       items:
                         type: integer
                         format: int32
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
             notEquals:
               type: object
               properties:
@@ -14853,6 +14849,10 @@ components:
                       items:
                         type: integer
                         format: int32
+                StartDate:
+                  oneOf:
+                EndDate:
+                  oneOf:
             contains:
               type: object
               properties:
@@ -14864,6 +14864,8 @@ components:
                   maxLength: 100
                 Project:
                 Deliverable:
+                StartDate:
+                EndDate:
             greaterThan:
               type: object
               properties:
@@ -14883,6 +14885,8 @@ components:
                 Deliverable:
                   type: integer
                   format: int32
+                StartDate:
+                EndDate:
             greaterThanOrEqual:
               type: object
               properties:
@@ -14902,6 +14906,8 @@ components:
                 Deliverable:
                   type: integer
                   format: int32
+                StartDate:
+                EndDate:
             lessThan:
               type: object
               properties:
@@ -14921,6 +14927,8 @@ components:
                 Deliverable:
                   type: integer
                   format: int32
+                StartDate:
+                EndDate:
             lessThanOrEqual:
               type: object
               properties:
@@ -14940,14 +14948,16 @@ components:
                 Deliverable:
                   type: integer
                   format: int32
+                StartDate:
+                EndDate:
         $select:
           type: array
-          example: ["Id", "Milestone", "Description", "Project", "Deliverable"]
+          example: ["Id", "Milestone", "Description", "Project", "Deliverable", "StartDate", "EndDate"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Milestone,Description,Project,Deliverable"
+            example: "Id,Milestone,Description,Project,Deliverable,StartDate,EndDate"
         $order:
           type: string
           enum: ["asc", "desc"]

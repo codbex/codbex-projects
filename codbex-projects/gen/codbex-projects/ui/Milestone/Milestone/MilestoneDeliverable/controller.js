@@ -111,6 +111,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("MilestoneDeliverable", `Unable to list/filter MilestoneDeliverable: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+						if (e.StartDate) {
+							e.StartDate = new Date(e.StartDate);
+						}
+						if (e.EndDate) {
+							e.EndDate = new Date(e.EndDate);
+						}
+					});
+
 					$scope.data = response.data;
 				});
 			});
