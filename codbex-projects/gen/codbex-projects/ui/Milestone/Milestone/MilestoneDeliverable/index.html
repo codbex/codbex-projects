@@ -21,11 +21,11 @@
 		</fd-message-page>
 
 		<fd-toolbar has-title="true" ng-hide="data == null">
-			<fd-toolbar-title>Items <span fd-object-status text="{{dataCount}}" inverted="true"></fd-toolbar-title>
+			<fd-toolbar-title>Items ({{dataCount}})</fd-toolbar-title>
 			<fd-button compact="true" dg-type="transparent" dg-label="Filter" ng-click="openFilter()"></fd-button>
 			<fd-button ng-repeat="action in pageActions" compact="true" dg-type="transparent" dg-label="{{action.label}}" ng-click="triggerPageAction(action)"></fd-button>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
-			<fd-button compact="true" dg-type="emphasized" dg-label="Create" ng-click="createEntity()"
+			<fd-button compact="true" dg-type="transparent" dg-label="Create" ng-click="createEntity()"
 				state="{{selectedMainEntityId == null ? 'disabled' : ''}}"></fd-button>
 		</fd-toolbar>
 		<fd-scrollbar class="dg-full-height" ng-hide="data == null">
@@ -33,6 +33,8 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>Description</th>
+						<th fd-table-header-cell>Project</th>
+						<th fd-table-header-cell>Deliverable</th>
 						<th fd-table-header-cell>StartDate</th>
 						<th fd-table-header-cell>EndDate</th>
 						<th fd-table-header-cell></th>
@@ -45,6 +47,12 @@
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Description}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsProjectValue(next.Project)}}
+						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsDeliverableValue(next.Deliverable)}}
+						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next.StartDate" ng-readonly="true"></fd-input>
 						</td>

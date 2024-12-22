@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -100,6 +100,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						$scope.data = [];
 						$scope.dataReset = false;
 					}
+
+					response.data.forEach(e => {
+						if (e.Date) {
+							e.Date = new Date(e.Date);
+						}
+					});
+
 					$scope.data = $scope.data.concat(response.data);
 					$scope.dataPage++;
 				});
@@ -112,8 +119,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsProject: $scope.optionsProject,
-				optionsDeliverable: $scope.optionsDeliverable,
 			});
 		};
 
@@ -121,19 +126,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedEntity = null;
 			$scope.action = "create";
 
-			messageHub.postMessage("createEntity", {
-				entity: {},
-				optionsProject: $scope.optionsProject,
-				optionsDeliverable: $scope.optionsDeliverable,
-			});
+			messageHub.postMessage("createEntity");
 		};
 
 		$scope.updateEntity = function () {
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsProject: $scope.optionsProject,
-				optionsDeliverable: $scope.optionsDeliverable,
 			});
 		};
 
@@ -170,50 +169,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Milestone-filter", {
 				entity: $scope.filterEntity,
-				optionsProject: $scope.optionsProject,
-				optionsDeliverable: $scope.optionsDeliverable,
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsProject = [];
-		$scope.optionsDeliverable = [];
-
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
-			$scope.optionsProject = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts").then(function (response) {
-			$scope.optionsDeliverable = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsProjectValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProject.length; i++) {
-				if ($scope.optionsProject[i].value === optionKey) {
-					return $scope.optionsProject[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsDeliverableValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsDeliverable.length; i++) {
-				if ($scope.optionsDeliverable[i].value === optionKey) {
-					return $scope.optionsDeliverable[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

@@ -8,6 +8,8 @@ export interface MilestoneDeliverableEntity {
     readonly Id: number;
     Milestone?: number;
     Description?: string;
+    Project?: number;
+    Deliverable?: number;
     StartDate?: Date;
     EndDate?: Date;
 }
@@ -15,6 +17,8 @@ export interface MilestoneDeliverableEntity {
 export interface MilestoneDeliverableCreateEntity {
     readonly Milestone?: number;
     readonly Description?: string;
+    readonly Project?: number;
+    readonly Deliverable?: number;
     readonly StartDate?: Date;
     readonly EndDate?: Date;
 }
@@ -29,6 +33,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number | number[];
             Milestone?: number | number[];
             Description?: string | string[];
+            Project?: number | number[];
+            Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
         };
@@ -36,6 +42,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number | number[];
             Milestone?: number | number[];
             Description?: string | string[];
+            Project?: number | number[];
+            Deliverable?: number | number[];
             StartDate?: Date | Date[];
             EndDate?: Date | Date[];
         };
@@ -43,6 +51,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number;
             Milestone?: number;
             Description?: string;
+            Project?: number;
+            Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
         };
@@ -50,6 +60,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number;
             Milestone?: number;
             Description?: string;
+            Project?: number;
+            Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
         };
@@ -57,6 +69,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number;
             Milestone?: number;
             Description?: string;
+            Project?: number;
+            Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
         };
@@ -64,6 +78,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number;
             Milestone?: number;
             Description?: string;
+            Project?: number;
+            Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
         };
@@ -71,6 +87,8 @@ export interface MilestoneDeliverableEntityOptions {
             Id?: number;
             Milestone?: number;
             Description?: string;
+            Project?: number;
+            Deliverable?: number;
             StartDate?: Date;
             EndDate?: Date;
         };
@@ -118,6 +136,16 @@ export class MilestoneDeliverableRepository {
                 name: "Description",
                 column: "MILESTONEDELIVERABLE_DESCRIPTION",
                 type: "VARCHAR",
+            },
+            {
+                name: "Project",
+                column: "MILESTONEDELIVERABLE_PROJECT",
+                type: "INTEGER",
+            },
+            {
+                name: "Deliverable",
+                column: "MILESTONEDELIVERABLE_DELIVERABLE",
+                type: "INTEGER",
             },
             {
                 name: "StartDate",

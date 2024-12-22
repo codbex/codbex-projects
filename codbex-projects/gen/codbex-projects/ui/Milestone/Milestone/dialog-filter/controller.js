@@ -11,11 +11,15 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
+			if (params?.entity?.DateFrom) {
+				params.entity.DateFrom = new Date(params.entity.DateFrom);
+			}
+			if (params?.entity?.DateTo) {
+				params.entity.DateTo = new Date(params.entity.DateTo);
+			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProject = params.optionsProject;
-			$scope.optionsDeliverable = params.optionsDeliverable;
 		}
 
 		$scope.filter = function () {
@@ -44,11 +48,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
+			if (entity.Description) {
+				filter.$filter.contains.Description = entity.Description;
 			}
-			if (entity.Deliverable !== undefined) {
-				filter.$filter.equals.Deliverable = entity.Deliverable;
+			if (entity.DateFrom) {
+				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
+			}
+			if (entity.DateTo) {
+				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

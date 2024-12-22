@@ -17,13 +17,13 @@
 
 	<body class="dg-vbox">
 		<fd-toolbar has-title="true">
-			<fd-toolbar-title>Items <span fd-object-status text="{{dataCount}}" inverted="true"></fd-toolbar-title>
+			<fd-toolbar-title>Items ({{dataCount}})</fd-toolbar-title>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
-			<fd-button compact="true" dg-type="transparent" glyph="sap-icon--add"
+			<fd-button compact="true" dg-type="transparent" dg-label="Create"
 				state="{{action == 'update'? 'disabled' : ''}}" ng-click="createEntity()"></fd-button>
-			<fd-button compact="true" dg-type="transparent" glyph="sap-icon--edit"
+			<fd-button compact="true" dg-type="transparent" dg-label="Edit"
 				state="{{selectedEntity == null ? 'disabled' : ''}}" ng-click="updateEntity()"></fd-button>
-			<fd-button compact="true" dg-type="transparent" glyph="sap-icon--delete"
+			<fd-button compact="true" dg-type="transparent" dg-label="Delete"
 				state="{{selectedEntity == null || action == 'update'? 'disabled' : ''}}" ng-click="deleteEntity()">
 			</fd-button>
 			<fd-popover>
@@ -50,8 +50,8 @@
 						<fd-list-content
 							item-title="{{next.Name}}">
 							<fd-list-byline dg-align="left">
-								{{optionsProjectValue(next.Project)}} |
-								{{optionsDeliverableValue(next.Deliverable)}}
+								{{next.Description}} |
+								{{next.Date | date: "dd/MMM/yyyy"}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>
