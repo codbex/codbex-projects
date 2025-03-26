@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/codbex-projects/gen/expense/ui/Reports/index.html",
         order: "${menuIndex}",
-        groupOrder: "999",
+        groupOrder: "999"
     };
 };

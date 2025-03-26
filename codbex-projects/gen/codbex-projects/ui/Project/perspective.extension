@@ -1,1 +1,5 @@
-{"module":"codbex-projects/gen/codbex-projects/ui/Project/perspective.js","extensionPoint":"codbex-projects","description":"codbex-projects - Perspective - Project"}
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Project/perspective.js",
+    "extensionPoint": "codbex-projects",
+    "description": "codbex-projects - Perspective - Project"
+}

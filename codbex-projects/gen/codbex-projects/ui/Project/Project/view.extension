@@ -1,1 +1,6 @@
-{"module":"codbex-projects/gen/codbex-projects/ui/Project/Project/view.js","extensionPoint":"codbex-projects-view","description":"codbex-projects - Application View"}
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Project/Project/view.js",
+    "extensionPoint": "codbex-projects-view",
+    "description": "codbex-projects - Application View",
+    "role": "codbex-projects.Project.ProjectReadOnly,codbex-projects.Project.ProjectFullAccess"
+}

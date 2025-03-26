@@ -7,7 +7,7 @@ const viewData = {
     id: "Cost-details",
     label: "Cost",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Cost/dialog-window/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'Deliverable',
 	name: 'Deliverable',
 	link: '/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/index.html',
-	order: 200,
-	icon: '/services/web/resources/unicons/parcel.svg',
+	order: '200',
+	icon: '/services/web/resources/unicons/parcel.svg'
 };
 
 if (typeof exports !== 'undefined') {

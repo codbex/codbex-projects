@@ -67,7 +67,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT codbexProject.PROJECT_NAME as \"Project\", codbexStatusType.STATUSTYPE_NAME as \"Status\", SUM(codbexBudget.BUDGET_AMOUNT) as \"TotalBudget\", SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES) as \"TotalContingencyReserves\", SUM(codbexExpense.EXPENSE_AMOUNT) as \"TotalExpense\", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithoutReserves\", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithReserves\"\nFROM CODBEX_PROJECT as codbexProject\nLEFT JOIN CODBEX_BUDGET codbexBudget ON codbexBudget.BUDGET_PROJECT = codbexProject.PROJECT_ID\nLEFT JOIN CODBEX_EXPENSE codbexExpense ON codbexExpense.EXPENSE_PROJECT = codbexProject.PROJECT_ID\nLEFT JOIN CODBEX_STATUSTYPE codbexStatusType ON codbexProject.PROJECT_STATUS = codbexStatusType.STATUSTYPE_ID\nWHERE codbexProject.PROJECT_NAME LIKE :PROJECT_NAME\nGROUP BY codbexProject.PROJECT_NAME, codbexStatusType.STATUSTYPE_NAME\nORDER BY codbexProject.PROJECT_NAME ASC",
+    "query": "SELECT codbexProject.PROJECT_NAME as \"Project\", codbexStatusType.STATUSTYPE_NAME as \"Status\", SUM(codbexBudget.SUM(BUDGET_AMOUNT)) as \"TotalBudget\", SUM(codbexBudget.SUM(BUDGET_CONTINGENCYRESERVES)) as \"TotalContingencyReserves\", SUM(codbexExpense.SUM(EXPENSE_AMOUNT)) as \"TotalExpense\", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithoutReserves\", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as \"RemainingBudgetWithReserves\"\nFROM CODBEX_PROJECT as codbexProject\n  LEFT JOIN undefined codbexBudget ON undefined\n  LEFT JOIN undefined codbexExpense ON undefined\n  LEFT JOIN undefined codbexStatusType ON undefined\nWHERE codbexProject.PROJECT_NAME LIKE :PROJECT_NAME\nGROUP BY codbexProject.PROJECT_NAME, codbexStatusType.STATUSTYPE_NAME\nORDER BY codbexProject.PROJECT_NAME ASC",
     "joins": [
         {
             "type": "LEFT",
@@ -119,5 +119,9 @@
             "column": "codbexProject.PROJECT_NAME",
             "direction": "ASC"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-projects.Report.ProjectReportReadOnly"
+    }
 }

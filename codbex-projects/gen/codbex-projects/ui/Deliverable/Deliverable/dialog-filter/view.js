@@ -7,7 +7,7 @@ const viewData = {
     id: "Deliverable-filter",
     label: "Deliverable Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-filter/index.html",
-    perspectiveName: "Deliverable",
+    perspectiveName: "Deliverable"
 };
 
 if (typeof exports !== 'undefined') {

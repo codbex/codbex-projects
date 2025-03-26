@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "bottom",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/MilestoneDeliverable/index.html",
-    perspectiveName: "Milestone",
+    perspectiveName: "Milestone"
 };
 
 if (typeof exports !== 'undefined') {

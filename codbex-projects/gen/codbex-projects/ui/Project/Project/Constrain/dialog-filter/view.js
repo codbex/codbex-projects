@@ -7,7 +7,7 @@ const viewData = {
     id: "Constrain-filter",
     label: "Constrain Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Constrain/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

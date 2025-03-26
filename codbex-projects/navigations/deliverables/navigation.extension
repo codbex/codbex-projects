@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-projects/navigations/deliverables/service.js",
-    "description": "Deliverables Navigation"
+    "description": "Deliverables Navigation",
+    "role": "codbex-projects.Deliverable.DeliverableReadOnly,codbex-projects.Deliverable.DeliverableFullAccess"
 }

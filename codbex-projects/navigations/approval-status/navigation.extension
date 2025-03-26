@@ -1,5 +1,6 @@
 {
     "extensionPoint": "approval-status-navigations",
     "module": "codbex-projects/navigations/approval-status/service.js",
-    "description": "Approval status Navigation"
+    "description": "Approval status Navigation",
+    "role": "codbex-projects.Settings.ApprovalStatusReadOnly,codbex-projects.Settings.ApprovalStatusFullAccess"
 }

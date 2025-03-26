@@ -10,5 +10,11 @@
   "projectName": "codbex-projects",
   "workspaceName": "workspace",
   "filePath": "expense.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js"
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "roles": [
+    {
+      "entityName": "ExpenseReport",
+      "roleRead": "codbex-projects.Report.ExpenseReportReadOnly"
+    }
+  ]
 }

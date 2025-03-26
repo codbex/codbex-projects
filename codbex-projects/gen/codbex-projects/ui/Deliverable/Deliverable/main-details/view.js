@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/main-details/index.html",
-    perspectiveName: "Deliverable",
+    perspectiveName: "Deliverable"
 };
 
 if (typeof exports !== 'undefined') {

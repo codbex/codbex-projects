@@ -123,5 +123,9 @@
             "column": "EXPENSE_AMOUNT",
             "direction": "DESC"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-projects.Report.ExpenseReportReadOnly"
+    }
 }

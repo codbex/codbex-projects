@@ -14,6 +14,6 @@ exports.getTile = function () {
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/index.html",
         order: "100",
-        groupOrder: "200",
+        groupOrder: "200"
     };
-};
+}

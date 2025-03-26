@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/project/ui/Reports/ProjectReport/view.js",
     "extensionPoint": "codbex-projects-view",
-    "description": "codbex-projects - Application View"
+    "description": "codbex-projects - Application View",
+    "role": "codbex-projects.Report.ProjectReportReadOnly"
 }

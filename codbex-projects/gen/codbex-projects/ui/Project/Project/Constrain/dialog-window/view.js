@@ -7,7 +7,7 @@ const viewData = {
     id: "Constrain-details",
     label: "Constrain",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Constrain/dialog-window/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

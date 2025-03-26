@@ -1,1 +1,5 @@
-{"module":"codbex-projects/gen/codbex-projects/ui/Milestone/perspective.js","extensionPoint":"portal","description":"codbex-projects - Perspective - Milestone"}
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Milestone/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-projects - Perspective - Milestone"
+}

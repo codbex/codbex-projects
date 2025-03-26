@@ -7,7 +7,7 @@ const viewData = {
     id: "Task-filter",
     label: "Task Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/dialog-filter/index.html",
-    perspectiveName: "Deliverable",
+    perspectiveName: "Deliverable"
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,1 +1,5 @@
-{"module":"codbex-projects/gen/codbex-projects/ui/Deliverable/perspective.js","extensionPoint":"portal","description":"codbex-projects - Perspective - Deliverable"}
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Deliverable/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-projects - Perspective - Deliverable"
+}

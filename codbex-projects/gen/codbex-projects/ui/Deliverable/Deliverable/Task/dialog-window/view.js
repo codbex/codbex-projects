@@ -7,7 +7,7 @@ const viewData = {
     id: "Task-details",
     label: "Task",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/dialog-window/index.html",
-    perspectiveName: "Deliverable",
+    perspectiveName: "Deliverable"
 };
 
 if (typeof exports !== 'undefined') {
