@@ -1,5 +1,6 @@
 {
     "extensionPoint": "expense-categories-navigations",
     "module": "codbex-projects/navigations/expense-categories/service.js",
-    "description": "Expense Categories Navigation"
+    "description": "Expense Categories Navigation",
+    "role": "codbex-projects.Settings.ExpenseCategoryReadOnly,codbex-projects.Settings.ExpenseCategoryFullAccess"
 }

@@ -7,7 +7,7 @@ const viewData = {
     id: "Resource-filter",
     label: "Resource Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Resource/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

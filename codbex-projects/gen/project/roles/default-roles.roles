@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-projects.Report.ProjectReportReadOnly",
+        "description": "A role that grants read only permission for ProjectReport."
+    }
+]

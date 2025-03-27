@@ -1,5 +1,6 @@
 {
     "extensionPoint": "status-types-navigations",
     "module": "codbex-projects/navigations/status-types/service.js",
-    "description": "Status Types Navigation"
+    "description": "Status Types Navigation",
+    "role": "codbex-projects.Settings.StatusTypeReadOnly,codbex-projects.Settings.StatusTypeFullAccess"
 }

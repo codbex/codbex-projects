@@ -1,0 +1,186 @@
+[
+    {
+        "name": "codbex-projects.Project.ResourceReadOnly",
+        "description": "A role that grants read only permission for Resource."
+    },
+    {
+        "name": "codbex-projects.Project.ResourceFullAccess",
+        "description": "A role that grants full access for Resource."
+    },
+    {
+        "name": "codbex-projects.Project.ProjectReadOnly",
+        "description": "A role that grants read only permission for Project."
+    },
+    {
+        "name": "codbex-projects.Project.ProjectFullAccess",
+        "description": "A role that grants full access for Project."
+    },
+    {
+        "name": "codbex-projects.Settings.ResourceTypeReadOnly",
+        "description": "A role that grants read only permission for ResourceType."
+    },
+    {
+        "name": "codbex-projects.Settings.ResourceTypeFullAccess",
+        "description": "A role that grants full access for ResourceType."
+    },
+    {
+        "name": "codbex-projects.Settings.StatusTypeReadOnly",
+        "description": "A role that grants read only permission for StatusType."
+    },
+    {
+        "name": "codbex-projects.Settings.StatusTypeFullAccess",
+        "description": "A role that grants full access for StatusType."
+    },
+    {
+        "name": "codbex-projects.Project.BudgetReadOnly",
+        "description": "A role that grants read only permission for Budget."
+    },
+    {
+        "name": "codbex-projects.Project.BudgetFullAccess",
+        "description": "A role that grants full access for Budget."
+    },
+    {
+        "name": "codbex-projects.Project.CostReadOnly",
+        "description": "A role that grants read only permission for Cost."
+    },
+    {
+        "name": "codbex-projects.Project.CostFullAccess",
+        "description": "A role that grants full access for Cost."
+    },
+    {
+        "name": "codbex-projects.Settings.CostCategoryReadOnly",
+        "description": "A role that grants read only permission for CostCategory."
+    },
+    {
+        "name": "codbex-projects.Settings.CostCategoryFullAccess",
+        "description": "A role that grants full access for CostCategory."
+    },
+    {
+        "name": "codbex-projects.Milestone.MilestoneReadOnly",
+        "description": "A role that grants read only permission for Milestone."
+    },
+    {
+        "name": "codbex-projects.Milestone.MilestoneFullAccess",
+        "description": "A role that grants full access for Milestone."
+    },
+    {
+        "name": "codbex-projects.Project.ExpenseReadOnly",
+        "description": "A role that grants read only permission for Expense."
+    },
+    {
+        "name": "codbex-projects.Project.ExpenseFullAccess",
+        "description": "A role that grants full access for Expense."
+    },
+    {
+        "name": "codbex-projects.Settings.ExpenseCategoryReadOnly",
+        "description": "A role that grants read only permission for ExpenseCategory."
+    },
+    {
+        "name": "codbex-projects.Settings.ExpenseCategoryFullAccess",
+        "description": "A role that grants full access for ExpenseCategory."
+    },
+    {
+        "name": "codbex-projects.Deliverable.DeliverableReadOnly",
+        "description": "A role that grants read only permission for Deliverable."
+    },
+    {
+        "name": "codbex-projects.Deliverable.DeliverableFullAccess",
+        "description": "A role that grants full access for Deliverable."
+    },
+    {
+        "name": "codbex-projects.Deliverable.TaskReadOnly",
+        "description": "A role that grants read only permission for Task."
+    },
+    {
+        "name": "codbex-projects.Deliverable.TaskFullAccess",
+        "description": "A role that grants full access for Task."
+    },
+    {
+        "name": "codbex-projects.Settings.ApprovalStatusReadOnly",
+        "description": "A role that grants read only permission for ApprovalStatus."
+    },
+    {
+        "name": "codbex-projects.Settings.ApprovalStatusFullAccess",
+        "description": "A role that grants full access for ApprovalStatus."
+    },
+    {
+        "name": "codbex-projects.Project.TeamMemberReadOnly",
+        "description": "A role that grants read only permission for TeamMember."
+    },
+    {
+        "name": "codbex-projects.Project.TeamMemberFullAccess",
+        "description": "A role that grants full access for TeamMember."
+    },
+    {
+        "name": "codbex-projects.Settings.MemberRoleReadOnly",
+        "description": "A role that grants read only permission for MemberRole."
+    },
+    {
+        "name": "codbex-projects.Settings.MemberRoleFullAccess",
+        "description": "A role that grants full access for MemberRole."
+    },
+    {
+        "name": "codbex-projects.Project.GoalReadOnly",
+        "description": "A role that grants read only permission for Goal."
+    },
+    {
+        "name": "codbex-projects.Project.GoalFullAccess",
+        "description": "A role that grants full access for Goal."
+    },
+    {
+        "name": "codbex-projects.Project.ObjectiveReadOnly",
+        "description": "A role that grants read only permission for Objective."
+    },
+    {
+        "name": "codbex-projects.Project.ObjectiveFullAccess",
+        "description": "A role that grants full access for Objective."
+    },
+    {
+        "name": "codbex-projects.Project.ConstrainReadOnly",
+        "description": "A role that grants read only permission for Constrain."
+    },
+    {
+        "name": "codbex-projects.Project.ConstrainFullAccess",
+        "description": "A role that grants full access for Constrain."
+    },
+    {
+        "name": "codbex-projects.Settings.AgileMethodologyReadOnly",
+        "description": "A role that grants read only permission for AgileMethodology."
+    },
+    {
+        "name": "codbex-projects.Settings.AgileMethodologyFullAccess",
+        "description": "A role that grants full access for AgileMethodology."
+    },
+    {
+        "name": "codbex-projects.Settings.StakeHolderTypeReadOnly",
+        "description": "A role that grants read only permission for StakeHolderType."
+    },
+    {
+        "name": "codbex-projects.Settings.StakeHolderTypeFullAccess",
+        "description": "A role that grants full access for StakeHolderType."
+    },
+    {
+        "name": "codbex-projects.Project.StakeHolderReadOnly",
+        "description": "A role that grants read only permission for StakeHolder."
+    },
+    {
+        "name": "codbex-projects.Project.StakeHolderFullAccess",
+        "description": "A role that grants full access for StakeHolder."
+    },
+    {
+        "name": "codbex-projects.Settings.IterationLenghtReadOnly",
+        "description": "A role that grants read only permission for IterationLenght."
+    },
+    {
+        "name": "codbex-projects.Settings.IterationLenghtFullAccess",
+        "description": "A role that grants full access for IterationLenght."
+    },
+    {
+        "name": "codbex-projects.Milestone.MilestoneDeliverableReadOnly",
+        "description": "A role that grants read only permission for MilestoneDeliverable."
+    },
+    {
+        "name": "codbex-projects.Milestone.MilestoneDeliverableFullAccess",
+        "description": "A role that grants full access for MilestoneDeliverable."
+    }
+]

@@ -7,7 +7,7 @@ const viewData = {
     id: "StakeHolder-filter",
     label: "StakeHolder Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolder/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

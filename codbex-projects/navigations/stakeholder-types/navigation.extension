@@ -1,5 +1,6 @@
 {
     "extensionPoint": "stakeholder-types-navigations",
     "module": "codbex-projects/navigations/stakeholder-types/service.js",
-    "description": "Stakeholder Types Navigation"
+    "description": "Stakeholder Types Navigation",
+    "role": "codbex-projects.Project.StakeHolderReadOnly,codbex-projects.Project.StakeHolderFullAccess"
 }

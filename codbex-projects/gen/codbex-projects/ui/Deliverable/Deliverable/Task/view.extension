@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/view.js",
     "extensionPoint": "codbex-projects-view",
-    "description": "codbex-projects - Application View - Details"
+    "description": "codbex-projects - Application View - Details",
+    "role": "codbex-projects.Deliverable.TaskReadOnly,codbex-projects.Deliverable.TaskFullAccess"
 }

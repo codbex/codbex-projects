@@ -1,5 +1,6 @@
 {
     "extensionPoint": "agile-methodologies-navigations",
     "module": "codbex-projects/navigations/agile-methodologies/service.js",
-    "description": "Agile Methodologies Navigation"
+    "description": "Agile Methodologies Navigation",
+    "role": "codbex-projects.Settings.AgileMethodologyReadOnly,codbex-projects.Settings.AgileMethodologyFullAccess"
 }

@@ -7,7 +7,7 @@ const viewData = {
     id: "TeamMember-filter",
     label: "TeamMember Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/TeamMember/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

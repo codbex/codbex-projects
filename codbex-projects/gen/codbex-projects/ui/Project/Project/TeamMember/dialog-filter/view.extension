@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Project/Project/TeamMember/dialog-filter/view.js",
-    "extensionPoint": "codbex-projects-dialog-window",
-    "description": "codbex-projects - Application Dialog Window"
+    "extensionPoint": "dialog-window",
+    "description": "codbex-projects - Application Dialog Window",
+    "role": "codbex-projects.Project.TeamMemberReadOnly,codbex-projects.Project.TeamMemberFullAccess"
 }

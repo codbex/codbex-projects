@@ -29,11 +29,11 @@ export class ProjectReportRepository {
 
     public findAll(filter: ProjectReportPaginatedFilter): ProjectReport[] {
         const sql = `
-            SELECT codbexProject.PROJECT_NAME as "Project", codbexStatusType.STATUSTYPE_NAME as "Status", SUM(codbexBudget.BUDGET_AMOUNT) as "TotalBudget", SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES) as "TotalContingencyReserves", SUM(codbexExpense.EXPENSE_AMOUNT) as "TotalExpense", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithoutReserves", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithReserves"
+            SELECT codbexProject.PROJECT_NAME as "Project", codbexStatusType.STATUSTYPE_NAME as "Status", SUM(codbexBudget.SUM(BUDGET_AMOUNT)) as "TotalBudget", SUM(codbexBudget.SUM(BUDGET_CONTINGENCYRESERVES)) as "TotalContingencyReserves", SUM(codbexExpense.SUM(EXPENSE_AMOUNT)) as "TotalExpense", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithoutReserves", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithReserves"
             FROM CODBEX_PROJECT as codbexProject
-            LEFT JOIN CODBEX_BUDGET codbexBudget ON codbexBudget.BUDGET_PROJECT = codbexProject.PROJECT_ID
-            LEFT JOIN CODBEX_EXPENSE codbexExpense ON codbexExpense.EXPENSE_PROJECT = codbexProject.PROJECT_ID
-            LEFT JOIN CODBEX_STATUSTYPE codbexStatusType ON codbexProject.PROJECT_STATUS = codbexStatusType.STATUSTYPE_ID
+              LEFT JOIN undefined codbexBudget ON undefined
+              LEFT JOIN undefined codbexExpense ON undefined
+              LEFT JOIN undefined codbexStatusType ON undefined
             WHERE codbexProject.PROJECT_NAME LIKE :PROJECT_NAME
             GROUP BY codbexProject.PROJECT_NAME, codbexStatusType.STATUSTYPE_NAME
             ORDER BY codbexProject.PROJECT_NAME ASC
@@ -54,11 +54,11 @@ export class ProjectReportRepository {
     public count(filter: ProjectReportFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT codbexProject.PROJECT_NAME as "Project", codbexStatusType.STATUSTYPE_NAME as "Status", SUM(codbexBudget.BUDGET_AMOUNT) as "TotalBudget", SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES) as "TotalContingencyReserves", SUM(codbexExpense.EXPENSE_AMOUNT) as "TotalExpense", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithoutReserves", (COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithReserves"
+                SELECT codbexProject.PROJECT_NAME as "Project", codbexStatusType.STATUSTYPE_NAME as "Status", SUM(codbexBudget.SUM(BUDGET_AMOUNT)) as "TotalBudget", SUM(codbexBudget.SUM(BUDGET_CONTINGENCYRESERVES)) as "TotalContingencyReserves", SUM(codbexExpense.SUM(EXPENSE_AMOUNT)) as "TotalExpense", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexBudget.BUDGET_CONTINGENCYRESERVES), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithoutReserves", null.(COALESCE(SUM(codbexBudget.BUDGET_AMOUNT), 0) - COALESCE(SUM(codbexExpense.EXPENSE_AMOUNT), 0)) as "RemainingBudgetWithReserves"
                 FROM CODBEX_PROJECT as codbexProject
-                LEFT JOIN CODBEX_BUDGET codbexBudget ON codbexBudget.BUDGET_PROJECT = codbexProject.PROJECT_ID
-                LEFT JOIN CODBEX_EXPENSE codbexExpense ON codbexExpense.EXPENSE_PROJECT = codbexProject.PROJECT_ID
-                LEFT JOIN CODBEX_STATUSTYPE codbexStatusType ON codbexProject.PROJECT_STATUS = codbexStatusType.STATUSTYPE_ID
+                  LEFT JOIN undefined codbexBudget ON undefined
+                  LEFT JOIN undefined codbexExpense ON undefined
+                  LEFT JOIN undefined codbexStatusType ON undefined
                 WHERE codbexProject.PROJECT_NAME LIKE :PROJECT_NAME
                 GROUP BY codbexProject.PROJECT_NAME, codbexStatusType.STATUSTYPE_NAME
                 ORDER BY codbexProject.PROJECT_NAME ASC

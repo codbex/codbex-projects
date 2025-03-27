@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-projects/widgets/deliverable-status/service.js",
-    "description": "Deliverable Status"
+    "description": "Deliverable Status",
+    "role": "codbex-projects.Deliverable.DeliverableReadOnly,codbex-projects.Deliverable.DeliverableFullAccess"
 }

@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/dialog-window/view.js",
-    "extensionPoint": "codbex-projects-dialog-window",
-    "description": "codbex-projects - Application Dialog Window"
+    "extensionPoint": "dialog-window",
+    "description": "codbex-projects - Application Dialog Window",
+    "role": "codbex-projects.Deliverable.TaskReadOnly,codbex-projects.Deliverable.TaskFullAccess"
 }

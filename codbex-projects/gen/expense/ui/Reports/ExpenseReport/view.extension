@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/expense/ui/Reports/ExpenseReport/view.js",
     "extensionPoint": "codbex-projects-view",
-    "description": "codbex-projects - Application View"
+    "description": "codbex-projects - Application View",
+    "role": "codbex-projects.Report.ExpenseReportReadOnly"
 }

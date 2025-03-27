@@ -1,0 +1,6 @@
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Project/Project/Goal/dialog-window/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-projects - Application Dialog Window",
+    "role": "codbex-projects.Project.GoalReadOnly,codbex-projects.Project.GoalFullAccess"
+}

@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'Milestone',
 	name: 'Milestone',
 	link: '/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/index.html',
-	order: 400,
-	icon: '/services/web/resources/unicons/arrow-break.svg',
+	order: '400',
+	icon: '/services/web/resources/unicons/arrow-break.svg'
 };
 
 if (typeof exports !== 'undefined') {

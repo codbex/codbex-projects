@@ -7,7 +7,7 @@ const viewData = {
     id: "StakeHolder-details",
     label: "StakeHolder",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolder/dialog-window/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

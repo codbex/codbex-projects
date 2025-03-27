@@ -7,7 +7,7 @@ const viewData = {
     id: "ExpenseReport-Report-filter",
     label: "ExpenseReport Rerport Filter",
     link: "/services/web/codbex-projects/gen/expense/ui/Reports/ExpenseReport/dialog-filter/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

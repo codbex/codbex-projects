@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -89,27 +89,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.$watch('entity.AgileMethodology', function (newValue, oldValue) {
-			if (newValue !== undefined && newValue !== null) {
-				entityApi.$http.post("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts/search", {
-					$filter: {
-						equals: {
-							AgileMethodology: newValue
-						}
-					}
-				}).then(function (response) {
-					$scope.optionsIterationLenght = response.data.map(e => {
-						return {
-							value: e.Id,
-							text: e.Period
-						}
-					});
-					if ($scope.action !== 'select' && newValue !== oldValue) {
-						$scope.entity.IterationLenght = undefined;
-					}
-				});
-			}
-		});
+		$scope.serviceStatus = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts";
+		$scope.serviceAgileMethodology = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts";
+		$scope.serviceIterationLenght = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts";
+
 		//-----------------Events-------------------//
 
 		$scope.create = function () {
@@ -139,5 +122,69 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createStatus = function () {
+			messageHub.showDialogWindow("StatusType-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createAgileMethodology = function () {
+			messageHub.showDialogWindow("AgileMethodology-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createIterationLenght = function () {
+			messageHub.showDialogWindow("IterationLenght-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshStatus = function () {
+			$scope.optionsStatus = [];
+			$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
+				$scope.optionsStatus = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshAgileMethodology = function () {
+			$scope.optionsAgileMethodology = [];
+			$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/AgileMethodologyService.ts").then(function (response) {
+				$scope.optionsAgileMethodology = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshIterationLenght = function () {
+			$scope.optionsIterationLenght = [];
+			$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/IterationLenghtService.ts").then(function (response) {
+				$scope.optionsIterationLenght = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Period
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);

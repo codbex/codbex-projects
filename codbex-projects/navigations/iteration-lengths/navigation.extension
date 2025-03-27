@@ -1,5 +1,6 @@
 {
     "extensionPoint": "iteration-lengths-navigations",
     "module": "codbex-projects/navigations/iteration-lengths/service.js",
-    "description": "Iteration Lengths Navigation"
+    "description": "Iteration Lengths Navigation",
+    "role": "codbex-projects.Settings.IterationLenghtReadOnly,codbex-projects.Settings.IterationLenghtFullAccess"
 }

@@ -7,7 +7,7 @@ const viewData = {
     id: "Expense-filter",
     label: "Expense Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Expense/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

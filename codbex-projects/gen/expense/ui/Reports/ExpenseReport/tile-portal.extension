@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/expense/ui/Reports/ExpenseReport/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-projects - Application Tile"
+    "description": "codbex-projects - Application Tile",
+    "role": "codbex-projects.Report.ExpenseReportReadOnly"
 }

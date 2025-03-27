@@ -7,7 +7,7 @@ const viewData = {
     id: "Objective-filter",
     label: "Objective Filter",
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Objective/dialog-filter/index.html",
-    perspectiveName: "Project",
+    perspectiveName: "Project"
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,5 +1,6 @@
 {
     "extensionPoint": "member-roles-navigations",
     "module": "codbex-projects/navigations/member-roles/service.js",
-    "description": "Member Roles Navigation"
+    "description": "Member Roles Navigation",
+    "role": "codbex-projects.Settings.MemberRoleReadOnly,codbex-projects.Settings.MemberRoleFullAccess"
 }

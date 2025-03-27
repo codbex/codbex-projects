@@ -1,5 +1,6 @@
 {
     "extensionPoint": "resource-navigations",
     "module": "codbex-projects/navigations/resource/service.js",
-    "description": "Resource Navigation"
+    "description": "Resource Navigation",
+    "role": "codbex-projects.Project.ResourceReadOnly,codbex-projects.Project.ResourceFullAccess"
 }

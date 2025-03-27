@@ -1,5 +1,6 @@
 {
     "extensionPoint": "cost-categories-navigations",
     "module": "codbex-projects/navigations/cost-categories/service.js",
-    "description": "Cost Categories Navigation"
+    "description": "Cost Categories Navigation",
+    "role": "codbex-projects.Settings.CostCategoryReadOnly,codbex-projects.Settings.CostCategoryFullAccess"
 }
