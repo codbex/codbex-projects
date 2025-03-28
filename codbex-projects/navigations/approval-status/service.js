@@ -3,7 +3,7 @@ const navigationData = {
     label: "Approval Status",
     group: "reference data",
 
-    order: 2000,
+    order: 2100,
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Settings/ApprovalStatus/index.html?embedded"
 };
 

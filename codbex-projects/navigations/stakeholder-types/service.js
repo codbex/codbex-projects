@@ -3,7 +3,7 @@ const navigationData = {
     label: "Stakeholder Types",
     group: "reference data",
 
-    order: 1900,
+    order: 2000,
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Settings/StakeHolderType/index.html?embedded"
 };
 
