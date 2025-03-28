@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
+  "brandUrl": "https://www.codbex.com",
   "title": "Project Report",
+  "navigationOrder": "900",
+  "projectName": "codbex-projects",
+  "workspaceName": "workspace",
+  "filePath": "project.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "project",
   "genFolderName": "project",
   "extensionPoint": "codbex-projects",
   "name": "ProjectReport",
   "perspectiveName": "ProjectReport",
-  "projectName": "codbex-projects",
-  "workspaceName": "workspace",
-  "filePath": "project.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "ProjectReport",

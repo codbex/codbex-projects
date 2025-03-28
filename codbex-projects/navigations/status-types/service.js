@@ -3,7 +3,7 @@ const navigationData = {
     label: "Status Types",
     group: "reference data",
 
-    order: 1800,
+    order: 1900,
     link: "/services/web/codbex-projects/gen/codbex-projects/ui/Settings/StatusType/index.html?embedded"
 };
 
