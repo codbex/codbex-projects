@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Expense Report',
 	group: 'reports',
 	link: '/services/web/codbex-projects/gen/expense/ui/Reports/ExpenseReport/index.html',
-	order: $navigationOrder
+	order: 1000
 };
 
 function getNavigation() {

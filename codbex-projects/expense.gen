@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
+  "brandUrl": "https://www.codbex.com",
   "title": "Expense Report",
+  "navigationOrder": "1000",
+  "projectName": "codbex-projects",
+  "workspaceName": "workspace",
+  "filePath": "expense.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "expense",
   "genFolderName": "expense",
   "extensionPoint": "codbex-projects",
   "name": "ExpenseReport",
   "perspectiveName": "ExpenseReport",
-  "projectName": "codbex-projects",
-  "workspaceName": "workspace",
-  "filePath": "expense.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "ExpenseReport",
