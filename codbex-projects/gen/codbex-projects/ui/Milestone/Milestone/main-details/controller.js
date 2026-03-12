@@ -1,108 +1,139 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Milestone.Milestone';
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Milestone/MilestoneService.ts";
-	}])
-	.controller('PageController', ['$scope',  'Extensions', 'messageHub', 'entityApi', function ($scope,  Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
+		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'Milestone successfully created';
+		let propertySuccessfullyUpdated = 'Milestone successfully updated';
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Milestone Details",
-			create: "Create Milestone",
-			update: "Update Milestone"
+			select: 'Milestone Details',
+			create: 'Create Milestone',
+			update: 'Update Milestone'
 		};
 		$scope.action = 'select';
 
-		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-projects-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Milestone" && e.view === "Milestone" && e.type === "entity");
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-projects:codbex-projects-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadSelect', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadCreate', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadUpdate', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-projects:codbex-projects-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-projects:codbex-projects-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)' });
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		//-----------------Custom Actions-------------------//
+		Extensions.getWindows(['codbex-projects-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Milestone' && e.view === 'Milestone' && e.type === 'entity');
+		});
+
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Milestone.Milestone.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.Date) {
-					msg.data.entity.Date = new Date(msg.data.entity.Date);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Milestone.Milestone.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.Date) {
+					data.entity.Date = new Date(data.entity.Date);
 				}
-				$scope.entity = msg.data.entity;
+				$scope.entity = data.entity;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Milestone.Milestone.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.Date) {
-					msg.data.entity.Date = new Date(msg.data.entity.Date);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Milestone.Milestone.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.Date) {
+					data.entity.Date = new Date(data.entity.Date);
 				}
-				$scope.entity = msg.data.entity;
+				$scope.entity = data.entity;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Milestone", `Unable to create Milestone: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Milestone", "Milestone successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-projects.Milestone.Milestone.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-projects.Milestone.Milestone.clearDetails' , data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.MILESTONE'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.MILESTONE'),
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToCreate', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Milestone", `Unable to update Milestone: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Milestone", "Milestone successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-projects.Milestone.Milestone.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-projects.Milestone.Milestone.clearDetails', data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.MILESTONE'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.MILESTONE'),
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToCreate', { name: '$t(codbex-projects:codbex-projects-model.t.MILESTONE)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-projects.Milestone.Milestone.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: description,
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
 		
 
 		//-----------------Dialogs-------------------//
@@ -113,6 +144,4 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

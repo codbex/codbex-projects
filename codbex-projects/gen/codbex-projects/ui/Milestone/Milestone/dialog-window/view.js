@@ -6,15 +6,15 @@
 const viewData = {
     id: "Milestone-details",
     label: "Milestone",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/dialog-window/index.html",
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.MILESTONE',
+    },
+    path: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/dialog-window/index.html",
     perspectiveName: "Milestone",
     roles: [
         "codbex-projects.Milestone.MilestoneReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

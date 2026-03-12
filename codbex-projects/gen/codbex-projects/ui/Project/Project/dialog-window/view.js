@@ -6,15 +6,15 @@
 const viewData = {
     id: "Project-details",
     label: "Project",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/dialog-window/index.html",
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.PROJECT',
+    },
+    path: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/dialog-window/index.html",
     perspectiveName: "Project",
     roles: [
         "codbex-projects.Project.ProjectReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

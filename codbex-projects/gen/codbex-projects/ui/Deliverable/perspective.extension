@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Deliverable/perspective.js",
-    "extensionPoint": "codbex-projects",
-    "description": "codbex-projects - Perspective - Deliverable"
+    "extensionPoint": "application-perspectives",
+    "description": "codbex-projects - Perspective - Deliverable",
+    "role": "codbex-projects.Deliverable.DeliverableReadOnly,codbex-projects.Deliverable.DeliverableFullAccess"
 }

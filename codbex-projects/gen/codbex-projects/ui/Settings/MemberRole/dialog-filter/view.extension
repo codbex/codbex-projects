@@ -1,0 +1,6 @@
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Settings/MemberRole/dialog-filter/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-projects - Application Dialog Window",
+    "role": "codbex-projects.Settings.MemberRoleReadOnly,codbex-projects.Settings.MemberRoleFullAccess"
+}

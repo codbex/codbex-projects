@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Milestone",
-    label: "Milestone",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/index.html",
-    perspectiveName: "Milestone"
+    id: 'Milestone',
+    label: 'Milestone',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.MILESTONE',
+    },
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/index.html',
+    perspectiveName: 'Milestone'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

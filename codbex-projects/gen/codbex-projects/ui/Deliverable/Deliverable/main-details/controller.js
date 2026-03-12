@@ -1,124 +1,163 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Deliverable.Deliverable';
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-projects/gen/codbex-projects/api/Deliverable/DeliverableService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
+		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'Deliverable successfully created';
+		let propertySuccessfullyUpdated = 'Deliverable successfully updated';
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Deliverable Details",
-			create: "Create Deliverable",
-			update: "Update Deliverable"
+			select: 'Deliverable Details',
+			create: 'Create Deliverable',
+			update: 'Update Deliverable'
 		};
 		$scope.action = 'select';
 
-		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-projects-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Deliverable" && e.view === "Deliverable" && e.type === "entity");
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-projects:codbex-projects-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadSelect', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadCreate', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-projects:codbex-projects-model.defaults.formHeadUpdate', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-projects:codbex-projects-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-projects:codbex-projects-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)' });
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		//-----------------Custom Actions-------------------//
+		Extensions.getWindows(['codbex-projects-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Deliverable' && e.view === 'Deliverable' && e.type === 'entity');
+		});
+
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Deliverable.Deliverable.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsProject = [];
 				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Deliverable.Deliverable.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsProject = data.optionsProject;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Deliverable.Deliverable.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsProject = data.optionsProject;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsProject = msg.data.optionsProject;
-				$scope.optionsStatus = msg.data.optionsStatus;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-projects.Deliverable.Deliverable.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsProject = data.optionsProject;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
-		$scope.serviceProject = "/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts";
-		$scope.serviceStatus = "/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts";
+		$scope.serviceProject = '/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts';
+		$scope.serviceStatus = '/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts';
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Deliverable", `Unable to create Deliverable: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Deliverable", "Deliverable successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-projects.Deliverable.Deliverable.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-projects.Deliverable.Deliverable.clearDetails' , data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.DELIVERABLE'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.DELIVERABLE'),
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToCreate', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Deliverable", `Unable to update Deliverable: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Deliverable", "Deliverable successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-projects.Deliverable.Deliverable.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-projects.Deliverable.Deliverable.clearDetails', data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.DELIVERABLE'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-projects:codbex-projects-model.t.DELIVERABLE'),
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToCreate', { name: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-projects.Deliverable.Deliverable.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
-		
-		$scope.createProject = function () {
-			messageHub.showDialogWindow("Project-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: description,
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
 		};
-		$scope.createStatus = function () {
-			messageHub.showDialogWindow("StatusType-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		
+		$scope.createProject = () => {
+			Dialogs.showWindow({
+				id: 'Project-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
+		};
+		$scope.createStatus = () => {
+			Dialogs.showWindow({
+				id: 'StatusType-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
 
 		//-----------------Dialogs-------------------//
@@ -127,30 +166,40 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshProject = function () {
+		$scope.refreshProject = () => {
 			$scope.optionsProject = [];
-			$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts").then(function (response) {
-				$scope.optionsProject = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-projects/gen/codbex-projects/api/Project/ProjectService.ts').then((response) => {
+				$scope.optionsProject = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Project',
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshStatus = function () {
+		$scope.refreshStatus = () => {
 			$scope.optionsStatus = [];
-			$http.get("/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts").then(function (response) {
-				$scope.optionsStatus = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-projects/gen/codbex-projects/api/Settings/StatusTypeService.ts').then((response) => {
+				$scope.optionsStatus = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Status',
+					message: LocaleService.t('codbex-projects:codbex-projects-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

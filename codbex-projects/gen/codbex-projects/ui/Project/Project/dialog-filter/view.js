@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Project-filter",
-    label: "Project Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/dialog-filter/index.html",
-    perspectiveName: "Project"
+    id: 'Project-filter',
+    label: 'Project Filter',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.extName',
+        options: {
+            content: '$t(codbex-projects:codbex-projects-model.t.PROJECT) $t(codbex-projects:codbex-projects-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/dialog-filter/index.html',
+    perspectiveName: 'Project'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

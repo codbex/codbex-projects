@@ -1,0 +1,6 @@
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Settings/ExpenseCategory/dialog-filter/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-projects - Application Dialog Window",
+    "role": "codbex-projects.Settings.ExpenseCategoryReadOnly,codbex-projects.Settings.ExpenseCategoryFullAccess"
+}

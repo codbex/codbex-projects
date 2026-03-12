@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
+import { Controller, Get, Post, Put, Delete, request, response } from "@aerokit/sdk/http"
+import { Extensions } from "@aerokit/sdk/extensions"
 import { ResourceTypeRepository, ResourceTypeEntityOptions } from "../../dao/Settings/ResourceTypeRepository";
-import { user } from "sdk/security"
+import { user } from "@aerokit/sdk/security"
 import { ForbiddenError } from "../utils/ForbiddenError";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
@@ -19,19 +19,9 @@ class ResourceTypeService {
             this.checkPermissions("read");
             const options: ResourceTypeEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().split("_")[0]
             };
-
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
-
-            if (${masterEntityId} !== undefined) {
-                options.$filter = {
-                    equals: {
-                        ${masterEntityId}: ${masterEntityId}
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -57,7 +47,7 @@ class ResourceTypeService {
     public count() {
         try {
             this.checkPermissions("read");
-            return this.repository.count();
+            return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -67,7 +57,7 @@ class ResourceTypeService {
     public countWithFilter(filter: any) {
         try {
             this.checkPermissions("read");
-            return this.repository.count(filter);
+            return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -88,7 +78,10 @@ class ResourceTypeService {
         try {
             this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: ResourceTypeEntityOptions = {
+                $language: request.getLocale().split("_")[0]
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

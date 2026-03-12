@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface MilestoneDeliverableEntity {
@@ -95,12 +95,13 @@ export interface MilestoneDeliverableEntityOptions {
     },
     $select?: (keyof MilestoneDeliverableEntity)[],
     $sort?: string | (keyof MilestoneDeliverableEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface MilestoneDeliverableEntityEvent {
+export interface MilestoneDeliverableEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<MilestoneDeliverableEntity>;
@@ -111,7 +112,7 @@ interface MilestoneDeliverableEntityEvent {
     }
 }
 
-interface MilestoneDeliverableUpdateEntityEvent extends MilestoneDeliverableEntityEvent {
+export interface MilestoneDeliverableUpdateEntityEvent extends MilestoneDeliverableEntityEvent {
     readonly previousEntity: MilestoneDeliverableEntity;
 }
 
@@ -163,18 +164,19 @@ export class MilestoneDeliverableRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(MilestoneDeliverableRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(MilestoneDeliverableRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: MilestoneDeliverableEntityOptions): MilestoneDeliverableEntity[] {
-        return this.dao.list(options).map((e: MilestoneDeliverableEntity) => {
+    public findAll(options: MilestoneDeliverableEntityOptions = {}): MilestoneDeliverableEntity[] {
+        let list = this.dao.list(options).map((e: MilestoneDeliverableEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): MilestoneDeliverableEntity | undefined {
+    public findById(id: number, options: MilestoneDeliverableEntityOptions = {}): MilestoneDeliverableEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "StartDate");
         EntityUtils.setDate(entity, "EndDate");

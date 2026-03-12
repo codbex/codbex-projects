@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Deliverable",
-    label: "Deliverable",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/index.html",
-    perspectiveName: "Deliverable"
+    id: 'Deliverable',
+    label: 'Deliverable',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.DELIVERABLE',
+    },
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/index.html',
+    perspectiveName: 'Deliverable'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }
