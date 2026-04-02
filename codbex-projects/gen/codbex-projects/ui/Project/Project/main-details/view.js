@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Project-details",
-    label: "Project",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/main-details/index.html",
-    perspectiveName: "Project"
+    id: 'Project-details',
+    label: 'Project',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.PROJECT',
+    },
+    region: 'center',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/main-details/index.html',
+    perspectiveName: 'Project'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

@@ -1,6 +1,6 @@
 {
-    "module": "{{projectName}}/gen/{{genFolderName}}/ui/{{perspectiveName}}/{{name}}/dialog-window/view.js",
-    "extensionPoint": "dialog-window",
-    "description": "{{projectName}} - Application Dialog Window",
+    "module": "codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-window/view.js",
+    "extensionPoint": "application-windows",
+    "description": "codbex-projects - Application Dialog Window",
     "role": "codbex-projects.Deliverable.DeliverableReadOnly,codbex-projects.Deliverable.DeliverableFullAccess"
 }

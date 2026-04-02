@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface BudgetEntity {
@@ -104,12 +104,13 @@ export interface BudgetEntityOptions {
     },
     $select?: (keyof BudgetEntity)[],
     $sort?: string | (keyof BudgetEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface BudgetEntityEvent {
+export interface BudgetEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<BudgetEntity>;
@@ -120,7 +121,7 @@ interface BudgetEntityEvent {
     }
 }
 
-interface BudgetUpdateEntityEvent extends BudgetEntityEvent {
+export interface BudgetUpdateEntityEvent extends BudgetEntityEvent {
     readonly previousEntity: BudgetEntity;
 }
 
@@ -182,17 +183,18 @@ export class BudgetRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(BudgetRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(BudgetRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: BudgetEntityOptions): BudgetEntity[] {
-        return this.dao.list(options).map((e: BudgetEntity) => {
+    public findAll(options: BudgetEntityOptions = {}): BudgetEntity[] {
+        let list = this.dao.list(options).map((e: BudgetEntity) => {
             EntityUtils.setBoolean(e, "Approval");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): BudgetEntity | undefined {
+    public findById(id: number, options: BudgetEntityOptions = {}): BudgetEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setBoolean(entity, "Approval");
         return entity ?? undefined;

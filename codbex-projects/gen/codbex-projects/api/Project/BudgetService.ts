@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
-import { Extensions } from "sdk/extensions"
+import { Controller, Get, Post, Put, Delete, request, response } from "@aerokit/sdk/http"
+import { Extensions } from "@aerokit/sdk/extensions"
 import { BudgetRepository, BudgetEntityOptions } from "../../dao/Project/BudgetRepository";
-import { user } from "sdk/security"
+import { user } from "@aerokit/sdk/security"
 import { ForbiddenError } from "../utils/ForbiddenError";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
@@ -19,7 +19,8 @@ class BudgetService {
             this.checkPermissions("read");
             const options: BudgetEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().split("_")[0]
             };
 
             let Project = parseInt(ctx.queryParameters.Project);
@@ -57,7 +58,7 @@ class BudgetService {
     public count() {
         try {
             this.checkPermissions("read");
-            return this.repository.count();
+            return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -67,7 +68,7 @@ class BudgetService {
     public countWithFilter(filter: any) {
         try {
             this.checkPermissions("read");
-            return this.repository.count(filter);
+            return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
         }
@@ -88,7 +89,10 @@ class BudgetService {
         try {
             this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: BudgetEntityOptions = {
+                $language: request.getLocale().split("_")[0]
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

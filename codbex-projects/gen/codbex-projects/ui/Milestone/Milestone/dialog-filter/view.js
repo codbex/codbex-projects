@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Milestone-filter",
-    label: "Milestone Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/dialog-filter/index.html",
-    perspectiveName: "Milestone"
+    id: 'Milestone-filter',
+    label: 'Milestone Filter',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.extName',
+        options: {
+            content: '$t(codbex-projects:codbex-projects-model.t.MILESTONE) $t(codbex-projects:codbex-projects-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/dialog-filter/index.html',
+    perspectiveName: 'Milestone'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface StatusTypeEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface StatusTypeEntityOptions {
     },
     $select?: (keyof StatusTypeEntity)[],
     $sort?: string | (keyof StatusTypeEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface StatusTypeEntityEvent {
+export interface StatusTypeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<StatusTypeEntity>;
@@ -65,7 +66,7 @@ interface StatusTypeEntityEvent {
     }
 }
 
-interface StatusTypeUpdateEntityEvent extends StatusTypeEntityEvent {
+export interface StatusTypeUpdateEntityEvent extends StatusTypeEntityEvent {
     readonly previousEntity: StatusTypeEntity;
 }
 
@@ -93,14 +94,15 @@ export class StatusTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(StatusTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(StatusTypeRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: StatusTypeEntityOptions): StatusTypeEntity[] {
-        return this.dao.list(options);
+    public findAll(options: StatusTypeEntityOptions = {}): StatusTypeEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): StatusTypeEntity | undefined {
+    public findById(id: number, options: StatusTypeEntityOptions = {}): StatusTypeEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

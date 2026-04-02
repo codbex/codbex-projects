@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface ResourceEntity {
     readonly Id: number;
@@ -94,12 +94,13 @@ export interface ResourceEntityOptions {
     },
     $select?: (keyof ResourceEntity)[],
     $sort?: string | (keyof ResourceEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ResourceEntityEvent {
+export interface ResourceEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ResourceEntity>;
@@ -110,7 +111,7 @@ interface ResourceEntityEvent {
     }
 }
 
-interface ResourceUpdateEntityEvent extends ResourceEntityEvent {
+export interface ResourceUpdateEntityEvent extends ResourceEntityEvent {
     readonly previousEntity: ResourceEntity;
 }
 
@@ -167,14 +168,15 @@ export class ResourceRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ResourceRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ResourceRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ResourceEntityOptions): ResourceEntity[] {
-        return this.dao.list(options);
+    public findAll(options: ResourceEntityOptions = {}): ResourceEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ResourceEntity | undefined {
+    public findById(id: number, options: ResourceEntityOptions = {}): ResourceEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

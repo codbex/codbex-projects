@@ -1,5 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Milestone/perspective.js",
-    "extensionPoint": "codbex-projects",
-    "description": "codbex-projects - Perspective - Milestone"
+    "extensionPoint": "application-perspectives",
+    "description": "codbex-projects - Perspective - Milestone",
+    "role": "codbex-projects.Milestone.MilestoneReadOnly,codbex-projects.Milestone.MilestoneFullAccess"
 }

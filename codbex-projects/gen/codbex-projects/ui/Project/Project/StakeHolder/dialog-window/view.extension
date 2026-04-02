@@ -1,6 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Project/Project/StakeHolder/dialog-window/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-projects - Application Dialog Window",
     "role": "codbex-projects.Project.StakeHolderReadOnly,codbex-projects.Project.StakeHolderFullAccess"
 }

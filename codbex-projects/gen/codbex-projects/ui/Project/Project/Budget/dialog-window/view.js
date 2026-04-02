@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Budget-details",
-    label: "Budget",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Budget/dialog-window/index.html",
-    perspectiveName: "Project"
+    id: 'Budget-details',
+    label: 'Budget',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.BUDGET',
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Budget/dialog-window/index.html',
+    perspectiveName: 'Project'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

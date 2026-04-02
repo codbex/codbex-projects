@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface StakeHolderEntity {
     readonly Id: number;
@@ -67,12 +67,13 @@ export interface StakeHolderEntityOptions {
     },
     $select?: (keyof StakeHolderEntity)[],
     $sort?: string | (keyof StakeHolderEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface StakeHolderEntityEvent {
+export interface StakeHolderEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<StakeHolderEntity>;
@@ -83,7 +84,7 @@ interface StakeHolderEntityEvent {
     }
 }
 
-interface StakeHolderUpdateEntityEvent extends StakeHolderEntityEvent {
+export interface StakeHolderUpdateEntityEvent extends StakeHolderEntityEvent {
     readonly previousEntity: StakeHolderEntity;
 }
 
@@ -123,14 +124,15 @@ export class StakeHolderRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(StakeHolderRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(StakeHolderRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: StakeHolderEntityOptions): StakeHolderEntity[] {
-        return this.dao.list(options);
+    public findAll(options: StakeHolderEntityOptions = {}): StakeHolderEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): StakeHolderEntity | undefined {
+    public findById(id: number, options: StakeHolderEntityOptions = {}): StakeHolderEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface ExpenseCategoryEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface ExpenseCategoryEntityOptions {
     },
     $select?: (keyof ExpenseCategoryEntity)[],
     $sort?: string | (keyof ExpenseCategoryEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ExpenseCategoryEntityEvent {
+export interface ExpenseCategoryEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ExpenseCategoryEntity>;
@@ -65,7 +66,7 @@ interface ExpenseCategoryEntityEvent {
     }
 }
 
-interface ExpenseCategoryUpdateEntityEvent extends ExpenseCategoryEntityEvent {
+export interface ExpenseCategoryUpdateEntityEvent extends ExpenseCategoryEntityEvent {
     readonly previousEntity: ExpenseCategoryEntity;
 }
 
@@ -93,14 +94,15 @@ export class ExpenseCategoryRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ExpenseCategoryRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ExpenseCategoryRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ExpenseCategoryEntityOptions): ExpenseCategoryEntity[] {
-        return this.dao.list(options);
+    public findAll(options: ExpenseCategoryEntityOptions = {}): ExpenseCategoryEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ExpenseCategoryEntity | undefined {
+    public findById(id: number, options: ExpenseCategoryEntityOptions = {}): ExpenseCategoryEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

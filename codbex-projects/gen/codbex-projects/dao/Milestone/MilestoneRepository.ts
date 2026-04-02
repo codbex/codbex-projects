@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface MilestoneEntity {
@@ -68,12 +68,13 @@ export interface MilestoneEntityOptions {
     },
     $select?: (keyof MilestoneEntity)[],
     $sort?: string | (keyof MilestoneEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface MilestoneEntityEvent {
+export interface MilestoneEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<MilestoneEntity>;
@@ -84,7 +85,7 @@ interface MilestoneEntityEvent {
     }
 }
 
-interface MilestoneUpdateEntityEvent extends MilestoneEntityEvent {
+export interface MilestoneUpdateEntityEvent extends MilestoneEntityEvent {
     readonly previousEntity: MilestoneEntity;
 }
 
@@ -121,17 +122,18 @@ export class MilestoneRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(MilestoneRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(MilestoneRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: MilestoneEntityOptions): MilestoneEntity[] {
-        return this.dao.list(options).map((e: MilestoneEntity) => {
+    public findAll(options: MilestoneEntityOptions = {}): MilestoneEntity[] {
+        let list = this.dao.list(options).map((e: MilestoneEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): MilestoneEntity | undefined {
+    public findById(id: number, options: MilestoneEntityOptions = {}): MilestoneEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;

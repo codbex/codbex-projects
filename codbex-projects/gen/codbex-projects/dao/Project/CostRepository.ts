@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface CostEntity {
@@ -104,12 +104,13 @@ export interface CostEntityOptions {
     },
     $select?: (keyof CostEntity)[],
     $sort?: string | (keyof CostEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface CostEntityEvent {
+export interface CostEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<CostEntity>;
@@ -120,7 +121,7 @@ interface CostEntityEvent {
     }
 }
 
-interface CostUpdateEntityEvent extends CostEntityEvent {
+export interface CostUpdateEntityEvent extends CostEntityEvent {
     readonly previousEntity: CostEntity;
 }
 
@@ -182,18 +183,19 @@ export class CostRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CostRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CostRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: CostEntityOptions): CostEntity[] {
-        return this.dao.list(options).map((e: CostEntity) => {
+    public findAll(options: CostEntityOptions = {}): CostEntity[] {
+        let list = this.dao.list(options).map((e: CostEntity) => {
             EntityUtils.setDate(e, "CommitmentDate");
             EntityUtils.setBoolean(e, "Approval");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): CostEntity | undefined {
+    public findById(id: number, options: CostEntityOptions = {}): CostEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "CommitmentDate");
         EntityUtils.setBoolean(entity, "Approval");

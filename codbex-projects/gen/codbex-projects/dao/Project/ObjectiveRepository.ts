@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface ObjectiveEntity {
     readonly Id: number;
@@ -67,12 +67,13 @@ export interface ObjectiveEntityOptions {
     },
     $select?: (keyof ObjectiveEntity)[],
     $sort?: string | (keyof ObjectiveEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ObjectiveEntityEvent {
+export interface ObjectiveEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ObjectiveEntity>;
@@ -83,7 +84,7 @@ interface ObjectiveEntityEvent {
     }
 }
 
-interface ObjectiveUpdateEntityEvent extends ObjectiveEntityEvent {
+export interface ObjectiveUpdateEntityEvent extends ObjectiveEntityEvent {
     readonly previousEntity: ObjectiveEntity;
 }
 
@@ -121,14 +122,15 @@ export class ObjectiveRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ObjectiveRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ObjectiveRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ObjectiveEntityOptions): ObjectiveEntity[] {
-        return this.dao.list(options);
+    public findAll(options: ObjectiveEntityOptions = {}): ObjectiveEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ObjectiveEntity | undefined {
+    public findById(id: number, options: ObjectiveEntityOptions = {}): ObjectiveEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

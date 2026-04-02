@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Constrain-details",
-    label: "Constrain",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Constrain/dialog-window/index.html",
-    perspectiveName: "Project"
+    id: 'Constrain-details',
+    label: 'Constrain',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.CONSTRAIN',
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Constrain/dialog-window/index.html',
+    perspectiveName: 'Project'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

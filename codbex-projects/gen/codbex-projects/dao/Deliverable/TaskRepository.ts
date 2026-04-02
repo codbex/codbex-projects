@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface TaskEntity {
@@ -95,12 +95,13 @@ export interface TaskEntityOptions {
     },
     $select?: (keyof TaskEntity)[],
     $sort?: string | (keyof TaskEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface TaskEntityEvent {
+export interface TaskEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<TaskEntity>;
@@ -111,7 +112,7 @@ interface TaskEntityEvent {
     }
 }
 
-interface TaskUpdateEntityEvent extends TaskEntityEvent {
+export interface TaskUpdateEntityEvent extends TaskEntityEvent {
     readonly previousEntity: TaskEntity;
 }
 
@@ -168,18 +169,19 @@ export class TaskRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(TaskRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(TaskRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: TaskEntityOptions): TaskEntity[] {
-        return this.dao.list(options).map((e: TaskEntity) => {
+    public findAll(options: TaskEntityOptions = {}): TaskEntity[] {
+        let list = this.dao.list(options).map((e: TaskEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): TaskEntity | undefined {
+    public findById(id: number, options: TaskEntityOptions = {}): TaskEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "StartDate");
         EntityUtils.setDate(entity, "EndDate");

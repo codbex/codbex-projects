@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Deliverable-filter",
-    label: "Deliverable Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-filter/index.html",
-    perspectiveName: "Deliverable"
+    id: 'Deliverable-filter',
+    label: 'Deliverable Filter',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.extName',
+        options: {
+            content: '$t(codbex-projects:codbex-projects-model.t.DELIVERABLE) $t(codbex-projects:codbex-projects-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-filter/index.html',
+    perspectiveName: 'Deliverable'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

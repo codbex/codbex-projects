@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Task-filter",
-    label: "Task Filter",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/dialog-filter/index.html",
-    perspectiveName: "Deliverable"
+    id: 'Task-filter',
+    label: 'Task Filter',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.extName',
+        options: {
+            content: '$t(codbex-projects:codbex-projects-model.t.TASK) $t(codbex-projects:codbex-projects-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/Task/dialog-filter/index.html',
+    perspectiveName: 'Deliverable'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }
