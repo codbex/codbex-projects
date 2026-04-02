@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface CostCategoryEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface CostCategoryEntityOptions {
     },
     $select?: (keyof CostCategoryEntity)[],
     $sort?: string | (keyof CostCategoryEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface CostCategoryEntityEvent {
+export interface CostCategoryEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<CostCategoryEntity>;
@@ -65,7 +66,7 @@ interface CostCategoryEntityEvent {
     }
 }
 
-interface CostCategoryUpdateEntityEvent extends CostCategoryEntityEvent {
+export interface CostCategoryUpdateEntityEvent extends CostCategoryEntityEvent {
     readonly previousEntity: CostCategoryEntity;
 }
 
@@ -93,14 +94,15 @@ export class CostCategoryRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CostCategoryRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CostCategoryRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: CostCategoryEntityOptions): CostCategoryEntity[] {
-        return this.dao.list(options);
+    public findAll(options: CostCategoryEntityOptions = {}): CostCategoryEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): CostCategoryEntity | undefined {
+    public findById(id: number, options: CostCategoryEntityOptions = {}): CostCategoryEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

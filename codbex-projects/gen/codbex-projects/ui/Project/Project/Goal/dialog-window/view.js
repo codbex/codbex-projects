@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Goal-details",
-    label: "Goal",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Goal/dialog-window/index.html",
-    perspectiveName: "Project"
+    id: 'Goal-details',
+    label: 'Goal',
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.GOAL',
+    },
+    path: '/services/web/codbex-projects/gen/codbex-projects/ui/Project/Project/Goal/dialog-window/index.html',
+    perspectiveName: 'Project'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

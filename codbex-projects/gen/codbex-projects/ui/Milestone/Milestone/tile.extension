@@ -1,6 +1,0 @@
-{
-    "module": "codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/tile.js",
-    "extensionPoint": "codbex-projects-tile",
-    "description": "codbex-projects - Application Tile",
-    "role": "codbex-projects.Milestone.MilestoneReadOnly,codbex-projects.Milestone.MilestoneFullAccess"
-}

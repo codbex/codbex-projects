@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface ExpenseEntity {
@@ -113,12 +113,13 @@ export interface ExpenseEntityOptions {
     },
     $select?: (keyof ExpenseEntity)[],
     $sort?: string | (keyof ExpenseEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ExpenseEntityEvent {
+export interface ExpenseEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ExpenseEntity>;
@@ -129,7 +130,7 @@ interface ExpenseEntityEvent {
     }
 }
 
-interface ExpenseUpdateEntityEvent extends ExpenseEntityEvent {
+export interface ExpenseUpdateEntityEvent extends ExpenseEntityEvent {
     readonly previousEntity: ExpenseEntity;
 }
 
@@ -197,17 +198,18 @@ export class ExpenseRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ExpenseRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ExpenseRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ExpenseEntityOptions): ExpenseEntity[] {
-        return this.dao.list(options).map((e: ExpenseEntity) => {
+    public findAll(options: ExpenseEntityOptions = {}): ExpenseEntity[] {
+        let list = this.dao.list(options).map((e: ExpenseEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): ExpenseEntity | undefined {
+    public findById(id: number, options: ExpenseEntityOptions = {}): ExpenseEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;

@@ -1,94 +1,89 @@
-angular.module('page', ["ideUI", "ideView"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-projects.Project.Cost';
-	}])
-	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controller('PageController', ($scope, ViewParameters) => {
+	const Dialogs = new DialogHub();
+	$scope.entity = {};
+	$scope.forms = {
+		details: {},
+	};
 
-		$scope.entity = {};
-		$scope.forms = {
-			details: {},
-		};
-
-		let params = ViewParameters.get();
-		if (Object.keys(params).length) {
-			if (params?.entity?.CommitmentDateFrom) {
-				params.entity.CommitmentDateFrom = new Date(params.entity.CommitmentDateFrom);
-			}
-			if (params?.entity?.CommitmentDateTo) {
-				params.entity.CommitmentDateTo = new Date(params.entity.CommitmentDateTo);
-			}
-			$scope.entity = params.entity ?? {};
-			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
-			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProject = params.optionsProject;
-			$scope.optionsCostCategory = params.optionsCostCategory;
+	let params = ViewParameters.get();
+	if (Object.keys(params).length) {
+		if (params?.entity?.CommitmentDateFrom) {
+			params.entity.CommitmentDateFrom = new Date(params.entity.CommitmentDateFrom);
 		}
+		if (params?.entity?.CommitmentDateTo) {
+			params.entity.CommitmentDateTo = new Date(params.entity.CommitmentDateTo);
+		}
+		$scope.entity = params.entity ?? {};
+		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+		$scope.selectedMainEntityId = params.selectedMainEntityId;
+		$scope.optionsProject = params.optionsProject;
+		$scope.optionsCostCategory = params.optionsCostCategory;
+	}
 
-		$scope.filter = function () {
-			let entity = $scope.entity;
-			const filter = {
-				$filter: {
-					equals: {
-					},
-					notEquals: {
-					},
-					contains: {
-					},
-					greaterThan: {
-					},
-					greaterThanOrEqual: {
-					},
-					lessThan: {
-					},
-					lessThanOrEqual: {
-					}
+	$scope.filter = () => {
+		let entity = $scope.entity;
+		const filter = {
+			$filter: {
+				equals: {
 				},
-			};
-			if (entity.Id !== undefined) {
-				filter.$filter.equals.Id = entity.Id;
-			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
-			}
-			if (entity.Project !== undefined) {
-				filter.$filter.equals.Project = entity.Project;
-			}
-			if (entity.ActualCost !== undefined) {
-				filter.$filter.equals.ActualCost = entity.ActualCost;
-			}
-			if (entity.CostCategory !== undefined) {
-				filter.$filter.equals.CostCategory = entity.CostCategory;
-			}
-			if (entity.Description) {
-				filter.$filter.contains.Description = entity.Description;
-			}
-			if (entity.CommitmentDateFrom) {
-				filter.$filter.greaterThanOrEqual.CommitmentDate = entity.CommitmentDateFrom;
-			}
-			if (entity.CommitmentDateTo) {
-				filter.$filter.lessThanOrEqual.CommitmentDate = entity.CommitmentDateTo;
-			}
-			if (entity.Approval !== undefined && entity.isApprovalIndeterminate === false) {
-				filter.$filter.equals.Approval = entity.Approval;
-			}
-			messageHub.postMessage("entitySearch", {
-				entity: entity,
-				filter: filter
-			});
-			$scope.cancel();
+				notEquals: {
+				},
+				contains: {
+				},
+				greaterThan: {
+				},
+				greaterThanOrEqual: {
+				},
+				lessThan: {
+				},
+				lessThanOrEqual: {
+				}
+			},
 		};
+		if (entity.Id !== undefined) {
+			filter.$filter.equals.Id = entity.Id;
+		}
+		if (entity.Name) {
+			filter.$filter.contains.Name = entity.Name;
+		}
+		if (entity.Project !== undefined) {
+			filter.$filter.equals.Project = entity.Project;
+		}
+		if (entity.ActualCost !== undefined) {
+			filter.$filter.equals.ActualCost = entity.ActualCost;
+		}
+		if (entity.CostCategory !== undefined) {
+			filter.$filter.equals.CostCategory = entity.CostCategory;
+		}
+		if (entity.Description) {
+			filter.$filter.contains.Description = entity.Description;
+		}
+		if (entity.CommitmentDateFrom) {
+			filter.$filter.greaterThanOrEqual.CommitmentDate = entity.CommitmentDateFrom;
+		}
+		if (entity.CommitmentDateTo) {
+			filter.$filter.lessThanOrEqual.CommitmentDate = entity.CommitmentDateTo;
+		}
+		if (entity.Approval !== undefined && entity.isApprovalIndeterminate === false) {
+			filter.$filter.equals.Approval = entity.Approval;
+		}
+		Dialogs.postMessage({ topic: 'codbex-projects.Project.Cost.entitySearch', data: {
+			entity: entity,
+			filter: filter
+		}});
+		$scope.cancel();
+	};
 
-		$scope.resetFilter = function () {
-			$scope.entity = {};
-			$scope.filter();
-		};
+	$scope.resetFilter = () => {
+		$scope.entity = {};
+		$scope.filter();
+	};
 
-		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Cost-filter");
-		};
+	$scope.cancel = () => {
+		Dialogs.closeWindow({ id: 'Cost-filter' });
+	};
 
-		$scope.clearErrorMessage = function () {
-			$scope.errorMessage = null;
-		};
-
-	}]);
+	$scope.clearErrorMessage = () => {
+		$scope.errorMessage = null;
+	};
+});

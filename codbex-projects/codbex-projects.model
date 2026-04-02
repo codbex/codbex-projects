@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "RESOURCE_ID",
                         "dataNullable": "true",
@@ -18,6 +19,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "RESOURCE_NAME",
                         "dataNullable": "false",
@@ -32,6 +34,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "RESOURCE_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -53,6 +56,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "RESOURCE_RESOURCETYPE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -72,6 +76,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "RESOURCE_RESOURCEITEM",
                         "dataNullable": "false",
@@ -86,7 +91,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "RESOURCE_QUANTITY",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -102,7 +108,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "RESOURCE_PRIZE",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -132,11 +139,13 @@
                 "menuIndex": "100",
                 "menuKey": "resource",
                 "menuLabel": "Resource",
+                "multilingual": "false",
                 "name": "Resource",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.ResourceReadOnly",
@@ -148,6 +157,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "PROJECT_ID",
                         "dataNullable": "true",
@@ -162,6 +172,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "40",
                         "dataName": "PROJECT_NAME",
                         "dataNullable": "false",
@@ -176,7 +187,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(29)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Project')",
                         "dataLength": "20",
                         "dataName": "PROJECT_NUMBER",
                         "dataNullable": "true",
@@ -191,6 +203,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "2000",
                         "dataName": "PROJECT_DESCRIPTION",
                         "dataNullable": "true",
@@ -204,6 +217,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_STARTINGDATE",
                         "dataNullable": "true",
                         "dataType": "TIMESTAMP",
@@ -217,6 +231,7 @@
                         "widgetType": "DATETIME-LOCAL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_ENDDATE",
                         "dataNullable": "false",
                         "dataType": "TIMESTAMP",
@@ -230,6 +245,7 @@
                         "widgetType": "DATETIME-LOCAL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -248,6 +264,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "PROJECT_SPONSORNAME",
                         "dataNullable": "false",
@@ -262,6 +279,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "300",
                         "dataName": "PROJECT_OPPORTUNITY",
                         "dataNullable": "false",
@@ -276,6 +294,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_SCOPE",
                         "dataNullable": "false",
@@ -290,7 +309,8 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "PROJECT_VERSION",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -305,6 +325,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "2000",
                         "dataName": "PROJECT_NOTES",
                         "dataNullable": "true",
@@ -318,6 +339,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_AGILEMETHODOLOGY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -337,6 +359,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_ITERATIONLENGHT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -356,6 +379,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_PLANNINGFREQUENCY",
                         "dataNullable": "false",
@@ -370,6 +394,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_CUSTOMERINVOLVEMENTFREQUENCY",
                         "dataNullable": "false",
@@ -384,6 +409,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_RELEASECADENCE",
                         "dataNullable": "false",
@@ -398,6 +424,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_RETROSPECTIVEFREQUENCY",
                         "dataNullable": "false",
@@ -412,6 +439,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "PROJECT_DAILYSTANDUP",
                         "dataNullable": "true",
                         "dataType": "BOOLEAN",
@@ -425,6 +453,7 @@
                         "widgetType": "CHECKBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_BACKLOGREFINEMENTFREQUENCY",
                         "dataNullable": "false",
@@ -439,6 +468,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_DEFECTMANAGEMENT",
                         "dataNullable": "false",
@@ -453,6 +483,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_DEPLOYMENTFREQUENCY",
                         "dataNullable": "false",
@@ -467,6 +498,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_TESTINGINTEGRATION",
                         "dataNullable": "false",
@@ -481,6 +513,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_STAKEHOLDERREVIEW",
                         "dataNullable": "false",
@@ -495,6 +528,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_FEATURECOMPLETIONCRITERIA",
                         "dataNullable": "false",
@@ -509,6 +543,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_DOCUMENTATIONUPDATES",
                         "dataNullable": "false",
@@ -523,6 +558,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "PROJECT_SUSTAINABLEVELOCITY",
                         "dataNullable": "false",
@@ -552,11 +588,13 @@
                 "menuIndex": "100",
                 "menuKey": "project",
                 "menuLabel": "Project",
+                "multilingual": "false",
                 "name": "Project",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.ProjectReadOnly",
@@ -568,6 +606,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "RESOURCETYPE_ID",
                         "dataNullable": "true",
@@ -582,6 +621,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "RESOURCETYPE_NAME",
                         "dataNullable": "false",
@@ -610,11 +650,13 @@
                 "menuIndex": "100",
                 "menuKey": "resourcetype",
                 "menuLabel": "ResourceType",
+                "multilingual": "false",
                 "name": "ResourceType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.ResourceTypeReadOnly",
@@ -626,6 +668,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "STATUSTYPE_ID",
                         "dataNullable": "true",
@@ -640,6 +683,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "STATUSTYPE_NAME",
                         "dataNullable": "false",
@@ -668,11 +712,13 @@
                 "menuIndex": "100",
                 "menuKey": "statustype",
                 "menuLabel": "StatusType",
+                "multilingual": "false",
                 "name": "StatusType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.StatusTypeReadOnly",
@@ -684,6 +730,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EMPLOYEE_ID",
                         "dataNullable": "true",
@@ -698,6 +745,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_FIRSTNAME",
                         "dataNullable": "true",
@@ -714,6 +762,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_MIDDLENAME",
                         "dataNullable": "true",
@@ -729,6 +778,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "EMPLOYEE_LASTNAME",
                         "dataNullable": "true",
@@ -745,6 +795,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "EMPLOYEE_EMAIL",
                         "dataNullable": "true",
@@ -761,6 +812,7 @@
                         "widgetType": "EMAIL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "EMPLOYEE_PHONE",
                         "dataNullable": "true",
@@ -777,6 +829,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EMPLOYEE_ORGANISATION",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -808,11 +861,13 @@
                 "menuIndex": "100",
                 "menuKey": "employee",
                 "menuLabel": "Employee",
+                "multilingual": "false",
                 "name": "Employee",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
                 "perspectiveLabel": "Employees",
                 "perspectiveName": "Employees",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "101",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Employee",
@@ -824,6 +879,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "BUDGET_ID",
                         "dataNullable": "true",
@@ -838,6 +894,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "BUDGET_NAME",
                         "dataNullable": "false",
@@ -852,6 +909,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "BUDGET_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -870,7 +928,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "BUDGET_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -886,7 +945,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "BUDGET_COSTESTIMATION",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -902,7 +962,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "BUDGET_CONTINGENCYRESERVES",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -918,7 +979,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "BUDGET_RESERVES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -933,6 +995,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "BUDGET_APPROVAL",
                         "dataNullable": "false",
                         "dataType": "BOOLEAN",
@@ -960,11 +1023,13 @@
                 "menuIndex": "100",
                 "menuKey": "budget",
                 "menuLabel": "Budget",
+                "multilingual": "false",
                 "name": "Budget",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.BudgetReadOnly",
@@ -976,6 +1041,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COST_ID",
                         "dataNullable": "true",
@@ -990,6 +1056,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "COST_NAME",
                         "dataNullable": "false",
@@ -1004,6 +1071,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COST_PROJECT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1025,7 +1093,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "COST_ACTUALCOST",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -1041,6 +1110,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COST_COSTCATEGORY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1060,6 +1130,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "COST_DESCRIPTION",
                         "dataNullable": "true",
@@ -1073,6 +1144,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COST_COMMITMENTDATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -1086,6 +1158,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "COST_APPROVAL",
                         "dataNullable": "true",
                         "dataType": "BOOLEAN",
@@ -1112,11 +1185,13 @@
                 "menuIndex": "100",
                 "menuKey": "cost",
                 "menuLabel": "Cost",
+                "multilingual": "false",
                 "name": "Cost",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.CostReadOnly",
@@ -1128,6 +1203,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COSTCATEGORY_ID",
                         "dataNullable": "true",
@@ -1142,6 +1218,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "COSTCATEGORY_NAME",
                         "dataNullable": "false",
@@ -1170,11 +1247,13 @@
                 "menuIndex": "100",
                 "menuKey": "costcategory",
                 "menuLabel": "CostCategory",
+                "multilingual": "false",
                 "name": "CostCategory",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.CostCategoryReadOnly",
@@ -1186,6 +1265,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "MILESTONEPERIOD_ID",
                         "dataNullable": "true",
@@ -1200,6 +1280,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "40",
                         "dataName": "MILESTONEPERIOD_NAME",
                         "dataNullable": "true",
@@ -1214,6 +1295,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "1000",
                         "dataName": "MILESTONE_DESCRIPTION",
                         "dataNullable": "true",
@@ -1227,6 +1309,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONE_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -1253,11 +1336,13 @@
                 "menuIndex": "100",
                 "menuKey": "milestone",
                 "menuLabel": "Milestone",
+                "multilingual": "false",
                 "name": "Milestone",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/arrow-break.svg",
                 "perspectiveLabel": "Milestone",
                 "perspectiveName": "Milestone",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "400",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Milestone.MilestoneReadOnly",
@@ -1269,6 +1354,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EXPENSE_ID",
                         "dataNullable": "true",
@@ -1283,6 +1369,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "EXPENSE_NAME",
                         "dataNullable": "false",
@@ -1297,6 +1384,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EXPENSE_PROJECT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1318,6 +1406,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EXPENSE_EMPLOYEE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1337,6 +1426,7 @@
                         "relationshipEntityPerspectiveLabel": "Employees"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EXPENSE_EXPENSECATEGORY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1356,6 +1446,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "EXPENSE_DESCRIPTION",
                         "dataNullable": "true",
@@ -1369,7 +1460,8 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "EXPENSE_AMOUNT",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -1385,6 +1477,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EXPENSE_DATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -1398,6 +1491,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "EXPENSE_STATUS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1431,11 +1525,13 @@
                 "menuIndex": "100",
                 "menuKey": "expense",
                 "menuLabel": "Expense",
+                "multilingual": "false",
                 "name": "Expense",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.ExpenseReadOnly",
@@ -1447,6 +1543,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "EXPENSECATEGORY_ID",
                         "dataNullable": "true",
@@ -1461,6 +1558,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "EXPENSECATEGORY_NAME",
                         "dataNullable": "false",
@@ -1489,11 +1587,13 @@
                 "menuIndex": "100",
                 "menuKey": "expensecategory",
                 "menuLabel": "ExpenseCategory",
+                "multilingual": "false",
                 "name": "ExpenseCategory",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.ExpenseCategoryReadOnly",
@@ -1505,6 +1605,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "DELIVERABLE_ID",
                         "dataNullable": "true",
@@ -1519,6 +1620,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "DELIVERABLE_NAME",
                         "dataNullable": "false",
@@ -1533,6 +1635,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "DELIVERABLE_DESCRIPTION",
                         "dataNullable": "false",
@@ -1547,6 +1650,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "DELIVERABLE_PROJECT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1568,7 +1672,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "DELIVERABLE_COSTESTIMATION",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -1584,7 +1689,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "DELIVERABLE_ACTUALCOST",
                         "dataNullable": "false",
                         "dataPrecision": "16",
@@ -1600,6 +1706,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "DELIVERABLE_STATUS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1633,11 +1740,13 @@
                 "menuIndex": "100",
                 "menuKey": "deliverable",
                 "menuLabel": "Deliverable",
+                "multilingual": "false",
                 "name": "Deliverable",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/parcel.svg",
                 "perspectiveLabel": "Deliverable",
                 "perspectiveName": "Deliverable",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Deliverable.DeliverableReadOnly",
@@ -1649,6 +1758,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "TASK_ID",
                         "dataNullable": "true",
@@ -1663,6 +1773,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "TASK_NAME",
                         "dataNullable": "false",
@@ -1677,6 +1788,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "TASK_DESCRIPTION",
                         "dataNullable": "false",
@@ -1691,6 +1803,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TASK_STARTDATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -1704,6 +1817,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TASK_ENDDATE",
                         "dataNullable": "false",
                         "dataType": "DATE",
@@ -1717,6 +1831,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TASK_STATUS",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1736,6 +1851,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TASK_DELIVERABLE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1768,11 +1884,13 @@
                 "menuIndex": "100",
                 "menuKey": "task",
                 "menuLabel": "Task",
+                "multilingual": "false",
                 "name": "Task",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/parcel.svg",
                 "perspectiveLabel": "Deliverable",
                 "perspectiveName": "Deliverable",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Deliverable.TaskReadOnly",
@@ -1784,6 +1902,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "APPROVALSTATUS_ID",
                         "dataNullable": "true",
@@ -1798,6 +1917,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "40",
                         "dataName": "APPROVALSTATUS_NAME",
                         "dataNullable": "false",
@@ -1826,11 +1946,13 @@
                 "menuIndex": "100",
                 "menuKey": "approvalstatus",
                 "menuLabel": "ApprovalStatus",
+                "multilingual": "false",
                 "name": "ApprovalStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.ApprovalStatusReadOnly",
@@ -1842,6 +1964,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "TEAMMEMBER_ID",
                         "dataNullable": "true",
@@ -1856,6 +1979,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TEAMMEMBER_PROJECT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1877,6 +2001,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TEAMMEMBER_EMPLOYEE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1896,6 +2021,7 @@
                         "relationshipEntityPerspectiveLabel": "Employees"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "TEAMMEMBER_MEMBERROLE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -1929,11 +2055,13 @@
                 "menuIndex": "100",
                 "menuKey": "teammember",
                 "menuLabel": "TeamMember",
+                "multilingual": "false",
                 "name": "TeamMember",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.TeamMemberReadOnly",
@@ -1945,6 +2073,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "MEMBERROLE_ID",
                         "dataNullable": "true",
@@ -1959,6 +2088,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "MEMBERROLE_NAME",
                         "dataNullable": "false",
@@ -1987,11 +2117,13 @@
                 "menuIndex": "100",
                 "menuKey": "memberrole",
                 "menuLabel": "MemberRole",
+                "multilingual": "false",
                 "name": "MemberRole",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.MemberRoleReadOnly",
@@ -2003,6 +2135,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "GOAL_ID",
                         "dataNullable": "true",
@@ -2017,6 +2150,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "GOAL_NAME",
                         "dataNullable": "false",
@@ -2031,6 +2165,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "GOAL_DESCRIPTION",
                         "dataNullable": "false",
@@ -2045,6 +2180,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "GOAL_IMPORTANCE",
                         "dataNullable": "true",
@@ -2058,6 +2194,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "GOAL_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2090,11 +2227,13 @@
                 "menuIndex": "100",
                 "menuKey": "goal",
                 "menuLabel": "Goal",
+                "multilingual": "false",
                 "name": "Goal",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.GoalReadOnly",
@@ -2106,6 +2245,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OBJECTIVE_ID",
                         "dataNullable": "true",
@@ -2120,6 +2260,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "OBJECTIVE_NAME",
                         "dataNullable": "true",
@@ -2134,6 +2275,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "OBJECTIVE_DESCRIPTION",
                         "dataNullable": "false",
@@ -2148,6 +2290,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OBJECTIVE_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2180,11 +2323,13 @@
                 "menuIndex": "100",
                 "menuKey": "objective",
                 "menuLabel": "Objective",
+                "multilingual": "false",
                 "name": "Objective",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.ObjectiveReadOnly",
@@ -2196,6 +2341,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CONSTRAIN_ID",
                         "dataNullable": "true",
@@ -2210,6 +2356,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "CONSTRAIN_NAME",
                         "dataNullable": "false",
@@ -2224,6 +2371,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "200",
                         "dataName": "CONSTRAIN_DESCRIPTION",
                         "dataNullable": "false",
@@ -2238,6 +2386,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CONSTRAIN_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2270,11 +2419,13 @@
                 "menuIndex": "100",
                 "menuKey": "constrain",
                 "menuLabel": "Constrain",
+                "multilingual": "false",
                 "name": "Constrain",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.ConstrainReadOnly",
@@ -2286,6 +2437,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "AGILEMETHODOLOGY_ID",
                         "dataNullable": "true",
@@ -2300,6 +2452,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "AGILEMETHODOLOGY_NAME",
                         "dataNullable": "false",
@@ -2328,11 +2481,13 @@
                 "menuIndex": "100",
                 "menuKey": "agilemethodology",
                 "menuLabel": "AgileMethodology",
+                "multilingual": "false",
                 "name": "AgileMethodology",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.AgileMethodologyReadOnly",
@@ -2344,6 +2499,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "STAKEHOLDERTYPE_ID",
                         "dataNullable": "true",
@@ -2358,6 +2514,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "STAKEHOLDERTYPE_NAME",
                         "dataNullable": "false",
@@ -2386,11 +2543,13 @@
                 "menuIndex": "100",
                 "menuKey": "stakeholdertype",
                 "menuLabel": "StakeHolderType",
+                "multilingual": "false",
                 "name": "StakeHolderType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.StakeHolderTypeReadOnly",
@@ -2402,6 +2561,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "STAKEHOLDER_ID",
                         "dataNullable": "true",
@@ -2416,6 +2576,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "30",
                         "dataName": "STAKEHOLDER_NAME",
                         "dataNullable": "false",
@@ -2430,6 +2591,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "STAKEHOLDER_STAKEHOLDERTYPE",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -2449,6 +2611,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "STAKEHOLDER_PROJECT",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -2484,11 +2647,13 @@
                 "menuIndex": "100",
                 "menuKey": "stakeholder",
                 "menuLabel": "StakeHolder",
+                "multilingual": "false",
                 "name": "StakeHolder",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/pen.svg",
                 "perspectiveLabel": "Project",
                 "perspectiveName": "Project",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Project.StakeHolderReadOnly",
@@ -2500,6 +2665,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "ITERATIONLENGHT_ID",
                         "dataNullable": "true",
@@ -2514,6 +2680,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "ITERATIONLENGHT_PERIOD",
                         "dataNullable": "false",
@@ -2528,6 +2695,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "ITERATIONLENGHT_AGILEMETHODOLOGY",
                         "dataNullable": "false",
                         "dataType": "INTEGER",
@@ -2561,11 +2729,13 @@
                 "menuIndex": "100",
                 "menuKey": "iterationlenght",
                 "menuLabel": "IterationLenght",
+                "multilingual": "false",
                 "name": "IterationLenght",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Settings.IterationLenghtReadOnly",
@@ -2577,6 +2747,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "MILESTONEDELIVERABLE_ID",
                         "dataNullable": "true",
@@ -2591,6 +2762,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONEDELIVERABLE_MILESTONE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2609,6 +2781,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "MILESTONEDELIVERABLE_DESCRIPTION",
                         "dataNullable": "true",
@@ -2622,6 +2795,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONEDELIVERABLE_PROJECT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2640,6 +2814,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONEDELIVERABLE_DELIVERABLE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2658,6 +2833,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONEDELIVERABLE_STARTDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -2670,6 +2846,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "MILESTONEDELIVERABLE_ENDDATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -2696,11 +2873,13 @@
                 "menuIndex": "100",
                 "menuKey": "milestonedeliverable",
                 "menuLabel": "MilestoneDeliverable",
+                "multilingual": "false",
                 "name": "MilestoneDeliverable",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/arrow-break.svg",
                 "perspectiveLabel": "Milestone",
                 "perspectiveName": "Milestone",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "400",
                 "perspectiveRole": "",
                 "roleRead": "codbex-projects.Milestone.MilestoneDeliverableReadOnly",
@@ -2715,29 +2894,25 @@
                 "name": "Project",
                 "label": "Project",
                 "icon": "/services/web/resources/unicons/pen.svg",
-                "order": "100",
-                "role": {}
+                "order": "100"
             },
             {
                 "name": "Deliverable",
                 "label": "Deliverable",
                 "icon": "/services/web/resources/unicons/parcel.svg",
-                "order": "200",
-                "role": {}
+                "order": "200"
             },
             {
                 "name": "Settings",
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/wrench.svg",
-                "order": "999",
-                "role": {}
+                "order": "999"
             },
             {
                 "name": "Milestone",
                 "label": "Milestone",
                 "icon": "/services/web/resources/unicons/arrow-break.svg",
-                "order": "400",
-                "role": {}
+                "order": "400"
             }
         ],
         "navigations": []

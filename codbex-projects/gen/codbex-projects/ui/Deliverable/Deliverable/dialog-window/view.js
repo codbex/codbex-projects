@@ -6,15 +6,15 @@
 const viewData = {
     id: "Deliverable-details",
     label: "Deliverable",
-    link: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-window/index.html",
+    translation: {
+        key: 'codbex-projects:codbex-projects-model.t.DELIVERABLE',
+    },
+    path: "/services/web/codbex-projects/gen/codbex-projects/ui/Deliverable/Deliverable/dialog-window/index.html",
     perspectiveName: "Deliverable",
     roles: [
         "codbex-projects.Deliverable.DeliverableReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

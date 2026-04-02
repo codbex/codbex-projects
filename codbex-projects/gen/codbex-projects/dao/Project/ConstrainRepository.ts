@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface ConstrainEntity {
     readonly Id: number;
@@ -67,12 +67,13 @@ export interface ConstrainEntityOptions {
     },
     $select?: (keyof ConstrainEntity)[],
     $sort?: string | (keyof ConstrainEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface ConstrainEntityEvent {
+export interface ConstrainEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ConstrainEntity>;
@@ -83,7 +84,7 @@ interface ConstrainEntityEvent {
     }
 }
 
-interface ConstrainUpdateEntityEvent extends ConstrainEntityEvent {
+export interface ConstrainUpdateEntityEvent extends ConstrainEntityEvent {
     readonly previousEntity: ConstrainEntity;
 }
 
@@ -122,14 +123,15 @@ export class ConstrainRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ConstrainRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ConstrainRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ConstrainEntityOptions): ConstrainEntity[] {
-        return this.dao.list(options);
+    public findAll(options: ConstrainEntityOptions = {}): ConstrainEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ConstrainEntity | undefined {
+    public findById(id: number, options: ConstrainEntityOptions = {}): ConstrainEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

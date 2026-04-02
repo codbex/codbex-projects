@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface AgileMethodologyEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface AgileMethodologyEntityOptions {
     },
     $select?: (keyof AgileMethodologyEntity)[],
     $sort?: string | (keyof AgileMethodologyEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface AgileMethodologyEntityEvent {
+export interface AgileMethodologyEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<AgileMethodologyEntity>;
@@ -65,7 +66,7 @@ interface AgileMethodologyEntityEvent {
     }
 }
 
-interface AgileMethodologyUpdateEntityEvent extends AgileMethodologyEntityEvent {
+export interface AgileMethodologyUpdateEntityEvent extends AgileMethodologyEntityEvent {
     readonly previousEntity: AgileMethodologyEntity;
 }
 
@@ -93,14 +94,15 @@ export class AgileMethodologyRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(AgileMethodologyRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(AgileMethodologyRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: AgileMethodologyEntityOptions): AgileMethodologyEntity[] {
-        return this.dao.list(options);
+    public findAll(options: AgileMethodologyEntityOptions = {}): AgileMethodologyEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): AgileMethodologyEntity | undefined {
+    public findById(id: number, options: AgileMethodologyEntityOptions = {}): AgileMethodologyEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

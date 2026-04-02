@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface GoalEntity {
     readonly Id: number;
@@ -76,12 +76,13 @@ export interface GoalEntityOptions {
     },
     $select?: (keyof GoalEntity)[],
     $sort?: string | (keyof GoalEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface GoalEntityEvent {
+export interface GoalEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<GoalEntity>;
@@ -92,7 +93,7 @@ interface GoalEntityEvent {
     }
 }
 
-interface GoalUpdateEntityEvent extends GoalEntityEvent {
+export interface GoalUpdateEntityEvent extends GoalEntityEvent {
     readonly previousEntity: GoalEntity;
 }
 
@@ -136,14 +137,15 @@ export class GoalRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(GoalRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(GoalRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: GoalEntityOptions): GoalEntity[] {
-        return this.dao.list(options);
+    public findAll(options: GoalEntityOptions = {}): GoalEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): GoalEntity | undefined {
+    public findById(id: number, options: GoalEntityOptions = {}): GoalEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

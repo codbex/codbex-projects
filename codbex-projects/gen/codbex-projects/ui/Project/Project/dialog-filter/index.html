@@ -2,527 +2,485 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="page" ng-controller="PageController">
 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
-        <title dg-brand-title></title>
-        <theme></theme>
-        <script type="text/javascript"
-            src="/services/js/resources-core/services/loader.js?id=application-view-js"></script>
-        <link type="text/css" rel="stylesheet"
-            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
-
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title config-title></title>
+        <script type="text/javascript" src="view.js"></script>
+        <meta name="platform-links" category="ng-view">
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
-    <body class="dg-vbox">
-        <fd-scrollbar class="dg-full-height">
-            <div class="fd-margin--md fd-message-strip fd-message-strip--error fd-message-strip--dismissible"
-                role="alert" ng-show="errorMessage">
-                <p class="fd-message-strip__text">{{ errorMessage }}</p>
-                <fd-button glyph="sap-icon--decline" compact="true" dg-type="transparent" aria-label="Close" in-msg-strip="true" ng-click="clearErrorMessage()">
-		        </fd-button>
-            </div>
+    <body class="bk-vbox">
+        <bk-scrollbar class="bk-full-height">
+			<bk-message-strip class="fd-margin--md" ng-show="errorMessage" glyph="sap-icon--message-error" state="error" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
 
-            <fd-fieldset ng-form="forms.details">
-                <fd-form-group dg-header="Project Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
-                    <fd-form-item class="fd-row">
+            <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
+                <bk-form-group label="{{ 'codbex-projects:codbex-projects-model.defaults.formGrpFilter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idName" dg-colon="true">Name</fd-form-label>
+                        	<bk-form-label for="idName" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_NAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Name'].$valid }}">
-	                            <fd-input id="idName"
+							<bk-form-input-message state="{{ forms.details['Name'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idName"
 	                                name="Name"
 	                                state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.Name"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="40.0 || -1"
+									ng-maxlength="40.0"
 	                                type="text"
-	                                placeholder="Enter Name">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_NAME)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idNumber" dg-colon="true">Number</fd-form-label>
+                        	<bk-form-label for="idNumber" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_NUMBER' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Number'].$valid }}">
-	                            <fd-input id="idNumber"
+							<bk-form-input-message state="{{ forms.details['Number'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idNumber"
 	                                name="Number"
 	                                state="{{ forms.details['Number'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.Number"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+									ng-maxlength="20.0"
 	                                type="text"
-	                                placeholder="Enter Number">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_NUMBER)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-					<fd-form-item class="fd-row">
+                    </bk-form-item>
+					<bk-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idDescription" dg-colon="true">Description</fd-form-label>
+							<bk-form-label for="idDescription" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_DESCRIPTION' | t }}</bk-form-label>
 						</div>
 						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idDescription"
-								name="Description"
-								state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
-								ng-model="entity.Description"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="2000.0 || -1"
-								placeholder="Enter Description">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Description'].$valid">Incorrect Input</fd-form-message>
+							<bk-form-input-message state="{{ forms.details['Description'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-textarea id="idDescription"
+									name="Description"
+									state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+									ng-model="entity.Description"
+									ng-maxlength="2000.0"
+									placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_DESCRIPTION)'} }}">
+								</bk-textarea>
+							</bk-form-input-message>
 						</div>
-					</fd-form-item>
-                    <fd-form-item class="fd-row">
+					</bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStartingDateFrom" dg-colon="true">From StartingDate</fd-form-label>
+                        	<bk-form-label for="idStartingDateFrom" colon="true">{{ 'codbex-projects:codbex-projects-model.defaults.from' | t:{'text':'$t(codbex-projects:codbex-projects-model.t.PROJECT_STARTINGDATE)'} }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['StartingDate'].$valid }}">
-	                            <fd-input id="idStartingDateFrom"
+							<bk-form-input-message state="{{ forms.details['StartingDate'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idStartingDateFrom"
 	                                name="StartingDate"
 	                                state="{{ forms.details['StartingDate'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.StartingDateFrom"
 	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStartingDateTo" dg-colon="true">To StartingDate</fd-form-label>
+                        	<bk-form-label for="idStartingDateTo" colon="true">{{ 'codbex-projects:codbex-projects-model.defaults.to' | t:{'text':'$t(codbex-projects:codbex-projects-model.t.PROJECT_STARTINGDATE)'} }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['StartingDate'].$valid }}">
-	                            <fd-input id="idStartingDateTo"
+							<bk-form-input-message state="{{ forms.details['StartingDate'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idStartingDateTo"
 	                                name="StartingDate"
 	                                state="{{ forms.details['StartingDate'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.StartingDateTo"
 	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEndDateFrom" dg-colon="true">From EndDate</fd-form-label>
+                        	<bk-form-label for="idEndDateFrom" colon="true">{{ 'codbex-projects:codbex-projects-model.defaults.from' | t:{'text':'$t(codbex-projects:codbex-projects-model.t.PROJECT_ENDDATE)'} }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['EndDate'].$valid }}">
-	                            <fd-input id="idEndDateFrom"
+							<bk-form-input-message state="{{ forms.details['EndDate'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idEndDateFrom"
 	                                name="EndDate"
 	                                state="{{ forms.details['EndDate'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.EndDateFrom"
 	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEndDateTo" dg-colon="true">To EndDate</fd-form-label>
+                        	<bk-form-label for="idEndDateTo" colon="true">{{ 'codbex-projects:codbex-projects-model.defaults.to' | t:{'text':'$t(codbex-projects:codbex-projects-model.t.PROJECT_ENDDATE)'} }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['EndDate'].$valid }}">
-	                            <fd-input id="idEndDateTo"
+							<bk-form-input-message state="{{ forms.details['EndDate'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idEndDateTo"
 	                                name="EndDate"
 	                                state="{{ forms.details['EndDate'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.EndDateTo"
 	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStatus" dg-colon="true">Status</fd-form-label>
+                        	<bk-form-label for="idStatus" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_STATUS' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idStatus"
+	                        <bk-combobox-input input-id="idStatus"
 	                            name="Status"
 	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Status"
 	                            dropdown-items="optionsStatus"
-	                            dg-placeholder="Search Status ...">
-	                        </fd-combobox-input>
+	                            placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputSearch' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_STATUS)'} }}"
+								btn-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.showHide' | t:{'name':'Status'} }}" list-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.options' | t:{'name':'Status'} }}">
+	                        </bk-combobox-input>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSponsorName" dg-colon="true">SponsorName</fd-form-label>
+                        	<bk-form-label for="idSponsorName" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_SPONSORNAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SponsorName'].$valid }}">
-	                            <fd-input id="idSponsorName"
+							<bk-form-input-message state="{{ forms.details['SponsorName'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idSponsorName"
 	                                name="SponsorName"
 	                                state="{{ forms.details['SponsorName'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.SponsorName"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="50.0 || -1"
+									ng-maxlength="50.0"
 	                                type="text"
-	                                placeholder="Enter SponsorName">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_SPONSORNAME)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-					<fd-form-item class="fd-row">
+                    </bk-form-item>
+					<bk-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idOpportunity" dg-colon="true">Opportunity</fd-form-label>
+							<bk-form-label for="idOpportunity" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_OPPORTUNITY' | t }}</bk-form-label>
 						</div>
 						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idOpportunity"
-								name="Opportunity"
-								state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}"
-								ng-model="entity.Opportunity"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="300.0 || -1"
-								placeholder="Enter Opportunity">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Opportunity'].$valid">Incorrect Input</fd-form-message>
+							<bk-form-input-message state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-textarea id="idOpportunity"
+									name="Opportunity"
+									state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}"
+									ng-model="entity.Opportunity"
+									ng-maxlength="300.0"
+									placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_OPPORTUNITY)'} }}">
+								</bk-textarea>
+							</bk-form-input-message>
 						</div>
-					</fd-form-item>
-					<fd-form-item class="fd-row">
+					</bk-form-item>
+					<bk-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idScope" dg-colon="true">Scope</fd-form-label>
+							<bk-form-label for="idScope" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_SCOPE' | t }}</bk-form-label>
 						</div>
 						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idScope"
-								name="Scope"
-								state="{{ forms.details['Scope'].$valid ? '' : 'error' }}"
-								ng-model="entity.Scope"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="200.0 || -1"
-								placeholder="Enter Scope">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Scope'].$valid">Incorrect Input</fd-form-message>
+							<bk-form-input-message state="{{ forms.details['Scope'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-textarea id="idScope"
+									name="Scope"
+									state="{{ forms.details['Scope'].$valid ? '' : 'error' }}"
+									ng-model="entity.Scope"
+									ng-maxlength="200.0"
+									placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_SCOPE)'} }}">
+								</bk-textarea>
+							</bk-form-input-message>
 						</div>
-					</fd-form-item>
-                    <fd-form-item class="fd-row">
+					</bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idVersion" dg-colon="true">Version</fd-form-label>
+                        	<bk-form-label for="idVersion" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_VERSION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idVersion"
+	                        <bk-step-input input-id="idVersion"
 								name="Version"
 								state="{{ forms.details['Version'].$valid ? '' : 'error' }}"
 								ng-model="entity.Version"
-								placeholder="Enter Version"
-								>
-							</fd-step-input>
+								placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_VERSION)'} }}">
+							</bk-step-input>
 	                    </div>
-                    </fd-form-item>
-					<fd-form-item class="fd-row">
+                    </bk-form-item>
+					<bk-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idNotes" dg-colon="true">Notes</fd-form-label>
+							<bk-form-label for="idNotes" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_NOTES' | t }}</bk-form-label>
 						</div>
 						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idNotes"
-								name="Notes"
-								state="{{ forms.details['Notes'].$valid ? '' : 'error' }}"
-								ng-model="entity.Notes"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="2000.0 || -1"
-								placeholder="Enter Notes">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Notes'].$valid">Incorrect Input</fd-form-message>
+							<bk-form-input-message state="{{ forms.details['Notes'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-textarea id="idNotes"
+									name="Notes"
+									state="{{ forms.details['Notes'].$valid ? '' : 'error' }}"
+									ng-model="entity.Notes"
+									ng-maxlength="2000.0"
+									placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_NOTES)'} }}">
+								</bk-textarea>
+							</bk-form-input-message>
 						</div>
-					</fd-form-item>
-                    <fd-form-item class="fd-row">
+					</bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAgileMethodology" dg-colon="true">AgileMethodology</fd-form-label>
+                        	<bk-form-label for="idAgileMethodology" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_AGILEMETHODOLOGY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idAgileMethodology"
+	                        <bk-combobox-input input-id="idAgileMethodology"
 	                            name="AgileMethodology"
 	                            state="{{ forms.details['AgileMethodology'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.AgileMethodology"
 	                            dropdown-items="optionsAgileMethodology"
-	                            dg-placeholder="Search AgileMethodology ...">
-	                        </fd-combobox-input>
+	                            placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputSearch' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_AGILEMETHODOLOGY)'} }}"
+								btn-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.showHide' | t:{'name':'AgileMethodology'} }}" list-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.options' | t:{'name':'AgileMethodology'} }}">
+	                        </bk-combobox-input>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idIterationLenght" dg-colon="true">IterationLenght</fd-form-label>
+                        	<bk-form-label for="idIterationLenght" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_ITERATIONLENGHT' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idIterationLenght"
+	                        <bk-combobox-input input-id="idIterationLenght"
 	                            name="IterationLenght"
 	                            state="{{ forms.details['IterationLenght'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.IterationLenght"
 	                            dropdown-items="optionsIterationLenght"
-	                            dg-placeholder="Search IterationLenght ...">
-	                        </fd-combobox-input>
+	                            placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputSearch' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_ITERATIONLENGHT)'} }}"
+								btn-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.showHide' | t:{'name':'IterationLenght'} }}" list-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.options' | t:{'name':'IterationLenght'} }}">
+	                        </bk-combobox-input>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPlanningFrequency" dg-colon="true">PlanningFrequency</fd-form-label>
+                        	<bk-form-label for="idPlanningFrequency" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_PLANNINGFREQUENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['PlanningFrequency'].$valid }}">
-	                            <fd-input id="idPlanningFrequency"
+							<bk-form-input-message state="{{ forms.details['PlanningFrequency'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idPlanningFrequency"
 	                                name="PlanningFrequency"
 	                                state="{{ forms.details['PlanningFrequency'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.PlanningFrequency"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter PlanningFrequency">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_PLANNINGFREQUENCY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCustomerInvolvementFrequency" dg-colon="true">CustomerInvolvementFrequency</fd-form-label>
+                        	<bk-form-label for="idCustomerInvolvementFrequency" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_CUSTOMERINVOLVEMENTFREQUENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['CustomerInvolvementFrequency'].$valid }}">
-	                            <fd-input id="idCustomerInvolvementFrequency"
+							<bk-form-input-message state="{{ forms.details['CustomerInvolvementFrequency'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idCustomerInvolvementFrequency"
 	                                name="CustomerInvolvementFrequency"
 	                                state="{{ forms.details['CustomerInvolvementFrequency'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.CustomerInvolvementFrequency"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter CustomerInvolvementFrequency">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_CUSTOMERINVOLVEMENTFREQUENCY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idReleaseCadence" dg-colon="true">ReleaseCadence</fd-form-label>
+                        	<bk-form-label for="idReleaseCadence" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_RELEASECADENCE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ReleaseCadence'].$valid }}">
-	                            <fd-input id="idReleaseCadence"
+							<bk-form-input-message state="{{ forms.details['ReleaseCadence'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idReleaseCadence"
 	                                name="ReleaseCadence"
 	                                state="{{ forms.details['ReleaseCadence'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.ReleaseCadence"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter ReleaseCadence">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_RELEASECADENCE)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idRetrospectiveFrequency" dg-colon="true">RetrospectiveFrequency</fd-form-label>
+                        	<bk-form-label for="idRetrospectiveFrequency" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_RETROSPECTIVEFREQUENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['RetrospectiveFrequency'].$valid }}">
-	                            <fd-input id="idRetrospectiveFrequency"
+							<bk-form-input-message state="{{ forms.details['RetrospectiveFrequency'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idRetrospectiveFrequency"
 	                                name="RetrospectiveFrequency"
 	                                state="{{ forms.details['RetrospectiveFrequency'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.RetrospectiveFrequency"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter RetrospectiveFrequency">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_RETROSPECTIVEFREQUENCY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2"></div>
 	                    <div class="fd-col fd-col-md--8">
-							<fd-checkbox id="idDailyStandup"
+							<bk-checkbox id="idDailyStandup"
 	                            compact="false"
 								ng-init="entity.isDailyStandupIndeterminate=true"
 								ng-model="entity.DailyStandup"
-								dg-indeterminate="entity.isDailyStandupIndeterminate"
+								indeterminate="entity.isDailyStandupIndeterminate"
 								ng-click="entity.isDailyStandupIndeterminate=false">
-	                        </fd-checkbox>
-                        	<fd-checkbox-label for="idDailyStandup">DailyStandup</fd-checkbox-label>
+	                        </bk-checkbox>
+                        	<bk-checkbox-label for="idDailyStandup">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_DAILYSTANDUP' | t }}</bk-checkbox-label>
                         </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idBacklogRefinementFrequency" dg-colon="true">BacklogRefinementFrequency</fd-form-label>
+                        	<bk-form-label for="idBacklogRefinementFrequency" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_BACKLOGREFINEMENTFREQUENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['BacklogRefinementFrequency'].$valid }}">
-	                            <fd-input id="idBacklogRefinementFrequency"
+							<bk-form-input-message state="{{ forms.details['BacklogRefinementFrequency'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idBacklogRefinementFrequency"
 	                                name="BacklogRefinementFrequency"
 	                                state="{{ forms.details['BacklogRefinementFrequency'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.BacklogRefinementFrequency"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter BacklogRefinementFrequency">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_BACKLOGREFINEMENTFREQUENCY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDefectManagement" dg-colon="true">DefectManagement</fd-form-label>
+                        	<bk-form-label for="idDefectManagement" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_DEFECTMANAGEMENT' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DefectManagement'].$valid }}">
-	                            <fd-input id="idDefectManagement"
+							<bk-form-input-message state="{{ forms.details['DefectManagement'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idDefectManagement"
 	                                name="DefectManagement"
 	                                state="{{ forms.details['DefectManagement'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.DefectManagement"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter DefectManagement">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_DEFECTMANAGEMENT)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDeploymentFrequency" dg-colon="true">DeploymentFrequency</fd-form-label>
+                        	<bk-form-label for="idDeploymentFrequency" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_DEPLOYMENTFREQUENCY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DeploymentFrequency'].$valid }}">
-	                            <fd-input id="idDeploymentFrequency"
+							<bk-form-input-message state="{{ forms.details['DeploymentFrequency'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idDeploymentFrequency"
 	                                name="DeploymentFrequency"
 	                                state="{{ forms.details['DeploymentFrequency'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.DeploymentFrequency"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter DeploymentFrequency">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_DEPLOYMENTFREQUENCY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTestingIntegration" dg-colon="true">TestingIntegration</fd-form-label>
+                        	<bk-form-label for="idTestingIntegration" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_TESTINGINTEGRATION' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['TestingIntegration'].$valid }}">
-	                            <fd-input id="idTestingIntegration"
+							<bk-form-input-message state="{{ forms.details['TestingIntegration'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idTestingIntegration"
 	                                name="TestingIntegration"
 	                                state="{{ forms.details['TestingIntegration'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.TestingIntegration"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter TestingIntegration">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_TESTINGINTEGRATION)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStakeholderReview" dg-colon="true">StakeholderReview</fd-form-label>
+                        	<bk-form-label for="idStakeholderReview" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_STAKEHOLDERREVIEW' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['StakeholderReview'].$valid }}">
-	                            <fd-input id="idStakeholderReview"
+							<bk-form-input-message state="{{ forms.details['StakeholderReview'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idStakeholderReview"
 	                                name="StakeholderReview"
 	                                state="{{ forms.details['StakeholderReview'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.StakeholderReview"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter StakeholderReview">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_STAKEHOLDERREVIEW)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idFeatureCompletionCriteria" dg-colon="true">FeatureCompletionCriteria</fd-form-label>
+                        	<bk-form-label for="idFeatureCompletionCriteria" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_FEATURECOMPLETIONCRITERIA' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['FeatureCompletionCriteria'].$valid }}">
-	                            <fd-input id="idFeatureCompletionCriteria"
+							<bk-form-input-message state="{{ forms.details['FeatureCompletionCriteria'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idFeatureCompletionCriteria"
 	                                name="FeatureCompletionCriteria"
 	                                state="{{ forms.details['FeatureCompletionCriteria'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.FeatureCompletionCriteria"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter FeatureCompletionCriteria">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_FEATURECOMPLETIONCRITERIA)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDocumentationUpdates" dg-colon="true">DocumentationUpdates</fd-form-label>
+                        	<bk-form-label for="idDocumentationUpdates" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_DOCUMENTATIONUPDATES' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['DocumentationUpdates'].$valid }}">
-	                            <fd-input id="idDocumentationUpdates"
+							<bk-form-input-message state="{{ forms.details['DocumentationUpdates'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idDocumentationUpdates"
 	                                name="DocumentationUpdates"
 	                                state="{{ forms.details['DocumentationUpdates'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.DocumentationUpdates"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter DocumentationUpdates">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_DOCUMENTATIONUPDATES)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSustainableVelocity" dg-colon="true">SustainableVelocity</fd-form-label>
+                        	<bk-form-label for="idSustainableVelocity" colon="true">{{ 'codbex-projects:codbex-projects-model.t.PROJECT_SUSTAINABLEVELOCITY' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SustainableVelocity'].$valid }}">
-	                            <fd-input id="idSustainableVelocity"
+							<bk-form-input-message state="{{ forms.details['SustainableVelocity'].$valid ? '' : 'error' }}" text="{{'codbex-projects:codbex-projects-model.messages.error.incorrectInput' | t}}">
+								<bk-input id="idSustainableVelocity"
 	                                name="SustainableVelocity"
 	                                state="{{ forms.details['SustainableVelocity'].$valid ? '' : 'error' }}"
 	                                ng-model="entity.SustainableVelocity"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="200.0 || -1"
+									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="Enter SustainableVelocity">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                                placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputEnter' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.PROJECT_SUSTAINABLEVELOCITY)'} }}">
+	                            </bk-input>
+							</bk-form-input-message>
 	                    </div>
-                    </fd-form-item>
-                </fd-form-group>
-            </fd-fieldset>
-        </fd-scrollbar>
+                    </bk-form-item>
+                </bk-form-group>
+            </bk-fieldset>
+        </bk-scrollbar>
 
-        <fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
-			<fd-bar-right>
-				<fd-bar-element>
-					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>
-				</fd-bar-element>
-				<fd-bar-element>
-					<fd-button dg-label="Reset" ng-click="resetFilter()"></fd-button>
-				</fd-bar-element>
-				<fd-bar-element>
-					<fd-button dg-label="Cancel" ng-click="cancel()"></fd-button>
-				</fd-bar-element>
-			</fd-bar-right>
-		</fd-bar>
-
+        <bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+			<bk-bar-right>
+				<bk-bar-element>
+					<bk-button label="{{ 'codbex-projects:codbex-projects-model.defaults.filter' | t }}" state="emphasized" ng-click="filter()"></bk-button>
+				</bk-bar-element>
+				<bk-bar-element>
+					<bk-button label="{{ 'codbex-projects:codbex-projects-model.defaults.reset' | t }}" ng-click="resetFilter()"></bk-button>
+				</bk-bar-element>
+				<bk-bar-element>
+					<bk-button label="{{ 'codbex-projects:codbex-projects-model.defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
+				</bk-bar-element>
+			</bk-bar-right>
+		</bk-bar>
+		<theme></theme>
     </body>
 
 </html>

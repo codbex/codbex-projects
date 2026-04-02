@@ -1,6 +1,6 @@
 {
     "module": "codbex-projects/gen/codbex-projects/ui/Milestone/Milestone/view.js",
-    "extensionPoint": "codbex-projects-view",
+    "extensionPoint": "application-views",
     "description": "codbex-projects - Application View",
     "role": "codbex-projects.Milestone.MilestoneReadOnly,codbex-projects.Milestone.MilestoneFullAccess"
 }

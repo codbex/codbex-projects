@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface IterationLenghtEntity {
     readonly Id: number;
@@ -58,12 +58,13 @@ export interface IterationLenghtEntityOptions {
     },
     $select?: (keyof IterationLenghtEntity)[],
     $sort?: string | (keyof IterationLenghtEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface IterationLenghtEntityEvent {
+export interface IterationLenghtEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<IterationLenghtEntity>;
@@ -74,7 +75,7 @@ interface IterationLenghtEntityEvent {
     }
 }
 
-interface IterationLenghtUpdateEntityEvent extends IterationLenghtEntityEvent {
+export interface IterationLenghtUpdateEntityEvent extends IterationLenghtEntityEvent {
     readonly previousEntity: IterationLenghtEntity;
 }
 
@@ -108,14 +109,15 @@ export class IterationLenghtRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(IterationLenghtRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(IterationLenghtRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: IterationLenghtEntityOptions): IterationLenghtEntity[] {
-        return this.dao.list(options);
+    public findAll(options: IterationLenghtEntityOptions = {}): IterationLenghtEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): IterationLenghtEntity | undefined {
+    public findById(id: number, options: IterationLenghtEntityOptions = {}): IterationLenghtEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

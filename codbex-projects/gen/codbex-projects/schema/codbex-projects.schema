@@ -33,14 +33,14 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "RESOURCE_QUANTITY"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "RESOURCE_PRIZE"
@@ -106,7 +106,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -252,28 +252,28 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "BUDGET_AMOUNT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "BUDGET_COSTESTIMATION"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "BUDGET_CONTINGENCYRESERVES"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -307,7 +307,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "COST_ACTUALCOST"
@@ -418,7 +418,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "EXPENSE_AMOUNT"
@@ -478,14 +478,14 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "DELIVERABLE_COSTESTIMATION"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "name": "DELIVERABLE_ACTUALCOST"

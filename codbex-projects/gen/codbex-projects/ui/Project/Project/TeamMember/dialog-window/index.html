@@ -2,71 +2,70 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="page" ng-controller="PageController">
 
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
-        <title dg-brand-title></title>
-        <theme></theme>
-        <script type="text/javascript"
-            src="/services/js/resources-core/services/loader.js?id=application-view-js"></script>
-        <link type="text/css" rel="stylesheet"
-            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title config-title></title>
+        <script type="text/javascript" src="view.js"></script>
+        <meta name="platform-links" category="ng-view">
+		<script type="text/javascript" src="/services/web/dashboard/services/entity.js"></script>
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
-    <body class="dg-vbox">
-        <fd-scrollbar class="dg-full-height">
-            <fd-fieldset ng-form="forms.details">
-                <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
-                    <fd-form-item class="fd-row">
+    <body class="bk-vbox">
+        <bk-scrollbar class="bk-full-height">
+            <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
+                <bk-form-group label="{{formHeaders[action]}}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idEmployee" dg-required="true" dg-colon="true">Employee</fd-form-label>
+                        	<bk-form-label for="idEmployee" ng-required="true" colon="true">{{ 'codbex-projects:codbex-projects-model.t.TEAMMEMBER_EMPLOYEE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idEmployee"
+	                        <bk-combobox-input input-id="idEmployee"
 	                            name="Employee"
 	                            state="{{ forms.details['Employee'].$valid ? '' : 'error' }}"
 	                            ng-required="true"
 	                            ng-model="entity.Employee"
-	                            dg-disabled="action === 'select'"
+	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsEmployee"
-	                            dg-placeholder="Search Employee ...">
-	                        </fd-combobox-input>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                            placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputSearch' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.TEAMMEMBER_EMPLOYEE)'} }}"
+								btn-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.showHide' | t:{'name':'Employee'} }}" list-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.options' | t:{'name':'Employee'} }}">
+	                        </bk-combobox-input>
 	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idMemberRole" dg-required="true" dg-colon="true">MemberRole</fd-form-label>
+                        	<bk-form-label for="idMemberRole" ng-required="true" colon="true">{{ 'codbex-projects:codbex-projects-model.t.TEAMMEMBER_MEMBERROLE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idMemberRole"
+	                        <bk-combobox-input input-id="idMemberRole"
 	                            name="MemberRole"
 	                            state="{{ forms.details['MemberRole'].$valid ? '' : 'error' }}"
 	                            ng-required="true"
 	                            ng-model="entity.MemberRole"
-	                            dg-disabled="action === 'select'"
+	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsMemberRole"
-	                            dg-placeholder="Search MemberRole ...">
-	                        </fd-combobox-input>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                            placeholder="{{ 'codbex-projects:codbex-projects-model.messages.inputSearch' | t:{'name':'$t(codbex-projects:codbex-projects-model.t.TEAMMEMBER_MEMBERROLE)'} }}"
+								btn-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.showHide' | t:{'name':'MemberRole'} }}" list-aria-label="{{ 'codbex-projects:codbex-projects-model.aria.options' | t:{'name':'MemberRole'} }}">
+	                        </bk-combobox-input>
 	                    </div>
-                    </fd-form-item>
-                </fd-form-group>
-            </fd-fieldset>
-        </fd-scrollbar>
+                    </bk-form-item>
+                </bk-form-group>
+            </bk-fieldset>
+        </bk-scrollbar>
 
-		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
-			<fd-bar-right>
-				<fd-bar-element>
-					<fd-button dg-label="{{action === 'create' ? 'Create' : 'Update'}}" dg-type="emphasized" ng-click="action === 'create' ? create() : update()" state="{{ forms.details.$valid ? '' : 'disabled' }}"></fd-button>
-				</fd-bar-element>
-				<fd-bar-element>
-					<fd-button dg-label="Cancel" ng-click="cancel()"></fd-button>
-				</fd-bar-element>
-			</fd-bar-right>
-		</fd-bar>
+		<bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+			<bk-bar-right>
+				<bk-bar-element>
+					<bk-button ng-if="action === 'create'" label="{{'codbex-projects:codbex-projects-model.defaults.create' | t}}" state="emphasized" ng-click="create()" ng-disabled="!forms.details.$valid"></bk-button>
+					<bk-button ng-if="action !== 'create'" label="{{'codbex-projects:codbex-projects-model.defaults.update' | t}}" state="emphasized" ng-click="update()" ng-disabled="!forms.details.$valid"></bk-button>
+				</bk-bar-element>
+				<bk-bar-element>
+					<bk-button label="{{ 'codbex-projects:codbex-projects-model.defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
+				</bk-bar-element>
+			</bk-bar-right>
+		</bk-bar>
+		<theme></theme>
     </body>
 
 </html>

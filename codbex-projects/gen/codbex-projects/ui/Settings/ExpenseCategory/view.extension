@@ -1,0 +1,6 @@
+{
+    "module": "codbex-projects/gen/codbex-projects/ui/Settings/ExpenseCategory/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-projects - Application View",
+    "role": "codbex-projects.Settings.ExpenseCategoryReadOnly,codbex-projects.Settings.ExpenseCategoryFullAccess"
+}

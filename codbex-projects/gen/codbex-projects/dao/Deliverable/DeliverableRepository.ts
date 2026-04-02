@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface DeliverableEntity {
     readonly Id: number;
@@ -94,12 +94,13 @@ export interface DeliverableEntityOptions {
     },
     $select?: (keyof DeliverableEntity)[],
     $sort?: string | (keyof DeliverableEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface DeliverableEntityEvent {
+export interface DeliverableEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<DeliverableEntity>;
@@ -110,7 +111,7 @@ interface DeliverableEntityEvent {
     }
 }
 
-interface DeliverableUpdateEntityEvent extends DeliverableEntityEvent {
+export interface DeliverableUpdateEntityEvent extends DeliverableEntityEvent {
     readonly previousEntity: DeliverableEntity;
 }
 
@@ -168,14 +169,15 @@ export class DeliverableRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(DeliverableRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(DeliverableRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: DeliverableEntityOptions): DeliverableEntity[] {
-        return this.dao.list(options);
+    public findAll(options: DeliverableEntityOptions = {}): DeliverableEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): DeliverableEntity | undefined {
+    public findById(id: number, options: DeliverableEntityOptions = {}): DeliverableEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

@@ -5,14 +5,14 @@
  */
 const perspectiveData = {
 	id: 'Milestone',
-	name: 'Milestone',
-	link: '/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/index.html',
-	order: '400',
+	label: 'Milestone',
+	translation: {
+        key: 'codbex-projects:codbex-projects-model.t.MILESTONE',
+    },
+	path: '/services/web/codbex-projects/gen/codbex-projects/ui/Milestone/index.html',
+	order: 400,
 	icon: '/services/web/resources/unicons/arrow-break.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

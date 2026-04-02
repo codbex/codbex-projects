@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface StakeHolderTypeEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface StakeHolderTypeEntityOptions {
     },
     $select?: (keyof StakeHolderTypeEntity)[],
     $sort?: string | (keyof StakeHolderTypeEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface StakeHolderTypeEntityEvent {
+export interface StakeHolderTypeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<StakeHolderTypeEntity>;
@@ -65,7 +66,7 @@ interface StakeHolderTypeEntityEvent {
     }
 }
 
-interface StakeHolderTypeUpdateEntityEvent extends StakeHolderTypeEntityEvent {
+export interface StakeHolderTypeUpdateEntityEvent extends StakeHolderTypeEntityEvent {
     readonly previousEntity: StakeHolderTypeEntity;
 }
 
@@ -93,14 +94,15 @@ export class StakeHolderTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(StakeHolderTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(StakeHolderTypeRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: StakeHolderTypeEntityOptions): StakeHolderTypeEntity[] {
-        return this.dao.list(options);
+    public findAll(options: StakeHolderTypeEntityOptions = {}): StakeHolderTypeEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): StakeHolderTypeEntity | undefined {
+    public findById(id: number, options: StakeHolderTypeEntityOptions = {}): StakeHolderTypeEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
